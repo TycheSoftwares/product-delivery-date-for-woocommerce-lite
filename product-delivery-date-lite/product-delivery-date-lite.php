@@ -35,7 +35,7 @@ function is_prdd_lite_active() {
 **/
 
 // For language translation
-function  prdd_update_po_file(){
+function  prdd_lite_update_po_file(){
     $domain = 'woocommerce-prdd-lite';
     $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
     if ( $loaded = load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '-' . $locale . '.mo' ) ) {
@@ -54,7 +54,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             //Initialize settings
             register_activation_hook( __FILE__,                   array( &$this, 'prdd_lite_activate' ) );
 			add_filter( 'plugin_row_meta',                        array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
-			add_action( 'init',                                   'prdd_update_po_file' );
+			add_action( 'init',                                   'prdd_lite_update_po_file' );
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
 			add_action( 'woocommerce_process_product_meta',       array( &$this, 'prdd_lite_process_box' ), 1, 2 );
 			//add_action( 'admin_enqueue_scripts',                  array( &$this, 'prdd_lite_my_enqueue_scripts_css' ) );
@@ -201,8 +201,8 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
-                print ( '<label class="delivery_date_label" style="margin-top:5em;">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
-			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;" readonly/>
+                print ( '<label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
+			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
                 <img src="' . plugins_url() . '/product-delivery-date-lite/images/cal.gif" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/>
                 <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>
                 <script type="text/javascript">
