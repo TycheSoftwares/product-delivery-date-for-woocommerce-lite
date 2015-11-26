@@ -201,9 +201,9 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
-                print ( '<label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
+                print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
 			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
-                <img src="' . plugins_url() . '/product-delivery-date-lite/images/cal.gif" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/>
+                <img src="' . plugins_url() . '/product-delivery-date-lite/images/cal.gif" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/></div>
                 <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>
                 <script type="text/javascript">
 					jQuery(document).ready(function() {
@@ -315,7 +315,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 if ( isset( $values[ 'prdd_lite_delivery' ] ) ) {
                     $prdd_settings = get_post_meta( $post_id, '_woo_prdd_lite_enable_delivery_date', true );
                     $details = array();
-                    if ( $delivery[0][ 'delivery_date' ] != "" ) {
+                    if ( isset( $delivery[0][ 'delivery_date' ] ) && $delivery[0][ 'delivery_date' ] != "" ) {
                         $name = "Delivery Date";
                         $date_select = $delivery[0][ 'delivery_date' ];
                         wc_add_order_item_meta( $results[0]->order_item_id, $name, sanitize_text_field( $date_select, true ) );
