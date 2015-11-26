@@ -1,7 +1,6 @@
 <?php 
 /*
 Plugin Name: Product Delivery Date for WooCommerce - Lite
-Plugin URI: http://www.tychesoftwares.com/store/premium-plugins/woocommerce-product-delivery-date-lite
 Description: This plugin lets you capture the Delivery Date for each product.
 Version: 1.0
 Author: Tyche Softwares
@@ -53,7 +52,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         public function __construct() {
             //Initialize settings
             register_activation_hook( __FILE__,                   array( &$this, 'prdd_lite_activate' ) );
-			add_filter( 'plugin_row_meta',                        array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
 			add_action( 'init',                                   'prdd_lite_update_po_file' );
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
 			add_action( 'woocommerce_process_product_meta',       array( &$this, 'prdd_lite_process_box' ), 1, 2 );
@@ -77,25 +75,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 		*/
         function prdd_lite_activate() {
             update_option( 'woocommerce_prdd_lite_db_version', '1.0' );
-        }
-
-		/**
-		* Show row meta on the plugin screen.
-		*
-		* @param	mixed $links Plugin Row Meta
-		* @param	mixed $file  Plugin Base file
-		* @return	array
-		*/
-		function prdd_lite_plugin_row_meta( $links, $file ) {
-            $plugin_base_name = plugin_basename(__FILE__);
-			if ( $file == $plugin_base_name ) {
-                $row_meta = array(
-                    'docs'    => '<a href="' . esc_url( apply_filters( 'woocommerce_prdd_docs_url', 'https://www.tychesoftwares.com/' ) ) . '" title="' . esc_attr( __( 'View WooCommerce Delivery Date Documentation', 'woocommerce-prdd' ) ) . '">' . __( 'Docs', 'woocommerce-prdd' ) . '</a>',
-			        'support' => '<a href="' . esc_url( apply_filters( 'woocommerce_prdd_support_url', 'https://www.tychesoftwares.com/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'woocommerce-prdd' ) ) . '">' . __( 'Support Forums', 'woocommerce-prdd' ) . '</a>',
-                );
-			    return array_merge( $links, $row_meta );
-            }
-            return (array) $links;
         }
 			
 		/**
