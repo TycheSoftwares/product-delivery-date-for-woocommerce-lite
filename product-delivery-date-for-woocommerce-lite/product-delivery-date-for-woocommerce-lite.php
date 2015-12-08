@@ -182,7 +182,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
                 print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
 			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
-                <img src="' . plugins_url() . '/product-delivery-date-lite/images/cal.gif" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/></div>
+                <img src="' . plugins_url() . '/product-delivery-date-for-woocommerce-lite/images/cal.png" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/></div>
                 <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>
                 <script type="text/javascript">
 					jQuery(document).ready(function() {
