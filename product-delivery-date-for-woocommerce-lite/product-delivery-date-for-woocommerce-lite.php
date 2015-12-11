@@ -55,8 +55,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 			add_action( 'init',                                   'prdd_lite_update_po_file' );
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
 			add_action( 'woocommerce_process_product_meta',       array( &$this, 'prdd_lite_process_box' ), 1, 2 );
-			//add_action( 'admin_enqueue_scripts',                  array( &$this, 'prdd_lite_my_enqueue_scripts_css' ) );
-			//add_action( 'admin_enqueue_scripts',                  array( &$this, 'prdd_lite_my_enqueue_scripts_js' ) );
 			add_action( 'woocommerce_duplicate_product' ,         array( &$this, 'prdd_lite_product_duplicate' ), 10, 2 );
 				
 			add_action( 'woocommerce_before_single_product',      array( &$this, 'prdd_lite_front_side_scripts_js' ) );
@@ -64,7 +62,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 
 			add_action( 'woocommerce_before_add_to_cart_button',  array( &$this, 'prdd_lite_after_add_to_cart' ) );
 			add_filter( 'woocommerce_add_cart_item_data',         array( &$this, 'prdd_lite_add_cart_item_data' ), 25, 2 );
-			//add_filter( 'woocommerce_get_cart_item_from_session', array( &$this, 'prdd_lite_get_cart_item_from_session' ), 25, 2 );
 			add_filter( 'woocommerce_get_item_data',              array( &$this, 'prdd_lite_get_item_data' ), 25, 2 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( &$this, 'prdd_lite_order_item_meta' ), 10, 2 );
             add_filter( 'woocommerce_hidden_order_itemmeta',      array( &$this, 'prdd_lite_hidden_order_itemmeta' ), 10, 1 );
@@ -121,7 +118,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         <input type="checkbox" id="prdd_lite_enable_date" name="prdd_lite_enable_date" style="margin-left:30px;" <?php echo $enable_date;?> >
                     </td>
                     <td>
-                        <img class="help_tip" width="16" height="16" style="margin-left:100px;" data-tip="<?php _e( 'Enable Delivery Date on Products Page', 'woocommerce-prdd' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                        <img class="help_tip" width="16" height="16" style="margin-left:100px;" data-tip="<?php _e( 'Enable Delivery Date on Products Page', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
                     </td>
                 </tr>
 		    </table>
@@ -180,7 +177,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
-                print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd" ) . ': </label>
+                print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd-lite" ) . ': </label>
 			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
                 <img src="' . plugins_url() . '/product-delivery-date-for-woocommerce-lite/images/cal.png" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/></div>
                 <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>
