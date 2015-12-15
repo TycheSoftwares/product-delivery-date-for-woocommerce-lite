@@ -67,7 +67,7 @@ This plugin allows you to improve your customer service by delivering the produc
 == Changelog ==
 
 = 1.1 =
-*.po, .pot and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
+* .po, .pot and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
 
 = 1.0 =
 * Initial release.
