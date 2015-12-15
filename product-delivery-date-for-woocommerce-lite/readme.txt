@@ -42,6 +42,8 @@ This plugin allows you to improve your customer service by delivering the produc
 
 **[View Demo](http://demo.tychesoftwares.com/woo_prdd_demo/?post_type=product "View Demo")**
 
+**[Github Repository](https://github.com/TycheSoftwares/product-delivery-date-for-woocommerce-lite "Github Repository")**
+
 == Installation ==
 
 1. Unzip and upload contents of the plugin to your /wp-content/plugins/ directory.
@@ -63,6 +65,9 @@ This plugin allows you to improve your customer service by delivering the produc
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+
+= 1.1 =
+*.po, .pot and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
 
 = 1.0 =
 * Initial release.
