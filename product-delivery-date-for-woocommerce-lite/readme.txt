@@ -66,6 +66,9 @@ This plugin allows you to improve your customer service by delivering the produc
 
 == Changelog ==
 
+= 1.2 =
+* Delivery Date selected for the product was not coming in the email notifications sent to the customer and admin when the order is placed on the checkout page with WooCommerce v2.5.x. This is fixed now.
+
 = 1.1 =
 * .po, .pot and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
 
