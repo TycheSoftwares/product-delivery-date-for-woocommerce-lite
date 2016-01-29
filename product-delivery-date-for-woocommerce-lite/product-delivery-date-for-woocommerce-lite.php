@@ -301,6 +301,21 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         wc_add_order_item_meta( $results[0]->order_item_id, '_prdd_lite_date', sanitize_text_field( $date_booking, true ) );
                     }
                 }
+                
+                if ( version_compare( WOOCOMMERCE_VERSION, "2.5" ) < 0 ) {
+                    continue;
+                } else {
+                    // Code where the Delivery dates are not displayed in the customer new order email from WooCommerce version 2.5
+                    $cache_key       = WC_Cache_Helper::get_cache_prefix( 'orders' ) . 'item_meta_array_' . $results[ 0 ]->order_item_id;
+                    $item_meta_array = wp_cache_get( $cache_key, 'orders' );
+                    if ( false !== $item_meta_array ) {
+                        $metadata        = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value, meta_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d AND meta_key IN (%s,%s) ORDER BY meta_id", absint( $results[ 0 ]->order_item_id ), "Delivery Date", '_prdd_lite_date' ) );
+                        foreach ( $metadata as $metadata_row ) {
+                            $item_meta_array[ $metadata_row->meta_id ] = (object) array( 'key' => $metadata_row->meta_key, 'value' => $metadata_row->meta_value );
+                        }
+                        wp_cache_set( $cache_key, $item_meta_array, 'orders' );
+                    }
+                }
             }
         }
         
