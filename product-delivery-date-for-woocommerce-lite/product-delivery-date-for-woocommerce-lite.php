@@ -56,6 +56,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
 			add_action( 'woocommerce_process_product_meta',       array( &$this, 'prdd_lite_process_box' ), 1, 2 );
 			add_action( 'woocommerce_duplicate_product' ,         array( &$this, 'prdd_lite_product_duplicate' ), 10, 2 );
+			add_action( 'admin_init',                             array( &$this, 'prdd_lite_update_db_check' ) );
 				
 			add_action( 'woocommerce_before_single_product',      array( &$this, 'prdd_lite_front_side_scripts_js' ) );
 			add_action( 'woocommerce_before_single_product',      array( &$this, 'prdd_lite_front_side_scripts_css' ) );
@@ -73,7 +74,23 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         function prdd_lite_activate() {
             update_option( 'woocommerce_prdd_lite_db_version', '1.2' );
         }
-			
+
+        function prdd_lite_update_db_check() {
+            $prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
+            if ( $prdd_plugin_version != $this->get_plugin_version() ) {
+                update_option( 'woocommerce_prdd_lite_db_version', '1.2' );
+            }
+        }
+        
+        /**
+         * This function returns the product delivery date plugin version number
+         */
+        function get_plugin_version() {
+            $plugin_data    = get_plugin_data( __FILE__ );
+            $plugin_version = $plugin_data[ 'Version' ];
+            return $plugin_version;
+        }
+        
 		/**
         * This function adds a meta box for delivery settings on product page.
         */
