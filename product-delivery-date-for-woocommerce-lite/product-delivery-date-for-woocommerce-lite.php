@@ -146,7 +146,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         <input type="text" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
                     </td>
                     <td>
-                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'Enable Delivery after X number of hours from current time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need 1 day advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'Enable Delivery after X number of hours from current WordPress time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need one day\'s advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
                     </td>
                 </tr>
                 <tr>
