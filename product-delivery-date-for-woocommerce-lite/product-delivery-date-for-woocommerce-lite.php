@@ -259,7 +259,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         jQuery( "#delivery_calender_lite" ).datepicker({
                             dateFormat: formats[2],
                             minDate: min_date_to_set,
-                            maxDate: parseInt( ' . $prdd_maximum_number_days . ' ),
+                            maxDate: parseInt( ' . $prdd_maximum_number_days . ' )-1,
                             onClose:function( dateStr, inst ) {
                                 if ( dateStr != "" ) {
                                     var monthValue = inst.selectedMonth+1;
