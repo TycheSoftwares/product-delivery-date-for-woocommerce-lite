@@ -163,7 +163,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         <input type="text" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
                     </td>
                     <td>
-                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates you want to be available for your customers to choose from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
                     </td>
                 </tr>
 		    </table>
