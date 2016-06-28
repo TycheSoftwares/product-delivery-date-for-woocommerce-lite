@@ -228,6 +228,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
+            $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
+            if( $prdd_maximum_number_days == '' || $prdd_maximum_number_days == 'null' ) {
+                $prdd_maximum_number_days = '30';
+            }
             $current_time = current_time( 'timestamp' );
             if( $prdd_minimum_delivery_time != '' && $prdd_minimum_delivery_time != 0 ) {
                 $advance_seconds = $prdd_minimum_delivery_time *60 *60;
@@ -238,8 +242,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 $min_date = date( "j-n-Y", $current_time );
             }
             print( '<input type="hidden" name="prdd_lite_hidden_minimum_delivery_time" id="prdd_lite_hidden_minimum_delivery_time" value="' . $min_date . '">' );
-            
-            $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
                 print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd-lite" ) . ': </label>
 			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
