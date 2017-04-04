@@ -1,6 +1,6 @@
 === Product Delivery Date for WooCommerce - Lite ===
 
-Contributors: ashokrane,MoxaJogani
+Contributors: ashokrane, MoxaJogani, tychesoftwares
 Tags: delivery date, invite friends, woocommerce booking
 
 Requires at least: 
@@ -25,7 +25,7 @@ This plugin allows you to improve your customer service by delivering the produc
 
 **Pro Version:**
 
-**[Product Delivery Date 1.7](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/ "Product Delivery Date Pro")** - The Pro version allows the customer to choose a delivery date & time frontend product details page. Date Settings, Time Settings, Global Settings & Black-out dates allow the site owner to decide which dates should be made available for delivery. Following features are available in PRO version:
+**[Product Delivery Date 2.0.1](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/ "Product Delivery Date Pro")** - The Pro version allows the customer to choose a delivery date & time frontend product details page. Date Settings, Time Settings, Global Settings & Black-out dates allow the site owner to decide which dates should be made available for delivery. Following features are available in PRO version:
 
 <ol>
 <li>Ability to allow the customer to select <strong>Delivery Time along with Delivery Date.</strong></li>
@@ -65,6 +65,10 @@ This plugin allows you to improve your customer service by delivering the produc
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+
+= 1.4 =
+* All the delivery dates are displayed in first product on Order received page when same product is added with multiple delivery dates in single order. This is fixed now.
+
 = 1.3 =
 * A new setting named as 'Minimum Delivery preparation time (in hours)' is added on the admin product page which allows setting the minimum delivery preparation time required. Customers can choose the delivery dates only after the set time.
 
