@@ -366,8 +366,14 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 $post_id = $this->prdd_lite_get_product_id( $values[ 'product_id' ] );
                 $post_title = $_product->get_title();
 
-                $query = "SELECT order_item_id,order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
-						WHERE order_id = %s AND order_item_name = %s";
+                // Fetch line item
+                if ( count( $order_item_ids ) > 0 ) {
+                    $order_item_ids_to_exclude = implode( ",", $order_item_ids );
+                    $sub_query = " AND order_item_id NOT IN ( " . $order_item_ids_to_exclude . ")";
+                }
+
+                $query = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
+						WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
                 $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title ) );
                 $order_item_ids[] = $results[0]->order_item_id;
                 $order_id = $results[0]->order_id;
