@@ -10,17 +10,6 @@ Author URI: http://www.tychesoftwares.com/
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.4';
 
-register_uninstall_hook( __FILE__, 'prdd_woocommerce_lite_delete');
-
-/* ******************************************************************** 
- * This function will Delete all the records of product delivery date lite plugin
- ******************************************************************************/
-function prdd_woocommerce_lite_delete(){
-	global $wpdb;
-	$sql_table_post_meta = "DELETE FROM `" . $wpdb->prefix . "postmeta` WHERE meta_key='_woo_prdd_lite_enable_delivery_date'";
-	$results = $wpdb->get_results ( $sql_table_post_meta );
-}
-
 function is_prdd_lite_active() {
 	if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
 		return true;
