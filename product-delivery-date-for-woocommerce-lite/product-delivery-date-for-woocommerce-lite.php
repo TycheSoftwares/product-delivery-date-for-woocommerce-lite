@@ -141,40 +141,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 </tr>
                 <tr>
                     <td>
-                        <b><label for="prdd_lite_minimum_delivery_time"> <?php _e( 'Minimum Delivery preparation time (in hours):', 'woocommerce-prdd-lite' );?> </label></b>
-                    </td>
-                    <td>
-                        <?php 
-                       	$prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
-                       	if ( $prdd_minimum_delivery_time == "" ) {
-                       	    $prdd_minimum_delivery_time = "0";
-                       	}
-                       	?>
-                        <input type="text" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
-                    </td>
-                    <td>
-                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'Enable Delivery after X number of hours from current WordPress time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need one day\'s advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b><label for="prdd_lite_maximum_number_days"> <?php _e( 'Number of Dates to choose:', 'woocommerce-prdd-lite' );?> </label></b>
-                    </td>
-                    <td>
-                        <?php
-                        $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
-                        if ( $prdd_maximum_number_days == "" ) {
-                            $prdd_maximum_number_days = "30";
-                        }	
-                        ?>
-                        <input type="text" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
-                    </td>
-                    <td>
-                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <b><label for="prdd_lite_delivery_days[]"> <?php _e( 'Delivery days Available:', 'woocommerce-prdd-lite' );?> </label></b>
                     </td>
                     <td>
@@ -193,22 +159,56 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 
                     </td>
                     <td>
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The days in week on which you want to deliver the product. e.g You dont want to deliver the products on Sundays then uncheck sundays.' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b><label for="prdd_lite_minimum_delivery_time"> <?php _e( 'Minimum Delivery preparation time (in hours):', 'woocommerce-prdd-lite' );?> </label></b>
+                    </td>
+                    <td>
+                        <?php 
+                        $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
+                        if ( $prdd_minimum_delivery_time == "" ) {
+                            $prdd_minimum_delivery_time = "0";
+                        }
+                        ?>
+                        <input type="text" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
+                    </td>
+                    <td>
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'Enable Delivery after X number of hours from current WordPress time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need one day\'s advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b><label for="prdd_lite_maximum_number_days"> <?php _e( 'Number of Dates to choose:', 'woocommerce-prdd-lite' );?> </label></b>
+                    </td>
+                    <td>
+                        <?php
+                        $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
+                        if ( $prdd_maximum_number_days == "" ) {
+                            $prdd_maximum_number_days = "30";
+                        }   
+                        ?>
+                        <input type="text" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
+                    </td>
+                    <td>
                         <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
                     </td>
                 </tr>
 		    </table>
             <script type="text/javascript">
-                jQuery(document).ready(function(){
+                jQuery( document ).ready( function() {
         
-                    if (jQuery(".js-example-basic-multiple").length > 0)
-                        jQuery(".js-example-basic-multiple").select2();
-                    var data = <?php echo json_encode($prdd_lite_delivery_days) ?>;
-                    if(data){
-                        jQuery(".js-example-basic-multiple").val(data);
-                        jQuery(".js-example-basic-multiple").trigger('change.select2');
+                    if ( jQuery( ".js-example-basic-multiple" ).length > 0 )
+                        jQuery( ".js-example-basic-multiple" ).select2();
+                    var data = <?php echo json_encode( $prdd_lite_delivery_days ) ?>;
+                    if( data ) {
+                        jQuery( ".js-example-basic-multiple" ).val( data );
+                        jQuery( ".js-example-basic-multiple" ).trigger( 'change.select2' );
                     }else{
-                        jQuery(".js-example-basic-multiple").val(['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']);
-                        jQuery(".js-example-basic-multiple").trigger('change.select2');   
+                        jQuery( ".js-example-basic-multiple" ).val( [ 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday' ] );
+                        jQuery( ".js-example-basic-multiple" ).trigger( 'change.select2' );   
                     }
 
                 });
@@ -311,17 +311,16 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                             dateFormat: formats[2],
                             minDate: min_date_to_set,
                             maxDate: parseInt( ' . $prdd_maximum_number_days . ' )-1,
-                            beforeShowDay: function(date){
-                                var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                                var a = new Date(date);
-                                var enable_days = '.json_encode($prdd_lite_delivery_days).';
-                                var array = [date];
-                                if(jQuery.inArray(weekday[a.getDay()], enable_days) > -1 ){
-                                    return [ true ]
+                            beforeShowDay: function( date ) {
+                                var weekday = [ "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" ];
+                                var a = new Date( date );
+                                var enable_days = ' . json_encode($prdd_lite_delivery_days) . ';
+                                if( jQuery.inArray( weekday[a.getDay()], enable_days ) > -1 ) {
+                                    return [ true ];
                                 }else{
-                                    return [ false ]
+                                    return [ false ];
                                 }
-                                },
+                            },
                             onClose:function( dateStr, inst ) {
                                 if ( dateStr != "" ) {
                                     var monthValue = inst.selectedMonth+1;
