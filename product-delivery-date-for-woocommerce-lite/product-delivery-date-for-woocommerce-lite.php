@@ -110,6 +110,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             update_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', $enable_date );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', $prdd_minimum_delivery_time );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', $prdd_maximum_number_days );
+            update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', $_POST[ 'prdd_lite_delivery_days' ] );
 		}
 			
 		/**
@@ -172,7 +173,46 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <b><label for="prdd_lite_delivery_days[]"> <?php _e( 'Delivery days Available:', 'woocommerce-prdd-lite' );?> </label></b>
+                    </td>
+                    <td>
+                        <?php
+                        $prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+                        ?>
+                        <select name="prdd_lite_delivery_days[]" id="prdd_lite_delivery_days" class="js-example-basic-multiple" multiple="multiple">
+                          <option value="Sunday">Sunday</option>
+                          <option value="Monday">Monday</option>
+                          <option value="Tuesday">Tuesday</option>
+                          <option value="Wednesday">Wednesday</option>
+                          <option value="Thursday">Thursday</option>
+                          <option value="Friday">Friday</option>
+                          <option value="Saturday">Saturday</option>
+                        </select>
+
+                    </td>
+                    <td>
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                    </td>
+                </tr>
 		    </table>
+            <script type="text/javascript">
+                jQuery(document).ready(function(){
+        
+                    if (jQuery(".js-example-basic-multiple").length > 0)
+                        jQuery(".js-example-basic-multiple").select2();
+                    var data = <?php echo json_encode($prdd_lite_delivery_days) ?>;
+                    if(data){
+                        jQuery(".js-example-basic-multiple").val(data);
+                        jQuery(".js-example-basic-multiple").trigger('change.select2');
+                    }else{
+                        jQuery(".js-example-basic-multiple").val(['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']);
+                        jQuery(".js-example-basic-multiple").trigger('change.select2');   
+                    }
+
+                });
+            </script>
 		    <?php 
 		}
 
@@ -205,6 +245,8 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     wp_enqueue_script( 'jquery-ui-datepicker' );
                     wp_deregister_script( 'jqueryui' );
                     wp_enqueue_script( 'jqueryui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js', '', '', false );
+                    wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery-ui-widget', 'jquery-ui-core' ) );
+                    wp_enqueue_script( 'select2' );
                 }
             }
         }
@@ -235,6 +277,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
             $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
+            $prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
             if( $prdd_maximum_number_days == '' || $prdd_maximum_number_days == 'null' ) {
                 $prdd_maximum_number_days = '30';
             }
@@ -262,10 +305,23 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 						jQuery.extend( jQuery.datepicker, { afterShow: function(event) {
                             jQuery.datepicker._getInst( event.target ).dpDiv.css( "z-index", 9999 );
                         }});
+                       
+                        
                         jQuery( "#delivery_calender_lite" ).datepicker({
                             dateFormat: formats[2],
                             minDate: min_date_to_set,
                             maxDate: parseInt( ' . $prdd_maximum_number_days . ' )-1,
+                            beforeShowDay: function(date){
+                                var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                                var a = new Date(date);
+                                var enable_days = '.json_encode($prdd_lite_delivery_days).';
+                                var array = [date];
+                                if(jQuery.inArray(weekday[a.getDay()], enable_days) > -1 ){
+                                    return [ true ]
+                                }else{
+                                    return [ false ]
+                                }
+                                },
                             onClose:function( dateStr, inst ) {
                                 if ( dateStr != "" ) {
                                     var monthValue = inst.selectedMonth+1;
@@ -284,6 +340,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     });
                 </script>');
             }
+
         }
 			
         /**
