@@ -315,10 +315,15 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                                 var weekday = [ "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" ];
                                 var a = new Date( date );
                                 var enable_days = ' . json_encode($prdd_lite_delivery_days) . ';
-                                if( jQuery.inArray( weekday[a.getDay()], enable_days ) > -1 ) {
-                                    return [ true ];
+                                if(enable_days){
+
+                                    if( jQuery.inArray( weekday[a.getDay()], enable_days ) > -1 ) {
+                                        return [ true ];
+                                    }else{
+                                        return [ false ];
+                                    }
                                 }else{
-                                    return [ false ];
+                                    return [ true ];
                                 }
                             },
                             onClose:function( dateStr, inst ) {
