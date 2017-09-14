@@ -424,7 +424,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 
                 $query = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
 						WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
-                $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title ) );
+                $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title . '%' ) );
                 $order_item_ids[] = $results[0]->order_item_id;
                 $order_id = $results[0]->order_id;
                 $order_obj = new WC_order( $order_id );
