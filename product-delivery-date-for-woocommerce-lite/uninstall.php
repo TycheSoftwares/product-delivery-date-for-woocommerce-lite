@@ -2,10 +2,10 @@
 /**
  * Product Delivery Date for WooCommerce - Lite
  *
- * When Product Delivery Date Lite plugin uninstalls, deletes all settings for the plugin. 
+ * When Product Delivery Date Lite plugin uninstalls, it will delete all settings & tables for the plugin. 
  *
  * @author   Tyche Softwares
- * @package  Product Delivery Date
+ * @package  Product-delivery-date-lite/Uninstall
  * @since    1.5
  * @category Core
  */

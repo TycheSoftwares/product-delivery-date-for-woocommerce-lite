@@ -1,25 +1,27 @@
 <?php 
 /*
-* Plugin Name: Product Delivery Date for WooCommerce - Lite
-* Description: This plugin lets you capture the Delivery Date for each product.
-* Version: 1.7
-* Author: Tyche Softwares
-* Author URI: https://www.tychesoftwares.com/
-* Requires PHP: 5.6
-* WC requires at least: 3.0.0
-* WC tested up to: 3.2.0
-* Text Domain: woocommerce-prdd-lite
-* Domain Path: /languages/
-*/
+ * Plugin Name: Product Delivery Date for WooCommerce - Lite
+ * Description: This plugin lets you capture the Delivery Date for each product.
+ * Version: 1.7 
+ * Author: Tyche Softwares
+ * Author URI: https://www.tychesoftwares.com/
+ * Requires PHP: 5.6
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.2.0
+ * Text Domain: woocommerce-prdd-lite
+ * Domain Path: /languages/
+ *
+ * @package Product-delivery-date-lite
+ */
 
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.7';
 /**
-* 
-* This function checks Product delivery date plugin is active or not.
-* 
-* @since 1.0
-*/
+ * 
+ * This function checks Product delivery date plugin is active or not.
+ * 
+ * @since 1.0
+ */
 function is_prdd_lite_active() {
 	if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
 		return true;
@@ -27,7 +29,6 @@ function is_prdd_lite_active() {
 		return false;
 	}
 }
-
 /**
 * 
 * This function is used for strings translation of the plugin in different languages.
@@ -47,7 +48,6 @@ function prdd_lite_update_po_file() {
 }
 
 if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
-
     /**
      * Class for delivery date setting at back end and allowing to select the delivery date on the product page. It displays the delivery date on Cart, Checkout,  Order received page and WooCommerce->Orders page.
      * 
@@ -78,9 +78,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
 			
 		/**
-		 * This function detects when the product delivery date plugin is activated
+		 * This function detects when the product delivery date plugin is activated.
          * 
          * @hook register_activation_hook
+         *
          * @since 1.0
 		 */
         function prdd_lite_activate() {
@@ -102,7 +103,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
         
         /**
-         * This function returns the product delivery date plugin version number
+         * This function returns the product delivery date plugin version number.
          *
          * @since 1.3
          */
