@@ -1,5 +1,5 @@
 <?php 
-/*
+/**
  * Plugin Name: Product Delivery Date for WooCommerce - Lite
  * Description: This plugin lets you capture the Delivery Date for each product.
  * Version: 1.7 
@@ -30,13 +30,13 @@ function is_prdd_lite_active() {
 	}
 }
 /**
-* 
-* This function is used for strings translation of the plugin in different languages.
-* 
-* @hook init
-* 
-* @since 1.0
-*/
+ * 
+ * This function is used for strings translation of the plugin in different languages.
+ * 
+ * @hook init
+ * 
+ * @since 1.0
+ */
 function prdd_lite_update_po_file() {
     $domain = 'woocommerce-prdd-lite';
     $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
