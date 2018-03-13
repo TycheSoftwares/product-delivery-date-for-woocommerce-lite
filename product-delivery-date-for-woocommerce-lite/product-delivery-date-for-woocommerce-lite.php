@@ -11,31 +11,27 @@
  * Text Domain: woocommerce-prdd-lite
  * Domain Path: /languages/
  *
- * @package Product-delivery-date-lite
+ * @package Product-Delivery-Date-Lite
  */
 
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.7';
 /**
- * 
  * This function checks Product delivery date plugin is active or not.
- * 
  * @since 1.0
  */
 function is_prdd_lite_active() {
-	if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
-		return true;
-	} else {
-		return false;
-	}
+    if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
+        return true;
+    } else {
+        return false;
+    }
 }
 /**
- * 
  * This function is used for strings translation of the plugin in different languages.
- * 
  * @hook init
- * 
  * @since 1.0
+ *
  */
 function prdd_lite_update_po_file() {
     $domain = 'woocommerce-prdd-lite';
@@ -115,6 +111,8 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         
 		/**
          * This function adds a meta box for delivery settings on product page.
+         *
+         * @hook add_meta_boxes
          *
          * @since 1.0
          */

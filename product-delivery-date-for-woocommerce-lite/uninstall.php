@@ -5,7 +5,7 @@
  * When Product Delivery Date Lite plugin uninstalls, it will delete all settings & tables for the plugin. 
  *
  * @author   Tyche Softwares
- * @package  Product-delivery-date-lite/Uninstall
+ * @package  Product-Delivery-Date-Lite/Uninstall
  * @since    1.5
  * @category Core
  */
