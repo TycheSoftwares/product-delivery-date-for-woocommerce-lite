@@ -255,7 +255,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $plugin_data[ 'ts_plugin_name' ]		   = 'Product Delivery Date for WooCommerce - Lite';
             
             // Store count info
-            $plugin_data[ 'deliveries_count' ]         = self::ts_get_deliveries_counts();
             $params[ 'plugin_data' ]  				   = $plugin_data;
             
             return $params;

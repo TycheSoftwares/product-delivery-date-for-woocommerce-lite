@@ -45,7 +45,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
                 $prdd_lite_get_previous_version = get_option( 'woocommerce_prdd_lite_db_version' );
 
-                $prdd_lite_blog_post_link       = 'https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/usage-tracking/';
+                $prdd_lite_blog_post_link       = ' https://www.tychesoftwares.com/docs/docs/order-delivery-date-for-woocommerce-lite/usage-tracking/';
 
                 $prdd_lite_plugins_page         = '';
                 $prdd_lite_plugin_slug          = '';
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
                 new TS_Woo_Active ( $prdd_lite_plugin_name, $prdd_lite_file_name, $prdd_lite_locale );
 
-                new TS_tracking ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name, $prdd_lite_blog_post_link, $prdd_lite_locale, $prdd_lite_plugin_url );
+                new TS_tracking ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name, $prdd_lite_blog_post_link, $prdd_lite_locale, $prdd_lite_plugin_url, 'plugins.php', '' , '', '',  $prdd_lite_file_name );
 
                 new TS_Tracker ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name );
 
