@@ -177,7 +177,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         public static function prdd_lite_ts_add_plugin_tracking_data ( $data ) {
             if ( isset( $_GET[ 'prdd_lite_tracker_optin' ] ) && isset( $_GET[ 'prdd_lite_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ 'prdd_lite_tracker_nonce' ], 'prdd_lite_tracker_optin' ) ) {
 
-                $plugin_data  = array();
                 $plugin_data[ 'ts_meta_data_table_name' ]   = 'ts_tracking_prdd_lite_meta_data';
                 $plugin_data[ 'ts_plugin_name' ]		    = 'Product Delivery Date for WooCommerce - Lite';
                 

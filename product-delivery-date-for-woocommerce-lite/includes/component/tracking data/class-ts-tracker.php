@@ -115,7 +115,7 @@ class TS_Tracker {
 
 		// General site info
 		$data[ 'url' ]               = home_url();
-		$data[ 'email' ]             = apply_filters( 'ts_tracker_admin_email', get_option( 'admin_email' ) );
+		$data[ 'email' ]             = '';
 
 		// WordPress Info
 		$data[ 'wp' ]                = self::ts_get_wordpress_info();
