@@ -14,6 +14,8 @@
  * @package Product-Delivery-Date-Lite
  */
 
+include_once( 'includes/class-prdd-privacy-policy-lite.php' );
+
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.7';
 
