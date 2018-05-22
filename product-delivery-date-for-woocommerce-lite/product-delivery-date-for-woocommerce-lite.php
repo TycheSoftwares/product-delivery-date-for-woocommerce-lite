@@ -1,14 +1,19 @@
 <?php 
 /*
-Plugin Name: Product Delivery Date for WooCommerce - Lite
-Description: This plugin lets you capture the Delivery Date for each product.
-Version: 1.4
-Author: Tyche Softwares
-Author URI: http://www.tychesoftwares.com/
+* Plugin Name: Product Delivery Date for WooCommerce - Lite
+* Description: This plugin lets you capture the Delivery Date for each product.
+* Version: 1.7
+* Author: Tyche Softwares
+* Author URI: https://www.tychesoftwares.com/
+* Requires PHP: 5.6
+* WC requires at least: 3.0.0
+* WC tested up to: 3.2.0
+* Text Domain: woocommerce-prdd-lite
+* Domain Path: /languages/
 */
 
 global $PrddLiteUpdateChecker;
-$PrddLiteUpdateChecker = '1.4';
+$PrddLiteUpdateChecker = '1.7';
 
 function is_prdd_lite_active() {
 	if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
@@ -61,13 +66,13 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 		* This function detects when the product delivery date plugin is activated
 		*/
         function prdd_lite_activate() {
-            update_option( 'woocommerce_prdd_lite_db_version', '1.4' );
+            update_option( 'woocommerce_prdd_lite_db_version', '1.7' );
         }
 
         function prdd_lite_update_db_check() {
             $prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
             if ( $prdd_plugin_version != $this->get_plugin_version() ) {
-                update_option( 'woocommerce_prdd_lite_db_version', '1.4' );
+                update_option( 'woocommerce_prdd_lite_db_version', '1.7' );
             }
         }
         
@@ -110,6 +115,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             update_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', $enable_date );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', $prdd_minimum_delivery_time );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', $prdd_maximum_number_days );
+            update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', $_POST[ 'prdd_lite_delivery_days' ] );
 		}
 			
 		/**
@@ -140,15 +146,38 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 </tr>
                 <tr>
                     <td>
+                        <b><label for="prdd_lite_delivery_days[]"> <?php _e( 'Delivery days Available:', 'woocommerce-prdd-lite' );?> </label></b>
+                    </td>
+                    <td>
+                        <?php
+                        $prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+                        ?>
+                        <select name="prdd_lite_delivery_days[]" id="prdd_lite_delivery_days" class="js-example-basic-multiple" multiple="multiple">
+                          <option value="Sunday">Sunday</option>
+                          <option value="Monday">Monday</option>
+                          <option value="Tuesday">Tuesday</option>
+                          <option value="Wednesday">Wednesday</option>
+                          <option value="Thursday">Thursday</option>
+                          <option value="Friday">Friday</option>
+                          <option value="Saturday">Saturday</option>
+                        </select>
+
+                    </td>
+                    <td>
+                        <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The days in week on which you want to deliver the product. e.g You dont want to deliver the products on Sundays then uncheck sundays.' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <b><label for="prdd_lite_minimum_delivery_time"> <?php _e( 'Minimum Delivery preparation time (in hours):', 'woocommerce-prdd-lite' );?> </label></b>
                     </td>
                     <td>
                         <?php 
-                       	$prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
-                       	if ( $prdd_minimum_delivery_time == "" ) {
-                       	    $prdd_minimum_delivery_time = "0";
-                       	}
-                       	?>
+                        $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
+                        if ( $prdd_minimum_delivery_time == "" ) {
+                            $prdd_minimum_delivery_time = "0";
+                        }
+                        ?>
                         <input type="text" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
                     </td>
                     <td>
@@ -164,7 +193,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
                         if ( $prdd_maximum_number_days == "" ) {
                             $prdd_maximum_number_days = "30";
-                        }	
+                        }   
                         ?>
                         <input type="text" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
                     </td>
@@ -173,6 +202,22 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     </td>
                 </tr>
 		    </table>
+            <script type="text/javascript">
+                jQuery( document ).ready( function() {
+        
+                    if ( jQuery( ".js-example-basic-multiple" ).length > 0 )
+                        jQuery( ".js-example-basic-multiple" ).select2();
+                    var data = <?php echo json_encode( $prdd_lite_delivery_days ) ?>;
+                    if( data ) {
+                        jQuery( ".js-example-basic-multiple" ).val( data );
+                        jQuery( ".js-example-basic-multiple" ).trigger( 'change.select2' );
+                    }else{
+                        jQuery( ".js-example-basic-multiple" ).val( [ 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday' ] );
+                        jQuery( ".js-example-basic-multiple" ).trigger( 'change.select2' );   
+                    }
+
+                });
+            </script>
 		    <?php 
 		}
 
@@ -205,6 +250,8 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     wp_enqueue_script( 'jquery-ui-datepicker' );
                     wp_deregister_script( 'jqueryui' );
                     wp_enqueue_script( 'jqueryui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js', '', '', false );
+                    wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery-ui-widget', 'jquery-ui-core' ) );
+                    wp_enqueue_script( 'select2' );
                 }
             }
         }
@@ -235,6 +282,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
             $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
+            $prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
             if( $prdd_maximum_number_days == '' || $prdd_maximum_number_days == 'null' ) {
                 $prdd_maximum_number_days = '30';
             }
@@ -250,7 +298,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             print( '<input type="hidden" name="prdd_lite_hidden_minimum_delivery_time" id="prdd_lite_hidden_minimum_delivery_time" value="' . $min_date . '">' );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
                 print ( '<div><label class="delivery_date_label">' . __( "Delivery Date", "woocommerce-prdd-lite" ) . ': </label>
-			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;" readonly/>
+			    <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor: text!important;margin-bottom:10px;width:50%" readonly/>
                 <img src="' . plugins_url() . '/product-delivery-date-for-woocommerce-lite/images/cal.png" width="20" height="20" style="cursor:pointer!important;" id ="delivery_cal_lite"/></div>
                 <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>
                 <script type="text/javascript">
@@ -262,10 +310,27 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 						jQuery.extend( jQuery.datepicker, { afterShow: function(event) {
                             jQuery.datepicker._getInst( event.target ).dpDiv.css( "z-index", 9999 );
                         }});
+                       
+                        
                         jQuery( "#delivery_calender_lite" ).datepicker({
                             dateFormat: formats[2],
                             minDate: min_date_to_set,
                             maxDate: parseInt( ' . $prdd_maximum_number_days . ' )-1,
+                            beforeShowDay: function( date ) {
+                                var weekday = [ "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" ];
+                                var a = new Date( date );
+                                var enable_days = ' . json_encode($prdd_lite_delivery_days) . ';
+                                if(enable_days){
+
+                                    if( jQuery.inArray( weekday[a.getDay()], enable_days ) > -1 ) {
+                                        return [ true ];
+                                    }else{
+                                        return [ false ];
+                                    }
+                                }else{
+                                    return [ true ];
+                                }
+                            },
                             onClose:function( dateStr, inst ) {
                                 if ( dateStr != "" ) {
                                     var monthValue = inst.selectedMonth+1;
@@ -284,6 +349,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     });
                 </script>');
             }
+
         }
 			
         /**
@@ -363,7 +429,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 
                 $query = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
 						WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
-                $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title ) );
+                $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title . '%' ) );
                 $order_item_ids[] = $results[0]->order_item_id;
                 $order_id = $results[0]->order_id;
                 $order_obj = new WC_order( $order_id );
