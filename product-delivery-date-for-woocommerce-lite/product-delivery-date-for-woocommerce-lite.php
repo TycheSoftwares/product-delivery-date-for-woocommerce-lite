@@ -293,8 +293,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     $plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
                     wp_enqueue_script( 'jquery' );
                     wp_enqueue_script( 'jquery-ui-datepicker' );
-                    wp_deregister_script( 'jqueryui' );
-                    wp_enqueue_script( 'jqueryui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js', '', '', false );
+                    wp_enqueue_script( 'jquery-ui-core' );            
                     wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery-ui-widget', 'jquery-ui-core' ) );
                     wp_enqueue_script( 'select2' );
                 }
@@ -316,7 +315,8 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     $plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
                     
 			        $calendar_theme_sel = 'smoothness';
-			        wp_enqueue_style( 'prdd-jquery-ui', "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/$calendar_theme_sel/jquery-ui.css" , '', $plugin_version_number, false );
+                    wp_register_style( 'prdd-jquery-ui', plugins_url( '/css/themes/' . $calendar_theme_sel . '/jquery-ui.css', __FILE__ ) , '', $plugin_version_number, false );
+                    wp_enqueue_style( 'prdd-jquery-ui' );
                 }
 			}
         }
