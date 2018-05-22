@@ -1,50 +1,62 @@
 <?php 
-/*
-* Plugin Name: Product Delivery Date for WooCommerce - Lite
-* Description: This plugin lets you capture the Delivery Date for each product.
-* Version: 1.7
-* Author: Tyche Softwares
-* Author URI: https://www.tychesoftwares.com/
-* Requires PHP: 5.6
-* WC requires at least: 3.0.0
-* WC tested up to: 3.2.0
-* Text Domain: woocommerce-prdd-lite
-* Domain Path: /languages/
-*/
+/**
+ * Plugin Name: Product Delivery Date for WooCommerce - Lite
+ * Description: This plugin lets you capture the Delivery Date for each product.
+ * Version: 1.7 
+ * Author: Tyche Softwares
+ * Author URI: https://www.tychesoftwares.com/
+ * Requires PHP: 5.6
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.2.0
+ * Text Domain: woocommerce-prdd-lite
+ * Domain Path: /languages/
+ *
+ * @package Product-Delivery-Date-Lite
+ */
 
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.7';
 
-function is_prdd_lite_active() {
-	if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 /**
-* Localisation
-**/
-
-// For language translation
-function  prdd_lite_update_po_file(){
+ * This function checks Product delivery date plugin is active or not.
+ * @since 1.0
+ */
+function is_prdd_lite_active() {
+    if ( is_plugin_active( 'product-delivery-date-lite/product-delivery-date-lite.php' ) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+/**
+ * This function is used for strings translation of the plugin in different languages.
+ * @hook init
+ * @since 1.0
+ *
+ */
+function prdd_lite_update_po_file() {
     $domain = 'woocommerce-prdd-lite';
     $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-    if ( $loaded = load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '-' . $locale . '.mo' ) ) {
+    if( $loaded = load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '-' . $locale . '.mo' ) ) {
         return $loaded;
     } else {
         load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
     }
 }
 
-/**
-* woocommerce_prdd_lite class
-**/
 if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
+    /**
+     * Class for delivery date setting at back end and allowing to select the delivery date on the product page. It displays the delivery date on Cart, Checkout,  Order received page and WooCommerce->Orders page.
+     * 
+     * @since 1.0
+     */
     class woocommerce_prdd_lite {
+        /**
+         * Constructor function for initializing settings
+         * 
+         * @since 1.0
+         */
         public function __construct() {
-            //Initialize settings
             register_activation_hook( __FILE__,                   array( &$this, 'prdd_lite_activate' ) );
 			add_action( 'init',                                   'prdd_lite_update_po_file' );
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
@@ -63,12 +75,23 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
 			
 		/**
-		* This function detects when the product delivery date plugin is activated
-		*/
+		 * This function detects when the product delivery date plugin is activated.
+         * 
+         * @hook register_activation_hook
+         *
+         * @since 1.0
+		 */
         function prdd_lite_activate() {
             update_option( 'woocommerce_prdd_lite_db_version', '1.7' );
         }
 
+        /**
+         * This function is used to updating the version number in the database when the plugin is updated.
+         * 
+         * @hook admin_init
+         *
+         * @since 1.3
+         */
         function prdd_lite_update_db_check() {
             $prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
             if ( $prdd_plugin_version != $this->get_plugin_version() ) {
@@ -77,7 +100,9 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
         
         /**
-         * This function returns the product delivery date plugin version number
+         * This function returns the product delivery date plugin version number.
+         *
+         * @since 1.3
          */
         function get_plugin_version() {
             $plugin_data    = get_plugin_data( __FILE__ );
@@ -86,17 +111,25 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
         
 		/**
-        * This function adds a meta box for delivery settings on product page.
-        */
+         * This function adds a meta box for delivery settings on product page.
+         *
+         * @hook add_meta_boxes
+         *
+         * @since 1.0
+         */
         function prdd_lite_box() {
             add_meta_box( 'woocommerce-prdd-lite', __( 'Product Delivery Date', 'woocommerce-prdd-lite' ), array( &$this, 'prdd_lite_meta_box' ), 'product', 'normal', 'core' );
         }
 			
         /**
-        * This function updates the delivery settings for each
-		* product in the wp_postmeta table in the database .
-		* It will be called when update / publish button clicked on admin side.
-		*/
+         * This function updates the delivery settings for each product in the wp_postmeta table of the database. It will be called when update/publish button clicked on admin side.
+         *  
+         * @hook woocommerce_process_product_meta
+         *
+         * @param int $post_id Post ID
+         * @param WP_Post $post WP_Post object
+         * @since 1.0
+		 */
         function prdd_lite_process_box( $post_id, $post ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post_id );
             $enable_date = $prdd_minimum_delivery_time = $prdd_maximum_number_days = '';
@@ -119,8 +152,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 		}
 			
 		/**
-        * This function displays the settings for the product in the Product Delivery Date meta box on the admin product page.
-		*/
+         * This function displays the settings for the product in the Product Delivery Date meta box on the admin product page.
+		 *
+         * @since 1.0
+         */
 		function prdd_lite_meta_box() {
 		    global $post;
 		    $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
@@ -222,8 +257,14 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 		}
 
         /**
-        * This function duplicates the delivery settings of the original product to the new product.
-		*/
+         * This function duplicates the delivery settings of the original product to the new product.
+         *
+         * @hook woocommerce_duplicate_product
+         * 
+         * @param int $new_id new post ID
+         * @param WP_Post $post Post object.
+         * @since 1.0
+		 */
         function prdd_lite_product_duplicate( $new_id, $post ) {
             global $wpdb;
 			$old_id = $post->ID;
@@ -238,8 +279,12 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
 			
         /**
-        * This function includes js files required for frontend.
-		*/
+         * This function includes js files required for frontend.
+         * 
+         * @hook woocommerce_before_single_product
+         *
+         * @since 1.0
+		 */
         function prdd_lite_front_side_scripts_js() {
             global $post;
 			if( is_product() || is_page() ) {
@@ -257,8 +302,12 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
 				
         /**
-        * This function includes css files required for frontend.
-		*/
+         * This function includes CSS files required for frontend.
+         * 
+         * @hook woocommerce_before_single_product
+         *
+         * @since 1.0
+		 */
         function prdd_lite_front_side_scripts_css() {
             global $post;
 			if( is_product() || is_page() ) {
@@ -273,27 +322,32 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
         
         /**
-        * This function add the Delivery Date fields on the frontend product page 
-        * as per the settings selected when Enable Delivery Date is enabled.
-        */
+         * This function add the Delivery Date fields on the frontend product page as per the settings selected when Enable Delivery Date is enabled.
+         * 
+         * @hook woocommerce_before_add_to_cart_button
+         *
+         * @since 1.0
+         */
         function prdd_lite_after_add_to_cart() {
             global $post, $wpdb, $woocommerce;
-            $duplicate_of = $this->prdd_lite_get_product_id( $post->ID );
-            $prdd_settings = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
+            $duplicate_of               = $this->prdd_lite_get_product_id( $post->ID );
+            $prdd_settings              = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
-            $prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
-            $prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+          
+            $prdd_maximum_number_days   = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
+            $prdd_lite_delivery_days    = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+          
             if( $prdd_maximum_number_days == '' || $prdd_maximum_number_days == 'null' ) {
                 $prdd_maximum_number_days = '30';
             }
             $current_time = current_time( 'timestamp' );
             if( $prdd_minimum_delivery_time != '' && $prdd_minimum_delivery_time != 0 ) {
-                $advance_seconds = $prdd_minimum_delivery_time *60 *60;
+                $advance_seconds   = $prdd_minimum_delivery_time *60 *60;
                 $cut_off_timestamp = $current_time + $advance_seconds;
-                $cut_off_date = date( "d-m-Y", $cut_off_timestamp );
-                $min_date = date( "j-n-Y", strtotime( $cut_off_date ) );
+                $cut_off_date      = date( "d-m-Y", $cut_off_timestamp );
+                $min_date          = date( "j-n-Y", strtotime( $cut_off_date ) );
             } else {
-                $min_date = date( "j-n-Y", $current_time );
+                $min_date          = date( "j-n-Y", $current_time );
             }
             print( '<input type="hidden" name="prdd_lite_hidden_minimum_delivery_time" id="prdd_lite_hidden_minimum_delivery_time" value="' . $min_date . '">' );
             if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
@@ -353,15 +407,21 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
 			
         /**
-        * This function returns the cart_item_meta with the delivery details of the product when add to cart button is clicked.
-        */
-        function prdd_lite_add_cart_item_data( $cart_item_meta, $product_id ){
+         * When "Add to cart" button is clicked on product page, this function returns the cart_item_meta with the delivery details of the product.
+         * 
+         * @hook woocommerce_add_cart_item_data
+         *
+         * @param int $product_id product's ID
+         * @return array $cart_item_meta cart_item_meta array with the delivery details
+         * @since 1.0
+         */
+        function prdd_lite_add_cart_item_data( $cart_item_meta, $product_id ) {
             global $wpdb;
             $duplicate_of = $this->prdd_lite_get_product_id( $product_id );
-            if ( isset( $_POST[ 'delivery_calender_lite' ] ) ) {
+            if( isset( $_POST[ 'delivery_calender_lite' ] ) ) {
                 $date_disp = $_POST[ 'delivery_calender_lite' ];
             }
-            if ( isset( $_POST[ 'prdd_lite_hidden_date' ] ) ) {
+            if( isset( $_POST[ 'prdd_lite_hidden_date' ] ) ) {
                 $hidden_date = $_POST[ 'prdd_lite_hidden_date' ];
             }
             
@@ -377,8 +437,14 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         }
         
         /**
-        * This function displays the Delivery details on cart page, checkout page.
-        */
+         * This function displays the Delivery details on cart page, checkout page.
+         *
+         * @hook woocommerce_get_item_data
+         *
+         * @param array $cart_item Delivery details and product details 
+         * @return array $other_data array with delivery date and delivery date field name
+         * @since 1.0
+         */
         function prdd_lite_get_item_data( $other_data, $cart_item ) {
             if ( isset( $cart_item[ 'prdd_lite_delivery' ] ) ) {
                 $duplicate_of = $this->prdd_lite_get_product_id( $cart_item[ 'product_id' ] );
@@ -395,17 +461,29 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             }
             return $other_data;
         }
-        
-        function prdd_lite_hidden_order_itemmeta( $arr ){
+
+        /**
+         * This function adds the delivery hidden fields with product array.
+         *
+         * @hook woocommerce_hidden_order_itemmeta
+         *
+         * @return array $arr array of hidden delivery date
+         * @since 1.0
+         */
+        function prdd_lite_hidden_order_itemmeta( $arr ) {
             $arr[] = '_prdd_lite_date';
-            $arr[] = '_prdd_lite_time_slot';
             return $arr;
         }
         
         /**
-        * This function updates the database for the delivery details and adds delivery fields on the Order Received page,
-        * WooCommerce->Orders when an order is placed for WooCommerce version greater than 2.0.
-        */
+         * This function updates the database for the delivery details and adds delivery fields on the Order Received page & WooCommerce->Orders page when an order is placed for WooCommerce version greater than 2.0.
+         *
+         * @hook woocommerce_checkout_update_order_meta
+         *
+         * @param int $item_meta Order ID
+         * @param array $cart_item product details
+         * @since 1.0
+         */
         function prdd_lite_order_item_meta( $item_meta, $cart_item ) {
             if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) < 0 ) {
                 return;
@@ -417,34 +495,34 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 if ( isset( $values[ 'prdd_lite_delivery' ] ) ) {
                     $delivery = $values[ 'prdd_lite_delivery' ];
                 }
-                $quantity = $values[ 'quantity' ];
-                $post_id = $this->prdd_lite_get_product_id( $values[ 'product_id' ] );
-                $post_title = $_product->get_title();
+                $quantity     = $values[ 'quantity' ];
+                $post_id      = $this->prdd_lite_get_product_id( $values[ 'product_id' ] );
+                $post_title   = $_product->get_title();
 
                 // Fetch line item
-                if ( count( $order_item_ids ) > 0 ) {
+                if( count( $order_item_ids ) > 0 ) {
                     $order_item_ids_to_exclude = implode( ",", $order_item_ids );
                     $sub_query = " AND order_item_id NOT IN ( " . $order_item_ids_to_exclude . ")";
                 }
-
-                $query = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
-						WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
-                $results = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title . '%' ) );
+                $query            = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
+						              WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
+                $results          = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title . '%' ) );
+              
                 $order_item_ids[] = $results[0]->order_item_id;
-                $order_id = $results[0]->order_id;
-                $order_obj = new WC_order( $order_id );
-                $details = $product_ids = array();
-                $order_items = $order_obj->get_items();
+                $order_id         = $results[0]->order_id;
+                $order_obj        = new WC_order( $order_id );
+                $details          = $product_ids = array();
+                $order_items      = $order_obj->get_items();
                 
-                if ( isset( $values[ 'prdd_lite_delivery' ] ) ) {
+                if( isset( $values[ 'prdd_lite_delivery' ] ) ) {
                     $prdd_settings = get_post_meta( $post_id, '_woo_prdd_lite_enable_delivery_date', true );
-                    $details = array();
-                    if ( isset( $delivery[0][ 'delivery_date' ] ) && $delivery[0][ 'delivery_date' ] != "" ) {
-                        $name = "Delivery Date";
+                    $details       = array();
+                    if( isset( $delivery[0][ 'delivery_date' ] ) && $delivery[0][ 'delivery_date' ] != "" ) {
+                        $name        = "Delivery Date";
                         $date_select = $delivery[0][ 'delivery_date' ];
                         wc_add_order_item_meta( $results[0]->order_item_id, $name, sanitize_text_field( $date_select, true ) );
                     }
-                    if ( array_key_exists( 'delivery_hidden_date', $delivery[0] ) && $delivery[0][ 'delivery_hidden_date' ] != "" ) {
+                    if( array_key_exists( 'delivery_hidden_date', $delivery[0] ) && $delivery[0][ 'delivery_hidden_date' ] != "" ) {
                         $date_booking = date( 'Y-m-d', strtotime( $delivery[0]['delivery_hidden_date'] ) );
                         wc_add_order_item_meta( $results[0]->order_item_id, '_prdd_lite_date', sanitize_text_field( $date_booking, true ) );
                     }
@@ -457,7 +535,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     $cache_key       = WC_Cache_Helper::get_cache_prefix( 'orders' ) . 'item_meta_array_' . $results[ 0 ]->order_item_id;
                     $item_meta_array = wp_cache_get( $cache_key, 'orders' );
                     if ( false !== $item_meta_array ) {
-                        $metadata        = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value, meta_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d AND meta_key IN (%s,%s) ORDER BY meta_id", absint( $results[ 0 ]->order_item_id ), "Delivery Date", '_prdd_lite_date' ) );
+                        $metadata    = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value, meta_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d AND meta_key IN (%s,%s) ORDER BY meta_id", absint( $results[ 0 ]->order_item_id ), "Delivery Date", '_prdd_lite_date' ) );
                         foreach ( $metadata as $metadata_row ) {
                             $item_meta_array[ $metadata_row->meta_id ] = (object) array( 'key' => $metadata_row->meta_key, 'value' => $metadata_row->meta_value );
                         }
@@ -467,15 +545,21 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             }
         }
         
+        /**
+         * This function returns the product ID from WP_Post table.
+         *
+         * @return int $product_id product ID
+         * @since 1.0
+         */
         function prdd_lite_get_product_id( $product_id ) {
             global $wpdb;
-            $duplicate_of = get_post_meta( $product_id, '_icl_lang_duplicate_of', true );
+            $duplicate_of     = get_post_meta( $product_id, '_icl_lang_duplicate_of', true );
             if( $duplicate_of == '' && $duplicate_of == null ) {
                 $duplicate_of = $product_id;
-                $post_time = get_post( $product_id );
+                $post_time    = get_post( $product_id );
                 if ( isset( $post_time->post_date ) ) {
-                    $id_query = "SELECT ID FROM `" . $wpdb->prefix . "posts` WHERE post_date =  %s ORDER BY ID LIMIT 1";
-                    $results_post_id = $wpdb->get_results ( $wpdb->prepare( $id_query, $post_time->post_date ) );
+                    $id_query = "SELECT ID FROM `" . $wpdb->prefix . "posts` WHERE post_date = %s ORDER BY ID LIMIT 1";
+                    $results_post_id = $wpdb->get_results( $wpdb->prepare( $id_query, $post_time->post_date ) );
                     if( isset( $results_post_id ) ) {
                         $duplicate_of = $results_post_id[0]->ID;
                     }
