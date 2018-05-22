@@ -314,7 +314,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     $plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
                     
 			        $calendar_theme_sel = 'smoothness';
-                    wp_register_style( 'prdd-jquery-ui', plugins_url( '/css/themes/' . $calendar_theme_sel . '/jquery-ui.min.css', __FILE__ ) , '', $plugin_version_number, false );
+                    wp_register_style( 'prdd-jquery-ui', plugins_url( '/css/themes/' . $calendar_theme_sel . '/jquery-ui.css', __FILE__ ) , '', $plugin_version_number, false );
                     wp_enqueue_style( 'prdd-jquery-ui' );
                 }
 			}
