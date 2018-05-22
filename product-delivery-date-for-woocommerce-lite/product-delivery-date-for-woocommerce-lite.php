@@ -16,6 +16,7 @@
 
 global $PrddLiteUpdateChecker;
 $PrddLiteUpdateChecker = '1.7';
+
 /**
  * This function checks Product delivery date plugin is active or not.
  * @since 1.0
@@ -332,8 +333,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of               = $this->prdd_lite_get_product_id( $post->ID );
             $prdd_settings              = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
             $prdd_minimum_delivery_time = get_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', true );
+          
             $prdd_maximum_number_days   = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
             $prdd_lite_delivery_days    = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+          
             if( $prdd_maximum_number_days == '' || $prdd_maximum_number_days == 'null' ) {
                 $prdd_maximum_number_days = '30';
             }
@@ -501,10 +504,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     $order_item_ids_to_exclude = implode( ",", $order_item_ids );
                     $sub_query = " AND order_item_id NOT IN ( " . $order_item_ids_to_exclude . ")";
                 }
-
                 $query            = "SELECT order_item_id, order_id FROM `" . $wpdb->prefix . "woocommerce_order_items`
 						              WHERE order_id = %s AND order_item_name LIKE %s" . $sub_query;
                 $results          = $wpdb->get_results( $wpdb->prepare( $query, $item_meta, $post_title . '%' ) );
+              
                 $order_item_ids[] = $results[0]->order_item_id;
                 $order_id         = $results[0]->order_id;
                 $order_obj        = new WC_order( $order_id );

@@ -5,7 +5,8 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery date, product delivery date, woocommerce delivery date, delivery, product delivery
 Requires at least: 1.3
-Tested up to: 4.9.1
+
+Tested up to: 4.9.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -87,6 +88,10 @@ You can check the detailed difference between Pro and Lite version **[here](http
 12. **[Export WordPress Menus](https://wordpress.org/plugins/wp-export-menus/ "Export WordPress Menus")**
 
 **[View Demo](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=demolink&utm_campaign=ProductDeliveryDateLite "View Demo")**
+
+**[Documentation](https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Documentation")**
+
+**[Developer Documentation](https://www.tychesoftwares.com/docs/prddl-apidocs/index.html "Developer Documentation")**
 
 **[Github Repository](https://github.com/TycheSoftwares/product-delivery-date-for-woocommerce-lite "Github Repository")**
 
