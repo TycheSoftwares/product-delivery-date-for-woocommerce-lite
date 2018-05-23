@@ -5,8 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery date, product delivery date, woocommerce delivery date, delivery, product delivery
 Requires at least: 1.3
-
-Tested up to: 4.9.5
+Tested up to: 4.9.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -168,6 +167,9 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+= 1.8 (23.05.2018) =
+* The plugin is now GDPR compliant.
+* The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.
 
 = 1.7 (23.01.2018) =
 * The Delivery Date field was appearing small when used with TwentySeventeen theme. This is fixed.
@@ -197,6 +199,17 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 * Initial release.
 
 == Upgrade Notice ==
+= 1.8 (23.05.2018) =
+* The plugin is now GDPR compliant.
+* The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.
+
+= 1.7 (23.01.2018) =
+* The Delivery Date field was appearing small when used with TwentySeventeen theme. This is fixed.
+* The plugin is made compatible with Loco Translate plugin.
+
+= 1.6 (01.11.2017) =
+* The selected delivery date for variable product was not displayed on the Order Received page and in the customer new order email notification. This is fixed now.
+
 = 1.5 (17.08.2017) =
 * You can now disable weekdays on which you do not deliver in the delivery calendar on the product page.
 
