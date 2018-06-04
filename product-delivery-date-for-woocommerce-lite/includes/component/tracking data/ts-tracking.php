@@ -9,7 +9,7 @@ include_once( 'class-ts-tracker.php' );
  *
  * @since 6.8
  */
-class TS_tracking {
+class Prdd_Lite_TS_tracking {
 
 	/**
 	 * @var string Plugin prefix
@@ -102,22 +102,22 @@ class TS_tracking {
 
 		self::$ts_file_path   = untrailingslashit( plugins_url( '/', __FILE__) ) ;
 		//Tracking Data
-		add_action( 'admin_notices', array( 'TS_tracking', 'ts_track_usage_data' ) );
-		add_action( 'admin_footer',  array( 'TS_tracking', 'ts_admin_notices_scripts' ) );
-		add_action( 'wp_ajax_'.self::$plugin_prefix.'_admin_notices', array( 'TS_tracking', 'ts_admin_notices' ) );
+		add_action( 'admin_notices', array( 'Prdd_Lite_TS_tracking', 'ts_track_usage_data' ) );
+		add_action( 'admin_footer',  array( 'Prdd_Lite_TS_tracking', 'ts_admin_notices_scripts' ) );
+		add_action( 'wp_ajax_'.self::$plugin_prefix.'_admin_notices', array( 'Prdd_Lite_TS_tracking', 'ts_admin_notices' ) );
 
-		add_filter( 'cron_schedules', array( 'TS_tracking', 'ts_add_cron_schedule' ) );
+		add_filter( 'cron_schedules', array( 'Prdd_Lite_TS_tracking', 'ts_add_cron_schedule' ) );
 
-		add_action( self::$plugin_prefix . '_add_new_settings', array( 'TS_tracking', 'ts_add_reset_tracking_setting' ) );
+		add_action( self::$plugin_prefix . '_add_new_settings', array( 'Prdd_Lite_TS_tracking', 'ts_add_reset_tracking_setting' ) );
 
-		add_action ( 'admin_init', array( 'TS_tracking', 'ts_reset_tracking_setting' ) ) ;
+		add_action ( 'admin_init', array( 'Prdd_Lite_TS_tracking', 'ts_reset_tracking_setting' ) ) ;
 
 		self::ts_schedule_cron_job();
 
-		add_filter( self::$plugin_prefix . '_add_settings_field', array( 'TS_tracking', 'ts_add_new_settings_field') );
+		add_filter( self::$plugin_prefix . '_add_settings_field', array( 'Prdd_Lite_TS_tracking', 'ts_add_new_settings_field') );
 
 		if ( '' != self::$ts_plugin_dir ) {
-			add_filter( 'plugin_action_links_' . self::$ts_plugin_dir, array( 'TS_tracking', 'ts_plugin_action_links' 
+			add_filter( 'plugin_action_links_' . self::$ts_plugin_dir, array( 'Prdd_Lite_TS_tracking', 'ts_plugin_action_links' 
 			) );
 		}
 	}
@@ -208,7 +208,7 @@ class TS_tracking {
 			add_settings_field(
 				'ts_reset_tracking',
 				__( 'Reset usage tracking', self::$ts_plugin_locale  ),
-				array( 'TS_tracking', 'ts_rereset_tracking_callback' ),
+				array( 'Prdd_Lite_TS_tracking', 'ts_rereset_tracking_callback' ),
 				self::$ts_add_setting_on_page,
 				self::$ts_add_setting_on_section,
 				array( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', self::$ts_plugin_locale )
@@ -296,7 +296,7 @@ class TS_tracking {
 
     public static function ts_admin_notices() {
         update_option( self::$plugin_prefix . '_allow_tracking', 'dismissed' );
-        TS_Tracker::ts_send_tracking_data( false );
+        Prdd_Lite_TS_Tracker::ts_send_tracking_data( false );
         die();
     }
 
@@ -310,11 +310,11 @@ class TS_tracking {
 	private static function ts_tracking_actions() {
 		if ( isset( $_GET[ self::$plugin_prefix . '_tracker_optin' ] ) && isset( $_GET[ self::$plugin_prefix . '_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ self::$plugin_prefix . '_tracker_nonce' ], self::$plugin_prefix . '_tracker_optin' ) ) {
 			update_option( self::$plugin_prefix . '_allow_tracking', 'yes' );
-			TS_Tracker::ts_send_tracking_data( true );
+			Prdd_Lite_TS_Tracker::ts_send_tracking_data( true );
 			header( 'Location: ' . $_SERVER[ 'HTTP_REFERER' ] );
 		} elseif ( isset( $_GET[ self::$plugin_prefix . '_tracker_optout' ] ) && isset( $_GET[ self::$plugin_prefix . '_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ self::$plugin_prefix . '_tracker_nonce' ], self::$plugin_prefix . '_tracker_optout' ) ) {
 			update_option( self::$plugin_prefix . '_allow_tracking', 'no' );
-			TS_Tracker::ts_send_tracking_data( false );
+			Prdd_Lite_TS_Tracker::ts_send_tracking_data( false );
 			header( 'Location: ' . $_SERVER[ 'HTTP_REFERER' ] );
 		}
 	}

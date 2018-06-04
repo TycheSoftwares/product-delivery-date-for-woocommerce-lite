@@ -51,23 +51,23 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 $prdd_lite_plugin_slug          = '';
                 $prdd_lite_pro_file_name        = 'product-delivery-date/product-delivery-date.php';
 
-                new TS_Woo_Active ( $prdd_lite_plugin_name, $prdd_lite_file_name, $prdd_lite_locale );
+                new Prdd_Lite_TS_Woo_Active ( $prdd_lite_plugin_name, $prdd_lite_file_name, $prdd_lite_locale );
 
-                new TS_tracking ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name, $prdd_lite_blog_post_link, $prdd_lite_locale, $prdd_lite_plugin_url, 'plugins.php', '' , '', '',  $prdd_lite_file_name );
+                new Prdd_Lite_TS_tracking ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name, $prdd_lite_blog_post_link, $prdd_lite_locale, $prdd_lite_plugin_url, 'plugins.php', '' , '', '',  $prdd_lite_file_name );
 
-                new TS_Tracker ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name );
+                new Prdd_Lite_TS_Tracker ( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name );
 
-                $prdd_lite_deativate = new TS_deactivate;
+                $prdd_lite_deativate = new Prdd_Lite_TS_deactivate;
                 $prdd_lite_deativate->init ( $prdd_lite_file_name, $prdd_lite_plugin_name );
 
                 $prdd_lite_welcome_header_text = 'Test this';
-                new TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
+                new Prdd_Lite_TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
                 
                 $ts_pro_faq = self::prdd_lite_get_faq ();
-                new TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
+                new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
                 
                 $ts_pro_notices = self::prdd_lite_get_notice_text ();
-				new ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name );
+				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name );
 
             }
         }
