@@ -514,11 +514,9 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                         var min_date = jQuery( "#prdd_lite_hidden_minimum_delivery_time" ).val();
                         var split_date = min_date.split( "-" );
 		                var min_date_to_set = new Date ( split_date[1] + "/" + split_date[0] + "/" + split_date[2] );
-						jQuery.extend( jQuery.datepicker, { afterShow: function(event) {
+                        jQuery.extend( jQuery.datepicker, { afterShow: function(event) {
                             jQuery.datepicker._getInst( event.target ).dpDiv.css( "z-index", 9999 );
                         }});
-                       
-                        
                         jQuery( "#delivery_calender_lite" ).datepicker({
                             dateFormat: formats[2],
                             minDate: min_date_to_set,
@@ -528,7 +526,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                                 var a = new Date( date );
                                 var enable_days = ' . json_encode($prdd_lite_delivery_days) . ';
                                 if(enable_days){
-
                                     if( jQuery.inArray( weekday[a.getDay()], enable_days ) > -1 ) {
                                         return [ true ];
                                     }else{
@@ -556,7 +553,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     });
                 </script>');
             }
-
         }
 			
         /**
