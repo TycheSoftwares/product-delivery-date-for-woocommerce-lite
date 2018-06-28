@@ -80,6 +80,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 add_filter ( 'ts_deativate_plugin_questions',     array( &$this, 'prdd_lite_deactivate_add_questions' ), 10, 1 );
                 add_filter( 'ts_tracker_data',                    array( &$this, 'prdd_lite_ts_add_plugin_tracking_data' ), 10, 1 );
 				add_filter( 'ts_tracker_opt_out_data',            array( &$this, 'prdd_lite_get_data_for_opt_out' ), 10, 1 );
+                add_action ( 'prdd_lite_add_meta_footer',         array( &$this, 'prdd_lite_review_text' ), 10, 1 );
                 
             }
         }
@@ -715,6 +716,26 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 }
             }
             return $duplicate_of;
+        }
+        
+        /**
+         * This function adds the review note in the Product Delivery Date metabox under product page.
+         *
+         * @since 1.9
+         */
+        function prdd_lite_review_text() {
+            ?>
+            <tr> <td></td> </tr>
+            
+            <tr> 
+                <td colspan="2">
+                    <p>
+                    If you love Product Delivery Date for WooCommerce - LITE, then please leave us a <a href="https://wordpress.org/support/plugin/product-delivery-date-for-woocommerce-lite/reviews/?rate=5#new-post" target="_blank" data-rated="Thanks :)">★★★★★</a>
+                    rating. Thank you in advance. &#9786;
+                </p>
+                </td>
+            <tr>
+            <?php
         }
     }		
 }
