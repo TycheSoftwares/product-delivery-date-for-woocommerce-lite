@@ -114,6 +114,7 @@ class Prdd_Lite_TS_Welcome {
 		self::$previous_plugin_version = $ts_previous_version;
 		self::$plugin_url     		   = $this->ts_get_plugin_url();
 		self::$template_base  		   = $this->ts_get_template_path();
+		self::$ts_welcome_header_text  = sprintf( esc_html__( 'Welcome to %s %s', self::$plugin_context ), self::$plugin_name, self::$plugin_version );
 	}
 
 	/**
@@ -274,9 +275,15 @@ class Prdd_Lite_TS_Welcome {
 	 */
 	public function ts_update_db_check() {
 
-		if ( self::$plugin_version != self::$previous_plugin_version ) {
-			delete_option( self::$plugin_prefix . '_pro_welcome_page_shown' );
-			delete_option( self::$plugin_prefix . '_pro_welcome_page_shown_time' );
-		}
-	}
+        if ( ( false === self::$plugin_version || false === self::$previous_plugin_version ) &&
+              'yes' == get_option( self::$plugin_prefix . '_pro_welcome_page_shown' )
+        ) {
+            return;
+        }
+        
+        if ( self::$plugin_version != self::$previous_plugin_version ) {
+            delete_option( self::$plugin_prefix . '_pro_welcome_page_shown' );
+            delete_option( self::$plugin_prefix . '_pro_welcome_page_shown_time' );
+        }
+    }
 }
