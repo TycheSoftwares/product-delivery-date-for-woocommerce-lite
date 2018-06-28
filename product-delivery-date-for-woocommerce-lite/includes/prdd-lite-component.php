@@ -24,13 +24,13 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 			if ( true === $is_admin ) {
 
-                require_once( "component/WooCommerce-Check/ts-woo-active.php" );
+                require_once( "component/woocommerce-check/ts-woo-active.php" );
 
-                require_once( "component/tracking data/ts-tracking.php" );
+                require_once( "component/tracking-data/ts-tracking.php" );
                 require_once( "component/deactivate-survey-popup/class-ts-deactivation.php" );
 
                 require_once( "component/welcome-page/ts-welcome.php" );
-                require_once( "component/faq_support/ts-faq-support.php" );
+                require_once( "component/faq-support/ts-faq-support.php" );
                 require_once( "component/pro-notices-in-lite/ts-pro-notices.php" );
                 
                 $prdd_lite_plugin_name          = self::ts_get_plugin_name();;
@@ -60,7 +60,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 $prdd_lite_deativate = new Prdd_Lite_TS_deactivate;
                 $prdd_lite_deativate->init ( $prdd_lite_file_name, $prdd_lite_plugin_name );
 
-                $prdd_lite_welcome_header_text = 'Test this';
+                $prdd_lite_welcome_header_text = '';
                 new Prdd_Lite_TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
                 
                 $ts_pro_faq = self::prdd_lite_get_faq ();
