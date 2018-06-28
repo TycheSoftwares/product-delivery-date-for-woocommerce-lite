@@ -1,35 +1,274 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-11 11:56+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: product-delivery-date-for-woocommerce-lite\n"
+"POT-Creation-Date: 2018-06-28 10:03+0530\n"
+"PO-Revision-Date: 2018-06-28 10:02+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: product-delivery-date-for-woocommerce-lite.php:81
+#: includes/class-prdd-privacy-policy-lite.php:43
+#: product-delivery-date-for-woocommerce-lite.php:507
+#: product-delivery-date-for-woocommerce-lite.php:608
+msgid "Delivery Date"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:75
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:76
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:77
+msgid "Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:78
+msgid "Cancel"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:79
+msgid "Yes - Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:83
+msgid "I found a better plugin"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:84
+msgid "What's the plugin's name?"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:85
+msgid "I only needed the plugin for a short period"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:86
+msgid "The plugin is not working"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:87
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:88
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:89
+msgid "What feature?"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:90
+msgid "I don't like to share my information with you"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:176
+msgid "FAQ & Support"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:150
+#: includes/component/tracking-data/ts-tracking.php:210
+msgid "Reset usage tracking"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:152
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:253
+msgid "Once in a Week"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:337
+msgid "Want to help make "
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:18
+msgid "Thank you for activating or updating to the latest version of "
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:37
+msgid "Order Delivery Date Lite"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:58
+msgid ""
+"The Product Delivery Date Pro plugin gives you features where you can allow "
+"customers to choose a Delivery Time along with Date and to Set Recurring "
+"Weekdays or Specific Dates or both as Delivery days as compared to Lite "
+"Plugin. Here are some other notable features the Pro version provides."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:63
+msgid "Product Delivery Date Lite"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:84
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:91
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:113
+msgid "Product Delivery Date for WooCommerce - Lite"
+msgstr ""
+
+#: includes/component/woocommerce-check/ts-woo-active.php:77
+msgid " plugin requires WooCommerce installed and active."
+msgstr ""
+
+#: includes/prdd-lite-component.php:116
+msgid ""
+"Thank you for using Product Delivery Date for WooCommerce - Lite! Now make "
+"your deliveries more accurate by allowing customers to select their "
+"preferred delivery time from Product Delivery Date Pro for WooCommerce. "
+"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/"
+"premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin"
+"\">Get it now!</a></strong>"
+msgstr ""
+
+#: includes/prdd-lite-component.php:118
+msgid ""
+"Never login to your admin to check your deliveries by syncing the delivery "
+"dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. "
+"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/"
+"premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin"
+"\">Get it now!</a></strong>"
+msgstr ""
+
+#: includes/prdd-lite-component.php:120
+msgid ""
+"You can now view all your deliveries in list view or in calendar view from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin"
+"\">Get it now!</a></strong>."
+msgstr ""
+
+#: includes/prdd-lite-component.php:122
+msgid ""
+"Allow your customers to pay extra for delivery for certain Weekdays/Dates "
+"from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin"
+"\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/prdd-lite-component.php:124
+msgid ""
+"Customers can now edit the Delivery date & time on cart and checkout page or "
+"they can reschedule the deliveries for the already placed orders from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin"
+"\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/prdd-lite-component.php:128
+#, php-format
+msgid ""
+"Boost your sales by recovering up to 60% of the abandoned carts with our "
+"Abandoned Cart Pro for WooCommerce plugin. It allows you to capture guest "
+"customer's email address on the shop page using Add to cart pop modal."
+"<strong><a target=\"_blank\" href= \""
+msgstr ""
+
+#: includes/prdd-lite-component.php:132
+msgid ""
+"Allow your customers to select the Delivery Date & Time on the Checkout Page "
+"using our Order Delivery Date Pro for WooCommerce Plugin. <br> \n"
+"            <strong><a target=\"_blank\" href= \""
+msgstr ""
+
+#: includes/prdd-lite-component.php:136
+#, php-format
+msgid ""
+" Allow your customers to book an appointment or rent an apartment with our "
+"Booking and Appointment for WooCommerce plugin. You can also sell your "
+"product as a resource or integrate with a few Vendor plugins. <br>Shop now & "
+"Save 20% on the plugin with the code \"BKAP20\". Only for first 20 "
+"customers. <strong><a target=\"_blank\" href= \""
+msgstr ""
+
+#: includes/prdd-lite-component.php:139
+msgid ""
+" Allow your customers to pay deposits on products using our Deposits for "
+"WooCommerce plguin. <br>\n"
+"            <strong><a target=\"_blank\" href= \""
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:142
+msgid "Minimum Delivery Time (in hours) is not working as expected."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:148
+msgid "I need delivery time along with the delivery date."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:154
+msgid "I want deliveries on some specific dates only."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:160
+msgid "I have purchased the Pro version of the Plugin."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:273
 msgid "Product Delivery Date"
 msgstr ""
 
-#: product-delivery-date-for-woocommerce-lite.php:109
+#: product-delivery-date-for-woocommerce-lite.php:319
 msgid "Enable Delivery Date:"
 msgstr ""
 
-#: product-delivery-date-for-woocommerce-lite.php:121
+#: product-delivery-date-for-woocommerce-lite.php:331
 msgid "Enable Delivery Date on Products Page"
 msgstr ""
 
-#: product-delivery-date-for-woocommerce-lite.php:180
-#: product-delivery-date-for-woocommerce-lite.php:244
-msgid "Delivery Date"
+#: product-delivery-date-for-woocommerce-lite.php:336
+msgid "Delivery days Available:"
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:354
+msgid ""
+"The days in week on which you want to deliver the product. e.g You dont want "
+"to deliver the products on Sundays then uncheck sundays."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:359
+msgid "Minimum Delivery preparation time (in hours):"
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:371
+msgid ""
+"Enable Delivery after X number of hours from current WordPress time. The "
+"customer can select a delivery date that is available only after the minimum "
+"hours that are entered here. For example, if you need one day's advance "
+"notice for a delivery, enter 24 here."
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:376
+msgid "Number of Dates to choose:"
+msgstr ""
+
+#: product-delivery-date-for-woocommerce-lite.php:388
+msgid ""
+"The maximum number of delivery dates available for your customers to choose "
+"deliveries from. For example, if you take only 2 months delivery in advance, "
+"enter 60 here."
 msgstr ""
