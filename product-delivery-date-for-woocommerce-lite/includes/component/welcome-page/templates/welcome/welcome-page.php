@@ -70,7 +70,7 @@
         <div class="content feature-section-item last-feature">
             <h3><?php esc_html_e( 'View All Deliveries', 'woocommerce-prdd-lite' ); ?></h3>
 
-            <p><?php esc_html_e( 'The ability to show all the deliveries with the Customer Details and Delivery Date & Time. Also, you can set global delivery settings for all the products to add global & Exclude days and Deliveries to be editable.', 'woocommerce-prdd-lite' ); ?></p>
+            <p><?php esc_html_e( 'The ability to show all the deliveries with the Customer Details and Delivery Date & Time.', 'woocommerce-prdd-lite' ); ?></p>
 
             
         </div>
