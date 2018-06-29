@@ -40,3 +40,8 @@ if ( is_multisite() ) {
     $sql_table_post_meta_max_number_days = "DELETE FROM `" . $wpdb->prefix . "postmeta` WHERE meta_key='_woo_prdd_lite_maximum_number_days'";    
     $wpdb->get_results( $sql_table_post_meta_max_number_days );
 }
+delete_option( 'woocommerce_prdd_lite_db_version' );
+delete_option( 'prdd_lite_allow_tracking' );
+delete_option( 'prdd_lite_pro_welcome_page_shown' );
+delete_option( 'prdd_lite_pro_welcome_page_shown_time' );
+delete_option( 'prdd_lite_installed' );
