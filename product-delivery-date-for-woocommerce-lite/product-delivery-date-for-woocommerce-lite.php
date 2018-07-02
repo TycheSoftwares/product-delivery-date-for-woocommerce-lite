@@ -137,7 +137,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
          * It will add the question for the deactivate popup modal
          * @return array $prdd_lite_add_questions All questions.
          */
-        public static function prdd_lite_deactivate_add_questions () {
+        public static function prdd_lite_deactivate_add_questions ( $prdd_lite_add_questions ) {
 
             $prdd_lite_add_questions = array(
                 0 => array(

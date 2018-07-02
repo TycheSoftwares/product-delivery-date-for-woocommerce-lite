@@ -165,44 +165,46 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
             $ts_faq = array(
                 1 => array (
-                        'question' => 'Is it possible to add delivery date calendar for each product?',
-                        'answer'   => 'It is not possible to add Delivery date calendar for each product from Order Delivery Date for WooCommerce. However, we do have a plugin name <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&amp;utm_medium=link&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Product Delivery Date for WooCommerce Pro</a> and <a href="https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/">Lite</a> version both.'
+                        'question' => 'How to make Product delivery date field a required field on the Product Page?',
+                        'answer'   => 'Currently, it is not possible in the Product Delivery Date for WooCommerce – Lite plugin to make "Delivery Date" field as "Required" field on the Product page. This is possible in the <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Pro </a> version.'
                     ), 
                 2 => array (
-                        'question' => 'Can the customer enter the preferred order delivery time?',
-                        'answer'   => 'Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version. <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=OrderDeliveryDateLite" title="View Demo" rel="nofollow">View Demo</a>.'
+                        'question' => 'Is it possible to add delivery date calendar on checkout page instead of for each product?',
+                        'answer'   => 'No, it is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=ProductDeliveryDateLite" rel="nofollow">Order Delivery Date for WooCommerce Pro</a> and <a href="https://wordpress.org/plugins/order-delivery-date-for-woocommerce/">Lite</a> version which you can use to add a Delivery Date on the WooCommerce checkout page.'
                     ),
                 3 => array (
-						'question' => 'Is the order delivery date field mandatory on the checkout page?',
-						'answer'   => 'The field can be configured as Mandatory or optional using the "Mandatory field?" setting.'
+                        'question' => 'Can the customer enter the preferred delivery time for the product?',
+                        'answer'   => 'Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version. <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow"> View Demo </a>'
                 ),
                 4 => array (
-						'question' => 'Can we change the language of the delivery date calendar?',
-						'answer'   => 'Yes, you can change the language of the delivery date calendar on the checkout page. There are 64 different languages provided under Appearance tab.'
+                        'question' => 'Can we change the language of the delivery date calendar?',
+                        'answer'   => 'Currently, it is not possible in the free version. You can change the language of the delivery date calendar on the product page in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow"> PRO version </a>. There are 62 different languages to choose from.'
                 ),
                 5 => array (
-						'question' => 'Is it possible to add extra charges for weekdays or specific dates?',
-						'answer'   => 'Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Order Delivery Date Pro for WooCommerce plugin</a>.'
+                        'question' => 'Is it possible to add extra charges for weekdays or specific dates?',
+                        'answer'   => 'Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>.'
                 ),
                 6 => array (
-						'question' => 'Why the Delivery Date field is not shown on the checkout page when Virtual Products are added to the cart?',
-						'answer'   => 'If the Delivery Date field is not shown on the checkout page when Virtual Products are added to the cart. Then please check if the "Disable the Delivery Date Field for" checkbox for the Virtual product is checked on the Appearance tab. If this checkbox is checked then the delivery will be disabled on the checkout page. Same for the Featured Products.'
+                        'question' => 'Can we translate Delivery Date label on product page?',
+                        'answer'   => 'Yes, you can translate the Delivery Date label for the product page. To translate the strings, you need to generate ".po" and ".mo" files in your respective language. These files then need to be added to the following path: "product-delivery-date-for-woocommerce-lite/languages"'
                 ),
+                
                 7 => array (
-						'question' => 'Why Delivery Date field is not shown on the checkout page?',
-						'answer'   => 'If the Delivery Date field is not shown on the checkout page, then please check what option is selected in the "Field placement on the Checkout page" option under Appearance tab. If "In Shipping section" option is selected and if there is no shipping section added on the checkout page or if the Ship to different address checkbox is unchecked, then the delivery date field will not be shown on the checkout page.'
+                        'question' => 'Is it possible to edit the selected delivery date for the already placed WooCommerce orders?',
+                        'answer'   => 'Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders.'
                 ),
                 8 => array (
-						'question' => 'Is it possible to edit the selected delivery date for the already placed WooCommerce orders?',
-						'answer'   => 'Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Order Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders.'
+                        'question' => 'Can we change the "Delivery Date" label to something else, such as "Choose a date" or "Date to deliver"?',
+                        'answer'   => 'Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>.'
                 ),
                 9 => array (
-						'question' => 'Can we set different delivery settings for different shipping methods or different product categories?',
-						'answer'   => 'Currently, it is not possible to add different delivery settings for different shipping methods or different products categories in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Order Delivery Date Pro for WooCommerce plugin</a>.'
-                ),
+                        'question' => 'Will Delivery Date Calendar on the product page work on the mobile devices?',
+                        'answer'   => 'Yes, Delivery Date Calendar on the product page will work on the mobile devices.'
+                ),   
+
                 10 => array (
-						'question' => 'Difference between Lite and Pro version of the plugin.',
-						'answer'   => 'You can refer <strong><a href="https://www.tychesoftwares.com/differences-pro-lite-versions-order-delivery-date-woocommerce-plugin/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDate" title="Lite and Pro version Difference" rel="nofollow">here</a>.'
+                        'question' => 'Difference between Lite and Pro version of the plugin.',
+                        'answer'   => 'You can refer <strong><a href="https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" title="Lite and Pro version Difference" rel="nofollow">here</a>.'
                 )    
             );
 
