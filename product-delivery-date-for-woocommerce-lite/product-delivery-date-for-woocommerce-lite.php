@@ -236,7 +236,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         public static function prdd_get_version() {
             $plugin_version = '';
             $prddd_lite_plugin_dir =  dirname (__FILE__) ;
-            $prddd_lite_plugin_dir .= '/product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php';
+            $prddd_lite_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
 
             $plugin_data = get_file_data( $prddd_lite_plugin_dir, array( 'Version' => 'Version' ) );
             if ( ! empty( $plugin_data['Version'] ) ) {
