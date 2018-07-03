@@ -45,7 +45,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
                 $prdd_lite_get_previous_version = get_option( 'woocommerce_prdd_lite_db_version' );
 
-                $prdd_lite_blog_post_link       = ' https://www.tychesoftwares.com/docs/docs/order-delivery-date-for-woocommerce-lite/usage-tracking/';
+                $prdd_lite_blog_post_link       = 'https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/usage-tracking/';
 
                 $prdd_lite_plugins_page         = '';
                 $prdd_lite_plugin_slug          = '';
