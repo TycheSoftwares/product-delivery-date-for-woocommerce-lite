@@ -1,16 +1,17 @@
 <?php
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * The tracker class adds functionality to track usage of the plugin based on if the customer opted in.
  * No personal information is tracked, only general settings, order and user counts and admin email for 
  * discount code.
  *
  * @class 		Prdd_Lite_TS_Tracker
- * @version		6.8
  */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 class Prdd_Lite_TS_Tracker {
 
@@ -19,7 +20,7 @@ class Prdd_Lite_TS_Tracker {
 	 * @var string
 	 */
 
-	private static $api_url = 'http://trackingdev.tychesoftwares.com/v1/';
+	private static $api_url = 'http://tracking.tychesoftwares.com/v1/';
 
 	/**
 	* @var string Plugin prefix
@@ -78,7 +79,7 @@ class Prdd_Lite_TS_Tracker {
 			$params   = array();
 			$params[ 'tracking_usage' ] = 'no';
 			$params[ 'url' ]            = home_url();
-			$params[ 'email' ]          = apply_filters( 'ts_tracker_admin_email', get_option( 'admin_email' ) );
+			$params[ 'email' ]          = '';
 			
 			$params 					= apply_filters( 'ts_tracker_opt_out_data', $params );
 		} else {
@@ -108,18 +109,17 @@ class Prdd_Lite_TS_Tracker {
 
 	/**
 	 * Get all the tracking data.
-	 * @return array
+	 * @return array $data
 	 */
 	private static function ts_get_tracking_data() {
 		$data                        = array();
 
 		// General site info
 		$data[ 'url' ]               = home_url();
-		$data[ 'email' ]             = '';
+		$data[ 'email' ]             = apply_filters( 'ts_tracker_admin_email', get_option( 'admin_email' ) );
 
 		// WordPress Info
 		$data[ 'wp' ]                = self::ts_get_wordpress_info();
-
 		$data[ 'theme_info' ]        = self::ts_get_theme_info();
 
 		// Server Info
@@ -132,8 +132,8 @@ class Prdd_Lite_TS_Tracker {
 
 		//WooCommerce version 
 		$data[ 'wc_plugin_version' ] = self::ts_get_wc_plugin_version();
-
-
+		$data[ 'wc_city' ] 	         = self::ts_get_wc_city();
+		$data[ 'wc_country' ] 		 = self::ts_get_wc_country();
 				
 		return apply_filters( 'ts_tracker_data', $data );
 	}
@@ -158,7 +158,7 @@ class Prdd_Lite_TS_Tracker {
     
 	/**
 	 * Get WordPress related data.
-	 * @return array
+	 * @return array $wp_data
 	 */
 	private static function ts_get_wordpress_info() {
 		$wp_data = array();
@@ -175,10 +175,9 @@ class Prdd_Lite_TS_Tracker {
 		$wp_data[ 'locale' ]       = get_locale();
 		$wp_data[ 'wp_version' ]   = get_bloginfo( 'version' );
 		$wp_data[ 'multisite' ]    = is_multisite() ? 'Yes' : 'No';
+
 		$wp_data[ 'blogdescription' ] = get_option ( 'blogdescription' );
-		$wp_data[ 'blogname' ] = get_option ( 'blogname' );
-		$wp_data[ 'wc_city' ] 	 = self::ts_get_wc_city();
-		$wp_data[ 'wc_country' ] = self::ts_get_wc_country();
+		$wp_data[ 'blogname' ]        = get_option ( 'blogname' );
 
 		return $wp_data;
 	}
@@ -198,7 +197,7 @@ class Prdd_Lite_TS_Tracker {
 
 	/**
 	 * Get server related info.
-	 * @return array
+	 * @return array $server_data
 	 */
 	private static function ts_get_server_info() {
 		global $wpdb;
@@ -274,7 +273,7 @@ class Prdd_Lite_TS_Tracker {
 	
 	/**
 	 * Sends current WooCommerce version
-	 * @return string
+	 * @return string Plugin Version
 	 */
 	private static function ts_get_wc_plugin_version() {
 		return WC()->version;
