@@ -61,8 +61,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 $prdd_lite_deativate->init ( $prdd_lite_file_name, $prdd_lite_plugin_name );
 
                 $prdd_lite_welcome_header_text = '';
-                new Prdd_Lite_TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
+                $user = wp_get_current_user();
                 
+                if ( in_array( 'administrator', (array) $user->roles ) ) {
+                    new Prdd_Lite_TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
+                }
                 $ts_pro_faq = self::prdd_lite_get_faq ();
                 new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
                 

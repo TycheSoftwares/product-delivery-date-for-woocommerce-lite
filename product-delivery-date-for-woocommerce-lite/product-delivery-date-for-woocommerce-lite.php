@@ -59,9 +59,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
          * @since 1.0
          */
         public function __construct() {
-            self::prdd_lite_load_files (); 
+            
             register_activation_hook( __FILE__,                   array( &$this, 'prdd_lite_activate' ) );
-			add_action( 'init',                                   'prdd_lite_update_po_file' );
+            add_action( 'init',                                   'prdd_lite_update_po_file' );
+            add_action( 'init',                                   array( &$this, 'prdd_lite_load_files' ), 10 );
 			add_action( 'add_meta_boxes',                         array( &$this, 'prdd_lite_box' ), 10 );
 			add_action( 'woocommerce_process_product_meta',       array( &$this, 'prdd_lite_process_box' ), 1, 2 );
 			add_action( 'woocommerce_duplicate_product' ,         array( &$this, 'prdd_lite_product_duplicate' ), 10, 2 );
