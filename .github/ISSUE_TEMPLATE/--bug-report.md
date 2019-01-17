@@ -1,9 +1,9 @@
 ---
-name: Bug report
+name: "\U0001F41EBug report"
 about: Create a report to help us improve
-title: Product Delivery Date-lite bugs
+title: ''
 labels: bug
-assignees: ashokrane, moxajogani, apeksha10
+assignees: moxajogani
 
 ---
 
@@ -20,8 +20,8 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Screenshots or Video**
+If applicable, add screenshots or Video to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
@@ -34,5 +34,13 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
+**Isolating the problem (mark completed items with an [x]):**
+ [ ] This bug happens with only Product Delivery Date for WooCommerce - Lite plugin active
+ [ ] This bug happens with a default WordPress theme active, or [Storefront]
+ [ ] I can reproduce this bug consistently using the steps above
+
+**WordPress Environment**
+<details>
+```
 **Additional context**
 Add any other context about the problem here.
