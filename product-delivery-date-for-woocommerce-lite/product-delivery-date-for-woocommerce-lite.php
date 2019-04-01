@@ -499,6 +499,12 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $current_time = current_time( 'timestamp' );
             if( $prdd_minimum_delivery_time != '' && $prdd_minimum_delivery_time != 0 ) {
                 $advance_seconds   = $prdd_minimum_delivery_time *60 *60;
+                // now we need the first available weekday for delivery as minimum time is to be calculated from thereon.
+                $weekday = date( 'l', $current_time );
+                while( ! in_array( $weekday, $prdd_lite_delivery_days ) ) { // this weekday is unavailable for delivery
+                    $current_time += 86400; // add 1 day to it
+                    $weekday = date( 'l', $current_time );
+                }
                 $cut_off_timestamp = $current_time + $advance_seconds;
                 $cut_off_date      = date( "d-m-Y", $cut_off_timestamp );
                 $min_date          = date( "j-n-Y", strtotime( $cut_off_date ) );

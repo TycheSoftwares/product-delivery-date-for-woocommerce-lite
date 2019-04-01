@@ -34,23 +34,23 @@
 
     <div class="feature-section clearfix introduction">
 
-    <h3><?php esc_html_e( "Get Started with " . $plugin_name . " ", 'woocommerce-prdd-lite' ); ?></h3>
+        <h3><?php esc_html_e( "Get Started with " . $plugin_name . " ", 'woocommerce-prdd-lite' ); ?></h3>
 
-    <div class="video feature-section-item" style="float:left;padding-right:10px;">
-        <img src="<?php echo $ts_dir_image_path . 'product-delivery-date-lite.png' ?>"
-            alt="<?php esc_attr_e( 'Order Delivery Date Lite', 'woocommerce-prdd-lite' ); ?>" style="width:600px;">
-    </div>
+        <div class="video feature-section-item" style="float:left; padding-right:10px; display:inline-block; max-width:60%;">
+            <img src="<?php echo $ts_dir_image_path . 'product-delivery-date-lite.png' ?>"
+                alt="<?php esc_attr_e( 'Order Delivery Date Lite', 'woocommerce-prdd-lite' ); ?>" style="width:600px;">
+        </div>
 
-    <div class="content feature-section-item last-feature">
-        <h3><?php esc_html_e( 'Enable Delivery Date Capture', 'woocommerce-prdd-lite' ); ?></h3>
+        <div class="content feature-section-item last-feature" style="float:right; display:inline-block; max-width:40%;">
+            <h3><?php esc_html_e( 'Enable Delivery Date Capture', 'woocommerce-prdd-lite' ); ?></h3>
 
-        <p><?php esc_html_e( 'To start allowing customers to select their preferred delivery date on each product page, simply activate the Enable Delivery Date checkbox in the Product Delivery Date Meta box which gets added on the Add/Edit Product page.', 'woocommerce-prdd-lite' ); ?></p>
+            <p><?php esc_html_e( 'To start allowing customers to select their preferred delivery date on each product page, simply activate the Enable Delivery Date checkbox in the Product Delivery Date Meta box which gets added on the Add/Edit Product page.', 'woocommerce-prdd-lite' ); ?></p>
 
-        <a href="https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/setup-delivery-date-calendar/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank" class="button-secondary">
-        <?php esc_html_e( 'Learn More', 'woocommerce-prdd-lite' ); ?>
-        <span class="dashicons dashicons-external"></span>
-        </a>    
-    </div>
+            <a href="https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/setup-delivery-date-calendar/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank" class="button-secondary">
+            <?php esc_html_e( 'Learn More', 'woocommerce-prdd-lite' ); ?>
+            <span class="dashicons dashicons-external"></span>
+            </a>    
+        </div>
     </div>
 
     <!-- /.intro-section -->
