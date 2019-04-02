@@ -29,7 +29,6 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 require_once( "component/tracking-data/ts-tracking.php" );
                 require_once( "component/deactivate-survey-popup/class-ts-deactivation.php" );
 
-                require_once( "component/welcome-page/ts-welcome.php" );
                 require_once( "component/faq-support/ts-faq-support.php" );
                 require_once( "component/pro-notices-in-lite/ts-pro-notices.php" );
                 
@@ -60,9 +59,6 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 $prdd_lite_deativate = new Prdd_Lite_TS_deactivate;
                 $prdd_lite_deativate->init ( $prdd_lite_file_name, $prdd_lite_plugin_name );
 
-                $prdd_lite_welcome_header_text = '';
-                new Prdd_Lite_TS_Welcome ( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_dir_name, $prdd_lite_get_previous_version,$prdd_lite_welcome_header_text );
-                
                 $ts_pro_faq = self::prdd_lite_get_faq ();
                 new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
                 
