@@ -649,6 +649,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             }
             // Add the fields
             global $wpdb, $woocommerce;
+            // default the variables
+            $sub_query = '';
+            $order_item_ids = array();
+
             foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
                 $_product = $values[ 'data' ];
                 if ( isset( $values[ 'prdd_lite_delivery' ] ) ) {
