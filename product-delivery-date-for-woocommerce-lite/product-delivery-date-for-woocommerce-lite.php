@@ -289,21 +289,29 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             $duplicate_of = $this->prdd_lite_get_product_id( $post_id );
             $enable_date = $prdd_minimum_delivery_time = $prdd_maximum_number_days = '';
             if ( isset( $_POST[ 'prdd_lite_enable_date' ] ) ) {
-                $enable_date = $_POST[ 'prdd_lite_enable_date' ];
+                $enable_date = sanitize_text_field( $_POST[ 'prdd_lite_enable_date' ] );
             }
             
             if ( isset( $_POST[ 'prdd_lite_minimum_delivery_time' ] ) ) {
-                $prdd_minimum_delivery_time = $_POST[ 'prdd_lite_minimum_delivery_time' ];
+                $prdd_minimum_delivery_time = sanitize_text_field( $_POST[ 'prdd_lite_minimum_delivery_time' ] );
             }
             
             if ( isset( $_POST[ 'prdd_lite_maximum_number_days' ] ) ) {
-                $prdd_maximum_number_days = $_POST[ 'prdd_lite_maximum_number_days' ];
+                $prdd_maximum_number_days = sanitize_text_field( $_POST[ 'prdd_lite_maximum_number_days' ] );
             }
             
+            // sanitize the weekday values
+            $_delivery_days = array();
+            if( is_array( $_POST[ 'prdd_lite_delivery_days' ] ) ) {
+                foreach( $_POST[ 'prdd_lite_delivery_days' ] as $value ) {
+                    $_delivery_days[] = sanitize_text_field( $value );
+                }
+            }
+
             update_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', $enable_date );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', $prdd_minimum_delivery_time );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', $prdd_maximum_number_days );
-            update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', $_POST[ 'prdd_lite_delivery_days' ] );
+            update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', $_delivery_days );
 		}
 			
 		/**
@@ -578,10 +586,10 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             global $wpdb;
             $duplicate_of = $this->prdd_lite_get_product_id( $product_id );
             if( isset( $_POST[ 'delivery_calender_lite' ] ) ) {
-                $date_disp = $_POST[ 'delivery_calender_lite' ];
+                $date_disp = sanitize_text_field( $_POST[ 'delivery_calender_lite' ] );
             }
             if( isset( $_POST[ 'prdd_lite_hidden_date' ] ) ) {
-                $hidden_date = $_POST[ 'prdd_lite_hidden_date' ];
+                $hidden_date = sanitize_text_field( $_POST[ 'prdd_lite_hidden_date' ] );
             }
             
             $cart_arr = array();
