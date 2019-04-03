@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery date, product delivery date, woocommerce delivery date, delivery, product delivery
 Requires at least: 1.3
-Tested up to: 4.9.6
+Tested up to: 5.1.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,13 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+= 1.10 (03.04.2019) =
+* Fixed an issue where if the current day is unavailable for delivery, the Minimum Delivery Time needed setting is ignored when displaying the first available date for delivery.
+* Calendar icon is not displayed in the date field on the product page. Fixed the same.
+* Removed the Welcome Page
+* Fixed some warnings being added in debug.log
+* Fixed an issue where orphan records were being left behind when the plugin is deleted.
+
 = 1.8 (23.05.2018) =
 * The plugin is now GDPR compliant.
 * The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.

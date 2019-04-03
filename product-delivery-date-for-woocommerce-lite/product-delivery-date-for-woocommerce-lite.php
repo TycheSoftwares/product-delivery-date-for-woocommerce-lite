@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Product Delivery Date for WooCommerce - Lite
  * Description: This plugin lets you capture the Delivery Date for each product.
- * Version: 1.9 
+ * Version: 1.10 
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
  * Requires PHP: 5.6
  * WC requires at least: 3.0.0
- * WC tested up to: 3.4.0
+ * WC tested up to: 3.5.7
  * Text Domain: woocommerce-prdd-lite
  * Domain Path: /languages/
  *
@@ -17,7 +17,7 @@
 include_once( 'includes/class-prdd-privacy-policy-lite.php' );
 
 global $PrddLiteUpdateChecker;
-$PrddLiteUpdateChecker = '1.9';
+$PrddLiteUpdateChecker = '1.10';
 
 /**
  * This function checks Product delivery date plugin is active or not.
@@ -103,7 +103,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
          * @since 1.0
 		 */
         function prdd_lite_activate() {
-            update_option( 'woocommerce_prdd_lite_db_version', '1.9' );
+            update_option( 'woocommerce_prdd_lite_db_version', '1.10' );
             //Check if installed for the first time.
             add_option( 'prdd_lite_installed', 'yes' );
         }
@@ -118,7 +118,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
         function prdd_lite_update_db_check() {
             $prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
             if ( $prdd_plugin_version != $this->get_plugin_version() ) {
-                update_option( 'woocommerce_prdd_lite_db_version', '1.9' );
+                update_option( 'woocommerce_prdd_lite_db_version', '1.10' );
             }
         }
         
