@@ -371,7 +371,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                             $prdd_minimum_delivery_time = "0";
                         }
                         ?>
-                        <input type="text" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
+                        <input type="number" min="0" id="prdd_lite_minimum_delivery_time" name="prdd_lite_minimum_delivery_time" value="<?php echo $prdd_minimum_delivery_time; ?>" >
                     </td>
                     <td>
                         <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'Enable Delivery after X number of hours from current WordPress time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need one day\'s advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
@@ -388,7 +388,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                             $prdd_maximum_number_days = "30";
                         }   
                         ?>
-                        <input type="text" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
+                        <input type="number" min="0" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo sanitize_text_field( $prdd_maximum_number_days, true );?>" >
                     </td>
                     <td>
                         <img class="help_tip" width="16" height="16" data-tip="<?php _e( 'The maximum number of delivery dates available for your customers to choose deliveries from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' );?>" src="<?php echo plugins_url() ;?>/woocommerce/assets/images/help.png" />
