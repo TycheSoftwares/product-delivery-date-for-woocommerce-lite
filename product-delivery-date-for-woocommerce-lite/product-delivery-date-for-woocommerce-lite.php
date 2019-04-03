@@ -301,12 +301,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             }
             
             // sanitize the weekday values
-            $_delivery_days = array();
-            if( is_array( $_POST[ 'prdd_lite_delivery_days' ] ) ) {
-                foreach( $_POST[ 'prdd_lite_delivery_days' ] as $value ) {
-                    $_delivery_days[] = sanitize_text_field( $value );
-                }
-            }
+            $_delivery_days = array_map( 'sanitize_text_field', wp_unslash( $_POST[ 'prdd_lite_delivery_days' ] ) );
 
             update_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', $enable_date );
             update_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', $prdd_minimum_delivery_time );
