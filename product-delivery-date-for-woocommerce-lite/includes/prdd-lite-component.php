@@ -162,11 +162,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
             $ts_faq = array(
                 1 => array (
                         'question' => 'How to make Product delivery date field a required field on the Product Page?',
-                        'answer'   => 'Currently, it is not possible in the Product Delivery Date for WooCommerce – Lite plugin to make "Delivery Date" field as "Required" field on the Product page. This is possible in the <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Pro </a> version.'
+                        'answer'   => 'Currently, it is not possible in the Product Delivery Date for WooCommerce – Lite plugin to make "Delivery Date" field as "Required" field on the Product page. This is possible in the <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Pro </a> version.'
                     ), 
                 2 => array (
                         'question' => 'Is it possible to add delivery date calendar on checkout page instead of for each product?',
-                        'answer'   => 'No, it is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=ProductDeliveryDateLite" rel="nofollow">Order Delivery Date for WooCommerce Pro</a> and <a href="https://wordpress.org/plugins/order-delivery-date-for-woocommerce/">Lite</a> version which you can use to add a Delivery Date on the WooCommerce checkout page.'
+                        'answer'   => 'No, it is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Order Delivery Date for WooCommerce Pro</a> and <a href="https://wordpress.org/plugins/order-delivery-date-for-woocommerce/" target="_blank">Lite</a> version which you can use to add a Delivery Date on the WooCommerce checkout page.'
                     ),
                 3 => array (
                         'question' => 'Can the customer enter the preferred delivery time for the product?',
@@ -174,11 +174,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 ),
                 4 => array (
                         'question' => 'Can we change the language of the delivery date calendar?',
-                        'answer'   => 'Currently, it is not possible in the free version. You can change the language of the delivery date calendar on the product page in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow"> PRO version </a>. There are 62 different languages to choose from.'
+                        'answer'   => 'Yes, from version 2.0 you can choose different language for the delivery date calendar.'
                 ),
                 5 => array (
                         'question' => 'Is it possible to add extra charges for weekdays or specific dates?',
-                        'answer'   => 'Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>.'
+                        'answer'   => 'Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>.'
                 ),
                 6 => array (
                         'question' => 'Can we translate Delivery Date label on product page?',
@@ -187,11 +187,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
                 
                 7 => array (
                         'question' => 'Is it possible to edit the selected delivery date for the already placed WooCommerce orders?',
-                        'answer'   => 'Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders.'
+                        'answer'   => 'Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders.'
                 ),
                 8 => array (
                         'question' => 'Can we change the "Delivery Date" label to something else, such as "Choose a date" or "Date to deliver"?',
-                        'answer'   => 'Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow">Product Delivery Date Pro for WooCommerce plugin</a>.'
+                        'answer'   => 'Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>.'
                 ),
                 9 => array (
                         'question' => 'Will Delivery Date Calendar on the product page work on the mobile devices?',
@@ -200,7 +200,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
                 10 => array (
                         'question' => 'Difference between Lite and Pro version of the plugin.',
-                        'answer'   => 'You can refer <strong><a href="https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" title="Lite and Pro version Difference" rel="nofollow">here</a>.'
+                        'answer'   => 'You can refer <strong><a href="https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" title="Lite and Pro version Difference" rel="nofollow" target="_blank">here</a>.'
                 )    
             );
 
