@@ -1,0 +1,91 @@
+.ord_label{
+	float: left;
+	font-weight: bold;
+	padding-left: 10px;
+	width: 230px;
+	cursor:text;
+}
+
+.days-fieldset{
+	border: 1px solid #DCDBDA;
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-top: 0;
+	width: 160px;
+	padding-left:10px;
+}
+
+.booking_calender 
+{
+	margin-bottom:10px;
+}
+
+.time_slot 
+{
+	font-family:inherit;
+}
+
+.show_time_slot 
+{
+	margin-bottom:10px;
+}
+
+.day-checkbox{
+ 
+}
+
+/* classes for showing border around the delivery fields */
+.prdd-delivery-form {
+	border:1px solid #ddd;
+	padding: 1em 1em;
+	margin-bottom:10px;
+}
+
+/* Styling the availability message */
+
+.show_stock_status{
+    border-bottom: 1px #ddd solid;
+    margin-bottom: 7px;
+    padding: 3px;
+}
+
+/* for showing the calendar icon inside the delivery field on product page */
+.prdd_start_date, .show_time_slot { 
+	position: relative;
+	width:50%;
+}
+
+.prdd_start_date input, .show_time_slot select { 
+	background:#fff;
+	display:block;
+	width: 100% !important;
+	box-sizing: border-box;
+}
+.prdd_start_date img { 
+	grid-column: 2;
+    grid-row: 2;
+}
+
+/* Fixes for Issue #548 & #549 */
+.prdd_start_date, .show_time_slot { 
+	width:auto;
+}
+
+.prdd_start_date label, .show_time_slot label {
+	float:left;
+	margin-right: 5px;
+}
+
+.prdd_start_date input, .show_time_slot select {
+	grid-column: 1 / 3;
+    grid-row: 1 / 4;
+    margin: unset;
+}
+
+.wrapper {
+	display: grid;
+    grid-template-columns: 1fr 10%;
+    position:relative;
+}
+/* End fixes for Issue #548 & #549 */
