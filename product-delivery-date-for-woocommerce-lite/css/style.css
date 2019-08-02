@@ -1,0 +1,31 @@
+/* Change the spacing, font weight and font to be same as woocommerce in the settings labels*/
+.form-table th {
+ padding: 0 0 12px 0;
+ font-weight: normal;
+ font-family: open sans;
+ font-size: 13px;
+ width:150px;
+}
+/* Change the spacing, font weight and font to be same as woocommerce in the settings text*/
+.form-table td {
+ padding: 0 0 12px 0;
+ font-weight: normal;
+ font-family: open sans;
+ font-size: 13px;
+}
+/* Change the width of vertical tabs*/
+.z-tabs .vertical .top-left ul{
+	width:120px;
+}
+/* Change the font color of the active tab so that it looks similar to woocommerce*/
+.z-tabs.silver > ul > li.z-active > a {
+ color: black;	
+}
+/* Change the font color of the tabs so that it looks similar to woocommerce*/
+.z-tabs.silver > ul > li > a {
+ color: #2ea2cc;	
+}
+/* Change the font of the tabs so that it looks similar to woocommerce*/
+.z-tabs {
+ font-family: open sans;
+}

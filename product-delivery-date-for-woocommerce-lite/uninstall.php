@@ -35,6 +35,14 @@ if ( is_multisite() ) {
             // Delivery Days
             $sql_table_post_meta_max_number_days = "DELETE FROM `" . $sub_site_prefix . "postmeta` WHERE meta_key='_woo_prdd_lite_delivery_days'";    
             $wpdb->query( $sql_table_post_meta_max_number_days );
+
+            // Mandatory Fields
+            $sql_table_post_meta_max_number_days = "DELETE FROM `" . $sub_site_prefix . "postmeta` WHERE meta_key='_woo_prdd_lite_delivery_field_mandatory'";    
+            $wpdb->query( $sql_table_post_meta_max_number_days );
+
+            // Product Level Holidays
+            $sql_table_post_meta_max_number_days = "DELETE FROM `" . $sub_site_prefix . "postmeta` WHERE meta_key='_woo_prdd_lite_holidays'";    
+            $wpdb->query( $sql_table_post_meta_max_number_days );
         }
     }
 } else {
@@ -44,6 +52,8 @@ if ( is_multisite() ) {
     delete_post_meta_by_key( '_woo_prdd_lite_minimum_delivery_time' );
     delete_post_meta_by_key( '_woo_prdd_lite_maximum_number_days' );
     delete_post_meta_by_key( '_woo_prdd_lite_delivery_days' );
+    delete_post_meta_by_key( '_woo_prdd_lite_delivery_field_mandatory' );
+    delete_post_meta_by_key( '_woo_prdd_lite_holidays' );
 }
 
 // Options Data

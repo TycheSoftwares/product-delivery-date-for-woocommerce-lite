@@ -206,6 +206,121 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
             return $ts_faq;
         }
+
+         /**
+         * It will add the question for the deactivate popup modal
+         * @return array $prdd_lite_add_questions All questions.
+         */
+        public static function prdd_lite_deactivate_add_questions ( $prdd_lite_add_questions ) {
+
+            $prdd_lite_add_questions = array(
+                0 => array(
+                    'id'                => 4,
+                    'text'              => __( "Minimum Delivery Time (in hours) is not working as expected.", "woocommerce-prdd-lite" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                    ), 
+                1 =>  array(
+                    'id'                => 5,
+                    'text'              => __( "I need delivery time along with the delivery date.", "woocommerce-prdd-lite" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                ),
+                2 => array(
+                    'id'                => 6,
+                    'text'              => __( "I want deliveries on some specific dates only.", "woocommerce-prdd-lite" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                ),
+                3 => array(
+                    'id'                => 7,
+                    'text'              => __( "I have purchased the Pro version of the Plugin.", "woocommerce-prdd-lite" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                )
+
+            );
+            return $prdd_lite_add_questions;
+        }
+
+        /**
+         * Plugin's data to be tracked when Allow option is choosed.
+         *
+         * @hook ts_tracker_data
+         *
+         * @param array $data Contains the data to be tracked.
+         *
+         * @return array Plugin's data to track.
+         * 
+         */
+
+        public static function prdd_lite_ts_add_plugin_tracking_data ( $data ) {
+            if ( isset( $_GET[ 'prdd_lite_tracker_optin' ] ) && isset( $_GET[ 'prdd_lite_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ 'prdd_lite_tracker_nonce' ], 'prdd_lite_tracker_optin' ) ) {
+
+                $plugin_data[ 'ts_meta_data_table_name' ]   = 'ts_tracking_prdd_lite_meta_data';
+                $plugin_data[ 'ts_plugin_name' ]            = 'Product Delivery Date for WooCommerce - Lite';
+                
+                // Store count info
+                $plugin_data[ 'deliveries_count' ]          = self::ts_get_deliveries_counts();
+                
+                // Get all plugin options info
+                $plugin_data[ 'deliverable_products' ]      = self::ts_get_deliverable_products();
+                $plugin_data[ 'prdd_lite_plugin_version' ]  = self::prdd_get_version();
+                $plugin_data[ 'prdd_lite_allow_tracking' ]  = get_option ( 'prdd_lite_allow_tracking' );
+                $data[ 'plugin_data' ]                      = $plugin_data;
+            }
+            return $data;
+        }
+
+        /**
+         * It will return the total orders count which have the delivery dates.
+         * 
+         */
+        public static function ts_get_deliveries_counts() {
+            global $wpdb;
+            $order_count = 0;
+            $orddd_query = "SELECT count( order_item_id ) AS deliveries_count FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_items` AS a, `" . $wpdb->prefix . "posts` AS b WHERE a.order_id = b.ID AND b.post_type = 'shop_order' AND post_status NOT IN ('wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' ) )";
+            $results = $wpdb->get_results( $wpdb->prepare( $orddd_query, '_prdd_lite_date' ) );
+
+            if( isset( $results[0] ) ) {
+                $order_count = $results[0]->deliveries_count;    
+            }
+            return $order_count;
+        }
+
+        /**
+         * It will retrun the total product which i=have the product delivery dates setting enabled.
+         */
+        public static function ts_get_deliverable_products() {
+            global $wpdb;
+            $product_count = 0;
+            $orddd_query = "SELECT count(a.ID) AS deliverable_products FROM `" . $wpdb->prefix . "posts` AS a, `" . $wpdb->prefix . "postmeta` AS b WHERE a.post_type = 'product' AND a.post_status = 'publish' AND a.ID = b.post_id AND b.meta_key = '_woo_prdd_lite_enable_delivery_date' AND b.meta_value = 'on'";
+            $results = $wpdb->get_results( $orddd_query );
+            if( isset( $results[0] ) ) {
+                $product_count += $results[0]->deliverable_products;    
+            }
+            return $product_count;
+        }
+
+        /**
+         * Tracking data to send when No, thanks. button is clicked.
+         *
+         * @hook ts_tracker_opt_out_data
+         *
+         * @param array $params Parameters to pass for tracking data.
+         *
+         * @return array Data to track when opted out.
+         * 
+         */
+        public static function prdd_lite_get_data_for_opt_out ( $params ) {
+            $plugin_data[ 'ts_meta_data_table_name']   = 'ts_tracking_prdd_lite_meta_data';
+            $plugin_data[ 'ts_plugin_name' ]           = 'Product Delivery Date for WooCommerce - Lite';
+            
+            // Store count info
+            $params[ 'plugin_data' ]                   = $plugin_data;
+            
+            return $params;
+        }
 	}
 	$Prdd_Lite_All_Component = new Prdd_Lite_All_Component();
 }
