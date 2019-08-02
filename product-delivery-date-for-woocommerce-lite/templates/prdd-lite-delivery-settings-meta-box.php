@@ -16,8 +16,8 @@ jQuery( document ).ready( function() {
 <div id='tabbed-nav'>
     <ul>
         <li><a id="addnew"> <?php _e( 'Delivery Options', 'woocommerce-prdd' );?> </a></li>
-        <li><a id="settings"><?php _e( 'Settings', 'woocommerce-prdd' ); ?></a></li>
-	    <li><a id="date_range"> <?php _e( 'Delivery Time Period', 'woocommerce-prdd' );?> </a></li>
+        <li class="z-disabled"><a id="settings"><?php _e( 'Settings', 'woocommerce-prdd' ); ?></a></li>
+	    <li class="z-disabled"><a id="date_range"> <?php _e( 'Delivery Time Period', 'woocommerce-prdd' );?> </a></li>
         <?php
         do_action( 'prdd_lite_add_tabs', $duplicate_of ); 
         ?>

@@ -134,7 +134,6 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 
             add_option( 'prdd_lite_language', 'en-GB' );
             add_option( 'prdd_lite_date_format', 'mm/dd/y' );
-            add_option( 'prdd_lite_time_format', '12' );
             add_option( 'prdd_lite_months', '1' );
             add_option( 'prdd_lite_calendar_day', '1' );
             add_option( 'prdd_lite_theme', 'smoothness' );
@@ -154,6 +153,34 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
             if ( $prdd_plugin_version != $this->get_plugin_version() ) {
                 update_option( 'woocommerce_prdd_lite_db_version', '1.10' );
             }
+
+            if( ! get_option('prdd_lite_language') ) {  
+                add_option( 'prdd_lite_language', 'en-GB' );
+            }
+
+            if( ! get_option('prdd_lite_date_format') ) {  
+                add_option( 'prdd_lite_date_format', 'mm/dd/y' );
+            }
+
+            if( ! get_option('prdd_lite_months') ) {  
+                add_option( 'prdd_lite_months', '1' );
+            }
+
+            if( ! get_option('prdd_lite_calendar_day') ) {  
+                add_option( 'prdd_lite_calendar_day', '1' );
+            }
+            if( ! get_option('prdd_lite_theme') ) {  
+                add_option( 'prdd_lite_theme', 'smoothness' );
+            }
+
+            if( ! get_option('prdd_lite_global_holidays') ) {  
+                add_option( 'prdd_lite_global_holidays', '' );
+            }
+
+            if( ! get_option('prdd_lite_enable_rounding') ) {  
+                add_option( 'prdd_lite_enable_rounding', '' );
+            }
+
         }
         
         /**
@@ -257,6 +284,13 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                 wp_enqueue_script( 'prdd-themeswitcher', plugins_url( '/js/jquery.themeswitcher.min.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, false );
 
                 wp_enqueue_script( "prdd-lang", plugins_url( "/js/i18n/jquery-ui-i18n.js", __FILE__ ), '', $plugin_version_number, false );
+
+                $current_language = get_option( 'prdd_lite_language' );
+
+				if ( $current_language == "" ) {
+				    $current_language = "en-GB";
+                }
+				wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
             }
         }
 			
@@ -280,6 +314,14 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
                     wp_enqueue_script( 'jquery-ui-core' );            
                     wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery-ui-widget', 'jquery-ui-core' ) );
                     wp_enqueue_script( 'select2' );
+
+                    $current_language = get_option( 'prdd_lite_language' );
+
+					if ( $current_language == "" ) {
+					    $current_language = "en-GB";
+                    }
+				    wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
+                    
                 }
             }
         }
