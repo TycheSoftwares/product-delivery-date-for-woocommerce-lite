@@ -194,7 +194,7 @@ class prdd_lite_delivery_settings {
         $time_formats = prdd_lite_get_delivery_arrays( 'prdd_lite_time_formats' );
         foreach( $time_formats as $k => $format ) {
             printf( "<option %s value='%s'>%s</option>\n",
-                selected( $k, $time_format, false ),
+                selected( $k, 12, false ),
                 esc_attr( $k ),
                 __( $format, "woocommerce-prdd" )
             );

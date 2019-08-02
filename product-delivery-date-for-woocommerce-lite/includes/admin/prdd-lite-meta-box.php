@@ -82,7 +82,7 @@ class prdd_lite_meta_box_class {
      * @param WP_Post $post WP_Post object
      * @since 1.0
      */
-    function prdd_lite_process_box( $post_id, $post ) {
+    public static function prdd_lite_process_box( $post_id, $post ) {
         $duplicate_of = prdd_lite_common::prdd_lite_get_product_id( $post_id );
         
         $enable_date = '';
