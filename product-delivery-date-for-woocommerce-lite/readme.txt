@@ -167,6 +167,15 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+= 2.0 (02.08.2019) =
+* Now the delivery date field can be set as mandatory for each product. The customers will not be able to add the product to the cart without selecting a date if the Mandatory field option is enabled for the product.
+* Now the nonworking holidays or dates can be set for individual products as well as for all the products at the global level.
+* All the deliveries can now be viewed in one place under the Product Delivery Date -> View Deliveries menu. The deliveries can be filters using Deliveries From Today Onwards, Today's Deliveries and Tomorrow's Deliveries.
+* Date format for the delivery date selection on the product page can now be preferably set.
+* Delivery Date calendar language can now be set as per the language set for your website.
+* Delivery Date calendar can now be set into default color themes provided as per the colors of your website.
+* Prices in decimal values can now be set to the nearest integers using Enable Rounding of Prices option.
+
 = 1.10 (03.04.2019) =
 * Fixed an issue where if the current day is unavailable for delivery, the Minimum Delivery Time needed setting is ignored when displaying the first available date for delivery.
 * Calendar icon is not displayed in the date field on the product page. Fixed the same.
