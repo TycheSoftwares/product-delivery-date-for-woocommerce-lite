@@ -51,7 +51,7 @@ if ( !class_exists( 'prdd_lite_delivery_price' ) ) {
 		 */
 		function prdd_lite_delivery_price_tab( $product_id ) {
             ?>
-            <li class="z-disabled"><a id="delivery-charges"> <?php _e( 'Delivery Charges', 'woocommerce-prdd-lite' );?> </a></li>
+            <li><a id="delivery-charges"> <?php _e( 'Delivery Charges', 'woocommerce-prdd-lite' );?> </a></li>
 			<?php 
         }
 						
