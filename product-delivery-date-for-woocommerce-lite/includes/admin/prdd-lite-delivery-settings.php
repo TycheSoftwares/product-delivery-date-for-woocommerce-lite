@@ -157,6 +157,7 @@ class prdd_lite_delivery_settings {
                 jQuery( "#prdd_lite_calendar_day" ).change( function() {
                     jQuery( "#prdd_lite_new_switcher" ).datepicker( "option","firstDay", jQuery(this).val() );
                 });
+                jQuery( "#prdd_lite_new_switcher" ).datepicker( "option","firstDay", '. $first_day .' );
                 jQuery( ".ui-datepicker-inline" ).css( "font-size","1.4em" );
             });
         });
