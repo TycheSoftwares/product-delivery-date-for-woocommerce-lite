@@ -106,7 +106,7 @@ class Prdd_Lite_TS_Faq_Support {
 		
 		<tr> 
 			<td colspan="2">
-				You have any queries? Please check our <a href=<?php echo admin_url( 'index.php?page='.self::$plugin_prefix .'_faq_page' ) ; ?> >FAQ</a> page.
+				You have any queries? Please check our <a href=<?php echo admin_url( '?page=woocommerce_prdd_lite_page&action=faq_support_page' ) ; ?> >FAQ</a> page.
 			</td>
 		<tr>
 		<?php
