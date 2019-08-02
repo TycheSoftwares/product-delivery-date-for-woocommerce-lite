@@ -145,6 +145,8 @@ class PRDD_Lite_Global_Menu {
                                     effects: 'slideV'
                               },
                          });
+
+                         jQuery("#tabbed-nav li").addClass("z-disabled");
                     });
                     </script>
                     <div id="prdd_product_settings" >
