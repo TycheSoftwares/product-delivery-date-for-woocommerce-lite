@@ -96,8 +96,9 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 			add_action( 'woocommerce_before_single_product',      array( &$this, 'prdd_lite_front_side_scripts_css' ) );
 
 			add_action( 'woocommerce_before_add_to_cart_button',  array( 'prdd_lite_process', 'prdd_lite_after_add_to_cart' ) );
-			add_filter( 'woocommerce_add_cart_item_data',         array( 'prdd_lite_process', 'prdd_lite_add_cart_item_data' ), 25, 2 );
-			add_filter( 'woocommerce_get_item_data',              array( 'prdd_lite_process', 'prdd_lite_get_item_data' ), 25, 2 );
+            add_filter( 'woocommerce_add_cart_item_data',         array( 'prdd_lite_process', 'prdd_lite_add_cart_item_data' ), 25, 2 );
+            add_filter( 'woocommerce_get_cart_item_from_session'        ,array( 'prdd_lite_process', 'prdd_lite_get_cart_item_from_session' ), 25, 3 );            
+			add_filter( 'woocommerce_get_item_data',              array( 'prdd_lite_process', 'prdd_lite_get_item_data' ), 15, 2 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( 'prdd_lite_process', 'prdd_lite_order_item_meta' ), 10, 2 );
             add_filter( 'woocommerce_hidden_order_itemmeta',      array( 'prdd_lite_process', 'prdd_lite_hidden_order_itemmeta' ), 10, 1 );
             add_filter( 'woocommerce_add_to_cart_validation',     array( 'prdd_lite_validation', 'prdd_lite_get_validate_add_cart_item' ), 10, 3 );

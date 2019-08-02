@@ -160,6 +160,21 @@ class prdd_lite_process {
     }
         
     /**
+     * Round the cart item price if the rounding prices setting is enabled
+     */
+    public static function prdd_lite_get_cart_item_from_session( $cart_item, $values, $cart_item_key ) {
+        if ( isset( $cart_item[ 'prdd_lite_delivery' ] ) ) {
+            $price = $cart_item['data']->get_price();
+
+            if( get_option('prdd_lite_enable_rounding') == 'on' ) {
+                $cart_item['data']->set_price( round($price) );
+            }
+        }
+
+        return $cart_item;
+    }
+        
+    /**
      * This function displays the Delivery details on cart page, checkout page.
      *
      * @hook woocommerce_get_item_data
