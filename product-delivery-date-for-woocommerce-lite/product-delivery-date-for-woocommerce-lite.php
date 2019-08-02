@@ -290,7 +290,7 @@ if ( !class_exists( 'woocommerce_prdd_lite' ) ) {
 				if ( $current_language == "" ) {
 				    $current_language = "en-GB";
                 }
-				wp_enqueue_script( "$curr_lang", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
+				wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
             }
         }
 			
