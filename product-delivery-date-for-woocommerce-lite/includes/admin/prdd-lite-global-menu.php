@@ -58,11 +58,11 @@ class PRDD_Lite_Global_Menu {
             <a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php echo $active_settings; ?>"> <?php _e( 'Global Delivery Settings', 'woocommerce-prdd' );?> </a>
             <a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php echo $active_labels; ?>"> <?php _e( 'Field Labels', 'woocommerce-prdd' );?> </a>
             <a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php echo $active_google_sync; ?>"> <?php _e( 'Google Calendar Sync', 'woocommerce-prdd' );?> </a>
-            <?php do_action ( 'prdd_add_settings_tab' ); ?>
+            <?php do_action ( 'prdd_lite_add_settings_tab' ); ?>
             <a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php echo $active_bulk_product_settings; ?>"> <?php _e( 'Bulk Product Settings', 'woocommerce-prdd' );?> </a>
         </h2>
         <?php
-        do_action( 'prdd_add_tab_content' );
+        do_action( 'prdd_lite_add_tab_content' );
         if( $action == 'labels' ) {
             print( '<div id="content">
                 <form method="post" action="options.php">' );
@@ -194,15 +194,6 @@ class PRDD_Lite_Global_Menu {
         );
         
         add_settings_field(
-            'prdd_lite_time_format',
-            __( 'Time Format', 'woocommerce-prdd' ),
-            array( 'prdd_lite_delivery_settings', 'prdd_lite_time_format_callback' ),
-            'prdd_lite_settings_page',
-            'prdd_lite_delivery_settings_section',
-            array ( __( 'The format in which the delivery time appears to the customers on the product page once the date is selected.', 'woocommerce-prdd' ) )
-        );
-        
-        add_settings_field(
             'prdd_lite_months',
             __( 'Number of months to show in calendar', 'woocommerce-prdd' ),
             array( 'prdd_lite_delivery_settings', 'prdd_lite_months_callback' ),
@@ -245,6 +236,15 @@ class PRDD_Lite_Global_Menu {
             'prdd_lite_settings_page',
             'prdd_lite_delivery_settings_section',
             array ( __( 'Rounds the Price to the nearest Integer value.', 'woocommerce-prdd' ) )
+        );
+
+        add_settings_field(
+            'prdd_lite_time_format',
+            __( 'Time Format', 'woocommerce-prdd' ),
+            array( 'prdd_lite_delivery_settings', 'prdd_lite_time_format_callback' ),
+            'prdd_lite_settings_page',
+            'prdd_lite_delivery_settings_section',
+            array ( __( 'The format in which the delivery time appears to the customers on the product page once the date is selected.', 'woocommerce-prdd' ) )
         );
 
         add_settings_field(

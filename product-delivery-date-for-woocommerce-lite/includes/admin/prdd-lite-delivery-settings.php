@@ -55,24 +55,6 @@ class prdd_lite_delivery_settings {
         $html = '<label for="prdd_lite_date_format"> ' . $args[ 0 ] . '</label>';
         echo $html;
     }
-
-    public static function prdd_lite_time_format_callback( $args ) {
-        $time_format =  get_option( 'prdd_lite_time_format' );
-
-        echo '<select id="prdd_lite_time_format" name="prdd_lite_time_format">';
-
-        $time_formats = prdd_lite_get_delivery_arrays( 'prdd_lite_time_formats' );
-        foreach( $time_formats as $k => $format ) {
-            printf( "<option %s value='%s'>%s</option>\n",
-                selected( $k, $time_format, false ),
-                esc_attr( $k ),
-                __( $format, "woocommerce-prdd" )
-            );
-        }
-        echo '</select>';
-        $html = '<label for="prdd_lite_time_format"> ' . $args[ 0 ] . '</label>';
-        echo $html;
-    }
      
     public static function prdd_lite_months_callback( $args ) {
         $prdd_months = get_option( 'prdd_lite_months' );
@@ -128,9 +110,10 @@ class prdd_lite_delivery_settings {
         
         $holidays = get_option('prdd_lite_global_holidays');
         $global_holidays = '';
-        $holiday_str = '';
 
-        $global_holidays = "addDates: ['" . str_replace( ",", "','", $holidays ) . "']";
+        if( $holidays && $holidays != '' ) {
+            $global_holidays = "addDates: ['" . str_replace( ",", "','", $holidays ) . "']";
+        }
 
         $first_day = 1;
         if( '' != get_option( 'prdd_lite_calendar_day' ) ) {
@@ -141,7 +124,7 @@ class prdd_lite_delivery_settings {
         
         echo '<script type="text/javascript">
         jQuery(document).ready(function() {
-            jQuery( "#prdd_new_switcher" ).themeswitcher({
+            jQuery( "#prdd_lite_new_switcher" ).themeswitcher({
                 onclose: function() {
                     var cookie_name = this.cookiename;
                     jQuery( "input#prdd_lite_theme" ).val( jQuery.cookie( cookie_name ) );
@@ -156,7 +139,9 @@ class prdd_lite_delivery_settings {
             });
             var date = new Date();
             jQuery.datepicker.setDefaults( jQuery.datepicker.regional[ "en-GB" ] );
-            jQuery( "#prdd_switcher" ).multiDatesPicker({
+            jQuery( "#prdd_lite_new_switcher" ).datepicker( jQuery.datepicker.regional[ "' . $language_selected . '" ] );
+
+            jQuery( "#prdd_lite_switcher" ).multiDatesPicker({
                 dateFormat: "d-m-yy",
                 firstDay: '. $first_day.',
                 altField: "#prdd_lite_global_holidays",
@@ -164,22 +149,19 @@ class prdd_lite_delivery_settings {
             });
             jQuery( function() {
                 jQuery.datepicker.setDefaults( jQuery.datepicker.regional[ "" ] );
-                jQuery( "#prdd_new_switcher" ).datepicker( jQuery.datepicker.regional[ "en-GB" ] );
-                jQuery( "#prdd_new_switcher" ).datepicker( jQuery.datepicker.regional[ "' . $language_selected . '" ] );
+                jQuery( "#prdd_lite_new_switcher" ).datepicker( jQuery.datepicker.regional[ "en-GB" ] );
+               
                 jQuery( "#prdd_lite_language" ).change(function() {
-                    console.log(jQuery(this).val());
-                    jQuery( "#prdd_new_switcher" ).datepicker( "option", jQuery.datepicker.regional[ jQuery(this).val() ] );
+                    jQuery( "#prdd_lite_new_switcher" ).datepicker( "option", jQuery.datepicker.regional[ jQuery(this).val() ] );
                 });
                 jQuery( "#prdd_lite_calendar_day" ).change( function() {
-                  
-                    jQuery( "#prdd_new_switcher" ).datepicker( "option","firstDay", jQuery(this).val() );
+                    jQuery( "#prdd_lite_new_switcher" ).datepicker( "option","firstDay", jQuery(this).val() );
                 });
-                jQuery( "#prdd_new_switcher" ).datepicker( "option","firstDay",'.$first_day.' );
                 jQuery( ".ui-datepicker-inline" ).css( "font-size","1.4em" );
             });
         });
         </script>
-        <div id="prdd_new_switcher"></div>';
+        <div id="prdd_lite_new_switcher"></div>';
         
         $html = '<label for="prdd_lite_theme"> ' . $args[ 0 ] . '</label>';
         echo $html;
@@ -187,7 +169,7 @@ class prdd_lite_delivery_settings {
 
     public static function prdd_lite_global_holidays_callback ( $args ) {
         echo '<textarea rows="4" cols="80" name="prdd_lite_global_holidays" id="prdd_lite_global_holidays"></textarea>
-        <div id="prdd_switcher"></div>';
+        <div id="prdd_lite_switcher"></div>';
     
         $html = '<label for="prdd_lite_global_holidays"> ' . $args[ 0 ] . '</label>';
         echo $html;
@@ -202,6 +184,25 @@ class prdd_lite_delivery_settings {
         echo '<input type="checkbox" id="prdd_lite_enable_rounding" name="prdd_lite_enable_rounding" ' . $rounding .'/>';
         $html = '<label for="prdd_lite_enable_rounding"> ' . $args[ 0 ] . '</label>';
         echo $html;
+
+    }
+
+    public static function prdd_lite_time_format_callback( $args ) {
+        echo '<select id="prdd_lite_time_format" name="prdd_lite_time_format" disabled>';
+
+        $time_formats = prdd_lite_get_delivery_arrays( 'prdd_lite_time_formats' );
+        foreach( $time_formats as $k => $format ) {
+            printf( "<option %s value='%s'>%s</option>\n",
+                selected( $k, $time_format, false ),
+                esc_attr( $k ),
+                __( $format, "woocommerce-prdd" )
+            );
+        }
+        echo '</select>';
+        $html = '<label for="prdd_lite_time_format"> ' . $args[ 0 ] . '</label>';
+        echo $html;
+
+        echo  '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
     }
 

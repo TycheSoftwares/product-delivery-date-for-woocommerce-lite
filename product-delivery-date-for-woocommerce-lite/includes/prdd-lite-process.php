@@ -56,7 +56,6 @@ class prdd_lite_process {
 
         self::prdd_localize_global_settings();
 
-
         print( '<input type="hidden" name="prdd_lite_hidden_minimum_delivery_time" id="prdd_lite_hidden_minimum_delivery_time" value="' . $min_date . '">' );
 
         if( isset( $prdd_settings ) && $prdd_settings == "on" ) {
@@ -91,7 +90,6 @@ class prdd_lite_process {
         }
 
         $date_format = get_option( 'prdd_lite_date_format' );
-        $time_format = get_option( 'prdd_lite_time_format' );
         $prdd_months = get_option( 'prdd_lite_months' );
         $day_selected = get_option( 'prdd_lite_calendar_day' );
         $language_selected = get_option( 'prdd_lite_language' );
@@ -121,7 +119,6 @@ class prdd_lite_process {
             'prdd_maximum_number_days'  => $prdd_maximum_number_days,
             'prdd_lite_delivery_days'   => $prdd_lite_delivery_days, 
             'date_format'               => $date_format,
-            'time_format'               => $time_format,
             'prdd_months'               => $prdd_months,
             'first_day'                 => $day_selected,
             'language_selected'         => $language_selected,
