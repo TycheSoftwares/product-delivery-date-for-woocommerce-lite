@@ -61,7 +61,7 @@ class prdd_lite_meta_box_class {
      */
     public static function prdd_lite_meta_box() {
         global $post;
-        $duplicate_of = prdd_lite_common::prdd_lite_get_product_id( $post->ID );
+        $duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $post->ID );
         wc_get_template( 
             'prdd-lite-delivery-settings-meta-box.php', 
             array(
@@ -83,7 +83,7 @@ class prdd_lite_meta_box_class {
      * @since 1.0
      */
     public static function prdd_lite_process_box( $post_id, $post ) {
-        $duplicate_of = prdd_lite_common::prdd_lite_get_product_id( $post_id );
+        $duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $post_id );
         
         $enable_date = '';
         $prdd_minimum_delivery_time = '';

@@ -10,14 +10,14 @@
  */
 require_once 'includes/class-prdd-privacy-policy-lite.php';
 require_once 'includes/admin/prdd-lite-meta-box.php';
-require_once 'includes/prdd-lite-common.php';
+require_once 'includes/class-prdd-lite-common.php';
 require_once 'includes/prdd-lite-config.php';
-require_once 'includes/admin/prdd-lite-delivery-charges.php';
+require_once 'includes/admin/class-prdd-lite-delivery-price.php';
 require_once 'includes/admin/prdd-lite-estimate-delivery.php';
 require_once 'includes/admin/prdd-lite-delivery-settings.php';
 require_once 'includes/admin/prdd-lite-global-menu.php';
-require_once 'includes/prdd-lite-process.php';
-require_once 'includes/prdd-lite-validation.php';
+require_once 'includes/class-prdd-lite-process.php';
+require_once 'includes/class-prdd-lite-validation.php';
 
 global $prdd_lite_update_checker;
 $prdd_lite_update_checker = '2.0';
@@ -91,13 +91,13 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			add_action( 'woocommerce_before_single_product', array( &$this, 'prdd_lite_front_side_scripts_js' ) );
 			add_action( 'woocommerce_before_single_product', array( &$this, 'prdd_lite_front_side_scripts_css' ) );
 
-			add_action( 'woocommerce_before_add_to_cart_button', array( 'prdd_lite_process', 'prdd_lite_after_add_to_cart' ) );
-			add_filter( 'woocommerce_add_cart_item_data', array( 'prdd_lite_process', 'prdd_lite_add_cart_item_data' ), 25, 2 );
-			add_filter( 'woocommerce_get_cart_item_from_session', array( 'prdd_lite_process', 'prdd_lite_get_cart_item_from_session' ), 25, 3 );
-			add_filter( 'woocommerce_get_item_data', array( 'prdd_lite_process', 'prdd_lite_get_item_data' ), 15, 2 );
-			add_action( 'woocommerce_checkout_update_order_meta', array( 'prdd_lite_process', 'prdd_lite_order_item_meta' ), 10, 2 );
-			add_filter( 'woocommerce_hidden_order_itemmeta', array( 'prdd_lite_process', 'prdd_lite_hidden_order_itemmeta' ), 10, 1 );
-			add_filter( 'woocommerce_add_to_cart_validation', array( 'prdd_lite_validation', 'prdd_lite_get_validate_add_cart_item' ), 10, 3 );
+			add_action( 'woocommerce_before_add_to_cart_button', array( 'Prdd_Lite_Process', 'prdd_lite_after_add_to_cart' ) );
+			add_filter( 'woocommerce_add_cart_item_data', array( 'Prdd_Lite_Process', 'prdd_lite_add_cart_item_data' ), 25, 2 );
+			add_filter( 'woocommerce_get_cart_item_from_session', array( 'Prdd_Lite_Process', 'prdd_lite_get_cart_item_from_session' ), 25, 3 );
+			add_filter( 'woocommerce_get_item_data', array( 'Prdd_Lite_Process', 'prdd_lite_get_item_data' ), 15, 2 );
+			add_action( 'woocommerce_checkout_update_order_meta', array( 'Prdd_Lite_Process', 'prdd_lite_order_item_meta' ), 10, 2 );
+			add_filter( 'woocommerce_hidden_order_itemmeta', array( 'Prdd_Lite_Process', 'prdd_lite_hidden_order_itemmeta' ), 10, 1 );
+			add_filter( 'woocommerce_add_to_cart_validation', array( 'Prdd_Lite_Validation', 'prdd_lite_get_validate_add_cart_item' ), 10, 3 );
 
 			if ( true === is_admin() ) {
 				add_filter( 'ts_deativate_plugin_questions', array( 'Prdd_Lite_All_Component', 'prdd_lite_deactivate_add_questions' ), 10, 1 );
@@ -147,7 +147,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 */
 		public function prdd_lite_update_db_check() {
 			$prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
-			if ( $prdd_plugin_version != $this->get_plugin_version() ) {
+			if ( $prdd_plugin_version !== $this->get_plugin_version() ) {
 				update_option( 'woocommerce_prdd_lite_db_version', '2.0' );
 			}
 
@@ -190,7 +190,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 */
 		public static function prdd_lite_plugin_row_meta( $links, $file ) {
 			$plugin_base_name = plugin_basename( __FILE__ );
-			if ( $file == $plugin_base_name ) {
+			if ( $file === $plugin_base_name ) {
 				$row_meta = array(
 					'upgrade_to_pro' => '<a href="' . esc_url( apply_filters( 'woocommerce_prdd_lite_support_url', 'https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite' ) ) . '" title="' . esc_attr( __( 'Go Pro', 'woocommerce-prdd-lite' ) ) . '">' . __( 'Premium version', 'woocommerce-prdd-lite' ) . '</a>',
 				);
@@ -238,16 +238,16 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		public function prdd_lite_my_enqueue_scripts_css() {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
 
-			if ( 'product' == get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
-			'woocommerce_prdd_lite_page' == $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
-			'bulk_product_settings' == $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( 'product' === get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
+			'woocommerce_prdd_lite_page' === $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
+			'bulk_product_settings' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				wp_enqueue_style( 'prdd', plugins_url( '/css/prdd.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-datepick', plugins_url( '/css/jquery.datepick.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-lite-tabstyle-1', plugins_url( '/css/zozo.tabs.min.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-lite-tabstyle-2', plugins_url( '/css/style.css', __FILE__ ), '', $plugin_version_number, false );
 			}
 
-			if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' == $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 				wp_enqueue_style( 'prdd-woocommerce_admin_styles', plugins_url() . '/woocommerce/assets/css/admin.css', '', $plugin_version_number, false );
 				wp_enqueue_style( 'datepicker', plugins_url( '/css/datepicker.css', __FILE__ ), '', $plugin_version_number, false );
 			}
@@ -263,9 +263,9 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		public function prdd_lite_my_enqueue_scripts_js() {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
 
-			if ( 'product' == get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
-			'woocommerce_prdd_lite_page' == $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
-			'bulk_product_settings' == $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( 'product' === get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
+			'woocommerce_prdd_lite_page' === $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
+			'bulk_product_settings' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 
 				wp_register_script( 'prdd-lite-multiDatepicker', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/jquery-ui.multidatespicker.js', '', $plugin_version_number, false );
 				wp_enqueue_script( 'prdd-lite-multiDatepicker' );
@@ -277,7 +277,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			}
 
 			// Below files are only to be included on prdd settings page.
-			if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' == $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 
 				wp_register_script( 'multiDatepicker', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/jquery-ui.multidatespicker.js', '', $plugin_version_number, false );
 				wp_enqueue_script( 'multiDatepicker' );
@@ -288,7 +288,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 				$current_language = get_option( 'prdd_lite_language' );
 
-				if ( '' == $current_language ) {
+				if ( '' === $current_language ) {
 					$current_language = 'en-GB';
 				}
 				wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
@@ -308,7 +308,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			global $post;
 			if ( is_product() || is_page() ) {
 				$prdd_settings = get_post_meta( $post->ID, '_woo_prdd_lite_enable_delivery_date', true );
-				if ( isset( $prdd_settings ) && 'on' == $prdd_settings ) {
+				if ( isset( $prdd_settings ) && 'on' === $prdd_settings ) {
 					$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
 					wp_enqueue_script( 'jquery' );
 					wp_enqueue_script( 'jquery-ui-datepicker' );
@@ -318,7 +318,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 					$current_language = get_option( 'prdd_lite_language' );
 
-					if ( '' == $current_language ) {
+					if ( '' === $current_language ) {
 						$current_language = 'en-GB';
 					}
 					wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
@@ -338,15 +338,15 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			global $post;
 			if ( is_product() || is_page() ) {
 				$prdd_settings = get_post_meta( $post->ID, '_woo_prdd_lite_enable_delivery_date', true );
-				if ( isset( $prdd_settings ) && 'on' == $prdd_settings ) {
+				if ( isset( $prdd_settings ) && 'on' === $prdd_settings ) {
 					$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
 
 					$calendar_theme     = get_option( 'prdd_lite_theme' );
 					$calendar_theme_sel = '';
-					if ( '' != $calendar_theme ) {
+					if ( '' !== $calendar_theme ) {
 						$calendar_theme_sel = $calendar_theme;
 					}
-					if ( '' == $calendar_theme_sel ) {
+					if ( '' === $calendar_theme_sel ) {
 						$calendar_theme_sel = 'smoothness';
 					}
 
