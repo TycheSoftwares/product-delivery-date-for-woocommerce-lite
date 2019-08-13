@@ -9,7 +9,7 @@
  * Load all the necessary files
  */
 require_once 'includes/class-prdd-privacy-policy-lite.php';
-require_once 'includes/admin/prdd-lite-meta-box.php';
+require_once 'includes/admin/class-prdd-lite-meta-box.php';
 require_once 'includes/class-prdd-lite-common.php';
 require_once 'includes/prdd-lite-config.php';
 require_once 'includes/admin/class-prdd-lite-delivery-price.php';
@@ -73,11 +73,11 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			// Add Meta box for the Product Delivery Date Settings on the product edit page.
 			define( 'PRDD_LITE_DELIVERIES_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
-			add_action( 'add_meta_boxes', array( 'prdd_lite_meta_box_class', 'prdd_lite_box' ), 10 );
-			add_action( 'admin_footer', array( 'prdd_lite_meta_box_class', 'prdd_lite_print_js' ) );
+			add_action( 'add_meta_boxes', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_box' ), 10 );
+			add_action( 'admin_footer', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_print_js' ) );
 
-			add_action( 'woocommerce_process_product_meta', array( 'prdd_lite_meta_box_class', 'prdd_lite_process_box' ), 1, 2 );
-			add_action( 'woocommerce_duplicate_product', array( 'prdd_lite_meta_box_class', 'prdd_lite_product_duplicate' ), 10, 2 );
+			add_action( 'woocommerce_process_product_meta', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_process_box' ), 1, 2 );
+			add_action( 'woocommerce_duplicate_product', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_product_duplicate' ), 10, 2 );
 
 			// Global Menu.
 			add_action( 'admin_menu', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_admin_menu' ) );
