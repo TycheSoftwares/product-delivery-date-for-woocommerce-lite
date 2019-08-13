@@ -19,7 +19,7 @@ class Prdd_View_Deliveries_Lite {
 	 * @since 1.0
 	 */
 	public static function prdd_lite_woocommerce_prdd_history_page() {
-		if ( isset( sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if ( isset( $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
 		} else {
 			$action = '';
@@ -31,7 +31,7 @@ class Prdd_View_Deliveries_Lite {
 
 		if ( 'history' === $action || '' === $action ) {
 			global $wpdb;
-			include_once 'prdd-lite-class-view-deliveries-table.php';
+			include_once 'class-prdd-lite-view-deliveries-table.php';
 			$prdd_table = new PRDD_Lite_View_Deliveries_Table();
 			$prdd_table->prdd_lite_prepare_items();
 
