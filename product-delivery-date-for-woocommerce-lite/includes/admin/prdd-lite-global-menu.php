@@ -7,14 +7,14 @@
  */
 
 include_once( 'prdd-lite-delivery-settings.php' );
-include_once( 'prdd-lite-view-deliveries.php' );
+include_once( 'class-prdd-lite-view-deliveries.php' );
 
 class PRDD_Lite_Global_Menu {
 
     public static function prdd_lite_admin_menu() {
         add_menu_page( 'Product Delivery Date', 'Product Delivery Date', 'manage_woocommerce', 'woocommerce_prdd_lite_page', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_global_menu_page' ) );
 
-        $page = add_submenu_page( 'woocommerce_prdd_lite_page', __( 'View Deliveries', 'woocommerce-prdd-lite' ), __( 'View Deliveries', 'woocommerce-prdd-lite' ), 'manage_woocommerce', 'woocommerce_prdd_lite_history_page', array( 'view_deliveries_lite', 'prdd_lite_woocommerce_prdd_history_page' ) );
+        $page = add_submenu_page( 'woocommerce_prdd_lite_page', __( 'View Deliveries', 'woocommerce-prdd-lite' ), __( 'View Deliveries', 'woocommerce-prdd-lite' ), 'manage_woocommerce', 'woocommerce_prdd_lite_history_page', array( 'Prdd_View_Deliveries_Lite', 'prdd_lite_woocommerce_prdd_history_page' ) );
 
         $page = add_submenu_page( 'woocommerce_prdd_lite_page', __( 'Settings', 'woocommerce-prdd-lite' ), __( 'Settings', 'woocommerce-prdd-lite' ), 'manage_woocommerce', 'woocommerce_prdd_lite_page', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_global_menu_page' ) );
 
