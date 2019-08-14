@@ -14,8 +14,8 @@ require_once 'includes/class-prdd-lite-common.php';
 require_once 'includes/prdd-lite-config.php';
 require_once 'includes/admin/class-prdd-lite-delivery-price.php';
 require_once 'includes/admin/class-prdd-lite-estimate-delivery.php';
-require_once 'includes/admin/prdd-lite-delivery-settings.php';
-require_once 'includes/admin/prdd-lite-global-menu.php';
+require_once 'includes/admin/class-prdd-lite-delivery-settings.php';
+require_once 'includes/admin/class-prdd-lite-global-menu.php';
 require_once 'includes/class-prdd-lite-process.php';
 require_once 'includes/class-prdd-lite-validation.php';
 

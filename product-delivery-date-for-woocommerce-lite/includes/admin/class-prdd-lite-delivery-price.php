@@ -12,14 +12,14 @@
  */
 load_plugin_textdomain( 'prdd_lite_delivery_price', false, dirname( plugin_basename( __FILE__ ) ) . '/' );
 
-if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
+if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 
 	/**
 	 * Weekday delivery charges class.
 	 *
 	 * @since 1.0
 	 */
-	class prdd_lite_delivery_price {
+	class Prdd_Lite_Delivery_Price {
 
 		/**
 		 * Default constructor
@@ -195,7 +195,7 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 						</tr>';
 				}
 			}
-			echo $special_price_str;
+			esc_html( $special_price_str );
 		}
 
 		/**
@@ -206,16 +206,16 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 		 * @since 2.8
 		 */
 		public static function prdd_save_delivery_charges( $post_id ) {
-			$delivery_weekday         = $_POST['delivery_weekday'];
-			$weekday_date             = $_POST['weekday_date'];
-			$price                    = $_POST['price'];
-			$prdd_special_delivery_id = $_POST['prdd_special_delivery_id'];
+			$delivery_weekday         = isset( $_POST['delivery_weekday'] ) ? sanitize_text_field( wp_unslash( $_POST['delivery_weekday'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+			$weekday_date             = isset( $_POST['weekday_date'] ) ? sanitize_text_field( wp_unslash( $_POST['weekday_date'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+			$price                    = isset( $_POST['price'] ) ? sanitize_text_field( wp_unslash( $_POST['price'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+			$prdd_special_delivery_id = isset( $_POST['prdd_special_delivery_id'] ) ? sanitize_text_field( wp_unslash( $_POST['prdd_special_delivery_id'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 			$delivery_special_prices  = get_post_meta( $post_id, 'delivery_special_price', true );
-			if ( $delivery_special_prices == '' || $delivery_special_prices == '{}' || $delivery_special_prices == '[]' ) {
+			if ( '' === $delivery_special_prices || '{}' === $delivery_special_prices || '[]' === $delivery_special_prices ) {
 				$delivery_special_prices = array();
 			}
 
-			if ( $prdd_special_delivery_id != '' ) {
+			if ( '' !== $prdd_special_delivery_id ) {
 				$cnt = $prdd_special_delivery_id;
 			} else {
 				$cnt = 0;
@@ -224,9 +224,9 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 				}
 			}
 
-			if ( $weekday_date != '' ) {
+			if ( '' !== $weekday_date ) {
 				list( $day, $month, $year ) = explode( '-', $weekday_date );
-				$weekday_date               = date( 'Y-m-d', mktime( 0, 0, 0, $month, $day, $year ) );
+				$weekday_date               = date( 'Y-m-d', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
 			}
 
 			$delivery_special_prices[ $cnt ]['delivery_special_weekday'] = $delivery_weekday;
@@ -242,14 +242,14 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 		 *
 		 * @since 1.0
 		 */
-		function prdd_delete_special_delivery() {
+		public function prdd_delete_special_delivery() {
 			global $wpdb;
-			$post_id                     = $_POST['post_id'];
-			$prdd_special_delivery_id    = $_POST['prdd_special_delivery_id'];
+			$post_id                     = isset( $_POST['post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+			$prdd_special_delivery_id    = isset( $_POST['prdd_special_delivery_id'] ) ? sanitize_text_field( wp_unslash( $_POST['prdd_special_delivery_id'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 			$delivery_special_prices     = get_post_meta( $post_id, 'delivery_special_price', true );
 			$new_delivery_special_prices = array();
 			foreach ( $delivery_special_prices as $key => $value ) {
-				if ( $key != $prdd_special_delivery_id ) {
+				if ( $key !== $prdd_special_delivery_id ) {
 					$new_delivery_special_prices[] = $value;
 				}
 			}
@@ -262,10 +262,10 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 			if ( is_array( $delivery_special_prices ) && $delivery_special_price_cnt > 0 ) {
 				foreach ( $new_delivery_special_prices as $key => $value ) {
 					$special_price_str .= '<tr id="row_' . $key . '">';
-					if ( $value['delivery_special_weekday'] != '' ) {
+					if ( '' !== $value['delivery_special_weekday'] ) {
 						$weekday_value      = $value['delivery_special_weekday'];
 						$special_price_str .= '<td>' . $weekdays[ $weekday_value ] . '</td>';
-					} elseif ( $value['delivery_special_date'] != '' ) {
+					} elseif ( '' !== $value['delivery_special_date'] ) {
 						$special_price_str .= '<td>' . $value['delivery_special_date'] . '</td>';
 					} else {
 						$special_price_str .= '<td>&nbsp;</td>';
@@ -276,7 +276,7 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 						</tr>';
 				}
 			}
-			echo $special_price_str;
+			esc_html( $special_price_str );
 		}
 
 		/**
@@ -310,13 +310,13 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 				foreach ( $delivery_special_prices as $key => $values ) {
 					list( $year, $month, $day ) = explode( '-', $delivery_date );
 					$delivery_day               = date( 'l', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
-					if ( isset( $values['delivery_special_weekday'] ) && isset( $weekdays[ $values['delivery_special_weekday'] ] ) && $delivery_day == $weekdays[ $values['delivery_special_weekday'] ] ) {
+					if ( isset( $values['delivery_special_weekday'] ) && isset( $weekdays[ $values['delivery_special_weekday'] ] ) && $delivery_day === $weekdays[ $values['delivery_special_weekday'] ] ) {
 						$special_delivery_price = $values['delivery_special_price'];
 					}
 				}
 				foreach ( $delivery_special_prices as $key => $values ) {
 					list( $year, $month, $day ) = explode( '-', $delivery_date );
-					if ( $values['delivery_special_date'] == $delivery_date ) {
+					if ( $values['delivery_special_date'] === $delivery_date ) {
 						$special_delivery_price = $values['delivery_special_price'];
 					}
 				}
@@ -428,8 +428,8 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 			$delivery_special_prices = get_post_meta( $product_id, 'delivery_special_price', true );
 			$special_delivery_price  = '';
 			$include_price           = 'Yes';
-			if ( isset( $global_settings->prdd_disable_price_calculation_on_dates ) && 'on' == $global_settings->prdd_disable_price_calculation_on_dates ) {
-				if ( in_array( $delivery_date, $date_array ) ) {
+			if ( isset( $global_settings->prdd_disable_price_calculation_on_dates ) && 'on' === $global_settings->prdd_disable_price_calculation_on_dates ) {
+				if ( in_array( $delivery_date, $date_array, true ) ) {
 					$include_price = 'No';
 				}
 			}
@@ -448,9 +448,9 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 				$delivery_day     = date( 'w', strtotime( $date ) ); // phpcs:ignore
 				$delivery_weekday = 'prdd_weekday_' . $delivery_day;
 				foreach ( $delivery_special_prices as $key => $values ) {
-					if ( isset( $values['delivery_special_weekday'] ) && $values['delivery_special_weekday'] == $delivery_weekday ) {
+					if ( isset( $values['delivery_special_weekday'] ) && $values['delivery_special_weekday'] === $delivery_weekday ) {
 						$special_delivery_price = $values['delivery_special_price'];
-					} elseif ( isset( $values['delivery_special_date'] ) && $values['delivery_special_date'] == $date ) {
+					} elseif ( isset( $values['delivery_special_date'] ) && $values['delivery_special_date'] === $date ) {
 						$special_delivery_price = $values['delivery_special_price'];
 					}
 				}
@@ -585,13 +585,12 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 				wc_add_order_item_meta( $order_item_id, get_option( 'delivery_item-meta-charges' ), $currency_symbol . $delivery[0]['special_delivery_price'] );
 			}
 
-			if ( version_compare( WOOCOMMERCE_VERSION, '2.5' ) < 0 ) {
-			} else {
+			if ( version_compare( WOOCOMMERCE_VERSION, '2.5' ) > 0 ) {
 				// Code where the Delivery dates are not displayed in the customer new order email from WooCommerce version 2.5.
 				$cache_key       = WC_Cache_Helper::get_cache_prefix( 'orders' ) . 'item_meta_array_' . $order_item_id;
 				$item_meta_array = wp_cache_get( $cache_key, 'orders' );
 				if ( false !== $item_meta_array ) {
-					$metadata = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value, meta_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d AND meta_key = %s ORDER BY meta_id", absint( $order_item_id ), get_option( 'delivery_item-meta-charges' ) ) );
+					$metadata = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value, meta_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d AND meta_key = %s ORDER BY meta_id", absint( $order_item_id ), get_option( 'delivery_item-meta-charges' ) ) ); // phpcs:ignore
 					foreach ( $metadata as $metadata_row ) {
 						$item_meta_array[ $metadata_row->meta_id ] = (object) array(
 							'key'   => $metadata_row->meta_key,
@@ -604,5 +603,5 @@ if ( ! class_exists( 'prdd_lite_delivery_price' ) ) {
 		}
 	} // EOF Class
 } // EOF if class exist
-$prdd_lite_delivery_price = new prdd_lite_delivery_price();
+$prdd_lite_delivery_price = new Prdd_Lite_Delivery_Price();
 ?>

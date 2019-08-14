@@ -18,5 +18,4 @@ defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 	include_once 'class-prdd-lite-woocommerce.php';
-	$prdd_lite_woocommerce = new Prdd_Lite_Woocommerce();
 }

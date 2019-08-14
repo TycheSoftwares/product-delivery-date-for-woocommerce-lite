@@ -3,14 +3,24 @@
  * Product Delivery Date Lite Global Settings
  *
  * @author Tyche Softwares
+ * @package Product-Delivery-Date-Pro-for-WooCommerce
  * @since 1.7
  */
 
-require_once 'prdd-lite-delivery-settings.php';
+/**
+ * Include the files needed.
+ */
+require_once 'class-prdd-lite-delivery-settings.php';
 require_once 'class-prdd-view-deliveries-lite.php';
 
+/**
+ * Global Menu
+ */
 class PRDD_Lite_Global_Menu {
 
+	/**
+	 * Add Menu page
+	 */
 	public static function prdd_lite_admin_menu() {
 		add_menu_page( 'Product Delivery Date', 'Product Delivery Date', 'manage_woocommerce', 'woocommerce_prdd_lite_page', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_global_menu_page' ) );
 
@@ -22,48 +32,52 @@ class PRDD_Lite_Global_Menu {
 		do_action( 'prdd_lite_add_submenu' );
 	}
 
-
+	/**
+	 * Global Menu Page
+	 */
 	public static function prdd_lite_global_menu_page() {
-		if ( isset( $_GET['action'] ) ) {
-			$action = $_GET['action'];
+		if ( isset( $_GET['action'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification
+			$action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
 		} else {
 			$action = '';
 		}
-		if ( $action == 'settings' || $action == '' ) {
-			$active_settings = 'nav-tab-active';
-		} else {
-			$active_settings = '';
+
+		$active_settings              = '';
+		$active_labels                = '';
+		$active_google_sync           = '';
+		$active_bulk_product_settings = '';
+
+		switch ( $action ) {
+			case 'settings':
+			case '':
+				$active_settings = 'nav-tab-active';
+				break;
+			case 'labels':
+				$active_labels = 'nav-tab-active';
+				break;
+			case 'prdd_google_calendar_sync':
+				$active_google_sync = 'nav-tab-active';
+				break;
+			case 'bulk_product_settings':
+				$active_bulk_product_settings = 'nav-tab-active';
+				break;
+			default:
+				$active_settings = 'nav-tab-active';
+				break;
 		}
 
-		if ( $action == 'labels' ) {
-			$active_labels = 'nav-tab-active';
-		} else {
-			$active_labels = '';
-		}
-
-		if ( $action == 'prdd_google_calendar_sync' ) {
-			$active_google_sync = 'nav-tab-active';
-		} else {
-			$active_google_sync = '';
-		}
-
-		if ( $action == 'bulk_product_settings' ) {
-			$active_bulk_product_settings = 'nav-tab-active';
-		} else {
-			$active_bulk_product_settings = '';
-		}
 		settings_errors();
 		?>
 		<h2 class="nav-tab-wrapper woo-nav-tab-wrapper">
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php echo $active_settings; ?>"> <?php _e( 'Global Delivery Settings', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php echo $active_labels; ?>"> <?php _e( 'Field Labels', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php echo $active_google_sync; ?>"> <?php _e( 'Google Calendar Sync', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php esc_attr( $active_settings ); ?>"> <?php esc_html_e( 'Global Delivery Settings', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php esc_attr( $active_labels ); ?>"> <?php esc_html_e( 'Field Labels', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php esc_attr( $active_google_sync ); ?>"> <?php esc_html_e( 'Google Calendar Sync', 'woocommerce-prdd' ); ?> </a>
 			<?php do_action( 'prdd_lite_add_settings_tab' ); ?>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php echo $active_bulk_product_settings; ?>"> <?php _e( 'Bulk Product Settings', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php esc_attr( $active_bulk_product_settings ); ?>"> <?php esc_html_e( 'Bulk Product Settings', 'woocommerce-prdd' ); ?> </a>
 		</h2>
 		<?php
 		do_action( 'prdd_lite_add_tab_content' );
-		if ( $action == 'labels' ) {
+		if ( 'labels' === $action ) {
 			print( '<div id="content">
                 <form method="post" action="options.php">' );
 					settings_fields( 'prdd_labels' );
@@ -73,7 +87,7 @@ class PRDD_Lite_Global_Menu {
             </div>' );
 		}
 
-		if ( $action == 'settings' || $action == '' ) {
+		if ( 'settings' === $action || '' === $action ) {
 			print( '<div id="content">
                 <form method="post" action="options.php">' );
 					settings_fields( 'prdd_lite_settings' );
@@ -83,7 +97,7 @@ class PRDD_Lite_Global_Menu {
             </div>' );
 		}
 
-		if ( $action == 'prdd_google_calendar_sync' ) {
+		if ( 'prdd_google_calendar_sync' === $action ) {
 			print( '<div id="content">
                 <form method="post" action="options.php">' );
 					settings_fields( 'ts_google_calendar_sync' );
@@ -93,9 +107,9 @@ class PRDD_Lite_Global_Menu {
             </div>' );
 		}
 
-		if ( $action == 'bulk_product_settings' ) {
+		if ( 'bulk_product_settings' === $action ) {
 			$plugin_version_number = get_option( 'woocommerce_prdd_db_version' );
-			wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core' ), $plugin_version_number );
+			wp_register_script( 'select2', plugins_url() . '/woocommerce/assets/js/select2/select2.min.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core' ), $plugin_version_number, false );
 			wp_enqueue_script( 'select2' );
 
 			$args    = array(
@@ -109,22 +123,19 @@ class PRDD_Lite_Global_Menu {
 			<div class="wrap">
 				<h5>Add delivery settings for multiple products together. Selected settings will be shown on the selected edit product place.</h5>
 				<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-				<form method="post" action="<?php echo get_admin_url(); ?>/admin.php?page=woocommerce_prdd_page&action=bulk_product_settings&action_type=save" style="opacity:0.5">
+				<form method="post" action="<?php esc_attr( get_admin_url() ); ?>/admin.php?page=woocommerce_prdd_page&action=bulk_product_settings&action_type=save" style="opacity:0.5">
 					<div id="prdd_product_list">
 						<table class="form-table">
 							<tr>
 								<th>
-									<label for="prdd_product_list"> <?php _e( 'Products:', 'woocommerce-prdd' ); ?> </label>
+									<label for="prdd_product_list"> <?php esc_html_e( 'Products:', 'woocommerce-prdd-lite' ); ?> </label>
 								</th>
 								<td style="width:fit-content" >
 									<select id="prdd_products" name="prdd_products[]" class="chosen_select" style="width: 300px" multiple="multiple" placeholder="Select a Product" disabled>
-										<option value="all_products"><?php _e( 'All Products', 'woocommerce-prdd' ); ?></option>
+										<option value="all_products"><?php esc_html_e( 'All Products', 'woocommerce-prdd-lite' ); ?></option>
 										<?php
 										foreach ( $product as $pkey => $pval ) {
-											?>
-											 
-											<option value="<?php echo $pval->ID; ?>"><?php echo $pval->post_title; ?></option>
-											<?php
+											printf( esc_html( "<option value='%s'>%s</option>" ), esc_attr( $pval->ID ), esc_attr( $pval->post_title ) );
 										}
 										?>
 									</select>
@@ -135,19 +146,19 @@ class PRDD_Lite_Global_Menu {
 					<script type="text/javascript">
 					jQuery( document ).ready( function () {
 						jQuery( ".chosen_select" ).select2();
-						 jQuery("#tabbed-nav").zozoTabs({
-							   theme: "silver",
-							   orientation: "vertical",
-							   position: "top-left",
-							   size: "medium",
-							   animation: {
-									easing: "easeInOutExpo",
-									duration: 400,
-									effects: 'slideV'
-							  },
-						 });
+						jQuery("#tabbed-nav").zozoTabs({
+							theme: "silver",
+							orientation: "vertical",
+							position: "top-left",
+							size: "medium",
+							animation: {
+								easing: "easeInOutExpo",
+								duration: 400,
+								effects: 'slideV'
+							},
+						});
 
-						 jQuery("#tabbed-nav li").addClass("z-disabled");
+						jQuery("#tabbed-nav li").addClass("z-disabled");
 					});
 					</script>
 					<div id="prdd_product_settings" >
@@ -173,19 +184,22 @@ class PRDD_Lite_Global_Menu {
 		}
 	}
 
+	/**
+	 * Plugin Settings.
+	 */
 	public static function prdd_lite_delivery_settings() {
 
 		add_settings_section(
-			'prdd_lite_delivery_settings_section',      // ID used to identify this section and with which to register options
-			__( 'Settings', 'woocommerce-prdd' ),       // Title to be displayed on the administration page
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_delivery_settings_section_callback' ),     // Callback used to render the description of the section
-			'prdd_lite_settings_page'               // Page on which to add this section of options
+			'prdd_lite_delivery_settings_section',      // ID used to identify this section and with which to register options.
+			__( 'Settings', 'woocommerce-prdd' ),       // Title to be displayed on the administration page.
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_delivery_settings_section_callback' ),     // Callback used to render the description of the section.
+			'prdd_lite_settings_page'               // Page on which to add this section of options.
 		);
 
 		add_settings_field(
 			'prdd_lite_language',
 			__( 'Language', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_language_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_language_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Choose the language for your delivery calendar.', 'woocommerce-prdd' ) )
@@ -194,7 +208,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_date_format',
 			__( 'Date Format', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_date_format_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_date_format_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'The format in which the delivery date appears to the customers on the product page once the date is selected.', 'woocommerce-prdd' ) )
@@ -203,7 +217,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_months',
 			__( 'Number of months to show in calendar', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_months_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_months_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'The number of months to be shown on the calendar. If the delivery dates spans across 2 months, then dates of 2 months can be shown simultaneously without the need to press Next or Back buttons.', 'woocommerce-prdd' ) )
@@ -212,7 +226,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_calendar_day',
 			__( 'First Day on Calendar', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_calendar_day_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_calendar_day_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Choose the first day of week displayed on the Delivery Date calendar.', 'woocommerce-prdd' ) )
@@ -221,7 +235,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_theme',
 			__( 'Preview Theme & Language', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_theme_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_theme_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Select the theme for the calendar. You can choose a theme which blends with the design of your website.', 'woocommerce-prdd' ) )
@@ -230,7 +244,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_global_holidays',
 			__( 'No delivery on these dates', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_global_holidays_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_global_holidays_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Select dates for which the delivery will be completely disabled for all the products in your WooCommerce store. <br> The dates selected here will be unavailable for all products. Please click on the date in calendar to add or delete the date from the list.', 'woocommerce-prdd' ) )
@@ -239,7 +253,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_enable_rounding',
 			__( 'Enable Rounding of Prices', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_enable_rounding_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_rounding_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Rounds the Price to the nearest Integer value.', 'woocommerce-prdd' ) )
@@ -248,7 +262,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_lite_time_format',
 			__( 'Time Format', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_lite_time_format_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_time_format_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'The format in which the delivery time appears to the customers on the product page once the date is selected.', 'woocommerce-prdd' ) )
@@ -257,7 +271,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_add_to_calendar',
 			__( 'Show "Add to Calendar" button on Order Received page', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_add_to_calendar_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_add_to_calendar_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Shows the \'Add to Calendar\' button on the Order Received page. On clicking the button, an ICS file will be downloaded.', 'woocommerce-prdd' ) )
@@ -266,7 +280,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_add_to_email',
 			__( 'Send delivery information as attachments (ICS files) in email notifications', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_add_to_email_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_add_to_email_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Allow customers to export deliveries as ICS file after placing an order. Sends ICS files as attachments in email notifications.', 'woocommerce-prdd' ) )
@@ -275,7 +289,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_global_selection',
 			__( 'Duplicate dates from first product in the cart to other products:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_global_selection_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_global_selection_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Please select this checkbox if you want to select the date globally for All products once selected for a product and added to cart.', 'woocommerce-prdd' ) )
@@ -284,7 +298,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_availability_display',
 			__( 'Enable Availability Display on the Product page:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_availability_display_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_availability_display_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Please select this checkbox if you want to display the number of deliveries available for a given product on a given date and time.', 'woocommerce-prdd' ) )
@@ -293,7 +307,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_disable_price_calculation_on_dates',
 			__( 'Apply one-time delivery charges for multiple products:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_disable_price_calculation_on_dates_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_disable_price_calculation_on_dates_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Select this checkbox to restrict delivery charges to apply only once for multiple products with the same delivery date in the cart.', 'woocommerce-prdd' ) )
@@ -302,7 +316,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_enable_delivery_edit',
 			__( 'Allow Deliveries to be editable:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_allow_deliveries_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_allow_deliveries_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Enabling this option will allow Deliveries to be editable from Cart and Checkout page', 'woocommerce-prdd' ) )
@@ -311,7 +325,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_enable_delivery_reschedule',
 			__( 'Allow Deliveries to be reschedulable:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_allow_reschedulable_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_allow_reschedulable_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Enabling this option will allow Deliveries to be reschedulable from My Account page', 'woocommerce-prdd' ) )
@@ -320,7 +334,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_delivery_reschedule_days',
 			__( 'Minimum number of days for rescheduling:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_reschedulable_days_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_reschedulable_days_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
 			array( __( 'Minimum number of days before the delivery date, after which Delivery cannot be rescheduled.', 'woocommerce-prdd' ) )
@@ -407,19 +421,21 @@ class PRDD_Lite_Global_Menu {
 		);
 	}
 
-
+	/**
+	 * Label Settings
+	 */
 	public static function prdd_delivery_labels() {
 		add_settings_section(
-			'prdd_delivery_product_page_labels_section',        // ID used to identify this section and with which to register options
-			__( 'Labels on product page', 'woocommerce-prdd' ),     // Title to be displayed on the administration page
-			array( 'prdd_lite_delivery_settings', 'prdd_delivery_product_page_labels_section_callback' ),       // Callback used to render the description of the section
-			'prdd_labels_page'              // Page on which to add this section of options
+			'prdd_delivery_product_page_labels_section',        // ID used to identify this section and with which to register options.
+			__( 'Labels on product page', 'woocommerce-prdd' ),     // Title to be displayed on the administration page.
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_delivery_product_page_labels_section_callback' ),       // Callback used to render the description of the section.
+			'prdd_labels_page'              // Page on which to add this section of options.
 		);
 
 		add_settings_field(
 			'delivery_date-label',
 			__( 'Delivery Date:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_date_label_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_date_label_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_product_page_labels_section',
 			array( __( 'Delivery Date label on product page.', 'woocommerce-prdd' ) )
@@ -428,7 +444,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_time-label',
 			__( 'Delivery Time:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_time_label_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_time_label_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_product_page_labels_section',
 			array( __( 'Delivery Time label on the product page.', 'woocommerce-prdd' ) )
@@ -437,23 +453,23 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_time-select-option',
 			__( 'Choose Time Text:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_time_select_option_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_time_select_option_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_product_page_labels_section',
 			array( __( 'Text for the 1st option of Time Slot dropdown field that instructs the customer to select a time slot.', 'woocommerce-prdd' ) )
 		);
 
 		add_settings_section(
-			'prdd_delivery_order_received_page_labels_section',     // ID used to identify this section and with which to register options
-			__( 'Labels on order received page and in email notification', 'woocommerce-prdd' ),        // Title to be displayed on the administration page
-			array( 'prdd_lite_delivery_settings', 'prdd_delivery_order_received_page_labels_section_callback' ),        // Callback used to render the description of the section
-			'prdd_labels_page'              // Page on which to add this section of options
+			'prdd_delivery_order_received_page_labels_section',     // ID used to identify this section and with which to register options.
+			__( 'Labels on order received page and in email notification', 'woocommerce-prdd' ),        // Title to be displayed on the administration page.
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_delivery_order_received_page_labels_section_callback' ),        // Callback used to render the description of the section.
+			'prdd_labels_page'              // Page on which to add this section of options.
 		);
 
 		add_settings_field(
 			'delivery_item-meta-date',
 			__( 'Delivery Date:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_meta_date_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_meta_date_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_order_received_page_labels_section',
 			array( __( 'Delivery Date label on the order received page and email notification.', 'woocommerce-prdd' ) )
@@ -462,7 +478,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_item-meta-time',
 			__( 'Delivery Time:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_meta_time_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_meta_time_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_order_received_page_labels_section',
 			array( __( 'Delivery Time label on the order received page and email notification.', 'woocommerce-prdd' ) )
@@ -471,7 +487,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_ics-file-name',
 			__( 'ICS File Name:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_ics_file_name_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_ics_file_name_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_order_received_page_labels_section',
 			array( __( 'ICS File name.', 'woocommerce-prdd' ) )
@@ -480,23 +496,23 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_item-meta-charges',
 			__( 'Delivery Charges:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_meta_charges_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_meta_charges_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_order_received_page_labels_section',
 			array( __( 'Delivery Charges label on the order received page and email notification.', 'woocommerce-prdd' ) )
 		);
 
 		add_settings_section(
-			'prdd_delivery_cart_page_labels_section',       // ID used to identify this section and with which to register options
-			__( 'Labels on Cart & Check-out Page', 'woocommerce-prdd' ),        // Title to be displayed on the administration page
-			array( 'prdd_lite_delivery_settings', 'prdd_delivery_cart_page_labels_section_callback' ),      // Callback used to render the description of the section
-			'prdd_labels_page'              // Page on which to add this section of options
+			'prdd_delivery_cart_page_labels_section',       // ID used to identify this section and with which to register options.
+			__( 'Labels on Cart & Check-out Page', 'woocommerce-prdd' ),        // Title to be displayed on the administration page.
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_delivery_cart_page_labels_section_callback' ),      // Callback used to render the description of the section.
+			'prdd_labels_page'              // Page on which to add this section of options.
 		);
 
 		add_settings_field(
 			'delivery_item-cart-date',
 			__( 'Delivery Date:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_cart_date_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_cart_date_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_cart_page_labels_section',
 			array( __( 'Delivery Date label on the cart and checkout page.', 'woocommerce-prdd' ) )
@@ -505,7 +521,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_item-cart-time',
 			__( 'Delivery Time:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_cart_time_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_cart_time_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_cart_page_labels_section',
 			array( __( 'Delivery Time label on the cart and checkout page.', 'woocommerce-prdd' ) )
@@ -514,23 +530,23 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'delivery_item-cart-charges',
 			__( 'Delivery Charges:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'delivery_item_cart_charges_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'delivery_item_cart_charges_callback' ),
 			'prdd_labels_page',
 			'prdd_delivery_cart_page_labels_section',
 			array( __( 'Delivery Charges label on the cart and checkout page.', 'woocommerce-prdd' ) )
 		);
 
 				add_settings_section(
-					'prdd_estimate_delivery_section',       // ID used to identify this section and with which to register options
-					__( 'Labels for Estimate Delivery Option', 'woocommerce-prdd' ),        // Title to be displayed on the administration page
-					array( 'prdd_lite_delivery_settings', 'prdd_estimate_delivery_section_callback' ),        // Callback used to render the description of the section
-					'prdd_labels_page'              // Page on which to add this section of options
+					'prdd_estimate_delivery_section',       // ID used to identify this section and with which to register options.
+					__( 'Labels for Estimate Delivery Option', 'woocommerce-prdd' ),        // Title to be displayed on the administration page.
+					array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_section_callback' ),        // Callback used to render the description of the section.
+					'prdd_labels_page'              // Page on which to add this section of options.
 				);
 
 		add_settings_field(
 			'prdd_estimate_delivery_header',
 			__( 'Estimate Delivery section heading:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_estimate_delivery_header_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_header_callback' ),
 			'prdd_labels_page',
 			'prdd_estimate_delivery_section'
 		);
@@ -538,7 +554,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_estimate_delivery_days_text',
 			__( 'Estimate Delivery display in days text:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_estimate_delivery_days_text_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_days_text_callback' ),
 			'prdd_labels_page',
 			'prdd_estimate_delivery_section',
 			array( __( '<br>Use {{business.days}} shortcode to replace it with the number of business days required for delivery', 'woocommerce-prdd' ) )
@@ -547,7 +563,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_estimate_delivery_date_text',
 			__( 'Estimate Delivery display with specific date text:', 'woocommerce-prdd' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_estimate_delivery_date_text_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_date_text_callback' ),
 			'prdd_labels_page',
 			'prdd_estimate_delivery_section',
 			array( __( '<br>Use {{expected.date}} shortcode to replace it with the expected date of delivery', 'woocommerce-prdd' ) )
@@ -630,14 +646,14 @@ class PRDD_Lite_Global_Menu {
 		add_settings_section(
 			'ts_calendar_sync_general_settings_section',
 			__( 'General Settings', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_sync_general_settings_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_sync_general_settings_callback' ),
 			'ts_google_calendar_sync_page'
 		);
 
 		add_settings_field(
 			'ts_calendar_event_location',
 			__( 'Event Location', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_event_location_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_event_location_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_general_settings_section',
 			array( __( '<br>Enter the text that will be used as location field in event of the Calendar. If left empty, website description is sent instead. <br><i>Note: You can use ADDRESS, FULL_ADDRESS and CITY placeholders which will be replaced by their real values.</i>', 'ts' ) )
@@ -646,7 +662,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_event_summary',
 			__( 'Event summary (name)', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_event_summary_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_event_summary_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_general_settings_section'
 		);
@@ -654,42 +670,23 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_event_description',
 			__( 'Event Description', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_event_description_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_event_description_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_general_settings_section',
 			array( __( '<br>For the above 2 fields, you can use the following placeholders which will be replaced by their real values:&nbsp;SITE_NAME, CLIENT, PRODUCTS, PRODUCT_WITH_QTY, ORDER_DATE_TIME, ORDER_DATE, ORDER_NUMBER, PRICE, PHONE, NOTE, ADDRESS, FULL_ADDRESS , EMAIL (Client\'s email)	', 'ts' ) )
 		);
 
-		/*
-		add_settings_field(
-			'ts_calendar_export_custom_field_type',
-			__( 'Export using', 'ts' ),
-			array( 'ts_google_calendar_sync_settings', 'ts_calendar_export_custom_field_type_callback' ),
-			'ts_google_calendar_sync_page',
-			'ts_calendar_sync_general_settings_section',
-			array( __( '<br>Select the custom type of the field using which you can export your events.', 'ts' ) )
-		);
-
-		add_settings_field(
-			'ts_calendar_export_custom_field',
-			__( 'Custom field to export', 'ts' ),
-			array( 'ts_google_calendar_sync_settings', 'ts_calendar_export_custom_field_callback' ),
-			'ts_google_calendar_sync_page',
-			'ts_calendar_sync_general_settings_section',
-			array( __( '<br>The custom product or order meta field name(key) which will be used to export events. The meta field should be a date field with format YYYY-mm-dd or it should contain UNIX timestamp.<br>If you have both date and time field, please add the name(key) comma(,) seperated.', 'ts' ) )
-		);*/
-
 		add_settings_section(
 			'prdd_calendar_sync_customer_settings_section',
 			__( 'Customer Add to Calendar button Settings', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_calendar_sync_customer_settings_section_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_calendar_sync_customer_settings_section_callback' ),
 			'ts_google_calendar_sync_page'
 		);
 
 		add_settings_field(
 			'prdd_add_to_calendar_order_received_page',
 			__( 'Show Add to Calendar button on Order received page', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_add_to_calendar_order_received_page_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_add_to_calendar_order_received_page_callback' ),
 			'ts_google_calendar_sync_page',
 			'prdd_calendar_sync_customer_settings_section',
 			array( __( 'Show Add to Calendar button on the Order Received page for the customers.', 'ts' ) )
@@ -698,7 +695,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_add_to_calendar_customer_email',
 			__( 'Show Add to Calendar button in the Customer notification email', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_add_to_calendar_customer_email_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_add_to_calendar_customer_email_callback' ),
 			'ts_google_calendar_sync_page',
 			'prdd_calendar_sync_customer_settings_section',
 			array( __( 'Show Add to Calendar button in the Customer notification email.', 'ts' ) )
@@ -707,7 +704,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_add_to_calendar_my_account_page',
 			__( 'Show Add to Calendar button on My account', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_add_to_calendar_my_account_page_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_add_to_calendar_my_account_page_callback' ),
 			'ts_google_calendar_sync_page',
 			'prdd_calendar_sync_customer_settings_section',
 			array( __( 'Show Add to Calendar button on My account page for the customers.', 'ts' ) )
@@ -716,7 +713,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_calendar_in_same_window',
 			__( 'Open Calendar in Same Window', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_calendar_in_same_window_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_calendar_in_same_window_callback' ),
 			'ts_google_calendar_sync_page',
 			'prdd_calendar_sync_customer_settings_section',
 			array( __( 'As default, the Calendar is opened in a new tab or window. If you check this option, user will be redirected to the Calendar from the same page, without opening a new tab or window.', 'ts' ) )
@@ -725,14 +722,14 @@ class PRDD_Lite_Global_Menu {
 		add_settings_section(
 			'ts_calendar_sync_admin_settings_section',
 			__( 'Admin Calendar Sync Settings', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_sync_admin_settings_section_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_sync_admin_settings_section_callback' ),
 			'ts_google_calendar_sync_page'
 		);
 
 		add_settings_field(
 			'ts_calendar_sync_integration_mode',
 			__( 'Integration Mode', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_sync_integration_mode_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_sync_integration_mode_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( '<br>Select method of integration. "Sync Automatically" will add the events to the Google calendar, which is set in the "Calendar to be used" field, automatically when a customer places an order. <br>"Sync Manually" will add an "Add to Calendar" button in emails received by admin on New customer order and on the Delivery Calendar page.<br>"Disabled" will disable the integration with Google Calendar.', 'ts' ) )
@@ -741,7 +738,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_key_file_name',
 			__( 'Key file name', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_key_file_name_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_key_file_name_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( '<br>Enter key file name here without extention, e.g. ab12345678901234567890-privatekey.', 'ts' ) )
@@ -750,7 +747,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_service_acc_email_address',
 			__( 'Service account email address', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_service_acc_email_address_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_service_acc_email_address_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( '<br>Enter Service account email address here, e.g. 1234567890@developer.gserviceaccount.com.', 'ts' ) )
@@ -759,7 +756,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_id',
 			__( 'Calendar to be used', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_id_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_id_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( '<br>Enter the ID of the calendar in which your deliveries will be saved, e.g. abcdefg1234567890@group.calendar.google.com.', 'ts' ) )
@@ -768,7 +765,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'ts_calendar_test_connection',
 			'',
-			array( 'prdd_lite_delivery_settings', 'ts_calendar_test_connection_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_calendar_test_connection_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section'
 		);
@@ -776,7 +773,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_admin_add_to_calendar_delivery_calendar',
 			__( 'Show Add to Calendar button on Delivery Calendar page', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_admin_add_to_calendar_delivery_calendar_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_admin_add_to_calendar_delivery_calendar_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( 'Show "Add to Calendar" button on the Product Delivery Date -> View Deliveries.<br><i>Note: This button can be used to export the already placed orders with future deliveries from the current date to the calendar used above.</i>', 'ts' ) )
@@ -785,7 +782,7 @@ class PRDD_Lite_Global_Menu {
 		add_settings_field(
 			'prdd_admin_add_to_calendar_email_notification',
 			__( 'Show Add to Calendar button in New Order email notification', 'ts' ),
-			array( 'prdd_lite_delivery_settings', 'prdd_admin_add_to_calendar_email_notification_callback' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_admin_add_to_calendar_email_notification_callback' ),
 			'ts_google_calendar_sync_page',
 			'ts_calendar_sync_admin_settings_section',
 			array( __( 'Show "Add to Calendar" button in the New Order email notification.', 'ts' ) )
@@ -805,17 +802,6 @@ class PRDD_Lite_Global_Menu {
 			'ts_google_calendar_sync',
 			'ts_calendar_event_description'
 		);
-
-		/*
-		register_setting(
-			'ts_google_calendar_sync',
-			'ts_calendar_export_custom_field_type'
-		);
-
-		register_setting(
-			'ts_google_calendar_sync',
-			'ts_calendar_export_custom_field'
-		);*/
 
 		register_setting(
 			'ts_google_calendar_sync',
