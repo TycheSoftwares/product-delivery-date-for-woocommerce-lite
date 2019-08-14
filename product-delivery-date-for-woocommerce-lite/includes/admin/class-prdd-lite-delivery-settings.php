@@ -25,7 +25,7 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_lite_language_callback( $args ) {
 
-		$language_selected = get_option( 'prdd_lite_language' );
+		$language_selected = get_option( 'prdd_lite_language', '' );
 
 		if ( '' === $language_selected ) {
 			$language_selected = 'en-GB';
@@ -33,15 +33,15 @@ class Prdd_Lite_Delivery_Settings {
 
 		$languages = prdd_lite_get_delivery_arrays( 'prdd_lite_languages' );
 
-		esc_html( '<select id="prdd_lite_language" name="prdd_lite_language">' );
+		echo '<select id="prdd_lite_language" name="prdd_lite_language">';
 		foreach ( $languages as $key => $value ) {
 			$sel = '';
 			if ( $key === $language_selected ) {
 				$sel = 'selected';
 			}
-			esc_html( "<option value= '$key' $sel>$value</option>" );
+			printf( "<option value='%s' %s>%s</option>\n", esc_attr( $key ), esc_attr( $sel ), esc_attr( $value ) );
 		}
-		esc_html( '</select>' );
+		echo '</select>';
 
 		$html = '<label for="prdd_lite_language"> ' . $args[0] . '</label>';
 		esc_html( $html );
@@ -90,12 +90,10 @@ class Prdd_Lite_Delivery_Settings {
 		}
 
 		printf(
-			esc_html(
-				'<select id="prdd_lite_months" name="prdd_lite_months">
-            	<option %s value="1"> 1 </option>
-            	<option %s value="2"> 2 </option>
-				</select>'
-			),
+			'<select id="prdd_lite_months" name="prdd_lite_months">
+			<option %s value="1"> 1 </option>
+			<option %s value="2"> 2 </option>
+			</select>',
 			esc_attr( $no_months_1 ),
 			esc_attr( $no_months_2 )
 		);
@@ -124,7 +122,7 @@ class Prdd_Lite_Delivery_Settings {
 			if ( $key === $day_selected ) {
 				$sel = ' selected ';
 			}
-			printf( esc_html( "<option value='%s' %s>%s</option>" ), esc_attr( $key ), esc_attr( $sel ), esc_attr__( $value, 'woocommerce-prdd-lite' ) ); // phpcs:ignore
+			printf( "<option value='%s' %s>%s</option>\n", esc_attr( $key ), esc_attr( $sel ), esc_attr__( $value, 'woocommerce-prdd-lite' ) ); // phpcs:ignore
 		}
 		echo '</select>';
 		$html = '<label for="prdd_lite_calendar_day"> ' . $args[0] . '</label>';

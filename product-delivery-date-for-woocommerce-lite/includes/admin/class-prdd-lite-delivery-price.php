@@ -107,17 +107,17 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 							<select name="special_delivery_weekday" id="special_delivery_weekday" disabled readonly>
 								<option value=""><?php esc_html_e( 'Select Weekday', 'woocommerce-prdd-lite' ); ?></option>
 							</select>
-							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Select weekday to set delivery charge for', 'woocommerce-prdd-lite' ); ?>" src="<?php esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
+							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Select weekday to set delivery charge for', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
 						</td>
 						<td width="5%">&nbsp;</td>
 						<td>
 							<input type="text" name="special_delivery_date" id="special_delivery_date" disabled eadonly style="background-color: white;width: 100px;"> 
-							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Select date to set delivery charge for', 'woocommerce-prdd-lite' ); ?>" src="<?php esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
+							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Select date to set delivery charge for', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
 						</td>
 						<td width="1%">&nbsp;</td>
 						<td>
 							<input type="text" name="special_delivery_price" id="special_delivery_price" disabled readonly style="width: 75px;"> 
-							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Set delivery charge for the selected day / date', 'woocommerce-prdd-lite' ); ?>" src="<?php esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
+							<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Set delivery charge for the selected day / date', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
 						</td>
 					</tr>
 					<tr>
@@ -190,8 +190,8 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 						$special_price_str .= '<td>&nbsp;</td>';
 					}
 					$special_price_str .= '<td>' . $currency_symbol . $value['delivery_special_price'] . '</td>
-						<td> <a href="javascript:void(0);" id="' . $key . '&' . $value['delivery_special_weekday'] . '&' . $value['delivery_special_date'] . '&' . $value['delivery_special_price'] . '" class="special_delivery_edit_block"> <img src="' . plugins_url() . '/product-delivery-date/images/edit.png" alt="Edit Special Delivery" title="Edit Delivery Charges"></a>
-						<a href="javascript:void(0);" id="' . $key . '" class="special_delivery_delete_block"> <img src="' . plugins_url() . '/product-delivery-date/images/delete.png" alt="Delete Special delivery Price" title="Delete Delivery Charges"></a> </td>
+						<td> <a href="javascript:void(0);" id="' . $key . '&' . $value['delivery_special_weekday'] . '&' . $value['delivery_special_date'] . '&' . $value['delivery_special_price'] . '" class="special_delivery_edit_block"> <img src="' . esc_attr( plugins_url() ) . '/product-delivery-date/images/edit.png" alt="Edit Special Delivery" title="Edit Delivery Charges"></a>
+						<a href="javascript:void(0);" id="' . $key . '" class="special_delivery_delete_block"> <img src="' . esc_attr( plugins_url() ) . '/product-delivery-date/images/delete.png" alt="Delete Special delivery Price" title="Delete Delivery Charges"></a> </td>
 						</tr>';
 				}
 			}
@@ -271,8 +271,8 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 						$special_price_str .= '<td>&nbsp;</td>';
 					}
 					$special_price_str .= '<td>' . $currency_symbol . $value['delivery_special_price'] . '</td>
-					   <td> <a href="javascript:void(0);" id="' . $key . '&' . $value['delivery_special_weekday'] . '&' . $value['delivery_special_date'] . '&' . $value['delivery_special_price'] . '" class="special_delivery_edit_block"> <img src="' . plugins_url() . '/product-delivery-date/images/edit.png" alt="Edit Special delivery" title="Edit Delivery Charges"></a>
-						<a href="javascript:void(0);" id="' . $key . '" class="special_delivery_delete_block"> <img src="' . plugins_url() . '/product-delivery-date/images/delete.png" alt="Delete Special delivery Price" title="Delete Delivery Charges"></a> </td>
+					   <td> <a href="javascript:void(0);" id="' . $key . '&' . $value['delivery_special_weekday'] . '&' . $value['delivery_special_date'] . '&' . $value['delivery_special_price'] . '" class="special_delivery_edit_block"> <img src="' . esc_attr( plugins_url() ) . '/product-delivery-date/images/edit.png" alt="Edit Special delivery" title="Edit Delivery Charges"></a>
+						<a href="javascript:void(0);" id="' . $key . '" class="special_delivery_delete_block"> <img src="' . esc_attr( plugins_url() ) . '/product-delivery-date/images/delete.png" alt="Delete Special delivery Price" title="Delete Delivery Charges"></a> </td>
 						</tr>';
 				}
 			}

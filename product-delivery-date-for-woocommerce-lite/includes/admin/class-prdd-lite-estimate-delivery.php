@@ -46,7 +46,7 @@ class Prdd_Lite_Estimate_Delivery {
 				<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
 			</td>
 			<td>
-				<img class="help_tip" width="16" height="16" data-tip="<?php esc_html_e( 'Choose the delivery date option to be displayed on the product page.', 'woocommerce-prdd-lite' ); ?>" src="<?php esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
+				<img class="help_tip" width="16" height="16" data-tip="<?php esc_html_e( 'Choose the delivery date option to be displayed on the product page.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
 			</td>
 		</tr>
 		<?php

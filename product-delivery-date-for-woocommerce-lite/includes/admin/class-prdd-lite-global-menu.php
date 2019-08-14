@@ -69,11 +69,11 @@ class PRDD_Lite_Global_Menu {
 		settings_errors();
 		?>
 		<h2 class="nav-tab-wrapper woo-nav-tab-wrapper">
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php esc_attr( $active_settings ); ?>"> <?php esc_html_e( 'Global Delivery Settings', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php esc_attr( $active_labels ); ?>"> <?php esc_html_e( 'Field Labels', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php esc_attr( $active_google_sync ); ?>"> <?php esc_html_e( 'Google Calendar Sync', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php echo esc_attr( $active_settings ); ?>"> <?php esc_html_e( 'Global Delivery Settings', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php echo esc_attr( $active_labels ); ?>"> <?php esc_html_e( 'Field Labels', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php echo esc_attr( $active_google_sync ); ?>"> <?php esc_html_e( 'Google Calendar Sync', 'woocommerce-prdd' ); ?> </a>
 			<?php do_action( 'prdd_lite_add_settings_tab' ); ?>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php esc_attr( $active_bulk_product_settings ); ?>"> <?php esc_html_e( 'Bulk Product Settings', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php echo esc_attr( $active_bulk_product_settings ); ?>"> <?php esc_html_e( 'Bulk Product Settings', 'woocommerce-prdd' ); ?> </a>
 		</h2>
 		<?php
 		do_action( 'prdd_lite_add_tab_content' );
@@ -123,7 +123,7 @@ class PRDD_Lite_Global_Menu {
 			<div class="wrap">
 				<h5>Add delivery settings for multiple products together. Selected settings will be shown on the selected edit product place.</h5>
 				<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-				<form method="post" action="<?php esc_attr( get_admin_url() ); ?>/admin.php?page=woocommerce_prdd_page&action=bulk_product_settings&action_type=save" style="opacity:0.5">
+				<form method="post" action="<?php echo esc_attr( get_admin_url() ); ?>/admin.php?page=woocommerce_prdd_page&action=bulk_product_settings&action_type=save" style="opacity:0.5">
 					<div id="prdd_product_list">
 						<table class="form-table">
 							<tr>
