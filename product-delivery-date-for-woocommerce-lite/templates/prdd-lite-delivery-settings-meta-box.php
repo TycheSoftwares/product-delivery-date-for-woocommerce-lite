@@ -48,7 +48,7 @@ jQuery( document ).ready( function() {
 							$enable_date = 'checked';
 						}
 						?>
-						<input type="checkbox" id="prdd_lite_enable_date" name="prdd_lite_enable_date" <?php esc_attr( $enable_date ); ?> >
+						<input type="checkbox" id="prdd_lite_enable_date" name="prdd_lite_enable_date" <?php echo esc_attr( $enable_date ); ?> >
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Enable Delivery Date on Products Page', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
@@ -67,7 +67,7 @@ jQuery( document ).ready( function() {
 						$recurring_div_show = 'block';
 						?>
 
-						<input type="checkbox" name="prdd_recurring_chk" id="prdd_recurring_chk" <?php esc_attr( $recurring_delivery ); ?> disabled> <?php esc_html_e( 'Recurring Weekdays', 'woocommerce-prdd' ); ?> </input>
+						<input type="checkbox" name="prdd_recurring_chk" id="prdd_recurring_chk" <?php echo esc_attr( $recurring_delivery ); ?> disabled> <?php esc_html_e( 'Recurring Weekdays', 'woocommerce-prdd' ); ?> </input>
 
 						<input type="checkbox" name="prdd_specific_chk" id="prdd_specific_chk" disabled="disabled" readonly> <?php esc_html_e( 'Specific Dates', 'woocommerce-prdd' ); ?> </input>
 						<br>
@@ -79,7 +79,7 @@ jQuery( document ).ready( function() {
 					</td>
 				</tr>
 			</table>
-			<div id="prdd_lite_enable_weekday" name="prdd_lite_enable_weekday" style="display:<?php esc_attr( $recurring_div_show ); ?>;">
+			<div id="prdd_lite_enable_weekday" name="prdd_lite_enable_weekday" style="display:<?php echo esc_attr( $recurring_div_show ); ?>;">
 				<table class="form-table">
 					<tr>
 						<th>
@@ -207,7 +207,7 @@ jQuery( document ).ready( function() {
 						<?php
 						$prdd_lite_holidays = get_post_meta( $duplicate_of, '_woo_prdd_lite_holidays', true );
 						?>
-						<textarea rows="4" cols="40" name="prdd_lite_product_holiday" id="prdd_lite_product_holiday"><?php esc_html( $prdd_lite_holidays ); ?></textarea>
+						<textarea rows="4" cols="40" name="prdd_lite_product_holiday" id="prdd_lite_product_holiday"><?php echo esc_html( $prdd_lite_holidays ); ?></textarea>
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" style="vertical-align:top;" data-tip="<?php esc_attr_e( 'Select dates for which the delivery will be completely disabled only for this product. Please click on the date in calendar to add or delete the date from the holiday list.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" style="vertical-align:top;"/>
@@ -257,7 +257,7 @@ jQuery( document ).ready( function() {
 							$prdd_minimum_delivery_time = '0';
 						}
 						?>
-						<input type="text" style="width:90px;" name="prdd_lite_minimum_delivery_time" id="prdd_lite_minimum_delivery_time" value="<?php esc_attr( $prdd_minimum_delivery_time ); ?>" >
+						<input type="text" style="width:90px;" name="prdd_lite_minimum_delivery_time" id="prdd_lite_minimum_delivery_time" value="<?php echo esc_attr( $prdd_minimum_delivery_time ); ?>" >
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Enable Delivery after X number of hours from current time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need 1 day advance notice for a delivery, enter 24 here.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
@@ -277,7 +277,7 @@ jQuery( document ).ready( function() {
 							$prdd_maximum_number_days = '30';
 						}
 						?>
-						<input type="text" style="width:90px;" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php esc_attr( $prdd_maximum_number_days ); ?>" >
+						<input type="text" style="width:90px;" name="prdd_lite_maximum_number_days" id="prdd_lite_maximum_number_days" value="<?php echo esc_attr( $prdd_maximum_number_days ); ?>" >
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'The maximum number of delivery dates you want to be available for your customers to choose from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
