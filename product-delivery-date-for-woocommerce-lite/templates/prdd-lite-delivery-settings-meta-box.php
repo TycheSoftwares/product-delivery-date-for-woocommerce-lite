@@ -182,7 +182,7 @@ jQuery( document ).ready( function() {
 							$enable_lite_prdd_delivery_field_mandatory = 'checked';
 						}
 						?>
-						<input type="checkbox" id="prdd_lite_delivery_field_mandatory" name="prdd_lite_delivery_field_mandatory" <?php esc_attr( $enable_lite_prdd_delivery_field_mandatory ); ?> >
+						<input type="checkbox" id="prdd_lite_delivery_field_mandatory" name="prdd_lite_delivery_field_mandatory" <?php echo esc_attr( $enable_lite_prdd_delivery_field_mandatory ); ?> >
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Enable mandatory fields selection on front end product details page.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" style="vertical-align:top;"/>
