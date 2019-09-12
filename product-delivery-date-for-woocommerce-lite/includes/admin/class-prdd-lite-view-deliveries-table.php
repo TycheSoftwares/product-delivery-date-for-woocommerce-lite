@@ -425,7 +425,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$get_quantity = array_reverse( $get_quantity, true );
 			foreach ( $get_quantity as $k => $v ) {
 				$product_exists = 'NO';
-				if ( $v['product_id'] === $product_id ) {
+				if ( $v['product_id'] == $product_id ) {
 					foreach ( $return_deliveries as $deliver_key => $deliver_value ) {
 						if ( isset( $deliver_value->ID ) && $deliver_value->ID === $value->order_id && $v['product_id'] === $deliver_value->product_id ) {
 							if ( isset( $deliver_value->item_id ) && $k === $deliver_value->item_id ) {
