@@ -119,7 +119,7 @@ class Prdd_Lite_Delivery_Settings {
 		$days = prdd_lite_get_delivery_arrays( 'prdd_lite_days' );
 		foreach ( $days as $key => $value ) {
 			$sel = '';
-			if ( $key === $day_selected ) {
+			if ( $key == $day_selected ) {
 				$sel = ' selected ';
 			}
 			printf( "<option value='%s' %s>%s</option>\n", esc_attr( $key ), esc_attr( $sel ), esc_attr__( $value, 'woocommerce-prdd-lite' ) ); // phpcs:ignore
@@ -146,7 +146,7 @@ class Prdd_Lite_Delivery_Settings {
 		$holidays        = get_option( 'prdd_lite_global_holidays', '' );
 		$global_holidays = '';
 
-		if ( '' !== $holidays && $holidays ) {
+		if ( $holidays && '' !== $holidays ) {
 			$global_holidays = "addDates: ['" . str_replace( ',', "','", $holidays ) . "']";
 		}
 
@@ -155,7 +155,7 @@ class Prdd_Lite_Delivery_Settings {
 			$first_day = get_option( 'prdd_lite_calendar_day' );
 		}
 
-		esc_html( '<input type="hidden" name="prdd_lite_theme" id="prdd_lite_theme" value="' . $prdd_themes . '">' );
+		echo '<input type="hidden" name="prdd_lite_theme" id="prdd_lite_theme" value="' . esc_attr( $prdd_themes ) . '">';
 
 		echo '<script type="text/javascript">
         jQuery(document).ready(function() {
@@ -180,7 +180,7 @@ class Prdd_Lite_Delivery_Settings {
                 dateFormat: "d-m-yy",
                 firstDay: ' . esc_js( $first_day ) . ',
                 altField: "#prdd_lite_global_holidays",
-                ' . esc_js( $global_holidays ) . '
+                ' . $global_holidays . '
             });
             jQuery( function() {
                 jQuery.datepicker.setDefaults( jQuery.datepicker.regional[ "" ] );
@@ -227,7 +227,7 @@ class Prdd_Lite_Delivery_Settings {
 		if ( isset( $prdd_enable_rounding ) && 'on' === $prdd_enable_rounding ) {
 			$rounding = 'checked';
 		}
-		esc_html( '<input type="checkbox" id="prdd_lite_enable_rounding" name="prdd_lite_enable_rounding" ' . $rounding . '/>' );
+		echo '<input type="checkbox" id="prdd_lite_enable_rounding" name="prdd_lite_enable_rounding" ' . esc_attr( $rounding ) . '/>';
 		$html = '<label for="prdd_lite_enable_rounding"> ' . $args[0] . '</label>';
 		esc_html( $html );
 
