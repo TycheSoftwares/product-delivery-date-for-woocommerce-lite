@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery date, product delivery date, woocommerce delivery date, delivery, product delivery
 Requires at least: 1.3
-Tested up to: 5.1.1
+Tested up to: 5.2.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,9 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+= 2.1 (17.09.2019) = 
+* Made the plugin compliant with WPCS standards.
+
 = 2.0 (02.08.2019) =
 * Now the delivery date field can be set as mandatory for each product. The customers will not be able to add the product to the cart without selecting a date if the Mandatory field option is enabled for the product.
 * Now the nonworking holidays or dates can be set for individual products as well as for all the products at the global level.
