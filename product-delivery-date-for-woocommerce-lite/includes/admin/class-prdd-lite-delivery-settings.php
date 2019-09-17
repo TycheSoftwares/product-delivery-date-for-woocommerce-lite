@@ -119,7 +119,7 @@ class Prdd_Lite_Delivery_Settings {
 		$days = prdd_lite_get_delivery_arrays( 'prdd_lite_days' );
 		foreach ( $days as $key => $value ) {
 			$sel = '';
-			if ( $key == $day_selected ) {
+			if ( $key == $day_selected ) { // phpcs:ignore
 				$sel = ' selected ';
 			}
 			printf( "<option value='%s' %s>%s</option>\n", esc_attr( $key ), esc_attr( $sel ), esc_attr__( $value, 'woocommerce-prdd-lite' ) ); // phpcs:ignore
@@ -400,7 +400,7 @@ class Prdd_Lite_Delivery_Settings {
 				disabled
 				readonly
 			/>
-		   
+
 			<label for="prdd_delivery_reschedule_days">
 				<?php esc_html( $args[0] ); ?>
 			</label>
