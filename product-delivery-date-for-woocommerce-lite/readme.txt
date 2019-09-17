@@ -167,6 +167,9 @@ You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versi
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+= 2.1.1 (17.09.2019) =
+* Fixed an error displayed on the View Deliveries page.
+
 = 2.1 (17.09.2019) = 
 * Made the plugin compliant with WPCS standards.
 
