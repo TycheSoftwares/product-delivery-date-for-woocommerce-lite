@@ -3,7 +3,7 @@
 Contributors: ashokrane, MoxaJogani, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
-Tags: delivery date, product delivery date, woocommerce delivery date, delivery, product delivery
+Tags: delivery calendar, product delivery date, woocommerce delivery date, product delivery
 Requires at least: 1.3
 Tested up to: 5.2.3
 Stable tag: trunk
@@ -27,6 +27,8 @@ This plugin allows you to improve your customer service by delivering the produc
 <li>You can choose how long in future you want to take deliveries</li>
 <li>It uses the inbuilt WordPress datepicker.</li>
 </ol>
+
+### Differences between Lite & PRO version
 
 You can check the detailed difference between Pro and Lite version **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=litelink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference")**
 
@@ -68,23 +70,20 @@ You can check the detailed difference between Pro and Lite version **[here](http
 
 3. **[WooCommerce Print Invoice & Delivery Note](https://wordpress.org/plugins/woocommerce-delivery-notes/ "WooCommerce Print Invoice & Delivery Note")**
 
-4. **[Order Delivery Date for WP e-Commerce](https://wordpress.org/plugins/order-delivery-date/ "Order Delivery Date for WP e-Commerce")**
+4. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
 
-5. **[Prevent Customers To Cancel WooCommerce Orders](https://wordpress.org/plugins/woo-prevent-cancel-order/ "Prevent Customers To Cancel WooCommerce Orders")**
+5. **[Custom Order Status for WooCommerce](https://wordpress.org/plugins/custom-order-statuses-woocommerce/ "Custom Order Status for WooCommerce")**
 
-6. **[WooCommerce Coupons by Categories and Tags](https://wordpress.org/plugins/woo-coupons-by-categories-and-tags/ "WooCommerce Coupons by Categories and Tags")**
+6. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
 
-7. **[Arconix FAQ](https://wordpress.org/plugins/arconix-faq/ "Arconix FAQ")**
+7. **[Product Input Fields for WooCommerce](https://wordpress.org/plugins/product-input-fields-for-woocommerce/ "Product Input Fields for WooCommerce")**
 
-8. **[Arconix Shortcodes](https://wordpress.org/plugins/arconix-shortcodes/ "Arconix Shortcodes")**
+8. **[Call for Price for WooCommerce](https://wordpress.org/plugins/woocommerce-call-for-price/ "Call for Price for WooCommerce")**
 
-9. **[Arconix Flexslider](https://wordpress.org/plugins/arconix-flexslider/ "Arconix Flexslider")**
+9. **[Price based on User Role for WooCommerce](https://wordpress.org/plugins/price-by-user-role-for-woocommerce/ "Price based on User Role for WooCommerce")**
 
-10. **[Arconix Portfolio](https://wordpress.org/plugins/arconix-portfolio/ "Arconix Portfolio")**
+10. **[Currency per Product for WooCommerce](https://wordpress.org/plugins/currency-per-product-for-woocommerce/ "Currency per Product for WooCommerce")**
 
-11. **[Arconix Testimonials](https://wordpress.org/plugins/arconix-testimonials/ "Arconix Testimonials")**
-
-12. **[Export WordPress Menus](https://wordpress.org/plugins/wp-export-menus/ "Export WordPress Menus")**
 
 **[View Demo](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=demolink&utm_campaign=ProductDeliveryDateLite "View Demo")**
 
@@ -124,6 +123,10 @@ Option 3:
 
 == Frequently Asked Questions ==
 
+= What is the difference between Lite and Pro version of the plugin? =
+
+You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference").**
+
 = Is it possible to add delivery date calendar on checkout page instead of for each product? =
 
 It is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named [Order Delivery Date for WooCommerce Pro](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite) which you can use to add a Delivery Date on the WooCommerce checkout page.
@@ -147,10 +150,6 @@ Currently, it is not possible to add the extra charges for deliveries on weekday
 = Is it possible to edit the selected delivery date for the already placed WooCommerce orders? =
 
 Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version & in the pro version as well.
-
-= Difference between Lite and Pro version of the plugin =
-
-You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference")**
 
 == Screenshots ==
 
