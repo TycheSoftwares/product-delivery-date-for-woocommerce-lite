@@ -3,7 +3,7 @@
 Contributors: ashokrane, MoxaJogani, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
-Tags: delivery calendar, product delivery date, woocommerce delivery date, product delivery
+Tags: delivery calendar, product delivery date, woocommerce order delivery
 Requires at least: 1.3
 Tested up to: 5.2.3
 Stable tag: trunk
