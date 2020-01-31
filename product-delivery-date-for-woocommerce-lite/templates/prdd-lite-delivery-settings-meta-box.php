@@ -44,9 +44,11 @@ jQuery( document ).ready( function() {
 						<?php
 						$prdd_enable_delivery_date = get_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', true );
 						$enable_date               = '';
+
 						if ( isset( $prdd_enable_delivery_date ) && 'on' === $prdd_enable_delivery_date ) {
 							$enable_date = 'checked';
 						}
+
 						?>
 						<input type="checkbox" id="prdd_lite_enable_date" name="prdd_lite_enable_date" <?php echo esc_attr( $enable_date ); ?> >
 					</td>

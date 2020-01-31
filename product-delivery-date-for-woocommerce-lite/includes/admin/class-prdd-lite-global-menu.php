@@ -260,6 +260,15 @@ class PRDD_Lite_Global_Menu {
 		);
 
 		add_settings_field(
+			'prdd_lite_enable_delete_order_item',
+			__( 'Enable Deleting Order Details', 'woocommerce-prdd' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_delete_order_item_callback' ),
+			'prdd_lite_settings_page',
+			'prdd_lite_delivery_settings_section',
+			array( __( ' Enable this if you want to delete the order details from the database when the plugin is deleted.', 'woocommerce-prdd' ) )
+		);
+
+		add_settings_field(
 			'prdd_lite_time_format',
 			__( 'Time Format', 'woocommerce-prdd' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_time_format_callback' ),
@@ -378,6 +387,11 @@ class PRDD_Lite_Global_Menu {
 		register_setting(
 			'prdd_lite_settings',
 			'prdd_lite_enable_rounding'
+		);
+
+		register_setting(
+			'prdd_lite_settings',
+			'prdd_lite_enable_delete_order_item'
 		);
 
 		register_setting(
@@ -536,12 +550,12 @@ class PRDD_Lite_Global_Menu {
 			array( __( 'Delivery Charges label on the cart and checkout page.', 'woocommerce-prdd' ) )
 		);
 
-				add_settings_section(
-					'prdd_estimate_delivery_section',       // ID used to identify this section and with which to register options.
-					__( 'Labels for Estimate Delivery Option', 'woocommerce-prdd' ),        // Title to be displayed on the administration page.
-					array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_section_callback' ),        // Callback used to render the description of the section.
-					'prdd_labels_page'              // Page on which to add this section of options.
-				);
+		add_settings_section(
+			'prdd_estimate_delivery_section',       // ID used to identify this section and with which to register options.
+			__( 'Labels for Estimate Delivery Option', 'woocommerce-prdd' ),        // Title to be displayed on the administration page.
+			array( 'Prdd_Lite_Delivery_Settings', 'prdd_estimate_delivery_section_callback' ),        // Callback used to render the description of the section.
+			'prdd_labels_page'              // Page on which to add this section of options.
+		);
 
 		add_settings_field(
 			'prdd_estimate_delivery_header',

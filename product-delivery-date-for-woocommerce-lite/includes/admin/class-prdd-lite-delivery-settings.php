@@ -43,8 +43,7 @@ class Prdd_Lite_Delivery_Settings {
 		}
 		echo '</select>';
 
-		$html = '<label for="prdd_lite_language"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_language"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -67,8 +66,7 @@ class Prdd_Lite_Delivery_Settings {
 		}
 		echo '</select>';
 
-		$html = '<label for="prdd_lite_date_format"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_date_format"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -98,8 +96,8 @@ class Prdd_Lite_Delivery_Settings {
 			esc_attr( $no_months_2 )
 		);
 
-		$html = '<label for="prdd_lite_months"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_months"> ' . wp_kses_post( $args[0] ) . '</label>';
+
 	}
 
 	/**
@@ -125,8 +123,8 @@ class Prdd_Lite_Delivery_Settings {
 			printf( "<option value='%s' %s>%s</option>\n", esc_attr( $key ), esc_attr( $sel ), esc_attr__( $value, 'woocommerce-prdd-lite' ) ); // phpcs:ignore
 		}
 		echo '</select>';
-		$html = '<label for="prdd_lite_calendar_day"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_lite_calendar_day"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -199,8 +197,7 @@ class Prdd_Lite_Delivery_Settings {
         </script>
         <div id="prdd_lite_new_switcher"></div>';
 
-		$html = '<label for="prdd_lite_theme"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_theme"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -212,8 +209,7 @@ class Prdd_Lite_Delivery_Settings {
 		echo '<textarea rows="4" cols="80" name="prdd_lite_global_holidays" id="prdd_lite_global_holidays"></textarea>
         <div id="prdd_lite_switcher"></div>';
 
-		$html = '<label for="prdd_lite_global_holidays"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_global_holidays"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -228,9 +224,24 @@ class Prdd_Lite_Delivery_Settings {
 			$rounding = 'checked';
 		}
 		echo '<input type="checkbox" id="prdd_lite_enable_rounding" name="prdd_lite_enable_rounding" ' . esc_attr( $rounding ) . '/>';
-		$html = '<label for="prdd_lite_enable_rounding"> ' . $args[0] . '</label>';
-		esc_html( $html );
 
+		echo '<label for="prdd_lite_enable_rounding"> ' . wp_kses_post( $args[0] ) . '</label>';
+	}
+
+	/**
+	 * Callback - Deleting
+	 *
+	 * @param array $args - Setting.
+	 */
+	public static function prdd_lite_enable_delete_order_item_callback( $args ) {
+		$prdd_enable_deleting = get_option( 'prdd_lite_enable_delete_order_item', '' );
+		$deleting             = '';
+		if ( isset( $prdd_enable_deleting ) && 'on' === $prdd_enable_deleting ) {
+			$deleting = 'checked';
+		}
+		echo '<input type="checkbox" id="prdd_lite_enable_delete_order_item" name="prdd_lite_enable_delete_order_item" ' . esc_attr( $deleting ) . '/>';
+
+		echo '<label for="prdd_lite_enable_delete_order_item">' . wp_kses_post( $args[0] ) . '</label>';
 	}
 
 	/**
@@ -251,8 +262,7 @@ class Prdd_Lite_Delivery_Settings {
 			);
 		}
 		echo '</select>';
-		$html = '<label for="prdd_lite_time_format"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_lite_time_format"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -266,8 +276,8 @@ class Prdd_Lite_Delivery_Settings {
 	public static function prdd_global_selection_callback( $args ) {
 
 		echo '<input type="checkbox" id="prdd_global_selection" name="prdd_global_selection" disabled readonly/>';
-		$html = '<label for="prdd_global_selection"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_global_selection"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -282,9 +292,7 @@ class Prdd_Lite_Delivery_Settings {
 
 		echo '<input type="checkbox" id="prdd_availability_display" name="prdd_availability_display" disabled/>';
 
-		$html = '<label for="prdd_availability_display"> ' . $args[0] . '</label>';
-
-		esc_html( $html );
+		echo '<label for="prdd_availability_display"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -298,9 +306,8 @@ class Prdd_Lite_Delivery_Settings {
 	public static function prdd_disable_price_calculation_on_dates_callback( $args ) {
 		echo '<input type="checkbox" id="prdd_disable_price_calculation_on_dates" name="woocommerce_prdd_global_settings[prdd_disable_price_calculation_on_dates]" disabled readonly/>';
 
-		$html = '<label for="prdd_disable_price_calculation_on_dates"> ' . $args[0] . '</label>';
+		echo '<label for="prdd_disable_price_calculation_on_dates"> ' . wp_kses_post( $args[0] ) . '</label>';
 
-		esc_html( $html );
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
 	}
@@ -313,9 +320,8 @@ class Prdd_Lite_Delivery_Settings {
 	public static function prdd_add_to_calendar_callback( $args ) {
 
 		echo '<input type="checkbox" id="prdd_add_to_calendar" name="woocommerce_prdd_global_settings[prdd_export]" disabled readonly/>';
-		$html = '<label for="prdd_add_to_calendar"> ' . $args[0] . '</label>';
 
-		esc_html( $html );
+		echo '<label for="prdd_add_to_calendar"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -328,8 +334,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_add_to_email_callback( $args ) {
 		echo '<input type="checkbox" id="prdd_add_to_email" name="wprdd_add_to_email" disabled/>';
-		$html = '<label for="prdd_add_to_email"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_add_to_email"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -349,7 +355,7 @@ class Prdd_Lite_Delivery_Settings {
 				readonly
 			/>
 			<label for="prdd_enable_delivery_edit">
-				<?php esc_html( $args[0] ); ?>
+				<?php echo ( wp_kses_post( $args[0] ) ); ?>
 			</label>
 
 			<br>
@@ -375,7 +381,7 @@ class Prdd_Lite_Delivery_Settings {
 				readonly
 			/>
 			<label for="prdd_enable_delivery_reschedule">
-				<?php esc_html( $args[0] ); ?>
+				<?php echo ( wp_kses_post( $args[0] ) ); ?>
 			</label>
 
 			<br>
@@ -402,7 +408,7 @@ class Prdd_Lite_Delivery_Settings {
 			/>
 
 			<label for="prdd_delivery_reschedule_days">
-				<?php esc_html( $args[0] ); ?>
+				<?php echo ( wp_kses_post( $args[0] ) ); ?>
 			</label>
 
 			<br>
@@ -426,8 +432,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_date_label_callback( $args ) {
 		echo '<input type="text" name="delivery_date-label" id="delivery_date-label" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_date-label"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_date-label"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -440,8 +446,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_time_label_callback( $args ) {
 		echo '<input type="text" name="delivery_time-label" id="delivery_time-label" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_time-label"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_time-label"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -454,8 +460,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_time_select_option_callback( $args ) {
 		echo '<input type="text" name="delivery_time-select-option" id="delivery_time-select-option" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_time-select-option"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_time-select-option"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -474,8 +480,8 @@ class Prdd_Lite_Delivery_Settings {
 	public static function delivery_item_meta_date_callback( $args ) {
 
 		echo '<input type="text" name="delivery_item-meta-date" id="delivery_item-meta-date" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-meta-date"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-meta-date"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -489,8 +495,8 @@ class Prdd_Lite_Delivery_Settings {
 	public static function delivery_item_meta_time_callback( $args ) {
 
 		echo '<input type="text" name="delivery_item-meta-time" id="delivery_item-meta-time" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-meta-time"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-meta-time"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -503,8 +509,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_ics_file_name_callback( $args ) {
 		echo '<input type="text" name="delivery_ics-file-name" id="delivery_ics-file-name" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_ics-file-name"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_ics-file-name"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -517,8 +523,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_item_meta_charges_callback( $args ) {
 		echo '<input type="text" name="delivery_item-meta-charges" id="delivery_item-meta-charges" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-meta-charges"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-meta-charges"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -538,8 +544,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_item_cart_date_callback( $args ) {
 		echo '<input type="text" name="delivery_item-cart-date" id="delivery_item-cart-date" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-cart-date"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-cart-date"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -552,8 +558,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_item_cart_time_callback( $args ) {
 		echo '<input type="text" name="delivery_item-cart-time" id="delivery_item-cart-time" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-cart-time"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-cart-time"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -566,8 +572,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function delivery_item_cart_charges_callback( $args ) {
 		echo '<input type="text" name="delivery_item-cart-charges" id="delivery_item-cart-charges" value="" maxlength="40" disabled readonly/>';
-		$html = '<label for="delivery_item-cart-charges"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="delivery_item-cart-charges"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -599,8 +605,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_estimate_delivery_days_text_callback( $args ) {
 		echo '<textarea name="prdd_estimate_delivery_days_text" id="prdd_estimate_delivery_days_text" rows="3" cols="40" disabled readonly></textarea>';
-		$html = '<label for="prdd_estimate_delivery_days_text"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_estimate_delivery_days_text"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -613,8 +619,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_estimate_delivery_date_text_callback( $args ) {
 		echo '<textarea name="prdd_estimate_delivery_date_text" id="prdd_estimate_delivery_date_text" rows="3" cols="40" disabled readonly></textarea>';
-		$html = '<label for="prdd_estimate_delivery_date_text"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_estimate_delivery_date_text"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -630,8 +636,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function ts_calendar_event_location_callback( $args ) {
 		echo '<input type="text" name="ts_calendar_event_location" id="ts_calendar_event_location" value="" disabled readonly/>';
-		$html = '<label for="ts_calendar_event_location"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="ts_calendar_event_location"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -656,8 +662,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function ts_calendar_event_description_callback( $args ) {
 		echo '<textarea id="ts_calendar_event_description" name="ts_calendar_event_description" cols="90" rows="4" disabled readonly></textarea>';
-		$html = '<label for="ts_calendar_event_description"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="ts_calendar_event_description"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -675,8 +681,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_add_to_calendar_order_received_page_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_add_to_calendar_order_received_page" id="prdd_add_to_calendar_order_received_page" class="day-checkbox" value="on" disabled readonly/>';
-		$html = '<label for="prdd_add_to_calendar_order_received_page"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_add_to_calendar_order_received_page"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -689,8 +695,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_add_to_calendar_customer_email_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_add_to_calendar_customer_email" id="prdd_add_to_calendar_customer_email" class="day-checkbox" value="on" disabled readonly/>';
-		$html = '<label for="prdd_add_to_calendar_customer_email"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_add_to_calendar_customer_email"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -703,8 +709,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_add_to_calendar_my_account_page_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_add_to_calendar_my_account_page" id="prdd_add_to_calendar_my_account_page" class="day-checkbox" value="on" disabled readonly/>';
-		$html = '<label for="prdd_add_to_calendar_my_account_page"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_add_to_calendar_my_account_page"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -717,8 +723,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_calendar_in_same_window_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_calendar_in_same_window" id="prdd_calendar_in_same_window" class="day-checkbox" value="on" disabled readonly />';
-		$html = '<label for="prdd_calendar_in_same_window"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="prdd_calendar_in_same_window"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 	}
@@ -739,8 +745,7 @@ class Prdd_Lite_Delivery_Settings {
             <input type="radio" name="ts_calendar_sync_integration_mode" id="ts_calendar_sync_integration_mode" value="manually" disabled/>' . esc_html__( 'Sync Manually', 'woocommerce-prdd-lite' ) . '&nbsp;&nbsp;
             <input type="radio" name="ts_calendar_sync_integration_mode" id="ts_calendar_sync_integration_mode" value="disabled" disabled/>' . esc_html__( 'Disabled', 'woocommerce-prdd-lite' );
 
-		$html = '<label for="ts_calendar_sync_integration_mode"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="ts_calendar_sync_integration_mode"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -761,8 +766,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function ts_calendar_key_file_name_callback( $args ) {
 		echo '<input id="ts_calendar_key_file_name" name= "ts_calendar_details_1[ts_calendar_key_file_name]" value="" size="90" type="text" disabled readonly/>';
-		$html = '<label for="ts_calendar_key_file_name"> ' . $args[0] . '</label>';
-		esc_html( $html );
+
+		echo '<label for="ts_calendar_key_file_name"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -776,8 +781,7 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function ts_calendar_service_acc_email_address_callback( $args ) {
 		echo '<input id="orddd_calendar_service_acc_email_address" name="ts_calendar_details_1[ts_calendar_service_acc_email_address]" value="" size="90" type="text" disabled readonly/>';
-		$html = '<label for="ts_calendar_service_acc_email_address"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="ts_calendar_service_acc_email_address"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -791,8 +795,8 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function ts_calendar_id_callback( $args ) {
 		echo '<input id="ts_calendar_id" name="ts_calendar_details_1[ts_calendar_id]" value="" size="90" type="text" disabled readonly/>';
-		$html = '<label for="ts_calendar_id"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="ts_calendar_id"> ' . wp_kses_post( $args[0] ) . '</label>';
+		
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -813,8 +817,7 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_admin_add_to_calendar_email_notification_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_admin_add_to_calendar_email_notification" id="prdd_admin_add_to_calendar_email_notification" value="on" disabled readonly />';
-		$html = '<label for="prdd_admin_add_to_calendar_email_notification"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_admin_add_to_calendar_email_notification"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
@@ -828,8 +831,7 @@ class Prdd_Lite_Delivery_Settings {
 	 */
 	public static function prdd_admin_add_to_calendar_delivery_calendar_callback( $args ) {
 		echo '<input type="checkbox" name="prdd_admin_add_to_calendar_delivery_calendar" id="prdd_admin_add_to_calendar_delivery_calendar" value="on" disabled readonly />';
-		$html = '<label for="prdd_admin_add_to_calendar_delivery_calendar"> ' . $args[0] . '</label>';
-		esc_html( $html );
+		echo '<label for="prdd_admin_add_to_calendar_delivery_calendar"> ' . wp_kses_post( $args[0] ) . '</label>';
 
 		echo '<br><b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>';
 
