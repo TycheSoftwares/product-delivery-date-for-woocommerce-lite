@@ -281,8 +281,8 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 
 		// Today's date.
 		$current_time  = current_time( 'timestamp' );
-		$current_date  = date( 'Y-m-d', $current_time ); // phpcs:ignore
-		$tomorrow_date = date( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
+		$current_date  = gmdate( 'Y-m-d', $current_time ); // phpcs:ignore
+		$tomorrow_date = gmdate( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
 
 		$get_dates  = array();
 		$start_date = '';
@@ -365,8 +365,8 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$per_page = $this->per_page;
 
 		$current_time  = current_time( 'timestamp' );
-		$current_date  = date( 'Y-m-d', $current_time ); // phpcs:ignore
-		$tomorrow_date = date( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
+		$current_date  = gmdate( 'Y-m-d', $current_time ); // phpcs:ignore
+		$tomorrow_date = gmdate( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
 		$i             = 0;
 
 		if ( isset( $_GET['paged'] ) && sanitize_text_field( wp_unslash( $_GET['paged'] ) ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification
@@ -548,7 +548,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 
 				// get the global settings to find the date formats.
 				$date_format_set = $date_formats[ $date_format_selected ];
-				$value           = date( $date_format_set, $date ); // phpcs:ignore
+				$value           = gmdate( $date_format_set, $date ); // phpcs:ignore
 				break;
 			case 'amount':
 				$amount          = ! empty( $delivery->amount ) ? $delivery->amount : 0;

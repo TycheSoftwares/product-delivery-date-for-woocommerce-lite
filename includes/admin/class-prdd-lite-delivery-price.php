@@ -226,7 +226,7 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 
 			if ( '' !== $weekday_date ) {
 				list( $day, $month, $year ) = explode( '-', $weekday_date );
-				$weekday_date               = date( 'Y-m-d', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
+				$weekday_date               = gmdate( 'Y-m-d', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
 			}
 
 			$delivery_special_prices[ $cnt ]['delivery_special_weekday'] = $delivery_weekday;
@@ -309,7 +309,7 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 			if ( is_array( $delivery_special_prices ) && count( $delivery_special_prices ) > 0 ) {
 				foreach ( $delivery_special_prices as $key => $values ) {
 					list( $year, $month, $day ) = explode( '-', $delivery_date );
-					$delivery_day               = date( 'l', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
+					$delivery_day               = gmdate( 'l', mktime( 0, 0, 0, $month, $day, $year ) ); // phpcs:ignore
 					if ( isset( $values['delivery_special_weekday'] ) && isset( $weekdays[ $values['delivery_special_weekday'] ] ) && $delivery_day === $weekdays[ $values['delivery_special_weekday'] ] ) {
 						$special_delivery_price = $values['delivery_special_price'];
 					}
@@ -445,7 +445,7 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 					$date = date_format( $date_formatted, 'Y-m-d' );
 				}
 
-				$delivery_day     = date( 'w', strtotime( $date ) ); // phpcs:ignore
+				$delivery_day     = gmdate( 'w', strtotime( $date ) ); // phpcs:ignore
 				$delivery_weekday = 'prdd_weekday_' . $delivery_day;
 				foreach ( $delivery_special_prices as $key => $values ) {
 					if ( isset( $values['delivery_special_weekday'] ) && $values['delivery_special_weekday'] === $delivery_weekday ) {

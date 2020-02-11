@@ -43,16 +43,16 @@ class Prdd_Lite_Process {
 		if ( '' !== $prdd_minimum_delivery_time && 0 !== $prdd_minimum_delivery_time ) {
 			$advance_seconds = $prdd_minimum_delivery_time * 60 * 60;
 			// now we need the first available weekday for delivery as minimum time is to be calculated from thereon.
-			$weekday = date( 'l', $current_time ); // phpcs:ignore
+			$weekday = gmdate( 'l', $current_time ); // phpcs:ignore
 			while ( ! in_array( $weekday, $prdd_lite_delivery_days, true ) ) { // this weekday is unavailable for delivery.
 				$current_time += 86400; // add 1 day to it.
-				$weekday       = date( 'l', $current_time ); // phpcs:ignore
+				$weekday       = gmdate( 'l', $current_time ); // phpcs:ignore
 			}
 			$cut_off_timestamp = $current_time + $advance_seconds;
-			$cut_off_date      = date( 'd-m-Y', $cut_off_timestamp ); // phpcs:ignore
-			$min_date          = date( 'j-n-Y', strtotime( $cut_off_date ) ); // phpcs:ignore
+			$cut_off_date      = gmdate( 'd-m-Y', $cut_off_timestamp ); // phpcs:ignore
+			$min_date          = gmdate( 'j-n-Y', strtotime( $cut_off_date ) ); // phpcs:ignore
 		} else {
-			$min_date = date( 'j-n-Y', $current_time ); // phpcs:ignore
+			$min_date = gmdate( 'j-n-Y', $current_time ); // phpcs:ignore
 		}
 
 		self::prdd_localize_global_settings();
@@ -278,7 +278,7 @@ class Prdd_Lite_Process {
 					wc_add_order_item_meta( $results[0]->order_item_id, $name, sanitize_text_field( $date_select, true ) );
 				}
 				if ( array_key_exists( 'delivery_hidden_date', $delivery[0] ) && '' !== $delivery[0]['delivery_hidden_date'] ) {
-					$date_booking = date( 'Y-m-d', strtotime( $delivery[0]['delivery_hidden_date'] ) ); // phpcs:ignore
+					$date_booking = gmdate( 'Y-m-d', strtotime( $delivery[0]['delivery_hidden_date'] ) ); // phpcs:ignore
 					wc_add_order_item_meta( $results[0]->order_item_id, '_prdd_lite_date', sanitize_text_field( $date_booking, true ) );
 				}
 			}
