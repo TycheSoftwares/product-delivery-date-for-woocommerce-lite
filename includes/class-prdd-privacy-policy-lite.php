@@ -72,7 +72,7 @@ if ( ! class_exists( 'Prdd_Privacy_Policy_Lite' ) ) {
 					$item_meta    = $item_value->get_meta_data();
 					foreach ( $item_meta as $meta_data ) {
 						if ( '_prdd_lite_date' === $meta_data->key ) {
-							$value_string .= ' -- ' . date( 'F j, y', strtotime( $meta_data->value ) ); // phpcs:ignore
+							$value_string .= ' -- ' . gmdate( 'F j, y', strtotime( $meta_data->value ) );
 							$item_names[]  = $value_string;
 						}
 					}
