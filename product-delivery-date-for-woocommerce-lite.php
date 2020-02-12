@@ -7,7 +7,7 @@
  * Author URI: https://www.tychesoftwares.com/
  * Requires PHP: 5.6
  * WC requires at least: 3.0.0
- * WC tested up to: 3.7.0
+ * WC tested up to: 3.9.1
  * Text Domain: woocommerce-prdd-lite
  * Domain Path: /languages/
  *
