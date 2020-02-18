@@ -252,7 +252,7 @@ class PRDD_Lite_Global_Menu {
 
 		add_settings_field(
 			'prdd_lite_enable_rounding',
-			__( 'Enable Rounding of Prices', 'woocommerce-prdd' ),
+			__( 'Remove Data on Uninstall?', 'woocommerce-prdd' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_rounding_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
@@ -265,7 +265,7 @@ class PRDD_Lite_Global_Menu {
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_delete_order_item_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( ' Enable this if you want to delete the order details from the database when the plugin is deleted.', 'woocommerce-prdd' ) )
+			array( __( ' Enable this setting if you want to completely remove Product Delivery Date Lite data when plugin is deleted.', 'woocommerce-prdd' ) )
 		);
 
 		add_settings_field(
