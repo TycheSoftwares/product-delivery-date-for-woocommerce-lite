@@ -181,6 +181,12 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+
+= 2.2 (12.02.2020) =
+* Fix - Delivery data was not being deleted upon deletion of plugin
+* Tweak - Added 'Remove Data on Uninstall?' option to allow store admin to completely remove Product Delivery Date Lite data when plugin is deleted.
+* Updated WooCommerce Release tag.
+
 = 2.1.1 (17.09.2019) =
 * Fixed an error displayed on the View Deliveries page.
 
