@@ -241,7 +241,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			if ( 'product' === get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
 			'woocommerce_prdd_lite_page' === $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
 			'bulk_product_settings' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-				wp_enqueue_style( 'prdd', plugins_url( '/css/prdd.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-datepick', plugins_url( '/css/jquery.datepick.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-lite-tabstyle-1', plugins_url( '/css/zozo.tabs.min.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-lite-tabstyle-2', plugins_url( '/css/style.css', __FILE__ ), '', $plugin_version_number, false );
@@ -354,6 +353,9 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 					wp_enqueue_style( 'prdd-jquery-ui' );
 
 					wp_enqueue_style( 'datepicker', plugins_url( '/css/datepicker.css', __FILE__ ), '', $plugin_version_number, false );
+
+					wp_register_style( 'prdd-front-style', plugins_url( '/css/prdd.css', __FILE__ ), '', $plugin_version_number, false );
+					wp_enqueue_style( 'prdd-front-style' );
 				}
 			}
 		}
