@@ -61,7 +61,7 @@ class Prdd_Lite_Process {
 		$plugins_url = plugins_url();
 		if ( isset( $prdd_settings ) && 'on' === $prdd_settings ) {
 
-			print ( '<div style="width:70%; position:relative;"><label class="delivery_date_label">' . esc_html_e( 'Delivery Date:', 'woocommerce-prdd-lite' ) . '</label>' );
+			print ( '<div class="delivery_date_label_container"><label class="delivery_date_label">' . esc_html_e( 'Delivery Date:', 'woocommerce-prdd-lite' ) . '</label>' );
 
 			if ( 'on' === $prdd_delivery_field_mandatory ) {
 				print( '<abbr class="required" title="required" style="color: red;font-weight: 800;border: none;">*</abbr>' );

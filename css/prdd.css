@@ -89,3 +89,10 @@
     position:relative;
 }
 /* End fixes for Issue #548 & #549 */
+
+/* Fixed for Issue #126 */
+.delivery_date_label_container {
+	width: 70%;
+	position: relative;
+}
+/* End fixes for Issue #126 */
