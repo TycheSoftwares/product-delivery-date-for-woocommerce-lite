@@ -182,6 +182,12 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 
 == Changelog ==
 
+= 2.3.0 (27.08.2020) =
+* Update compatibility with WordPress 5.5
+* Fixed - Product settings not saved on Imported products. This is fixed now.
+* Fixed - Global Delivery Settings tab was showned as an active tab when we are on  FAQ & Support page in settings. This is fixed now.
+* Dev   - Added class for Delivery Date label instead of inline CSS.
+
 = 2.2.1 (19.03.2020) =
 * Update compatibility with WooCommerce 4.0.0.
 
