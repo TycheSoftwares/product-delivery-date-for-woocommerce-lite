@@ -62,7 +62,7 @@ class PRDD_Lite_Global_Menu {
 				$active_bulk_product_settings = 'nav-tab-active';
 				break;
 			default:
-				$active_settings = 'nav-tab-active';
+				$active_settings = '';
 				break;
 		}
 
