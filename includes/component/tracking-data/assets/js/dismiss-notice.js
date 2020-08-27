@@ -1,7 +1,7 @@
 /**
  * This function allows to dismiss the notices which are shown from the plugin.
  *
- * @namespace orddd_notice_dismissible
+ * @namespace prdd_notice_dismissible
  * @since 6.8
  */
 // Make notices dismissible
@@ -9,7 +9,7 @@ jQuery(document).ready( function() {
 	jQuery( '.notice.is-dismissible' ).each( function() {
 		var $this = jQuery( this ),
 			$button = jQuery( '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' ),
-			btnText = commonL10n.dismiss || '';
+			btnText = wp.i18n.dismiss || '';
 		
 		// Ensure plain text
 		$button.find( '.screen-reader-text' ).text( btnText );
