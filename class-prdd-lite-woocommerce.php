@@ -68,11 +68,13 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			register_activation_hook( __FILE__, array( &$this, 'prdd_lite_activate' ) );
 			add_action( 'init', 'prdd_lite_update_po_file' );
 			add_action( 'admin_init', array( &$this, 'prdd_lite_update_db_check' ) );
+			add_action( 'admin_menu', array( &$this, 'prdd_admin_menu_for_migration' ) );
 
 			add_filter( 'plugin_row_meta', array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
 
 			// Add Meta box for the Product Delivery Date Settings on the product edit page.
 			define( 'PRDD_LITE_DELIVERIES_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
+			define( 'PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION', '10' );
 			add_action( 'add_meta_boxes', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_box' ), 10 );
 			add_action( 'admin_footer', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_print_js' ) );
 
@@ -105,6 +107,8 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				add_filter( 'ts_tracker_opt_out_data', array( 'Prdd_Lite_All_Component', 'prdd_lite_get_data_for_opt_out' ), 10, 1 );
 				add_action( 'prdd_lite_add_meta_footer', array( &$this, 'prdd_lite_review_text' ), 10, 1 );
 			}
+
+			add_action( 'wp_ajax_prdd_lite_update_database', array( &$this, 'prdd_lite_update_database_callback' ) );
 		}
 
 		/**
@@ -136,6 +140,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			add_option( 'prdd_lite_theme', 'smoothness' );
 			add_option( 'prdd_lite_global_holidays', '' );
 			add_option( 'prdd_lite_enable_rounding', '' );
+			add_option( 'prdd_is_data_migrated', '' );
 		}
 
 		/**
@@ -176,6 +181,31 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			if ( ! get_option( 'prdd_lite_enable_rounding' ) ) {
 				add_option( 'prdd_lite_enable_rounding', '' );
+			}
+
+			if ( ! get_option( 'prdd_is_data_migrated' ) ) {
+				add_option( 'prdd_is_data_migrated', '' );
+			}
+
+			$args         = array(
+				'post_type'      => 'product',
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+					array(
+						'key'     => '_woo_prdd_lite_enable_delivery_date',
+						'value'   => 'on',
+						'compare' => '=',
+					),
+				),
+			);
+			$get_products = new WP_Query( $args );
+
+			$prdd_is_data_migrated = get_option( 'prdd_is_data_migrated' );
+			if ( $get_products->have_posts() && ! $prdd_is_data_migrated ) {
+				update_option( 'prdd_is_data_migrated', 'yes' );
+				wp_safe_redirect( admin_url( 'admin.php?page=prdd-lite-update' ) );
+				exit;
 			}
 
 		}
@@ -293,9 +323,22 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				}
 				wp_enqueue_script( "$current_language", plugins_url( "/js/i18n/jquery.ui.datepicker-$current_language.js", __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), $plugin_version_number, true );
 			}
+
+			// Below files are only to be included on prdd database update page.
+			if ( isset( $_GET['page'] ) && 'prdd-lite-update' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+				wp_register_script( 'prdd-lite-update-script', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/prdd-lite-update-script.js', array( 'jquery' ), $plugin_version_number, false );
+				wp_enqueue_script( 'prdd-lite-update-script' );
+				wp_localize_script(
+					'prdd-lite-update-script',
+					'prdd_lite_ajax_data',
+					array(
+						'max_product' => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
+						'ajax_url'    => admin_url( 'admin-ajax.php' ),
+						'prdd_nonce'  => wp_create_nonce( 'ajax-nonce' ),
+					)
+				);
+			}
 		}
-
-
 
 		/**
 		 * This function includes js files required for frontend.
@@ -375,6 +418,192 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				</td>
 			<tr>
 			<?php
+		}
+
+		/**
+		 * This function change the meta_keys to make compliant with pro plugin.
+		 *
+		 * @since 2.3.0
+		 */
+		public function prdd_lite_update_data_for_pro() {
+			global $prdd_lite_update_checker;
+			?>
+			<div class="wrap about-wrap">
+				<?php /* translators: %s: version number */ ?>
+				<h2><?php printf( esc_html__( 'Welcome to Product Delivery Date for WooCommerce - Lite v%s', 'woocommerce-prdd-lite' ), esc_attr( $prdd_lite_update_checker ) ); ?></h2>
+				<div>
+				<p><?php esc_html_e( 'We have noticed that you have updated the version of the Product Delivery Date for WooCommerce - Lite on your store. Thus, before activating the plugin, we request you to upgrade the database.', 'woocommerce-prdd-lite' ); ?></p>
+				<p><?php esc_html_e( 'You can choose if you want to continue or not? Click on Yes to continue from the options below:', 'woocommerce-prdd-lite' ); ?></p>
+				</div>
+				<input type="button" id="prdd-update-yes" class="button button-primary" value="Yes"  />
+				<input type="button" id="prdd-update-no" class="button button-primary" value="No"  />
+				<div id="prdd-update-status" style="display: none; margin-top: 20px;border: 1px solid #ccc;padding: 10px;"></div>
+			<?php
+		}
+
+		/**
+		 * This function change the meta_keys to make compliant with pro plugin.
+		 *
+		 * @since 2.3.0
+		 */
+		public function prdd_admin_menu_for_migration() {
+			if ( ! isset( $_GET['page'] ) || empty( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+				return;
+			}
+
+			if ( isset( $_GET['page'] ) && 'prdd-lite-update' !== $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+				return;
+			}
+
+			$pddd_welcome_page_title = __( 'Welcome to Product Delivery Date for WooCommerce - Lite', 'woocommerce-prdd-lite' );
+
+			add_dashboard_page( $pddd_welcome_page_title, '', 'manage_options', 'prdd-lite-update', array( $this, 'prdd_lite_update_data_for_pro' ) );
+		}
+
+		/**
+		 * This function update the meta_keys to make compliant with pro plugin.
+		 *
+		 * @since 2.3.0
+		 */
+		public function prdd_lite_update_database_callback() {
+			check_ajax_referer( 'ajax-nonce', 'prdd_nonce' );
+			if ( isset( $_POST['is_update'] ) ) {
+				$is_update = sanitize_key( $_POST['is_update'] );
+			}
+
+			if ( 'no' === $is_update ) {
+				update_option( 'prdd_is_data_migrated', 'no' );
+				die;
+			}
+
+			if ( 'yes' === $is_update ) {
+				if ( isset( $_POST['page'] ) ) {
+					$page = sanitize_key( $_POST['page'] );
+				}
+				if ( ! $page ) {
+					$page = 1;
+				}
+				$args         = array(
+					'post_type'      => 'product',
+					'post_status'    => 'any',
+					'paged'          => $page,
+					'posts_per_page' => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
+					'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+						array(
+							'key'     => '_woo_prdd_lite_enable_delivery_date',
+							'value'   => 'on',
+							'compare' => '=',
+						),
+					),
+				);
+				$get_products = new WP_Query( $args );
+				$total_page   = $get_products->max_num_pages;
+				if ( $get_products->have_posts() ) {
+					global $wpdb;
+					while ( $get_products->have_posts() ) {
+						$get_products->the_post();
+						$post_id                            = get_the_ID();
+						$enable_date                        = get_post_meta( $post_id, '_woo_prdd_lite_enable_delivery_date', true );
+						$prdd_minimum_delivery_time         = get_post_meta( $post_id, '_woo_prdd_lite_minimum_delivery_time', true );
+						$prdd_maximum_number_days           = get_post_meta( $post_id, '_woo_prdd_lite_maximum_number_days', true );
+						$_delivery_days                     = get_post_meta( $post_id, '_woo_prdd_lite_delivery_days', true );
+						$prdd_lite_delivery_field_mandatory = get_post_meta( $post_id, '_woo_prdd_lite_delivery_field_mandatory', true );
+						$prdd_lite_holidays                 = get_post_meta( $post_id, '_woo_prdd_lite_holidays', true );
+
+						$delivery_days      = array(
+							'Sunday'    => 0,
+							'Monday'    => 1,
+							'Tuesday'   => 2,
+							'Wednesday' => 3,
+							'Thursday'  => 4,
+							'Friday'    => 5,
+							'Saturday'  => 6,
+						);
+						$delivery_day_array = array();
+						if ( ! empty( $_delivery_days ) ) {
+							foreach ( $_delivery_days as $key => $value ) {
+								$delivery_day_array[ 'prdd_weekday_' . $delivery_days[ $value ] ] = 'on';
+							}
+						}
+
+						$prdd_settings = array();
+						if ( $enable_date ) {
+							$prdd_settings['prdd_enable_date'] = $enable_date;
+						}
+						if ( $prdd_minimum_delivery_time ) {
+							$prdd_settings['prdd_minimum_number_days'] = $prdd_minimum_delivery_time;
+						}
+						if ( $prdd_maximum_number_days ) {
+							$prdd_settings['prdd_maximum_number_days'] = $prdd_maximum_number_days;
+						}
+						if ( ! empty( $delivery_day_array ) ) {
+							$prdd_settings['prdd_recurring_chk'] = 'on';
+							$prdd_settings['prdd_recurring']     = $delivery_day_array;
+						}
+						if ( $prdd_lite_delivery_field_mandatory ) {
+							$prdd_settings['prdd_delivery_field_mandatory'] = $prdd_lite_delivery_field_mandatory;
+						}
+						if ( $prdd_lite_holidays ) {
+							$prdd_settings['prdd_product_holiday'] = $prdd_lite_holidays;
+						}
+						if ( ! empty( $prdd_settings ) ) {
+							update_post_meta( $post_id, 'woocommerce_prdd_settings', $prdd_settings );
+						}
+
+						$is_has_children = get_post_meta( $post_id, '_children', true );
+						if ( ! empty( $is_has_children ) ) {
+							$post_id_arr = implode( ',', $is_has_children );
+						} else {
+							$post_id_arr = implode( ',', array( $post_id ) );
+						}
+						$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID WHERE posts.post_type = 'shop_order' AND order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
+						$get_orders = $wpdb->get_col( $sql ); // phpcs:ignore
+						if ( ! empty( $get_orders ) ) {
+							foreach ( $get_orders as $order_id ) {
+								$order = wc_get_order( $order_id );
+								foreach ( $order->get_items() as $item_id => $item ) {
+									$_prdd_lite_date = $item->get_meta( '_prdd_lite_date' );
+									if ( $_prdd_lite_date ) {
+										wc_add_order_item_meta( $item_id, '_prdd_date', $_prdd_lite_date );
+									}
+								}
+							}
+						}
+					}
+					wp_reset_postdata();
+				}
+				$prdd_is_data_migrated = get_option( 'prdd_is_data_migrated' );
+				if ( 'done' !== $prdd_is_data_migrated ) {
+					$woocommerce_prdd_global_settings = array();
+					if ( get_option( 'prdd_lite_language' ) ) {
+						$woocommerce_prdd_global_settings['prdd_language'] = get_option( 'prdd_lite_language' );
+					}
+					if ( get_option( 'prdd_lite_date_format' ) ) {
+						$woocommerce_prdd_global_settings['prdd_date_format'] = get_option( 'prdd_lite_date_format' );
+					}
+					if ( get_option( 'prdd_lite_months' ) ) {
+						$woocommerce_prdd_global_settings['prdd_months'] = get_option( 'prdd_lite_months' );
+					}
+					if ( get_option( 'prdd_lite_calendar_day' ) ) {
+						$woocommerce_prdd_global_settings['prdd_calendar_day'] = get_option( 'prdd_lite_calendar_day' );
+					}
+					if ( get_option( 'prdd_lite_theme' ) ) {
+						$woocommerce_prdd_global_settings['prdd_themes'] = get_option( 'prdd_lite_theme' );
+					}
+					if ( get_option( 'prdd_lite_global_holidays' ) ) {
+						$woocommerce_prdd_global_settings['prdd_global_holidays'] = get_option( 'prdd_lite_global_holidays' );
+					}
+					if ( get_option( 'prdd_lite_enable_rounding' ) ) {
+						$woocommerce_prdd_global_settings['prdd_enable_rounding'] = get_option( 'prdd_lite_enable_rounding' );
+					}
+					if ( ! empty( $woocommerce_prdd_global_settings ) ) {
+						update_option( 'woocommerce_prdd_global_settings', wp_json_encode( $woocommerce_prdd_global_settings ) );
+					}
+				}
+				update_option( 'prdd_is_data_migrated', 'done' );
+				echo wp_json_encode( array( 'total_page' => $total_page ) );
+				die;
+			}
 		}
 	}
 }

@@ -79,4 +79,5 @@ if ( isset( $prdd_enable_deleting ) && 'on' === $prdd_enable_deleting ) {
 	delete_option( 'prdd_enable_delivery_reschedule' );
 	delete_option( 'prdd_delivery_reschedule_days' );
 	delete_option( 'prdd_lite_enable_delete_order_item' );
+	delete_option( 'prdd_is_data_migrated' );
 }

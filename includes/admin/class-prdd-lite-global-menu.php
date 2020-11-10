@@ -30,6 +30,18 @@ class PRDD_Lite_Global_Menu {
 
 		remove_submenu_page( 'woocommerce_prdd_lite_page', 'woocommerce_prdd_lite_page' );
 		do_action( 'prdd_lite_add_submenu' );
+
+		if ( isset( $_POST['option_page'] ) && 'prdd_lite_settings' === $_POST['option_page'] ) {
+			$woocommerce_prdd_global_settings                         = array();
+			$woocommerce_prdd_global_settings['prdd_language']        = $_POST['prdd_lite_language'];
+			$woocommerce_prdd_global_settings['prdd_date_format']     = $_POST['prdd_lite_date_format'];
+			$woocommerce_prdd_global_settings['prdd_months']          = $_POST['prdd_lite_months'];
+			$woocommerce_prdd_global_settings['prdd_calendar_day']    = $_POST['prdd_lite_calendar_day'];
+			$woocommerce_prdd_global_settings['prdd_themes']          = $_POST['prdd_lite_theme'];
+			$woocommerce_prdd_global_settings['prdd_global_holidays'] = $_POST['prdd_lite_global_holidays'];
+			$woocommerce_prdd_global_settings['prdd_enable_rounding'] = $_POST['prdd_lite_enable_rounding'];
+			update_option( 'woocommerce_prdd_global_settings', wp_json_encode( $woocommerce_prdd_global_settings ) );
+		}
 	}
 
 	/**
