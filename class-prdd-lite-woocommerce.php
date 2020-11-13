@@ -68,8 +68,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			register_activation_hook( __FILE__, array( &$this, 'prdd_lite_activate' ) );
 			add_action( 'init', 'prdd_lite_update_po_file' );
 			add_action( 'admin_init', array( &$this, 'prdd_lite_update_db_check' ) );
-			add_action( 'admin_menu', array( &$this, 'prdd_admin_menu_for_migration' ) );
-
 			add_filter( 'plugin_row_meta', array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
 
 			// Add Meta box for the Product Delivery Date Settings on the product edit page.
@@ -187,25 +185,26 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				add_option( 'prdd_is_data_migrated', '' );
 			}
 
-			$args         = array(
-				'post_type'      => 'product',
-				'post_status'    => 'any',
-				'posts_per_page' => 1,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-					array(
-						'key'     => '_woo_prdd_lite_enable_delivery_date',
-						'value'   => 'on',
-						'compare' => '=',
-					),
-				),
-			);
-			$get_products = new WP_Query( $args );
-
 			$prdd_is_data_migrated = get_option( 'prdd_is_data_migrated' );
-			if ( $get_products->have_posts() && ! $prdd_is_data_migrated ) {
-				update_option( 'prdd_is_data_migrated', 'yes' );
-				wp_safe_redirect( admin_url( 'admin.php?page=prdd-lite-update' ) );
-				exit;
+			if ( 'done' !== $prdd_is_data_migrated ) {
+				$args         = array(
+					'post_type'      => 'product',
+					'post_status'    => 'any',
+					'posts_per_page' => 1,
+					'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+						array(
+							'key'     => '_woo_prdd_lite_enable_delivery_date',
+							'value'   => 'on',
+							'compare' => '=',
+						),
+					),
+				);
+				$get_products = new WP_Query( $args );
+
+				if ( $get_products->have_posts() && 'done' !== $prdd_is_data_migrated ) {
+					update_option( 'prdd_is_data_migrated', 'yes' );
+					add_action( 'admin_notices', array( &$this, 'prdd_admin_notice_for_migration' ) );
+				}
 			}
 
 		}
@@ -325,19 +324,17 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			}
 
 			// Below files are only to be included on prdd database update page.
-			if ( isset( $_GET['page'] ) && 'prdd-lite-update' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-				wp_register_script( 'prdd-lite-update-script', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/prdd-lite-update-script.js', array( 'jquery' ), $plugin_version_number, false );
-				wp_enqueue_script( 'prdd-lite-update-script' );
-				wp_localize_script(
-					'prdd-lite-update-script',
-					'prdd_lite_ajax_data',
-					array(
-						'max_product' => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
-						'ajax_url'    => admin_url( 'admin-ajax.php' ),
-						'prdd_nonce'  => wp_create_nonce( 'ajax-nonce' ),
-					)
-				);
-			}
+			wp_register_script( 'prdd-lite-update-script', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/prdd-lite-update-script.js', array( 'jquery' ), $plugin_version_number, false );
+			wp_enqueue_script( 'prdd-lite-update-script' );
+			wp_localize_script(
+				'prdd-lite-update-script',
+				'prdd_lite_ajax_data',
+				array(
+					'max_product' => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
+					'ajax_url'    => admin_url( 'admin-ajax.php' ),
+					'prdd_nonce'  => wp_create_nonce( 'ajax-nonce' ),
+				)
+			);
 		}
 
 		/**
@@ -425,39 +422,10 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 *
 		 * @since 2.3.0
 		 */
-		public function prdd_lite_update_data_for_pro() {
-			global $prdd_lite_update_checker;
-			?>
-			<div class="wrap about-wrap">
-				<?php /* translators: %s: version number */ ?>
-				<h2><?php printf( esc_html__( 'Welcome to Product Delivery Date for WooCommerce - Lite v%s', 'woocommerce-prdd-lite' ), esc_attr( $prdd_lite_update_checker ) ); ?></h2>
-				<div>
-				<p><?php esc_html_e( 'We have noticed that you have updated the version of the Product Delivery Date for WooCommerce - Lite on your store. Thus, before activating the plugin, we request you to upgrade the database.', 'woocommerce-prdd-lite' ); ?></p>
-				<p><?php esc_html_e( 'You can choose if you want to continue or not? Click on Yes to continue from the options below:', 'woocommerce-prdd-lite' ); ?></p>
-				</div>
-				<input type="button" id="prdd-update-yes" class="button button-primary" value="Yes"  />
-				<input type="button" id="prdd-update-no" class="button button-primary" value="No"  />
-				<div id="prdd-update-status" style="display: none; margin-top: 20px;border: 1px solid #ccc;padding: 10px;"></div>
-			<?php
-		}
-
-		/**
-		 * This function change the meta_keys to make compliant with pro plugin.
-		 *
-		 * @since 2.3.0
-		 */
-		public function prdd_admin_menu_for_migration() {
-			if ( ! isset( $_GET['page'] ) || empty( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-				return;
-			}
-
-			if ( isset( $_GET['page'] ) && 'prdd-lite-update' !== $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-				return;
-			}
-
-			$pddd_welcome_page_title = __( 'Welcome to Product Delivery Date for WooCommerce - Lite', 'woocommerce-prdd-lite' );
-
-			add_dashboard_page( $pddd_welcome_page_title, '', 'manage_options', 'prdd-lite-update', array( $this, 'prdd_lite_update_data_for_pro' ) );
+		public function prdd_admin_notice_for_migration() {
+			$class   = 'notice notice-info is-dismissible';
+			$message = __( '<span id="prdd-update-response">We have made some backend changes to Product Delivery Date Lite plugin. Please update the database by clicking the “Update Database” button for a smoother experience of the plugin. <input style="margin-top: 10px;display: block;" type="button" id="prdd-update-yes" class="button button-primary" value="Update database"  /></span> <span id="prdd-update-status" style="display: none;"></span>', 'woocommerce-prdd-lite' );
+			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message ); //phpcs:ignore
 		}
 
 		/**
@@ -469,11 +437,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			check_ajax_referer( 'ajax-nonce', 'prdd_nonce' );
 			if ( isset( $_POST['is_update'] ) ) {
 				$is_update = sanitize_key( $_POST['is_update'] );
-			}
-
-			if ( 'no' === $is_update ) {
-				update_option( 'prdd_is_data_migrated', 'no' );
-				die;
 			}
 
 			if ( 'yes' === $is_update ) {
