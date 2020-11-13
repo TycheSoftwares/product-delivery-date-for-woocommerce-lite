@@ -118,14 +118,40 @@ class Prdd_Lite_Meta_Box_Class {
 		}
 
 		// sanitize the weekday values.
-		$_delivery_days = isset( $_POST['prdd_lite_delivery_days'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['prdd_lite_delivery_days'] ) ) : array(); // phpcs:ignore WordPress.Security.NonceVerification
-
+		$_delivery_days     = isset( $_POST['prdd_lite_delivery_days'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['prdd_lite_delivery_days'] ) ) : array(); // phpcs:ignore WordPress.Security.NonceVerification
+		$delivery_days      = array(
+			'Sunday'    => 0,
+			'Monday'    => 1,
+			'Tuesday'   => 2,
+			'Wednesday' => 3,
+			'Thursday'  => 4,
+			'Friday'    => 5,
+			'Saturday'  => 6,
+		);
+		$delivery_day_array = array();
+		if ( ! empty( $_delivery_days ) ) {
+			foreach ( $_delivery_days as $key => $value ) {
+				$delivery_day_array[ 'prdd_weekday_' . $delivery_days[ $value ] ] = 'on';
+			}
+		}
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_enable_delivery_date', $enable_date );
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_minimum_delivery_time', $prdd_minimum_delivery_time );
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', $prdd_maximum_number_days );
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', $_delivery_days );
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_field_mandatory', $prdd_lite_delivery_field_mandatory );
 		update_post_meta( $duplicate_of, '_woo_prdd_lite_holidays', $prdd_lite_holidays );
+
+		$prdd_settings                             = array();
+		$prdd_settings['prdd_enable_date']         = $enable_date;
+		$prdd_settings['prdd_minimum_number_days'] = $prdd_minimum_delivery_time;
+		$prdd_settings['prdd_maximum_number_days'] = $prdd_maximum_number_days;
+		if ( ! empty( $delivery_day_array ) ) {
+			$prdd_settings['prdd_recurring_chk'] = 'on';
+			$prdd_settings['prdd_recurring']     = $delivery_day_array;
+		}
+		$prdd_settings['prdd_delivery_field_mandatory'] = $prdd_lite_delivery_field_mandatory;
+		$prdd_settings['prdd_product_holiday']          = $prdd_lite_holidays;
+		update_post_meta( $duplicate_of, 'woocommerce_prdd_settings', $prdd_settings );
 	}
 
 	/**

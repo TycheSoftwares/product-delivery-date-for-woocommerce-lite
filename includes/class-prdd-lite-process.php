@@ -221,6 +221,7 @@ class Prdd_Lite_Process {
 	 */
 	public static function prdd_lite_hidden_order_itemmeta( $arr ) {
 		$arr[] = '_prdd_lite_date';
+		$arr[] = '_prdd_date';
 		return $arr;
 	}
 
@@ -280,6 +281,7 @@ class Prdd_Lite_Process {
 				if ( array_key_exists( 'delivery_hidden_date', $delivery[0] ) && '' !== $delivery[0]['delivery_hidden_date'] ) {
 					$date_booking = gmdate( 'Y-m-d', strtotime( $delivery[0]['delivery_hidden_date'] ) ); // phpcs:ignore
 					wc_add_order_item_meta( $results[0]->order_item_id, '_prdd_lite_date', sanitize_text_field( $date_booking, true ) );
+					wc_add_order_item_meta( $results[0]->order_item_id, '_prdd_date', sanitize_text_field( $date_booking, true ) );
 				}
 			}
 
