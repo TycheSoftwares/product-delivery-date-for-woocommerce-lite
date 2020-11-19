@@ -39,7 +39,7 @@ class PRDD_Lite_Global_Menu {
 			$woocommerce_prdd_global_settings['prdd_calendar_day']    = $_POST['prdd_lite_calendar_day'];
 			$woocommerce_prdd_global_settings['prdd_themes']          = $_POST['prdd_lite_theme'];
 			$woocommerce_prdd_global_settings['prdd_global_holidays'] = $_POST['prdd_lite_global_holidays'];
-			$woocommerce_prdd_global_settings['prdd_enable_rounding'] = $_POST['prdd_lite_enable_rounding'];
+			$woocommerce_prdd_global_settings['prdd_enable_rounding'] = isset( $_POST['prdd_lite_enable_rounding'] ) ? $_POST['prdd_lite_enable_rounding'] : '';
 			update_option( 'woocommerce_prdd_global_settings', wp_json_encode( $woocommerce_prdd_global_settings ) );
 		}
 	}
