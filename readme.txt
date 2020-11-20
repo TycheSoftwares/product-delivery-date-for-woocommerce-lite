@@ -183,7 +183,7 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 == Changelog ==
 
 = 2.4.0 (20.11.2020) =
-* Dev :- Changes in the database are made so that the migration from Lite to Pro can be done.
+* Dev :- Changes in the database are made so that when the plugin is updated from Lite to Pro version, then the settings & delivery dates from Lite version are automatically migrated to Pro version.
 
 = 2.3.0 (27.08.2020) =
 * Update compatibility with WordPress 5.5
