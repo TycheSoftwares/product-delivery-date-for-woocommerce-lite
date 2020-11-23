@@ -61,12 +61,12 @@ class Prdd_Lite_Process {
 		$plugins_url = plugins_url();
 		if ( isset( $prdd_settings ) && 'on' === $prdd_settings ) {
 
-			print ( '<div class="delivery_date_label_container"><label class="delivery_date_label">' . esc_html_e( 'Delivery Date:', 'woocommerce-prdd-lite' ) . '</label>' );
+			print ( '<div class="delivery_date_label_container" style="position: relative;"><label class="delivery_date_label">' . esc_html_e( 'Delivery Date:', 'woocommerce-prdd-lite' ) . '</label>' );
 
 			if ( 'on' === $prdd_delivery_field_mandatory ) {
 				print( '<abbr class="required" title="required" style="color: red;font-weight: 800;border: none;">*</abbr>' );
 			}
-			print( '<img src="' . esc_attr( $plugins_url ) . '/product-delivery-date-for-woocommerce-lite/images/cal.png" width="20" height="20" style="cursor:pointer!important; position:absolute; top:50%; right:5%;" id ="delivery_cal_lite"/>
+			print( '<img src="' . esc_attr( $plugins_url ) . '/product-delivery-date-for-woocommerce-lite/images/cal.png" width="20" height="20" style="cursor:pointer!important; position:absolute; top:50%; right:5%; transform: translateY(-50%);" id ="delivery_cal_lite"/>
             <input type="text" id="delivery_calender_lite" name="delivery_calender_lite" class="delivery_calender_lite" style="cursor:text!important;display:block;  margin-bottom:20px; width:100%;" readonly/>
             </div>
             <input type="hidden" id="prdd_lite_hidden_date" name="prdd_lite_hidden_date"/>' );
