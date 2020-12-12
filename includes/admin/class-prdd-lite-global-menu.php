@@ -156,19 +156,19 @@ class PRDD_Lite_Global_Menu {
 						</table>
 					</div>
 					<script type="text/javascript">
-					jQuery( document ).ready( function () {
+					jQuery( document ).ready( function ($) {
 						jQuery( ".chosen_select" ).select2();
-						jQuery("#tabbed-nav").zozoTabs({
-							theme: "silver",
-							orientation: "vertical",
-							position: "top-left",
-							size: "medium",
-							animation: {
-								easing: "easeInOutExpo",
-								duration: 400,
-								effects: 'slideV'
-							},
-						});
+						$('.tstab-content').wrapInner('<div class="tstab-content-inner"></div>');
+                        $(document).on('click', '.tstab-tab', function(){
+                            data_link = $(this).data("link");
+                            cur_data_link = $('.tstab-tab.tstab-active').data("link");
+                            if ( cur_data_link !== data_link ) {
+                                $('.tstab-content').removeClass('tstab-active').hide();
+                                $("#"+data_link).addClass('tstab-active').css('position', 'relative').fadeIn('slow');
+                                $('.tstab-tab').removeClass('tstab-active');
+                                $(this).addClass('tstab-active');
+                            }
+                        });
 
 						jQuery("#tabbed-nav li").addClass("z-disabled");
 					});

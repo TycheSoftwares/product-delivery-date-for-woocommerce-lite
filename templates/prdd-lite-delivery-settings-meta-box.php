@@ -19,18 +19,18 @@ jQuery( document ).ready( function() {
 });
 </script>
 
-<div id='tabbed-nav'>
-	<ul>
-		<li><a id="addnew"> <?php esc_html_e( 'Delivery Options', 'woocommerce-prdd' ); ?> </a></li>
-		<li><a id="settings"><?php esc_html_e( 'Settings', 'woocommerce-prdd' ); ?></a></li>
-		<li><a id="date_range"> <?php esc_html_e( 'Delivery Time Period', 'woocommerce-prdd' ); ?> </a></li>
+<div id='tabbed-nav' class="tstab-shadows tstab-tabs vertical top-left silver">
+	<ul class="tstab-tabs-nav">
+		<li class="tstab-tab tstab-first tstab-active" data-link="prdd_lite_date_time"><a id="addnew"> <?php esc_html_e( 'Delivery Options', 'woocommerce-prdd' ); ?> </a></li>
+		<li class="tstab-tab tstab-first" data-link="prdd_lite_settings"><a id="settings"><?php esc_html_e( 'Settings', 'woocommerce-prdd' ); ?></a></li>
+		<li class="tstab-tab tstab-first" data-link="prdd_lite_date_range_tab"><a id="date_range"> <?php esc_html_e( 'Delivery Time Period', 'woocommerce-prdd' ); ?> </a></li>
 		<?php
 		do_action( 'prdd_lite_add_tabs', $duplicate_of );
 		?>
 	</ul>
 
-	<div>
-		<div id="prdd_lite_date_time">
+	<div class="tstab-container">
+		<div id="prdd_lite_date_time" class="tstab-content tstab-active">
 			<table class="form-table">
 				<?php
 				do_action( 'prdd_lite_before_enable_delivery', $duplicate_of );
@@ -170,7 +170,7 @@ jQuery( document ).ready( function() {
 				</p>
 		</div>
 
-		<div id="prdd_lite_settings" style="display:none;">
+		<div id="prdd_lite_settings"  class="tstab-content tstab-active" style="display:none;">
 			<table class="form-table">
 				<tr>
 					<th>
@@ -243,7 +243,7 @@ jQuery( document ).ready( function() {
 			</table>
 		</div>
 
-		<div id="prdd_lite_date_range_tab" style="display:none;">
+		<div id="prdd_lite_date_range_tab" class="tstab-content tstab-active" style="display:none;">
 			<table class="form-table">
 				<?php
 				do_action( 'prdd_lite_before_minimum_days', $duplicate_of );

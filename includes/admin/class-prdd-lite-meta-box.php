@@ -40,17 +40,17 @@ class Prdd_Lite_Meta_Box_Class {
 		if ( 'product' === get_post_type() ) {
 			?>
 			<script type="text/javascript">
-			jQuery( document ).ready( function () {
-				jQuery( "#tabbed-nav" ).zozoTabs({
-					theme: "silver",
-					orientation: "vertical",
-					position: "top-left",
-					size: "medium",
-						animation: {
-						easing: "easeInOutExpo",
-						duration: 400,
-						effects: "slideV"
-					},
+			jQuery( document ).ready( function ($) {
+				$('.tstab-content').wrapInner('<div class="tstab-content-inner"></div>');
+				$(document).on('click', '.tstab-tab', function(){
+					data_link = $(this).data("link");
+					cur_data_link = $('.tstab-tab.tstab-active').data("link");
+					if ( cur_data_link !== data_link ) {
+						$('.tstab-content').removeClass('tstab-active').hide();
+						$("#"+data_link).addClass('tstab-active').css('position', 'relative').fadeIn('slow');
+						$('.tstab-tab').removeClass('tstab-active');
+						$(this).addClass('tstab-active');
+					}
 				});
 			});
 			</script>
