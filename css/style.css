@@ -13,19 +13,3 @@
  font-family: open sans;
  font-size: 13px;
 }
-/* Change the width of vertical tabs*/
-.tstab-tabs .vertical .top-left ul{
-	width:120px;
-}
-/* Change the font color of the active tab so that it looks similar to woocommerce*/
-.tstab-tabs.silver > ul > li.tstab-active > a {
- color: black;	
-}
-/* Change the font color of the tabs so that it looks similar to woocommerce*/
-.tstab-tabs.silver > ul > li > a {
- color: #2ea2cc;	
-}
-/* Change the font of the tabs so that it looks similar to woocommerce*/
-.tstab-tabs {
- font-family: open sans;
-}
