@@ -14,18 +14,18 @@
  font-size: 13px;
 }
 /* Change the width of vertical tabs*/
-.z-tabs .vertical .top-left ul{
+.tstab-tabs .vertical .top-left ul{
 	width:120px;
 }
 /* Change the font color of the active tab so that it looks similar to woocommerce*/
-.z-tabs.silver > ul > li.z-active > a {
+.tstab-tabs.silver > ul > li.tstab-active > a {
  color: black;	
 }
 /* Change the font color of the tabs so that it looks similar to woocommerce*/
-.z-tabs.silver > ul > li > a {
+.tstab-tabs.silver > ul > li > a {
  color: #2ea2cc;	
 }
 /* Change the font of the tabs so that it looks similar to woocommerce*/
-.z-tabs {
+.tstab-tabs {
  font-family: open sans;
 }

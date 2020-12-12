@@ -272,7 +272,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			'bulk_product_settings' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				wp_enqueue_style( 'prdd', plugins_url( '/css/prdd.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-datepick', plugins_url( '/css/jquery.datepick.css', __FILE__ ), '', $plugin_version_number, false );
-				wp_enqueue_style( 'prdd-lite-tabstyle-1', plugins_url( '/css/zozo.tabs.min.css', __FILE__ ), '', $plugin_version_number, false );
 				wp_enqueue_style( 'prdd-lite-tabstyle-2', plugins_url( '/css/style.css', __FILE__ ), '', $plugin_version_number, false );
 			}
 
@@ -301,8 +300,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 				wp_register_script( 'prdd-lite-datepick', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/jquery.datepick.js', '', $plugin_version_number, false );
 				wp_enqueue_script( 'prdd-lite-datepick' );
-
-				wp_enqueue_script( 'prdd-lite-tabsjquery', plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/zozo.tabs.min.js', '', $plugin_version_number, false );
 			}
 
 			// Below files are only to be included on prdd settings page.

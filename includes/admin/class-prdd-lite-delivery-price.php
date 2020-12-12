@@ -48,7 +48,7 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 		 */
 		public function prdd_lite_delivery_price_tab( $product_id ) {
 			?>
-			<li><a id="delivery-charges"> <?php esc_html_e( 'Delivery Charges', 'woocommerce-prdd-lite' ); ?> </a></li>
+			<li class="tstab-tab tstab-first" data-link="special_delivery_page"><a id="delivery-charges"> <?php esc_html_e( 'Delivery Charges', 'woocommerce-prdd-lite' ); ?> </a></li>
 			<?php
 		}
 
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 			global $post, $wpdb;
 			$plugins_url = plugins_url();
 			?>
-			<div id="special_delivery_page">
+			<div id="special_delivery_page" class="tstab-content tstab-active" style="display: none;">
 				<table class='form-table'>
 					<tr id="special_delivery_price_row">
 						<th width="35%">
