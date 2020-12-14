@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 1.3
-Tested up to: 5.5
+Tested up to: 5.6
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -181,6 +181,10 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+
+= 2.5.0 (14.12.2020) =
+* Update compatibility with WordPress 5.6
+* Fix :- Delivery calendar Icon does not display correctly. This is fixed now.
 
 = 2.4.0 (20.11.2020) =
 * Dev :- Changes in the database are made so that when the plugin is updated from Lite to Pro version, then the settings & delivery dates from Lite version are automatically migrated to Pro version.
