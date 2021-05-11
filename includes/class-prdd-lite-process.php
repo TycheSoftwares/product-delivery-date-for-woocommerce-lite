@@ -101,6 +101,10 @@ class Prdd_Lite_Process {
 		}
 
 		$product_holidays = get_post_meta( $duplicate_of, '_woo_prdd_lite_holidays', true );
+
+		// It will add the custom holidays date.
+		$product_holidays = apply_filters( 'prdd_lite_additional_holidays', $product_holidays );
+
 		if ( '' !== $product_holidays ) {
 			if ( '' !== $book_global_holidays ) {
 				$book_global_holidays .= ',';
