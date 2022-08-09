@@ -69,6 +69,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			add_action( 'init', 'prdd_lite_update_po_file' );
 			add_action( 'admin_init', array( &$this, 'prdd_lite_update_db_check' ) );
 			add_filter( 'plugin_row_meta', array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
+			add_filter( 'plugin_action_links', array( &$this, 'prdd_plugin_row_meta' ), 10, 5 );
 
 			// Add Meta box for the Product Delivery Date Settings on the product edit page.
 			define( 'PRDD_LITE_DELIVERIES_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
@@ -226,6 +227,25 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				return array_merge( $links, $row_meta );
 			}
 			return (array) $links;
+		}
+
+		/**
+		 * Show row meta on the plugin screen.
+		 *
+		 * @param  array  $actions Plugin page actions array.
+		 * @param  string $plugin_file Plugin Base file.
+		 * @return array
+		 * @since   2.6
+		 */
+		public static function prdd_plugin_row_meta( $actions, $plugin_file ) {
+			$prddd_lite_plugin_dir = 'product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php';
+			if ( $prddd_lite_plugin_dir === $plugin_file ) {
+				$settings = array(
+					'support' => '<a href="' . esc_url( 'admin.php?page=woocommerce_prdd_lite_page' ) . '" title="' . esc_attr( __( 'Product Delivery Date Settings', 'woocommerce-prdd' ) ) . '">' . __( 'Settings', 'woocommerce-prdd' ) . '</a>',
+				);
+				$actions = array_merge( $settings, $actions );
+			}
+			return $actions;
 		}
 
 		/**
