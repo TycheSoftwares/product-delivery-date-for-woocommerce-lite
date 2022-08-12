@@ -5,13 +5,15 @@ jQuery(document).ready(function() {
     jQuery.extend( jQuery.datepicker, { afterShow: function(event) {
         jQuery.datepicker._getInst( event.target ).dpDiv.css( "z-index", 9999 );
     }});
-
+    var max_date_to_set = new Date ( split_date[1] + "/" + split_date[0] + "/" + split_date[2] );
+    var numberOfDaysToAdd = parseInt(prdd_lite_params.prdd_maximum_number_days)-1;
+    max_date_to_set.setDate(max_date_to_set.getDate() + numberOfDaysToAdd);
     jQuery( "#delivery_calender_lite" ).datepicker({
         dateFormat: prdd_lite_params.date_format,
         firstDay: prdd_lite_params.first_day,
         numberOfMonths: parseInt(prdd_lite_params.prdd_months),
         minDate: min_date_to_set,
-        maxDate: parseInt(prdd_lite_params.prdd_maximum_number_days)-1,
+        maxDate: max_date_to_set,
         beforeShowDay: function( date ) {
             var weekday = [ "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" ];
             var a = new Date( date );
