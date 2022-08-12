@@ -270,10 +270,13 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				$plugin_data['deliveries_count'] = self::ts_get_deliveries_counts();
 
 				// Get all plugin options info
-				$plugin_data['deliverable_products']     = self::ts_get_deliverable_products();
-				$plugin_data['prdd_lite_plugin_version'] = self::prdd_get_version();
-				$plugin_data['prdd_lite_allow_tracking'] = get_option( 'prdd_lite_allow_tracking' );
-				$data['plugin_data']                     = $plugin_data;
+				$plugin_data[ 'deliverable_products' ]     = self::ts_get_deliverable_products();
+				$plugin_data[ 'deliveries_settings' ]      = self::ts_get_all_plugin_options_values();
+				$plugin_data[ 'deliveries_products' ]      = self::ts_get_all_products();
+				$plugin_data[ 'prdd_lite_plugin_version' ] = self::prdd_get_version();
+				$plugin_data[ 'prdd_lite_allow_tracking' ] = get_option( 'prdd_lite_allow_tracking' );
+				$data['plugin_data']                       = $plugin_data;
+				
 			}
 			return $data;
 		}
@@ -305,6 +308,85 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				$product_count += $results[0]->deliverable_products;
 			}
 			return $product_count;
+		}
+
+		/**
+		 * It will retrun the Global setting enabled.
+		 */
+		private static function ts_get_all_plugin_options_values() {
+			return array(
+				'DB_version'                         => get_option( 'woocommerce_prdd_lite_db_version' ),
+				'prdd_lite_language'                 => get_option( 'prdd_lite_language' ),
+				'prdd_lite_date_format'              => get_option( 'prdd_lite_date_format' ),
+				'prdd_lite_months'             		 => get_option( 'prdd_lite_months' ),
+				'prdd_lite_calendar_day'	         => get_option( 'prdd_lite_calendar_day' ),
+				'prdd_lite_theme'	              	 => get_option( 'prdd_lite_theme' ),
+				'prdd_lite_global_holidays'	         => get_option( 'prdd_lite_global_holidays' ),
+				'prdd_lite_enable_rounding'	         => get_option( 'prdd_lite_enable_rounding' ),
+				'prdd_lite_enable_delete_order_item' => get_option( 'prdd_lite_enable_delete_order_item' ),
+				'prdd_is_data_migrated'	             => get_option( 'prdd_is_data_migrated' ),
+				
+			); 
+		}
+
+		/**
+		 * It will retrun the product setting enabled.
+		 */
+		private static function ts_get_all_products() {
+			$args = array(
+				'post_type'      => array( 'product' ),
+				'posts_per_page' => -1,
+				'post_status'    => array( 'publish' ),
+				'meta_query'     => array(
+					array(
+						'key'     => '_woo_prdd_lite_enable_delivery_date',
+						'value'   => 'on',
+						'compare' => '='
+					),
+				),
+			);
+			$my_query = new WP_Query( $args );
+			if ( $my_query->have_posts() ) {
+				$Alldata = array();
+			    while ( $my_query->have_posts() ) {
+			        $my_query->the_post();
+			        $prdd_enable_date         = get_post_meta( get_the_ID(), '_woo_prdd_lite_enable_delivery_date', true);
+		        	$prdd_delivery_time       = get_post_meta( get_the_ID(), '_woo_prdd_lite_minimum_delivery_time', true);
+			        $prdd_maximum_number_days = get_post_meta( get_the_ID(), '_woo_prdd_lite_maximum_number_days', true);
+			        $prdd_days                = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_days', true);
+			        $prdd_mandatory           = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_field_mandatory', true);
+			        $prdd_holidays            = get_post_meta( get_the_ID(), '_woo_prdd_lite_holidays', true);
+		        	$data = array();	
+		        	$data['prdd_enable_date']          = $prdd_enable_date;
+		        	$data['prdd_delivery_time']        = $prdd_delivery_time;
+		        	$data['prdd_maximum_number_days']  = $prdd_maximum_number_days;
+    				$data['prdd_days']                 = $prdd_days;
+    				$data['prdd_mandatory']            = $prdd_mandatory; 
+				    $data['prdd_holidays']             = $prdd_holidays;
+				    $Alldata[get_the_ID()] = $data;
+			    }
+			}
+			wp_reset_postdata();
+			return $Alldata;
+		}
+
+		/**
+		 * This function returns the Product Delivery Date Lite plugin version number.
+		 *     
+		 * @return string Version of the plugin
+		 * @since 3.3
+		 */
+		public static function prdd_get_version() {
+			$plugin_version = '';
+			$prddd_plugin_dir =   dirname (__DIR__, 1) ;
+			$prddd_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
+			error_log($prddd_plugin_dir);
+
+			$plugin_data = get_file_data( $prddd_plugin_dir, array( 'Version' => 'Version' ) );
+			if ( ! empty( $plugin_data['Version'] ) ) {
+				$plugin_version = $plugin_data[ 'Version' ];
+			}
+			return $plugin_version;
 		}
 
 		/**
