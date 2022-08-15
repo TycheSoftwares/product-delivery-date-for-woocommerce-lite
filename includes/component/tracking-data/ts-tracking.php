@@ -117,8 +117,7 @@ class Prdd_Lite_TS_tracking {
 		add_filter( self::$plugin_prefix . '_add_settings_field', array( 'Prdd_Lite_TS_tracking', 'ts_add_new_settings_field') );
 
 		if ( '' != self::$ts_plugin_dir ) {
-			add_filter( 'plugin_action_links_' . self::$ts_plugin_dir, array( 'Prdd_Lite_TS_tracking', 'ts_plugin_action_links' 
-			) );
+			add_filter( 'plugin_row_meta', array( 'Prdd_Lite_TS_tracking', 'ts_plugin_action_links' ), 10, 2 );
 		}
 	}
 
@@ -126,19 +125,22 @@ class Prdd_Lite_TS_tracking {
 	 * Add the Reset tracking link on the  plugins page.
 	 * @hook 'plugin_action_links_' . self::$ts_plugin_dir
 	 */
-	public static function ts_plugin_action_links ( $links ) {
-		
-		$ts_action_links = array();
-		
-		if ( 'unknown' != get_option( self::$plugin_prefix . '_allow_tracking', 'unknown' ) ) {
+	public static function ts_plugin_action_links ( $links, $file  ) {
+		$prddd_lite_plugin_dir = 'product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php';
+		if ( $file === $prddd_lite_plugin_dir ) {
+			$ts_action_links = array();
 			
-			$ts_action = self::$ts_settings_page . "/?ts_action=reset_tracking"; 
-			
-			$ts_action_links = array(
-				'reset_tracking' => '<a href="'.$ts_action.'" class="reset_tracking" title= "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.">Reset Usage Tracking</a>',
-			);                
-		}            
-		return array_merge( $ts_action_links, $links );
+			if ( 'unknown' != get_option( self::$plugin_prefix . '_allow_tracking', 'unknown' ) ) {
+				
+				$ts_action = self::$ts_settings_page . "?ts_action=reset_tracking"; 
+				
+				$ts_action_links = array(
+					'reset_tracking' => '<a href="'.$ts_action.'" class="reset_tracking" title= "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.">Reset Usage Tracking</a>',
+				);                
+			}            
+			return array_merge( $links, $ts_action_links );
+		}
+		return (array) $links;
 	}
 	/**
 	 * It will add the New setting for the WooCommerce settings.
