@@ -185,6 +185,12 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 == Changelog ==
 
+= 2.6.0 (16.08.2022) =
+* Enhancement :- Created a filter named `prdd_lite_additional_holidays` to add custom holidays.
+* Enhancement :- Added `Settings` link on the Plugins page.
+* Fix :- "Number of Dates to choose" was not being calculated properly with the "Minimum Delivery time" set. This has been fixed.
+* Fix :- The "Delivery Date" string was not getting translated to another language even if we had translated it. This has been fixed.
+
 = 2.5.0 (14.12.2020) =
 * Update compatibility with WordPress 5.6
 * Fix :- Delivery calendar Icon does not display correctly. This is fixed now.
