@@ -287,7 +287,16 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 		public static function ts_get_deliveries_counts() {
 			global $wpdb;
 			$order_count = 0;
-			$orddd_query = 'SELECT count( order_item_id ) AS deliveries_count FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS a, `' . $wpdb->prefix . "posts` AS b WHERE a.order_id = b.ID AND b.post_type = 'shop_order' AND post_status NOT IN ('wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' ) )";
+
+			if ( woocommerce_prdd::is_hpos_enabled() ) {
+				$table = "wc_orders";
+				$condition = "status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
+			} else {
+				$table = 'posts';
+				$condition = "post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
+			}
+
+			$orddd_query = 'SELECT count( order_item_id ) AS deliveries_count FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS a, `' . $wpdb->prefix . $table ."` AS b WHERE a.order_id = b.ID AND " . $condition;
 			$results     = $wpdb->get_results( $wpdb->prepare( $orddd_query, '_prdd_lite_date' ) );
 
 			if ( isset( $results[0] ) ) {

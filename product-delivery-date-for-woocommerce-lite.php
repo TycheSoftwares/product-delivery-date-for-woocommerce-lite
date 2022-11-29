@@ -16,6 +16,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
+add_action( 'before_woocommerce_init', function() {
+    if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+        $file = __FILE__;       
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $file , true );
+    }
+} );
+
+
 if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 	include_once 'class-prdd-lite-woocommerce.php';
 }
