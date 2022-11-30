@@ -288,7 +288,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			global $wpdb;
 			$order_count = 0;
 
-			if ( woocommerce_prdd::is_hpos_enabled() ) {
+			if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
 				$table = "wc_orders";
 				$condition = "status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 			} else {

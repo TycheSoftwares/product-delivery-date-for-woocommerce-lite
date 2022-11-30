@@ -58,6 +58,25 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 	 * @since 1.0
 	 */
 	class Prdd_Lite_Woocommerce {
+
+
+		/**
+		 * Check HOPS is anabled or not.
+		 */
+		public static function is_hpos_enabled() {
+
+			if ( version_compare( WOOCOMMERCE_VERSION, '7.1.0' ) < 0 ) {
+					return false;
+			}
+
+			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
+				return true;
+			}	
+			
+			return false;		
+		}
+
+
 		/**
 		 * Constructor function for initializing settings
 		 *
