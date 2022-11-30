@@ -21,6 +21,7 @@ require_once 'includes/class-prdd-lite-validation.php';
 
 global $prdd_lite_update_checker;
 $prdd_lite_update_checker = '2.6.0';
+use Automattic\WooCommerce\Utilities\OrderUtil;
 
 /**
  * This function checks Product delivery date plugin is active or not.
