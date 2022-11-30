@@ -362,6 +362,16 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$page_number = 0;
 		}
 
+
+		if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
+			$table = "wc_orders";
+			$condition = "status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
+		} else {
+			$table = 'posts';
+			$condition = "post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
+		}
+
+
 		$per_page = $this->per_page;
 
 		$current_time  = current_time( 'timestamp' );
