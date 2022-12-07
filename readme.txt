@@ -185,6 +185,9 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 == Changelog ==
 
+= 2.7.0 (07.12.2022) =
+Enhancement :- Plugin has been made compatible with WooCommerce High-Performance Order Storage.
+
 = 2.6.0 (16.08.2022) =
 * Enhancement :- Created a filter named `prdd_lite_additional_holidays` to add custom holidays.
 * Enhancement :- Added `Settings` link on the Plugins page.

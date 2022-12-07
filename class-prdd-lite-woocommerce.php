@@ -20,7 +20,7 @@ require_once 'includes/class-prdd-lite-process.php';
 require_once 'includes/class-prdd-lite-validation.php';
 
 global $prdd_lite_update_checker;
-$prdd_lite_update_checker = '2.6.0';
+$prdd_lite_update_checker = '2.7.0';
 use Automattic\WooCommerce\Utilities\OrderUtil;
 
 /**
@@ -148,7 +148,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 * @since 1.0
 		 */
 		public function prdd_lite_activate() {
-			update_option( 'woocommerce_prdd_lite_db_version', '2.6.0' );
+			update_option( 'woocommerce_prdd_lite_db_version', '2.7.0' );
 			// Check if installed for the first time.
 			add_option( 'prdd_lite_installed', 'yes' );
 
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		public function prdd_lite_update_db_check() {
 			$prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
 			if ( $prdd_plugin_version !== $this->get_plugin_version() ) {
-				update_option( 'woocommerce_prdd_lite_db_version', '2.6.0' );
+				update_option( 'woocommerce_prdd_lite_db_version', '2.7.0' );
 			}
 
 			if ( ! get_option( 'prdd_lite_language' ) ) {
@@ -557,7 +557,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 							$post_id_arr = implode( ',', array( $post_id ) );
 						}
 						if ( self::is_hpos_enabled() ) {
-							$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->wc_orders} AS posts ON order_items.order_id = posts.ID WHERE order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
+							$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->prefix}wc_orders AS posts ON order_items.order_id = posts.ID WHERE order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
 						} else {
 							$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID WHERE posts.post_type = 'shop_order' AND order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
 						}
