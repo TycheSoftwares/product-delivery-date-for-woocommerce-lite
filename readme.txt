@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 1.3
-Tested up to: 5.8
+Tested up to: 6.1
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
