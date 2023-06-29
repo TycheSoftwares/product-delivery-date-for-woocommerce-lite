@@ -1,4 +1,4 @@
-var $con_lite_tyche_plugin_deactivation_modal = {},
+var $prdd_lite_tyche_plugin_deactivation_modal = {},
 	$tyche_plugin_name = 'prdd_lite';
 
 ( function() {
@@ -7,9 +7,9 @@ var $con_lite_tyche_plugin_deactivation_modal = {},
 		return;
 	}
 
-	$con_lite_tyche_plugin_deactivation_modal = tyche.plugin_deactivation.modal( $tyche_plugin_name, window[ `tyche_plugin_deactivation_${$tyche_plugin_name}_js` ] );
+	$prdd_lite_tyche_plugin_deactivation_modal = tyche.plugin_deactivation.modal( $tyche_plugin_name, window[ `tyche_plugin_deactivation_${$tyche_plugin_name}_js` ] );
 
-	if ( '' !== $con_lite_tyche_plugin_deactivation_modal ) {
-		tyche.plugin_deactivation.events.listeners( window[ `tyche_plugin_deactivation_${$tyche_plugin_name}_js` ], $con_lite_tyche_plugin_deactivation_modal, $tyche_plugin_name );
+	if ( '' !== $prdd_lite_tyche_plugin_deactivation_modal ) {
+		tyche.plugin_deactivation.events.listeners( window[ `tyche_plugin_deactivation_${$tyche_plugin_name}_js` ], $prdd_lite_tyche_plugin_deactivation_modal, $tyche_plugin_name );
 	}
 } )();
