@@ -361,6 +361,20 @@ class PRDD_Lite_Global_Menu {
 			array( __( 'Minimum number of days before the delivery date, after which Delivery cannot be rescheduled.', 'woocommerce-prdd' ) )
 		);
 
+		add_settings_field(
+			'ts_reset_tracking',
+			__( 'Reset usage tracking', 'woocommerce-prdd' ),
+			array( 'Prdd_Lite_Delivery_Settings', 'ts_rereset_tracking_callback' ),
+			'prdd_lite_settings_page',
+			'prdd_lite_delivery_settings_section',
+			array( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'woocommerce-booking' )
+		);
+	
+		register_setting(
+			'prdd_lite_settings',
+			'ts_reset_tracking'
+		);
+
 		register_setting(
 			'prdd_lite_settings',
 			'prdd_lite_language'

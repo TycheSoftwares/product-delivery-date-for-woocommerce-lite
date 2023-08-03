@@ -24,8 +24,6 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			if ( true === $is_admin ) {
 
 				require_once 'component/woocommerce-check/ts-woo-active.php';
-
-				require_once 'component/tracking-data/ts-tracking.php';
 				require_once 'component/faq-support/ts-faq-support.php';
 				require_once 'component/pro-notices-in-lite/ts-pro-notices.php';
 
@@ -50,9 +48,17 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 				new Prdd_Lite_TS_Woo_Active( $prdd_lite_plugin_name, $prdd_lite_file_name, $prdd_lite_locale );
 
-				new Prdd_Lite_TS_tracking( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name, $prdd_lite_blog_post_link, $prdd_lite_locale, $prdd_lite_plugin_url, 'plugins.php', '', '', '', $prdd_lite_file_name );
+				require_once 'component/tracking-data/class-tyche-plugin-tracking.php';
 
-				new Prdd_Lite_TS_Tracker( $prdd_lite_plugin_prefix, $prdd_lite_plugin_name );
+				new Tyche_Plugin_Tracking(
+					array(
+						'plugin_name'       => $prdd_lite_plugin_name,
+						'plugin_locale'     => $prdd_lite_locale,
+						'plugin_short_name' => $prdd_lite_plugin_prefix,
+						'version'           => '7.1.0',
+						'blog_link'         => $prdd_lite_blog_post_link,
+					)
+				);
 
 				$ts_pro_faq = self::prdd_lite_get_faq();
 				new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
@@ -274,7 +280,6 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				$plugin_data[ 'deliveries_settings' ]      = self::ts_get_all_plugin_options_values();
 				$plugin_data[ 'deliveries_products' ]      = self::ts_get_all_products();
 				$plugin_data[ 'prdd_lite_plugin_version' ] = self::prdd_get_version();
-				$plugin_data[ 'prdd_lite_allow_tracking' ] = get_option( 'prdd_lite_allow_tracking' );
 				$data['plugin_data']                       = $plugin_data;
 				
 			}
@@ -296,7 +301,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				$condition = "post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 			}
 
-			$orddd_query = 'SELECT count( order_item_id ) AS deliveries_count FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS a, `' . $wpdb->prefix . $table ."` AS b WHERE a.order_id = b.ID AND " . $condition;
+			$orddd_query = 'SELECT count( order_item_id ) AS deliveries_count FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS a, `' . $wpdb->prefix . $table ."` AS b WHERE a.order_id = b.ID AND " . $condition . ")";
 			$results     = $wpdb->get_results( $wpdb->prepare( $orddd_query, '_prdd_lite_date' ) );
 
 			if ( isset( $results[0] ) ) {
@@ -355,8 +360,8 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				),
 			);
 			$my_query = new WP_Query( $args );
+			$Alldata = array();
 			if ( $my_query->have_posts() ) {
-				$Alldata = array();
 			    while ( $my_query->have_posts() ) {
 			        $my_query->the_post();
 			        $prdd_enable_date         = get_post_meta( get_the_ID(), '_woo_prdd_lite_enable_delivery_date', true);

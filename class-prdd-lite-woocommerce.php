@@ -88,6 +88,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			register_activation_hook( __FILE__, array( &$this, 'prdd_lite_activate' ) );
 			add_action( 'init', 'prdd_lite_update_po_file' );
 			add_action( 'admin_init', array( &$this, 'prdd_lite_update_db_check' ) );
+			add_action( 'prdd_lite_init_tracker_completed', array( $this, 'init_tracker_completed' ), 10, 2 );
 			add_filter( 'plugin_row_meta', array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
 			add_filter( 'plugin_action_links', array( &$this, 'prdd_plugin_row_meta' ), 10, 5 );
 
@@ -108,6 +109,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_css' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_js' ) );
+			add_action( 'admin_footer', array( $this, 'ts_admin_notices_scripts' ) );
 
 			add_action( 'woocommerce_before_single_product', array( &$this, 'prdd_lite_front_side_scripts_js' ) );
 			add_action( 'woocommerce_before_single_product', array( &$this, 'prdd_lite_front_side_scripts_css' ) );
@@ -129,7 +131,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			add_action( 'wp_ajax_prdd_lite_update_database', array( &$this, 'prdd_lite_update_database_callback' ) );
 			
-			require_once 'includes/class-tyche-plugin-deactivation.php';
+			require_once 'includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php';
 			$plugin_url = plugins_url() . '/product-delivery-date-for-woocommerce-lite';
 			new Tyche_Plugin_Deactivation(
 				array(
@@ -240,8 +242,18 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				}
 			}
 
+			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' == $_GET ['ts_action'] ) {
+				Tyche_Plugin_Tracking::reset_tracker_setting( 'prdd_lite' );
+				$ts_url = remove_query_arg( 'ts_action' );
+				wp_safe_redirect( $ts_url );
+			}
+
 		}
 
+		public function init_tracker_completed() {
+			header( 'Location: ' . admin_url( 'admin.php?page=woocommerce_prdd_lite_page' ) );
+			exit;
+		}
 		/**
 		 * Show row meta on the plugin screen.
 		 *
@@ -395,6 +407,32 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			);
 		}
 
+		/**
+		 * This function is used load js for dismiss the tracking notices.
+		 *
+		 * @hook admin_footer
+		 *
+		 */
+		public static function ts_admin_notices_scripts() {
+			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
+			wp_enqueue_script(
+				'prdd_ts_dismiss_notice',
+				plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/tyche-dismiss-tracking-notice.js',
+				array( 'jquery' ),
+				$plugin_version_number,
+				true,
+			);
+			wp_localize_script(
+				'prdd_ts_dismiss_notice',
+				'prdd_ts_dismiss_notice',
+				array(
+					'ts_prefix_of_plugin' => 'prdd_lite',
+					'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+				)
+			);
+		}
+		
+		
 		/**
 		 * This function includes js files required for frontend.
 		 *
