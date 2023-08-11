@@ -48,7 +48,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 				new Prdd_Lite_TS_Woo_Active( $prdd_lite_plugin_name, $prdd_lite_file_name, $prdd_lite_locale );
 
-				require_once 'component/tracking-data/class-tyche-plugin-tracking.php';
+				require_once 'component/plugin-tracking/class-tyche-plugin-tracking.php';
 
 				new Tyche_Plugin_Tracking(
 					array(
