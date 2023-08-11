@@ -1,10 +1,3 @@
-/**
- * This function allows to dismiss the notices which are shown from the plugin.
- *
- * @namespace prdd_notice_dismissible
- * @since 6.8
- */
-// Make notices dismissible
 jQuery(document).ready( function() {
 	jQuery( '.notice.is-dismissible' ).each( function() {
 		var $this = jQuery( this ),
@@ -26,14 +19,14 @@ jQuery(document).ready( function() {
 			$this.fadeTo( 100 , 0, function() {
 				//alert();
 				jQuery(this).slideUp( 100, function() {
-					jQuery(this).remove();
-					var data = {
-						action: ts_dismiss_notice.ts_prefix_of_plugin + "_admin_notices"
-					};
-					var admin_url = ts_dismiss_notice.ts_admin_url;
-					
-					jQuery.post( admin_url , data, function( response ) {
-					});
+					jQuery(this).remove();				
+					jQuery.post(
+						prdd_ts_dismiss_notice.ts_admin_url,
+						{
+							action: prdd_ts_dismiss_notice.ts_prefix_of_plugin + "_admin_notices"
+						},
+						function( response ) {}
+					);
 				});
 			});
 		});
