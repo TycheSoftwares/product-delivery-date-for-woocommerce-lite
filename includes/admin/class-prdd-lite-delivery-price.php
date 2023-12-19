@@ -288,9 +288,9 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 		 * @since 1.0
 		 */
 		public function prdd_delete_all_special_delivery() {
-			$post_id = absint( $_POST[ 'post_id' ] );
+			$post_id = sanitize_text_field( wp_unslash( $_POST['post_id'] ) ); // phpcs:ignore
 
-			if ( 0 === $post_id ||  ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_nonce'] ) ), 'prdd_special_delivery' ) || ! current_user_can( 'edit_posts' ) || false === get_post_status( $post_id ) ) {
+			if ( 0 === $post_id || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_nonce'] ) ), 'prdd_special_delivery' ) || ! current_user_can( 'edit_posts' ) || false === get_post_status( $post_id ) ) { // phpcs:ignore
 				wp_send_json_error();
 			}
 
