@@ -23,7 +23,7 @@ jQuery(document).ready( function() {
 					jQuery.post(
 						prdd_ts_dismiss_notice.ts_admin_url,
 						{
-							action: prdd_ts_dismiss_notice.ts_prefix_of_plugin + "_admin_notices"
+							action: prdd_ts_dismiss_notice.ts_prefix_of_plugin + "_tracker_dismiss_notice"
 						},
 						function( response ) {}
 					);
