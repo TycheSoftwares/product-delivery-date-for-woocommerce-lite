@@ -185,7 +185,7 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 == Changelog ==
 
-= 2.7.0 (26.12.2022) =
+= 2.7.1 (26.12.2022) =
 * Fix :- Vulnerability to Broken Access Control.
 
 = 2.7.0 (07.12.2022) =
