@@ -14,4 +14,4 @@ jobs:
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        SLUG: woocommerce-prdd-lite # optional, remove if GitHub repo name matches SVN slug, including capitalization
+        SLUG: product-delivery-date-for-woocommerce-lite # optional, remove if GitHub repo name matches SVN slug, including capitalization
