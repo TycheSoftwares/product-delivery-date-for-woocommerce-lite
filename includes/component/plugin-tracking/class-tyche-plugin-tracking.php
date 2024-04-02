@@ -147,8 +147,11 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 		 * Called when the dismiss icon is clicked on the notice.
 		 */
 		public function dismiss_notice() {
-			update_option( $this->plugin_short_name . '_allow_tracking', 'dismissed' );
-			$this->send_tracking_data();
+			$nonce = $_POST['tracking_notice'];//phpcs:ignore
+			if ( is_user_logged_in() && current_user_can( 'manage_options' ) && wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
+				update_option( $this->plugin_short_name . '_allow_tracking', 'dismissed' );
+				$this->send_tracking_data();
+			}
 		}
 
 		/**
