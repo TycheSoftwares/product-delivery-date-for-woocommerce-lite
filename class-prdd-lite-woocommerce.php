@@ -415,6 +415,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 */
 		public static function ts_admin_notices_scripts() {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
+			$nonce                 = wp_create_nonce( 'tracking_notice' );
 			wp_enqueue_script(
 				'prdd_ts_dismiss_notice',
 				plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/tyche-dismiss-tracking-notice.js',
@@ -428,11 +429,11 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				array(
 					'ts_prefix_of_plugin' => 'prdd_lite',
 					'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+					'tracking_notice'     => $nonce,
 				)
 			);
 		}
-		
-		
+
 		/**
 		 * This function includes js files required for frontend.
 		 *
