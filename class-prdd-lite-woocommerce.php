@@ -242,10 +242,15 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				}
 			}
 
-			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' == $_GET ['ts_action'] ) {
-				Tyche_Plugin_Tracking::reset_tracker_setting( 'prdd_lite' );
-				$ts_url = remove_query_arg( 'ts_action' );
-				wp_safe_redirect( $ts_url );
+			$nonce = isset( $_GET ['nonce'] ) ? $_GET['nonce'] : '';//phpcs:ignore
+			if ( is_user_logged_in() && current_user_can( 'manage_options' ) && wp_verify_nonce( $nonce, 'ts_nonce_action' ) ) {
+
+				if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) {
+					Tyche_Plugin_Tracking::reset_tracker_setting( 'prdd_lite' );
+					$ts_url = remove_query_arg( 'ts_action' );
+					$ts_url = remove_query_arg( 'nonce' );
+					wp_safe_redirect( $ts_url );
+				}
 			}
 
 		}
