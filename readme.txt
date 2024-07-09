@@ -187,7 +187,7 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 = 2.7.3 (9.07.2024) =
 * Fix - Vulnerability to Broken Access Control.
-* Fix - Updated our support link to email address to 'support@tychesoftwares.com".
+* Fix - Updated our support link to email address 'support@tychesoftwares.com".
 
 = 2.7.2 (2.04.2024) =
 * Tweak :- Update compatibility with WordPress 6.5.
