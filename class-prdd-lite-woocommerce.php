@@ -162,7 +162,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 * @since 1.0
 		 */
 		public function prdd_lite_activate() {
-			update_option( 'woocommerce_prdd_lite_db_version', '1' );
+			update_option( 'woocommerce_prdd_lite_db_version', '2.7.3' );
 			// Check if installed for the first time.
 			add_option( 'prdd_lite_installed', 'yes' );
 
