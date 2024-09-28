@@ -38,7 +38,7 @@
 
         <div class="video feature-section-item" style="float:left; padding-right:10px; display:inline-block; max-width:60%;">
             <img src="<?php echo $ts_dir_image_path . 'product-delivery-date-lite.png' ?>"
-                alt="<?php esc_attr_e( 'Order Delivery Date Lite', 'woocommerce-prdd-lite' ); ?>" style="width:600px;">
+                alt="<?php esc_attr_e( 'Product Delivery Date Lite', 'woocommerce-prdd-lite' ); ?>" style="width:600px;">
         </div>
 
         <div class="content feature-section-item last-feature" style="float:right; display:inline-block; max-width:40%;">

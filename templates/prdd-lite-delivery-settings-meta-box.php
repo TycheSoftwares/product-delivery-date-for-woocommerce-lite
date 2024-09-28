@@ -59,27 +59,7 @@ jQuery( document ).ready( function() {
 			</table>
 			<table class="form-table">
 				<?php do_action( 'prdd_lite_before_method_select', $duplicate_of ); ?>
-				<tr id="prdd_method" >
-					<th>
-						<label for="prdd_method_select"> <?php esc_html_e( 'Deliver on:', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<?php
-						$recurring_delivery = 'checked';
-						$recurring_div_show = 'block';
-						?>
-
-						<input type="checkbox" name="prdd_recurring_chk" id="prdd_recurring_chk" <?php echo esc_attr( $recurring_delivery ); ?> disabled> <?php esc_html_e( 'Recurring Weekdays', 'woocommerce-prdd' ); ?> </input>
-
-						<input type="checkbox" name="prdd_specific_chk" id="prdd_specific_chk" disabled="disabled" readonly> <?php esc_html_e( 'Specific Dates', 'woocommerce-prdd' ); ?> </input>
-						<br>
-
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Please enable/disable the specific delivery dates and recurring weekdays using these checkboxes. Upon checking them, you shall be able to further select dates or weekdays.', 'woocommerce-prdd' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" /><br>
-					</td>
-				</tr>
+				
 			</table>
 			<div id="prdd_lite_enable_weekday" name="prdd_lite_enable_weekday" style="display:<?php echo esc_attr( $recurring_div_show ); ?>;">
 				<table class="form-table">
@@ -87,7 +67,7 @@ jQuery( document ).ready( function() {
 						<th>
 							<label for="prdd_lite_delivery_days[]"> <?php esc_html_e( 'Delivery Days:', 'woocommerce-prdd' ); ?> </label>
 						</th>
-						<td style="width:344px">
+						<td style="width:380px">
 							<?php
 							$prdd_lite_delivery_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
 							?>
@@ -119,55 +99,11 @@ jQuery( document ).ready( function() {
 				</script>
 			</div> 
 			<table class="form-table">
-				<tr id="prdd_lockout_date">
-					<th>
-						<label for="prdd_lockout_date"><?php esc_html_e( 'Maximum deliveries per day:', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<input type="text" name="prdd_lockout_date" id="prdd_lockout_date" value="60" disabled readonly>
-						<br>
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Set this field if you want to place a limit on maximum deliveries on any given date. If you can manage up to 15 deliveries in a day, set this value to 15. Once 15 orders have been placed, then that date will not be available for further deliveries.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
 				<?php
 				do_action( 'prdd_lite_before_enable_time', $duplicate_of );
-				?>
-				<tr>
-					<th>
-						<hr>
-					</th>
-					<td>
-						<hr>
-					</td>
-					<td>
-						<hr>
-					</td>
-				</tr>
-				<tr id="prdd_time" >
-					<th>
-						<label for="prdd_enable_time"><?php esc_html_e( 'Ask for Delivery Time:', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<input type="checkbox" name="prdd_enable_time" id="prdd_enable_time" disabled readonly>
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Enable time (or time slots) on the product. Add any number of delivery time slots once you have checked this. You can manage the Time Slots using the Manage Dates, Time Slots tab', 'woocommerce-prdd' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-				<?php
 				do_action( 'prdd_after_time_enabled', $duplicate_of );
 				?>
 			</table>
-			<div id="time_slot" name="time_slot"></div>
-				<p>
-					<div id="add_button" name="add_button" >
-						<input type="button" class="button-primary" value="<?php esc_html_e( 'Add Time Slot', 'woocommerce-prdd' ); ?>" id="add_another" disabled readonly" >
-					</div>
-				</p>
 		</div>
 
 		<div id="prdd_lite_settings"  class="tstab-content tstab-active" style="display:none;">
@@ -215,31 +151,6 @@ jQuery( document ).ready( function() {
 						<img class="help_tip" width="16" height="16" style="vertical-align:top;" data-tip="<?php esc_attr_e( 'Select dates for which the delivery will be completely disabled only for this product. Please click on the date in calendar to add or delete the date from the holiday list.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" style="vertical-align:top;"/>
 					</td>
 				</tr>
-				<tr id="inline_calender" style="display:show">
-					<th>
-						<label for="prdd_enable_inline_calendar"> <?php esc_html_e( 'Show calendar always visible:', 'woocommerce-prdd' ); ?> </label>
-					</th>
-					<td style="width:380px">
-						<input type="checkbox" id="prdd_enable_inline_calendar" name="prdd_enable_inline_calendar" disabled readonly>
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Enable Inline Calendar on Products Page', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-
-				<tr>
-					<th>
-						<label for="prdd_hide_add_to_cart_button"><?php esc_html_e( 'Hide Add to Cart button: ', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<input type="checkbox" id="prdd_hide_add_to_cart_button" name="prdd_hide_add_to_cart_button" disabled readonly >
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Hide Add to Cart button on front end product details page until a delivery date and/or time slot is selected.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" style="vertical-align:top;"/>
-					</td>
-				</tr>
 			</table>
 		</div>
 
@@ -283,130 +194,6 @@ jQuery( document ).ready( function() {
 					</td>
 					<td>
 						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'The maximum number of delivery dates you want to be available for your customers to choose from. For example, if you take only 2 months delivery in advance, enter 60 here.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-
-				<tr>
-					<td colspan="3">
-						<hr>
-					</td>
-				</tr>
-
-				<?php
-				do_action( 'prdd_lite_before_same_day_delivery', $duplicate_of );
-				?>
-
-				<tr>
-					<th>
-						<label for="prdd_lite_same_day_cut_off"><?php esc_html_e( 'Same day delivery cut-off time:', 'woocommerce-prdd-lite' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<select name="prdd_lite_same_day_cutoff_hrs" id="prdd_lite_same_day_cutoff_hrs" disabled readonly>
-							<?php
-							printf( "<option value=''>%s</option>\n", esc_html_e( 'Hours', 'woocommerce-prdd' ) );
-							?>
-						</select>
-						<select name="prdd_same_day_cutoff_mins" id="prdd_same_day_cutoff_mins" disabled readonly>
-							<?php
-							printf( "<option value=''>%s</option>\n", esc_html_e( 'Minutes', 'woocommerce-prdd' ) );
-							?>
-						</select>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Disable current day for delivery after the set cut-off time. The cut-off time will be calculated based on the WordPress timezone.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-
-				<?php
-				do_action( 'prdd_lite_before_next_day_delivery', $duplicate_of );
-				?>
-
-				<tr>
-					<th>
-						<label for="prdd_lite_next_day_cut_off"><?php esc_html_e( 'Next day delivery cut-off time:', 'woocommerce-prdd-lite' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<select name="prdd_lite_next_day_cutoff_hrs" id="prdd_lite_next_day_cutoff_hrs" disabled readonly>
-							<?php
-							printf( "<option value=''>%s</option>\n", esc_html_e( 'Hours', 'woocommerce-prdd-lite' ) );
-							?>
-						</select>
-						<select name="prdd_next_day_cutoff_mins" id="prdd_next_day_cutoff_mins" disabled readonly>
-							<?php
-							printf( "<option value=''>%s</option>\n", esc_html_e( 'Minutes', 'woocommerce-prdd-lite' ) );
-							?>
-						</select>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'Disable next day for delivery after the set cut-off time. The cut-off time will be calculated based on the WordPress timezone.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-
-				<tr>
-					<th></th>
-					<td colspan="2">
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-				</tr>
-
-				<?php
-					do_action( 'prdd_lite_before_range_selection_radio', $duplicate_of );
-				?>
-
-				<tr class="prdd_delivery_range">
-					<th>
-						<?php esc_html_e( 'Delivery Type:', 'woocommerce-prdd-lite' ); ?>
-					</th>
-					<td style="width:380px">
-						<?php
-						$all_year = 'checked';
-						?>
-						<input type="radio" name="prdd_date_range_type" id="prdd_date_range_type" value="all_year" <?php esc_attr( $all_year ); ?>><?php ( '&nbsp' . esc_html_e( 'Deliver all year round', 'woocommerce-prdd-lite' ) ); ?> </input>
-						<br>
-						<input type="radio" name="prdd_date_range_type" id="prdd_date_range_type" value="fixed_range" disabled readonly ><?php ( '&nbsp' . esc_html_e( 'Fixed delivery period by dates ( e.g. March 1 to October 31)', 'woocommerce-prdd-lite' ) ); ?> </input>
-						<br>
-						<br>
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_html_e( 'Please choose a delivery type. It could be a specific date range or an all the year round delivery.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png"/>
-					</td>
-				</tr>
-				<?php
-				do_action( 'prdd_before_start_date_range', $duplicate_of );
-				?>
-
-				<tr>
-					<th>
-						<label for="prdd_lite_start_date_range"><?php esc_html_e( 'Deliveries start on:', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<input type="text" style="width:150px;" name="prdd_lite_start_date_range" id="prdd_lite_start_date_range" disabled readonly >
-					</td>
-					<td>
-						<img class="help_tip" width="16" height="16" data-tip="<?php esc_attr_e( 'The start date of the deliverable block. For e.g. if you want to take deliveries for the period of March to october, then the date here should be March 1', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-
-				<?php
-				do_action( 'prdd_lite_before_end_date_range', $duplicate_of );
-				?>
-
-				<tr>
-					<th>
-						<label for="prdd_lite_end_date_range"><?php esc_html_e( 'Deliveries end on:', 'woocommerce-prdd' ); ?></label>
-					</th>
-					<td style="width:380px">
-						<input type="text" style="width:150px;" name="prdd_lite_end_date_range" id="prdd_lite_end_date_range" disabled readonly >
-					</td>
-					<td>
-						<img class="help_tip"  width="16" height="16" data-tip="<?php esc_attr_e( 'The end date of the deliverable block. For e.g. if you want to take deliveries for the period of March to october, then the date here should be October 31.', 'woocommerce-prdd-lite' ); ?>" src="<?php echo esc_attr( $plugins_url ); ?>/woocommerce/assets/images/help.png" />
-					</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td colspan="2">
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro for WooCommerce</a> to enable the setting.</i></b>
 					</td>
 				</tr>
 				<?php

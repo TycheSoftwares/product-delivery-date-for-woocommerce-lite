@@ -25,6 +25,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 				require_once 'component/woocommerce-check/ts-woo-active.php';
 				require_once 'component/faq-support/ts-faq-support.php';
+				require_once 'component/upgrade-to-pro/ts-upgrade-to-pro.php';
 				require_once 'component/pro-notices-in-lite/ts-pro-notices.php';
 
 				$prdd_lite_plugin_name = self::ts_get_plugin_name();
@@ -63,8 +64,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				$ts_pro_faq = self::prdd_lite_get_faq();
 				new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
 
-				$ts_pro_notices = self::prdd_lite_get_notice_text();
-				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name );
+				/* $ts_pro_notices = self::prdd_lite_get_notice_text();
+				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name ); */
+
+				/* Adding Upgrade to Pro related things to plugin */
+				new Ts_Upgrade_To_Pro( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug );
 
 			}
 		}

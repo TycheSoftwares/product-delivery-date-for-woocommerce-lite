@@ -13,7 +13,6 @@ require_once 'includes/admin/class-prdd-lite-meta-box.php';
 require_once 'includes/class-prdd-lite-common.php';
 require_once 'includes/prdd-lite-config.php';
 require_once 'includes/admin/class-prdd-lite-delivery-price.php';
-require_once 'includes/admin/class-prdd-lite-estimate-delivery.php';
 require_once 'includes/admin/class-prdd-lite-delivery-settings.php';
 require_once 'includes/admin/class-prdd-lite-global-menu.php';
 require_once 'includes/class-prdd-lite-process.php';
@@ -95,6 +94,14 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			// Add Meta box for the Product Delivery Date Settings on the product edit page.
 			define( 'PRDD_LITE_DELIVERIES_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
 			define( 'PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION', '10' );
+
+			if ( ! defined( 'PRDD_LITE_PLUGIN_PATH' ) ) {
+				define( 'PRDD_LITE_PLUGIN_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+			}
+
+			if ( ! defined( 'PRDD_LITE_PLUGIN_UPGRADE_TO_PRO_TEMPLATE_PATH' ) ) {
+				define( 'PRDD_LITE_PLUGIN_UPGRADE_TO_PRO_TEMPLATE_PATH', PRDD_LITE_PLUGIN_PATH . '/includes/component/upgrade-to-pro/templates/' );
+			}
 			add_action( 'add_meta_boxes', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_box' ), 10 );
 			add_action( 'admin_footer', array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_print_js' ) );
 
@@ -104,9 +111,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			// Global Menu.
 			add_action( 'admin_menu', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_admin_menu' ) );
 			add_action( 'admin_init', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_delivery_settings' ) );
-			add_action( 'admin_init', array( 'PRDD_Lite_Global_Menu', 'prdd_delivery_labels' ) );
-			add_action( 'admin_init', array( 'PRDD_Lite_Global_Menu', 'prdd_google_calendar_sync_settings' ) );
-
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_css' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_js' ) );
 			add_action( 'admin_footer', array( $this, 'ts_admin_notices_scripts' ) );
@@ -347,6 +351,21 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 				wp_enqueue_style( 'prdd-woocommerce_admin_styles', plugins_url() . '/woocommerce/assets/css/admin.css', '', $plugin_version_number, false );
 				wp_enqueue_style( 'datepicker', plugins_url( '/css/datepicker.css', __FILE__ ), '', $plugin_version_number, false );
+			}
+
+			if ( isset( $_GET['action'] ) && in_array( $_GET['action'], array( 'upgrade_to_pro_page', 'prdd_google_calendar_sync', 'labels', 'bulk_product_settings' ), true ) ) { //phpcs:ignore
+				wp_enqueue_style(
+					'prddd-theme-style',
+					plugins_url( '/css/theme-style.css', __FILE__ ),
+					array(),
+					$plugin_version_number
+				);
+				wp_enqueue_style(
+					'prddd-bootstrap',
+					plugins_url( '/css/bootstrap.min.css', __FILE__ ),
+					array(),
+					$plugin_version_number
+				);
 			}
 		}
 
