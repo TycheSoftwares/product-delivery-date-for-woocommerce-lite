@@ -97,10 +97,16 @@ class Prdd_Lite_ts_pro_notices {
             ( false === $activate_time || ( $activate_time > 0 && $current_time >= $sixty_days ) ) ) {
 			
 			if( ! get_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore' ) ) {
-				
-				$add_query_arguments = add_query_arg( self::$plugin_prefix . '_first_notice_ignore', '0' );
-				$cancel_button = '<a href="'.$add_query_arguments.'" class="dashicons dashicons-dismiss dashicons-dismiss-icon" style="position: absolute; top: 8px; right: 8px; color: #222; opacity: 0.4; text-decoration: none !important;"></a>';
-				
+				$nonce               = wp_create_nonce( 'first_notice_ignore_nonce' );
+				$add_query_arguments = esc_url(
+					add_query_arg(
+						array(
+							sanitize_key( self::$plugin_prefix . '_first_notice_ignore' ) => '0',
+							'nonce' => $nonce,
+						)
+					)
+				);
+				$cancel_button       = '<a href="' . $add_query_arguments . '" class="dashicons dashicons-dismiss dashicons-dismiss-icon" style="position: absolute; top: 8px; right: 8px; color: #222; opacity: 0.4; text-decoration: none !important;"></a>';
 				printf( '<div class="%1$s" style="%2$s"><p>%3$s %4$s</p></div>', $class, $style, self::$ts_pro_notices[1], $cancel_button );
 			}
 
@@ -281,11 +287,13 @@ class Prdd_Lite_ts_pro_notices {
 	public static function ts_ignore_pro_notices() {
 		$user_id = get_current_user_id();
 		// If user clicks to ignore the notice, add that to their user meta
-		if ( isset( $_GET[ self::$plugin_prefix . '_first_notice_ignore' ] ) && '0' === $_GET[ self::$plugin_prefix . '_first_notice_ignore' ] ) {
-			add_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore', 'true', true );
-			add_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore_time', current_time( 'timestamp' ), true );
-			wp_safe_redirect( remove_query_arg( self::$plugin_prefix . '_first_notice_ignore' ) );
+		if ( isset( $_GET['nonce'] ) && wp_verify_nonce( $_GET['nonce'], 'first_notice_ignore_nonce' ) ) {
+			if ( isset( $_GET[ self::$plugin_prefix . '_first_notice_ignore' ] ) && '0' === $_GET[ self::$plugin_prefix . '_first_notice_ignore' ] ) {
+				add_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore', 'true', true );
+				add_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore_time', current_time( 'timestamp' ), true );
+				wp_safe_redirect( remove_query_arg( self::$plugin_prefix . '_first_notice_ignore' ) );
 
+			}
 		}
 
 		if ( isset( $_GET[ self::$plugin_prefix . '_second_notice_ignore'] ) && '0' === $_GET[ self::$plugin_prefix . '_second_notice_ignore'] ) {
