@@ -5,15 +5,19 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 1.3
-Tested up to: 6.5.5
+Tested up to: 6.6.2
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Allow the customers to choose a delivery date on the frontend product page for WooCommerce.
+Choose delivery/pickup dates & times on product page. Simplify delivery management by setting minimum delivery time, max deliveries per day & more.
 
 == Description ==
+
+> ###🚀&nbsp;&nbsp;New Launch: Flexi BOGO for WooCommerce
+>
+> The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=ProductDeliveryDateLite).
 
 Delivery Dates play a vital role in any type of Ecommerce store for customer satisfaction & retention. That is why we built the [WooCommerce Product Delivery Date plugin](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=topprolink&utm_campaign=ProductDeliveryDateLite).
 
@@ -52,6 +56,8 @@ You can check the detailed difference between Pro and Lite version **[here](http
 You can check the detailed difference between Pro and Lite version **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=prolink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference")**
 
 ### Some of our Pro plugins
+
+1. **[Flexi BOGO for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Flexi BOGO for WooCommerce")**
 
 1. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite "Product Delivery Date Pro for WooCommerce")**
 
@@ -184,6 +190,9 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 6. WooCommerce -> Orders - edit an existing order page.
 
 == Changelog ==
+
+= 2.7.4 (02.10.2024) =
+* Fix - Added a nonce check for Cross-Site Request Forgery (CSRF) vulnerability on the admin Notice.
 
 = 2.7.3 (9.07.2024) =
 * Fix - Added a nonce check for Cross-Site Request Forgery (CSRF) vulnerability on the reset button.
