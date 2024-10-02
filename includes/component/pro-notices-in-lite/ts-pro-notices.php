@@ -97,15 +97,16 @@ class Prdd_Lite_ts_pro_notices {
             ( false === $activate_time || ( $activate_time > 0 && $current_time >= $sixty_days ) ) ) {
 			
 			if( ! get_user_meta( $user_id, self::$plugin_prefix . '_first_notice_ignore' ) ) {
-
-				$nonce = wp_create_nonce( 'first_notice_ignore_nonce' );
-				$add_query_arguments = esc_url( add_query_arg(
-    				[
-        					sanitize_key( self::$plugin_prefix . '_first_notice_ignore' ) => '0',
-        					'nonce' => $nonce
-    				]
-				));
-				$cancel_button = '<a href="'.$add_query_arguments.'" class="dashicons dashicons-dismiss dashicons-dismiss-icon" style="position: absolute; top: 8px; right: 8px; color: #222; opacity: 0.4; text-decoration: none !important;"></a>';
+				$nonce               = wp_create_nonce( 'first_notice_ignore_nonce' );
+				$add_query_arguments = esc_url(
+					add_query_arg(
+						array(
+							sanitize_key( self::$plugin_prefix . '_first_notice_ignore' ) => '0',
+							'nonce' => $nonce,
+						)
+					)
+				);
+				$cancel_button       = '<a href="' . $add_query_arguments . '" class="dashicons dashicons-dismiss dashicons-dismiss-icon" style="position: absolute; top: 8px; right: 8px; color: #222; opacity: 0.4; text-decoration: none !important;"></a>';
 				printf( '<div class="%1$s" style="%2$s"><p>%3$s %4$s</p></div>', $class, $style, self::$ts_pro_notices[1], $cancel_button );
 			}
 
