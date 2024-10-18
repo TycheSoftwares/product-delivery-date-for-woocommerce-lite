@@ -130,18 +130,22 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			}
 
 			add_action( 'wp_ajax_prdd_lite_update_database', array( &$this, 'prdd_lite_update_database_callback' ) );
-			
-			require_once 'includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php';
-			$plugin_url = plugins_url() . '/product-delivery-date-for-woocommerce-lite';
-			new Tyche_Plugin_Deactivation(
-				array(
-					'plugin_name'       => 'Product Delivery Date for WooCommerce - Lite',
-					'plugin_base'       => 'product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php',
-					'script_file'       => $plugin_url . '/js/plugin-deactivation.js',
-					'plugin_short_name' => 'prdd_lite',
-					'version'           => '7.1.0',
-				)
-			);
+			if ( true === is_admin() ) {
+				if ( strpos( $_SERVER['REQUEST_URI'], 'plugins.php' ) !== false || strpos( $_SERVER['REQUEST_URI'], 'action=deactivate' ) !== false || ( strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) !== false && isset( $_POST['action'] ) && $_POST['action'] === 'tyche_plugin_deactivation_submit_action' ) ) {//phpcs:ignore
+					require_once 'includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php';
+					$plugin_url = plugins_url() . '/product-delivery-date-for-woocommerce-lite';
+					new Tyche_Plugin_Deactivation(
+						array(
+							'plugin_name'       => 'Product Delivery Date for WooCommerce - Lite',
+							'plugin_base'       => 'product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php',
+							'script_file'       => $plugin_url . '/js/plugin-deactivation.js',
+							'plugin_short_name' => 'prdd_lite',
+							'version'           => '7.1.0',
+							'plugin_locale'     => 'woocommerce-prdd-lite',
+						)
+					);
+				}
+			}
 		}
 
 		/**
@@ -361,13 +365,13 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
 			
 			wp_register_script(
-				'tyche',
+				'prdd_tyche',
 				plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/tyche.js',
 				array( 'jquery' ),
 				$plugin_version_number,
 				true
 			);
-			wp_enqueue_script( 'tyche' );
+			wp_enqueue_script( 'prdd_tyche' );
 
 			if ( 'product' === get_post_type() || ( isset( $_GET['page'], $_GET['action'] ) && // phpcs:ignore WordPress.Security.NonceVerification
 			'woocommerce_prdd_lite_page' === $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification
