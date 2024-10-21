@@ -1,7 +1,7 @@
 "use strict";
 
 var tyche = {
-	version: '1.1.1', // version of tyche constructor.
+	version: '1.2', // version of tyche constructor.
 	constructor: tyche,
 	extend: function() {
 		let target = arguments[ 0 ] || {},
@@ -43,6 +43,7 @@ var tyche = {
 			}
 		}
 	},
+	wcap: {}, // Abandoned Cart Pro for WooCommerce.
 	orddd: {}, // Order Delivery Date Pro for WooCommerce.
 	bkap: {}, // Booking & Appointment Plugin for WooCommerce.
 	ac: {}, // Abandoned Cart Pro for WooCommerce.
@@ -82,12 +83,13 @@ var tyche = {
 		},
 		modal: function( $plugin, $data ) {
 
-			if ( '' === tyche.plugin_deactivation.fn.return( $data, 'deactivation_data' ) || '' === tyche.plugin_deactivation.fn.return( $data, 'nonce' ) ) {
+			if ( '' === tyche.plugin_deactivation.fn.return( $data, 'deactivation_data' ) || '' === tyche.plugin_deactivation.fn.return( $data, 'nonce' ) || '' === tyche.plugin_deactivation.fn.return( $data, 'deactivation_req_msg' ) ) {
 				return '';
 			}
 
 			let data = $data.deactivation_data,
-				nonce = $data.nonce;
+				nonce = $data.nonce,
+				deactivation_req_msg = $data.deactivation_req_msg;
 
 			if ( 'undefined' === typeof data.template || 'undefined' === typeof data.reasons ) {
 				return '';
@@ -118,7 +120,7 @@ var tyche = {
 
 				html += `<input type="hidden" name="nonce" value="${nonce}" />`;
 
-				let modal = jQuery( template.replace( '{PLUGIN}', $plugin ).replace( '{HTML}', html ) );
+				let modal = jQuery( template.replace( '{PLUGIN}', $plugin ).replace( '{HTML}', html ).replace( '{DEACTIVATION_REQ_MSG}', deactivation_req_msg ) );
 				modal.appendTo( jQuery( 'body' ) );
 
 				return modal;
@@ -133,6 +135,7 @@ var tyche = {
 
 			if ( btn_deactivate.length > 0 && modal.hasClass( 'no-confirmation-message' ) && !btn_deactivate.hasClass( 'allow-deactivate' ) ) {
 				btn_deactivate.addClass( 'allow-deactivate' );
+				modal.find( '.button-skip-deactivate' ).addClass( 'allow-deactivate' );
 				modal.find( '.ts-modal-panel' ).removeClass( 'active ' );
 				modal.find( '[data-panel-id="reasons"]' ).addClass( 'active' );
 			}
@@ -155,22 +158,30 @@ var tyche = {
 					} );
 				}
 
+				modal.on( 'click', '.button-skip-deactivate', function( e ) {
+					e.preventDefault();
+					jQuery( '.ts-modal-footer p' ).hide();
+					tyche.plugin_deactivation.events.button_submit( this, data, plugin, true );
+				} );
+
 				modal.on( 'click', '.button-deactivate', function( e ) {
 					e.preventDefault();
+					jQuery( '.ts-modal-footer p' ).hide();
 					tyche.plugin_deactivation.events.button_submit( this, data, plugin );
 				} );
 
 				modal.on( 'click', 'input[type="radio"]', function() {
+					jQuery( '.ts-modal-footer p' ).hide();
 					tyche.plugin_deactivation.events.button_option_selection( this, modal );
 				} );
 
 				// If the user has clicked outside the window, cancel it.
 				modal.on( 'click', function( e ) {
-					tyche.plugin_deactivation.events.button_click_outside_window( e, modal )
+					tyche.plugin_deactivation.events.button_click_outside_window( e, modal );
 				} );
 			},
 
-			button_submit: function( $this, $data, plugin ) {
+			button_submit: function( $this, $data, plugin, skip = false ) {
 
 				if ( jQuery( $this ).hasClass( 'disabled' ) || !jQuery( $this ).hasClass( 'allow-deactivate' ) ) {
 					return;
@@ -180,20 +191,23 @@ var tyche = {
 					option = jQuery( 'input[type="radio"]:checked' ),
 					reason = option.parents( 'li:first' ),
 					response = reason.find( 'textarea, input[type="text"]' ),
-					data = {
-						'action': 'tyche_plugin_deactivation_submit_action',
-						'reason_id': 0,
-						'reason_text': 'Deactivated without any option',
-						'plugin_short_name': plugin,
-						'plugin_name': jQuery( `.${plugin}.ts-slug` ).attr( 'data-plugin' ),
-						'nonce': jQuery( 'input[name="nonce"]' ).val()
-					};
-
-				if ( 0 !== option.length ) {
-					data.reason_id = option.val();
-					data.reason_text = reason.text().trim();
-					data.reason_info = 0 !== response.length ? response.val().trim() : '';
+					reason_id = skip ? 0 : option.val(),
+					reason_text = skip ? 'Deactivation Reason Skipped' : reason.text().trim();
+					
+				if ( 0 === option.length && ! skip ) {
+					jQuery( '.ts-modal-footer p' ).css( 'display', 'inline-block' );
+					return;
 				}
+
+				let	data = {
+					'action': 'tyche_plugin_deactivation_submit_action',
+					'reason_id': reason_id,
+					'reason_text': reason_text,
+					'reason_info': 0 !== response.length ? response.val().trim() : '',
+					'plugin_short_name': plugin,
+					'plugin_name': jQuery( `.${plugin}.ts-slug` ).attr( 'data-plugin' ),
+					'nonce': jQuery( 'input[name="nonce"]' ).val()
+				};
 
 				let ajax_url = tyche.plugin_deactivation.fn.return( $data, 'ajax_url' ),
 					href = jQuery( `.${plugin}.ts-slug` ).prev().prop( 'href' );
@@ -205,6 +219,7 @@ var tyche = {
 						data,
 						beforeSend: function() {
 							modal.find( '.button-deactivate' ).addClass( 'disabled' );
+							modal.find( '.button-skip-deactivate' ).addClass( 'disabled' );
 						},
 						complete: function() {
 							window.location.href = href;
