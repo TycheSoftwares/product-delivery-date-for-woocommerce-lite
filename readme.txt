@@ -191,6 +191,9 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 == Changelog ==
 
+= 2.7.5 (22.10.2024) =
+* Fix -  Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.
+
 = 2.7.4 (02.10.2024) =
 * Fix - Added a nonce check for Cross-Site Request Forgery (CSRF) vulnerability on the admin Notice.
 
