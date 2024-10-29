@@ -42,27 +42,6 @@ class Prdd_View_Deliveries_Lite {
 
 				<?php do_action( 'prdd_lite_page_top' ); ?>
 				<form id="prdd-lite-view-deliveries" method="get" action="<?php esc_attr( $lite_history_page ); ?>">
-
-					<p id="prdd_lite_add_order">
-						<button class="button-secondary" disabled>
-							<?php esc_html_e( 'Calendar View', 'woocommerce-prdd-lite' ); ?>
-						</button>
-
-						<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro</a></i></b>
-
-						<?php
-						if ( ! isset( $_GET['prdd_view'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-							?>
-
-							<button style="float:right;" class="button-secondary" disabled><?php esc_html_e( 'Print', 'woocommerce-prdd-lite' ); ?></button>
-							<button style="float:right;" class="button-secondary" disabled><?php esc_html_e( 'CSV', 'woocommerce-prdd-lite' ); ?></button>
-							<br>
-							<span style="float:right;">
-								<b><i>Upgrade to <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=prddupgradetopro&utm_medium=link&utm_campaign=ProductDeliveryDateLite" target="_blank">Product Delivery Date Pro</a></i></b>&nbsp;
-							</span>
-						<?php } ?>
-					</p>
-
 					<input type="hidden" name="page" value="woocommerce_prdd_lite_history_page" />
 					<?php
 						$prdd_table->views();
