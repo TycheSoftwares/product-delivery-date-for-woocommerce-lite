@@ -61,7 +61,7 @@ jQuery( document ).ready( function() {
 				<?php do_action( 'prdd_lite_before_method_select', $duplicate_of ); ?>
 				
 			</table>
-			<div id="prdd_lite_enable_weekday" name="prdd_lite_enable_weekday" style="display:<?php echo esc_attr( $recurring_div_show ); ?>;">
+			<div id="prdd_lite_enable_weekday" name="prdd_lite_enable_weekday">
 				<table class="form-table">
 					<tr>
 						<th>

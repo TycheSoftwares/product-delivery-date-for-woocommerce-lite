@@ -1,10 +1,10 @@
 <?php
 /**
- * Class Ts_Upgrade_To_Pro
+ * Class Ts_Upgrade_To_Pro_Prdd
  *
  * @since 1.0.0
  */
-class Ts_Upgrade_To_Pro {
+class Ts_Upgrade_To_Pro_Prdd {
 
 	/**
 	 * The capability users should have to view the page.
@@ -114,12 +114,12 @@ class Ts_Upgrade_To_Pro {
 	 */
 	public function __construct( $ts_plugin_mame = '', $ts_plugin_prefix = '', $ts_plugin_page = '', $ts_plugin_locale = '', $ts_plugin_folder_name = '', $ts_plugin_slug = '', $utp_submenu_slug = '' ) {
 
-		self::$plugin_name         = $ts_plugin_mame; // Order Delivery Date for WooCommerce (Lite version).
-		self::$plugin_prefix       = $ts_plugin_prefix; // orddd_lite.
-		self::$plugin_page         = $ts_plugin_page; // admin.php?page=order_delivery_date_lite.
-		self::$plugin_locale       = $ts_plugin_locale; // order-delivery-date.
-		self::$plugin_slug         = $ts_plugin_slug; // order_delivery_date_lite.
-		self::$ts_utp_submenu_slug = ( '' === $utp_submenu_slug ) ? self::$plugin_slug : $utp_submenu_slug; // order_delivery_date_lite.
+		self::$plugin_name         = $ts_plugin_mame;
+		self::$plugin_prefix       = $ts_plugin_prefix;
+		self::$plugin_page         = $ts_plugin_page;
+		self::$plugin_locale       = $ts_plugin_locale;
+		self::$plugin_slug         = $ts_plugin_slug;
+		self::$ts_utp_submenu_slug = ( '' === $utp_submenu_slug ) ? self::$plugin_slug : $utp_submenu_slug;
 
 		add_action( self::$plugin_prefix . '_add_submenu', array( &$this, 'ts_add_submenu' ) );
 		add_action( 'admin_notices', array( &$this, 'ts_lite_trial_purchase_notices' ) );
@@ -128,9 +128,35 @@ class Ts_Upgrade_To_Pro {
 		add_action( 'admin_enqueue_scripts', array( &$this, 'ts_custom_notice_style' ) );
 		add_action( 'admin_head', array( &$this, 'ts_add_submenu_class' ) );
 
+		add_action( 'wp_ajax_prdd_lite_dismiss_upgrade_to_pro', array( &$this, 'dismiss_upgrade_to_pro_notice' ) );
+
 		self::$plugin_folder = $ts_plugin_folder_name;
 		self::$plugin_url    = $this->ts_get_plugin_url();
 		self::$template_base = $this->ts_get_template_path();
+	}
+
+	/**
+	 * Called when the dismiss icon is clicked on the notice.
+	 */
+	public function dismiss_upgrade_to_pro_notice() {
+		if ( current_user_can( 'manage_woocommerce' ) && isset( $_POST['security'] ) && ( isset( $_POST['security'] ) && wp_verify_nonce( sanitize_key( $_POST['security'] ), 'tracking_notice' ) ) ) {
+			if ( isset( $_POST['upgrade_to_pro_type'] ) ) {
+				$type = sanitize_text_field( wp_unslash( $_POST['upgrade_to_pro_type'] ) );
+				switch ( $type ) {
+					case 'purchase':
+						update_option( 'prddd_lite_upgrade_to_pro_notice_dismissed', 'yes' );
+						break;
+					case 'expired':
+						update_option( 'prddd_lite_upgrade_to_pro_notice_expired_dismissed', 'yes' );
+						break;
+					default:
+						break;
+				}
+			}
+			return 'success';
+		} else {
+			die( 'Security check failed' );
+		}
 	}
 
 	/**
@@ -201,44 +227,57 @@ class Ts_Upgrade_To_Pro {
 	 */
 	public function ts_lite_trial_purchase_notices() {
 
-		$message = '';
-		$trial   = get_option( 'prddd_edd_license_download_type', '' ); // If trial license is used then we are storing it as trial as this option.
+		if ( isset( $_GET['page'] ) && 'woocommerce_prdd_lite_page' === $_GET['page'] ) { // phpcs:ignore.
 
-		if ( 'trial' === $trial ) {
-			$trial_expired = get_option( 'prddd_deactivated_due_to_trial_expiry', '' );
-			$license_key   = trim( get_option( self::$ts_license_key_option_name, '' ) );
-
-			if ( '' !== $license_key ) {
-				$renew_link = add_query_arg(
-					array(
-						'edd_license_key' => $license_key,
-						'download_id'     => self::$ts_item_id,
-					),
-					'https://www.tychesoftwares.com/checkout'
-				);
-				/* translators: %s: Renew Link */
-				$message = sprintf( __( 'Your Woo store is losing its WOW factor. Your Product Delivery Date Pro for WooCommerce license has expired. <a href="%s" target="_blank" class="button">Renew Now</a>', 'product-delivery-date' ), $renew_link );
-			}
-		} elseif ( ! is_plugin_active( 'product-delivery-date/product-delivery-date.php' ) ) {
-			/* translators: %s: Prddd Trial Version Download page Link */
-			if ( '' === get_option( 'edd_sample_license_status_prdd_woo', '' ) ) {
-				$message = sprintf( __( 'Upgrade to the PRO version of Product Delivery Date for WooCommerce plugin for FREE! Enjoy pro features for 60 days at absolutely no cost. Limited time offer <a href="%s" class="button-primary button button-large" target="_blank"><b>Act now!</b></a>', 'product-delivery-date' ), 'https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/' );
-			}
-		}
-
-		if ( isset( $_GET['action'] ) && 'upload-plugin' === $_GET['action']  ) { // phpcs:ignore.
 			$message = '';
-		}
+			$trial   = get_option( 'prddd_edd_license_download_type', '' ); // If trial license is used then we are storing it as trial as this option.
 
-		if ( '' !== $message ) {
-			?>
-			<div class="prddd-message notice">
-				<div class="prddd-content">
-					<img class="prddd-site-logo" src="<?php echo esc_url( plugins_url( '/assets/images/tyche-logo.png', __FILE__ ) ); ?> ">
-					<p><?php echo $message; //phpcs:ignore ?></p>
+			if ( 'trial' === $trial ) {
+
+				if ( 'yes' === get_option( 'prddd_lite_upgrade_to_pro_notice_expired_dismissed', '' ) ) {
+					return;
+				}
+				$notice_purchase_or_expired = 'prddd-pro-expired-notice';
+				$trial_expired              = get_option( 'prddd_deactivated_due_to_trial_expiry', '' );
+				$license_key                = trim( get_option( self::$ts_license_key_option_name, '' ) );
+
+				if ( '' !== $license_key ) {
+					$renew_link = add_query_arg(
+						array(
+							'edd_license_key' => $license_key,
+							'download_id'     => self::$ts_item_id,
+						),
+						'https://www.tychesoftwares.com/checkout'
+					);
+					/* translators: %s: Renew Link */
+					$message = sprintf( __( 'Your Woo store is losing its WOW factor. Your Product Delivery Date Pro for WooCommerce license has expired. <a href="%s" target="_blank" class="button">Renew Now</a>', 'product-delivery-date' ), $renew_link );
+				}
+			} elseif ( ! is_plugin_active( 'product-delivery-date/product-delivery-date.php' ) ) {
+				if ( 'yes' === get_option( 'prddd_lite_upgrade_to_pro_notice_dismissed', '' ) ) {
+					return;
+				}
+				/* translators: %s: Prddd Trial Version Download page Link */
+				if ( '' === get_option( 'edd_sample_license_status_prdd_woo', '' ) ) {
+					$notice_purchase_or_expired = 'prddd-upgrade-to-pro-notice';
+					/* translators: %s: Link to PRDD Trial */
+					$message = sprintf( __( 'Upgrade to the PRO version of Product Delivery Date Pro for WooCommerce plugin for $1! Enjoy all Pro features for 30 days at this insane price. Limited time offer <a href="%s" class="button-primary button button-large" target="_blank"><b>Act now!</b></a>', 'product-delivery-date' ), 'https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/' );
+				}
+			}
+
+			if ( isset( $_GET['action'] ) && 'upload-plugin' === $_GET['action']  ) { // phpcs:ignore.
+				$message = '';
+			}
+
+			if ( '' !== $message ) {
+				?>
+				<div class="<?php echo esc_html( $notice_purchase_or_expired ); ?> prddd-message notice is-dismissible">
+					<div class="prddd-content">
+						<img class="prddd-site-logo" src="<?php echo esc_url( plugins_url( '/assets/images/tyche-logo.png', __FILE__ ) ); ?> ">
+						<p><?php echo $message; //phpcs:ignore ?></p>
+					</div>
 				</div>
-			</div>
-				<?php
+					<?php
+			}
 		}
 	}
 
