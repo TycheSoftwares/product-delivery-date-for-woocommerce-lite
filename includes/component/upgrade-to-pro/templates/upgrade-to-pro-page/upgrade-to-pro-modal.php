@@ -21,7 +21,7 @@ if ( '' === get_option( 'prdd_pro_installed', '' ) ) {
 			<h3><?php echo $modal_body_heading; ?></h3>
 			<h4><?php echo $modal_body_desc; ?></h4>
 			<ul class="ts-columns-2">
-				<li><img src="<?php echo $ts_add_image; ?>">Access all the premium features (Custom delivery schedules, Same Day & Next Day delivery, Delivery & Local Pickup options and much more )</li>
+				<li><img src="<?php echo $ts_add_image; ?>">Access all the premium features ( Delivery per product, Same Day & Next Day delivery, Google Calendar Sync and much more )</li>
 				<li><img src="<?php echo $ts_add_image; ?>">Early access to new features</li>
 				<li><img src="<?php echo $ts_add_image; ?>">Dedicated Customer Support</li>
 				<li><img src="<?php echo $ts_add_image; ?>">Priority access to our other offers/services</li>

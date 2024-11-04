@@ -121,14 +121,14 @@ class PRDD_Lite_Global_Menu {
 
 		switch ( $action ) {
 			case 'labels':
-				Ts_Upgrade_To_Pro::prddd_lite_show_settings_modal( 'prddd-lite-field-labels-html.php' );
+				Ts_Upgrade_To_Pro_Prdd::prddd_lite_show_settings_modal( 'prddd-lite-field-labels-html.php' );
 				break;
 			case 'prdd_google_calendar_sync':
 			case 'upgrade_to_pro_page':
-				Ts_Upgrade_To_Pro::prddd_lite_show_settings_modal( 'prddd-lite-integrations-html.php' );
+				Ts_Upgrade_To_Pro_Prdd::prddd_lite_show_settings_modal( 'prddd-lite-integrations-html.php' );
 				break;
 			case 'bulk_product_settings':
-				Ts_Upgrade_To_Pro::prddd_lite_show_settings_modal( 'prddd-lite-bulk-product-settings-html.php' );
+				Ts_Upgrade_To_Pro_Prdd::prddd_lite_show_settings_modal( 'prddd-lite-bulk-product-settings-html.php' );
 				break;
 			case 'settings':
 			default:

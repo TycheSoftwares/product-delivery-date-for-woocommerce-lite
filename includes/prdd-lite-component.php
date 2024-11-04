@@ -68,7 +68,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name ); */
 
 				/* Adding Upgrade to Pro related things to plugin */
-				new Ts_Upgrade_To_Pro( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug );
+				new Ts_Upgrade_To_Pro_Prdd( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug );
 
 			}
 		}
