@@ -192,7 +192,7 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 == Changelog ==
 
 = 2.8.0 (05.11.2024) =
-* Supporting code changes for the Trial Version of Order Delivery Date Pro for WooCommerce.
+* Supporting code changes for the Trial Version of Product Delivery Date Pro for WooCommerce.
 
 = 2.7.5 (22.10.2024) =
 * Fix -  Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.
