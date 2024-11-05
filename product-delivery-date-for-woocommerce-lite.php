@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Product Delivery Date for WooCommerce - Lite
  * Description: This plugin lets you capture the Delivery Date for each product.
- * Version: 2.7.5
+ * Version: 2.8.0
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
  * Requires PHP: 5.6
@@ -17,7 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'before_woocommerce_init', function() {
+add_action( 'before_woocommerce_init',
+    function() {
     if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
         $file = __FILE__;       
         \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $file , true );
