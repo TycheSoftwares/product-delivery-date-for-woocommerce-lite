@@ -133,13 +133,15 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$today_delivery_count    = '&nbsp;<span class="count">(' . $this->today_delivery_count . ')</span>';
 		$tomorrow_delivery_count = '&nbsp;<span class="count">(' . $this->tomorrow_delivery_count . ')</span>';
 		$views                   = array(
-			'all'               => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( array( 'status', 'paged' ) ), 'all' === $current || '' === $current ? ' class="current"' : '', __( 'All', 'woocommerce-prdd' ) . $total_count ),
+			'all'               => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( array( 'status', 'paged' ) ) ), 'all' === $current || '' === $current ? ' class="current"' : '', esc_html__( 'All', 'woocommerce-prdd' ) . $total_count ),
 			'future'            => sprintf(
 				'<a href="%s"%s>%s</a>',
-				add_query_arg(
-					array(
-						'status' => 'future',
-						'paged'  => false,
+				esc_url(
+					add_query_arg(
+						array(
+							'status' => 'future',
+							'paged'  => false,
+						)
 					)
 				),
 				'future' === $current ? ' class="current"' : '',
@@ -147,10 +149,12 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			),
 			'today_delivery'    => sprintf(
 				'<a href="%s"%s>%s</a>',
-				add_query_arg(
-					array(
-						'status' => 'today_delivery',
-						'paged'  => false,
+				esc_url(
+					add_query_arg(
+						array(
+							'status' => 'today_delivery',
+							'paged'  => false,
+						)
 					)
 				),
 				'today_delivery' === $current ? ' class="current"' : '',
@@ -158,10 +162,12 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			),
 			'tomorrow_delivery' => sprintf(
 				'<a href="%s"%s>%s</a>',
-				add_query_arg(
-					array(
-						'status' => 'tomorrow_delivery',
-						'paged'  => false,
+				esc_url(
+					add_query_arg(
+						array(
+							'status' => 'tomorrow_delivery',
+							'paged'  => false,
+						)
 					)
 				),
 				'tomorrow_delivery' === $current ? ' class="current"' : '',
