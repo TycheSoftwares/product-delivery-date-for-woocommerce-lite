@@ -191,6 +191,9 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 == Changelog ==
 
+= 2.8.1 (11.11.2024)
+* Fix - Fixed a Reflected Cross-Site Scripting (XSS) vulnerability.
+
 = 2.8.0 (05.11.2024) =
 * Supporting code changes for the Trial Version of Product Delivery Date Pro for WooCommerce.
 
