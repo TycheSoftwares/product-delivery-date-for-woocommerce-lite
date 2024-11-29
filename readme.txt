@@ -189,6 +189,9 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 
 6. WooCommerce -> Orders - edit an existing order page.
 
+== External Services ==
+This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
+
 == Changelog ==
 
 = 2.8.1 (11.11.2024)

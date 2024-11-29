@@ -1,6 +1,6 @@
 <?php
 
-$icon_info = plugins_url( 'product-delivery-date-for-woocommerce-lite/includes/component/upgrade-to-pro/assets/images/icon-info.svg' );
+$icon_info = plugins_url( 'product-delivery-date-for-woocommerce-lite/includes/component/upgrade-to-pro/assets/images/icon-info.png' );
 
 ?>
 
