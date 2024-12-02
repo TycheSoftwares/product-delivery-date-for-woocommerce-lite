@@ -49,6 +49,61 @@ function prdd_lite_update_po_file() {
 	} else {
 		load_plugin_textdomain( $domain, false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
+	$plugin_name        = __( 'Product Delivery Date for WooCommerce - Lite', 'woocommerce-prdd-lite' );
+	$prdd_lite_weekdays = array(
+		'0' => __( 'Sunday', 'woocommerce-prdd-lite' ),
+		'1' => __( 'Monday', 'woocommerce-prdd-lite' ),
+		'2' => __( 'Tuesday', 'woocommerce-prdd-lite' ),
+		'3' => __( 'Wednesday', 'woocommerce-prdd-lite' ),
+		'4' => __( 'Thursday', 'woocommerce-prdd-lite' ),
+		'5' => __( 'Friday', 'woocommerce-prdd-lite' ),
+		'6' => __( 'Saturday', 'woocommerce-prdd-lite' ),
+		'7' => __( '12 hour', 'woocommerce-prdd-lite' ),
+		'8' => __( '24 hour', 'woocommerce-prdd-lite' ),
+	);
+
+	$ts_faq = array(
+		1  => array(
+			'question' => __( 'How to make Product delivery date field a required field on the Product Page?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Currently, it is not possible in the Product Delivery Date for WooCommerce – Lite plugin to make "Delivery Date" field as "Required" field on the Product page. This is possible in the <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Pro </a> version.', 'woocommerce-prdd-lite' ),
+		),
+		2  => array(
+			'question' => __( 'Is it possible to add delivery date calendar on checkout page instead of for each product?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'No, it is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Order Delivery Date for WooCommerce Pro</a> and <a href="https://wordpress.org/plugins/order-delivery-date-for-woocommerce/" target="_blank">Lite</a> version which you can use to add a Delivery Date on the WooCommerce checkout page.', 'woocommerce-prdd-lite' ),
+		),
+		3  => array(
+			'question' => __( 'Can the customer enter the preferred delivery time for the product?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version. <a href = "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow"> View Demo </a>', 'woocommerce-prdd-lite' ),
+		),
+		4  => array(
+			'question' => __( 'Can we change the language of the delivery date calendar?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Yes, from version 2.0 you can choose different language for the delivery date calendar.', 'woocommerce-prdd-lite' ),
+		),
+		5  => array(
+			'question' => __( 'Is it possible to add extra charges for weekdays or specific dates?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>.', 'woocommerce-prdd-lite' ),
+		),
+		6  => array(
+			'question' => __( 'Can we translate Delivery Date label on product page?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Yes, you can translate the Delivery Date label for the product page. To translate the strings, you need to generate ".po" and ".mo" files in your respective language. These files then need to be added to the following path: "product-delivery-date-for-woocommerce-lite/languages"', 'woocommerce-prdd-lite' ),
+		),
+		7  => array(
+			'question' => __( 'Is it possible to edit the selected delivery date for the already placed WooCommerce orders?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders.', 'woocommerce-prdd-lite' ),
+		),
+		8  => array(
+			'question' => __( 'Can we change the "Delivery Date" label to something else, such as "Choose a date" or "Date to deliver"?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the <a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite" rel="nofollow" target="_blank">Product Delivery Date Pro for WooCommerce plugin</a>.', 'woocommerce-prdd-lite' ),
+		),
+		9  => array(
+			'question' => __( 'Will Delivery Date Calendar on the product page work on the mobile devices?', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'Yes, Delivery Date Calendar on the product page will work on the mobile devices.', 'woocommerce-prdd-lite' ),
+		),
+		10 => array(
+			'question' => __( 'Difference between Lite and Pro version of the plugin.', 'woocommerce-prdd-lite' ),
+			'answer'   => __( 'You can refer <strong><a href="https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite" title="Lite and Pro version Difference" rel="nofollow" target="_blank">here</a>.', 'woocommerce-prdd-lite' ),
+		),
+	);
 }
 
 if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
@@ -298,7 +353,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			$prddd_lite_plugin_dir = 'product-delivery-date-for-woocommerce-lite/product-delivery-date-for-woocommerce-lite.php';
 			if ( $prddd_lite_plugin_dir === $plugin_file ) {
 				$settings = array(
-					'support' => '<a href="' . esc_url( 'admin.php?page=woocommerce_prdd_lite_page' ) . '" title="' . esc_attr( __( 'Product Delivery Date Settings', 'woocommerce-prdd' ) ) . '">' . __( 'Settings', 'woocommerce-prdd' ) . '</a>',
+					'support' => '<a href="' . esc_url( 'admin.php?page=woocommerce_prdd_lite_page' ) . '" title="' . esc_attr( __( 'Product Delivery Date Settings', 'woocommerce-prdd-lite' ) ) . '">' . __( 'Settings', 'woocommerce-prdd-lite' ) . '</a>',
 				);
 				$actions = array_merge( $settings, $actions );
 			}

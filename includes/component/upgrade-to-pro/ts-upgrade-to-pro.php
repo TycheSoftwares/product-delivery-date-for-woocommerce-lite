@@ -250,7 +250,7 @@ class Ts_Upgrade_To_Pro_Prdd {
 						'https://www.tychesoftwares.com/checkout'
 					);
 					/* translators: %s: Renew Link */
-					$message = sprintf( __( 'Your Woo store is losing its WOW factor. Your Product Delivery Date Pro for WooCommerce license has expired. <a href="%s" target="_blank" class="button">Renew Now</a>', 'product-delivery-date' ), $renew_link );
+					$message = sprintf( __( 'Your Woo store is losing its WOW factor. Your Product Delivery Date Pro for WooCommerce license has expired. <a href="%s" target="_blank" class="button">Renew Now</a>', 'woocommerce-prdd-lite' ), $renew_link );
 				}
 			} elseif ( ! is_plugin_active( 'product-delivery-date/product-delivery-date.php' ) ) {
 				if ( 'yes' === get_option( 'prddd_lite_upgrade_to_pro_notice_dismissed', '' ) ) {
@@ -260,7 +260,7 @@ class Ts_Upgrade_To_Pro_Prdd {
 				if ( '' === get_option( 'edd_sample_license_status_prdd_woo', '' ) ) {
 					$notice_purchase_or_expired = 'prddd-upgrade-to-pro-notice';
 					/* translators: %s: Link to PRDD Trial */
-					$message = sprintf( __( 'Upgrade to the PRO version of Product Delivery Date Pro for WooCommerce plugin for $1! Enjoy all Pro features for 30 days at this insane price. Limited time offer <a href="%s" class="button-primary button button-large" target="_blank"><b>Act now!</b></a>', 'product-delivery-date' ), 'https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/' );
+					$message = sprintf( __( 'Upgrade to the PRO version of Product Delivery Date Pro for WooCommerce plugin for $1! Enjoy all Pro features for 30 days at this insane price. Limited time offer <a href="%s" class="button-primary button button-large" target="_blank"><b>Act now!</b></a>', 'woocommerce-prdd-lite' ), 'https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/' );
 				}
 			}
 

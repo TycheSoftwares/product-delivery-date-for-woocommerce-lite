@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-28 15:16+0530\n"
-"PO-Revision-Date: 2024-11-28 15:16+0500\n"
+"POT-Creation-Date: 2024-12-02 13:49+0530\n"
+"PO-Revision-Date: 2024-12-02 13:49+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,19 +18,205 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: Eazy Po 1.0.0.0\n"
 
-#: class-prdd-lite-woocommerce.php:282
+#: class-prdd-lite-woocommerce.php:52
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:88
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:95
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:117
+msgid "Product Delivery Date for WooCommerce - Lite"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:54
+msgid "Sunday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:55
+msgid "Monday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:56
+msgid "Tuesday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:57
+msgid "Wednesday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:58
+msgid "Thursday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:59
+msgid "Friday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:60
+msgid "Saturday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:61
+msgid "12 hour"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:62
+msgid "24 hour"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:67
+msgid ""
+"How to make Product delivery date field a required field on the Product Page?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:68
+msgid ""
+"Currently, it is not possible in the Product Delivery Date for WooCommerce – "
+"Lite plugin to make \"Delivery Date\" field as \"Required\" field on the "
+"Product page. This is possible in the <a href = \"https://www.tychesoftwares."
+"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?"
+"utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" "
+"rel=\"nofollow\" target=\"_blank\">Pro </a> version."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:71
+msgid ""
+"Is it possible to add delivery date calendar on checkout page instead of for "
+"each product?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:72
+msgid ""
+"No, it is not possible to add Delivery date calendar on checkout page from "
+"Product Delivery Date plugin. However, we do have a plugin named <a href="
+"\"https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-"
+"for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;"
+"utm_campaign=ProductDeliveryDateLite\" rel=\"nofollow\" target=\"_blank"
+"\">Order Delivery Date for WooCommerce Pro</a> and <a href=\"https://"
+"wordpress.org/plugins/order-delivery-date-for-woocommerce/\" target=\"_blank"
+"\">Lite</a> version which you can use to add a Delivery Date on the "
+"WooCommerce checkout page."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:75
+msgid "Can the customer enter the preferred delivery time for the product?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:76
+msgid ""
+"Currently, there is no provision for entering the delivery time in the free "
+"version. This is possible in the Pro version. <a href = \"https://www."
+"tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-"
+"woocommerce/?"
+"utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" "
+"rel=\"nofollow\"> View Demo </a>"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:79
+msgid "Can we change the language of the delivery date calendar?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:80
+msgid ""
+"Yes, from version 2.0 you can choose different language for the delivery "
+"date calendar."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:83
+msgid "Is it possible to add extra charges for weekdays or specific dates?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:84
+msgid ""
+"Currently, it is not possible to add the extra charges for deliveries on "
+"weekdays or for specific dates in the free version. However, this feature is "
+"available in the <a href=\"https://www.tychesoftwares.com/store/premium-"
+"plugins/product-delivery-date-pro-for-woocommerce/?"
+"utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" "
+"rel=\"nofollow\" target=\"_blank\">Product Delivery Date Pro for WooCommerce "
+"plugin</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:87
+msgid "Can we translate Delivery Date label on product page?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:88
+msgid ""
+"Yes, you can translate the Delivery Date label for the product page. To "
+"translate the strings, you need to generate \".po\" and \".mo\" files in "
+"your respective language. These files then need to be added to the following "
+"path: \"product-delivery-date-for-woocommerce-lite/languages\""
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:91
+msgid ""
+"Is it possible to edit the selected delivery date for the already placed "
+"WooCommerce orders?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:92
+msgid ""
+"Currently, it is not possible to edit the selected delivery date for the "
+"WooCommerce orders in the free version. However, this feature is available "
+"in the <a href=\"https://www.tychesoftwares.com/store/premium-plugins/"
+"product-delivery-date-pro-for-woocommerce/?"
+"utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" "
+"rel=\"nofollow\" target=\"_blank\">Product Delivery Date Pro for WooCommerce "
+"plugin</a>. The admin, as well as the customers, can edit the delivery date "
+"for the already placed WooCommerce orders."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:95
+msgid ""
+"Can we change the \"Delivery Date\" label to something else, such as "
+"\"Choose a date\" or \"Date to deliver\"?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:96
+msgid ""
+"Currently, it is not possible to change the Delivery Date label in the free "
+"version. However, this feature is available in the <a href=\"https://www."
+"tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-"
+"pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;"
+"utm_campaign=OrderDeliveryDateLite\" rel=\"nofollow\" target=\"_blank"
+"\">Product Delivery Date Pro for WooCommerce plugin</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:99
+msgid ""
+"Will Delivery Date Calendar on the product page work on the mobile devices?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:100
+msgid ""
+"Yes, Delivery Date Calendar on the product page will work on the mobile "
+"devices."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:103
+msgid "Difference between Lite and Pro version of the plugin."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:104
+msgid ""
+"You can refer <strong><a href=\"https://www.tychesoftwares.com/differences-"
+"pro-lite-versions-product-delivery-date-woocommerce-plugin/?"
+"utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" "
+"title=\"Lite and Pro version Difference\" rel=\"nofollow\" target=\"_blank"
+"\">here</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:337
 msgid "Go Pro"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:282
+#: class-prdd-lite-woocommerce.php:337
 msgid "Premium version"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:301
+#: class-prdd-lite-woocommerce.php:356
 msgid "Product Delivery Date Settings"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:301
+#: class-prdd-lite-woocommerce.php:356
 #: includes/admin/class-prdd-lite-global-menu.php:50
 #: includes/admin/class-prdd-lite-global-menu.php:51
 #: includes/admin/class-prdd-lite-global-menu.php:153
@@ -38,7 +224,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:552
+#: class-prdd-lite-woocommerce.php:607
 msgid ""
 "<span id=\"prdd-update-response\">We have made some backend changes to "
 "Product Delivery Date Lite plugin. Please update the database by clicking "
@@ -148,56 +334,24 @@ msgid ""
 "            <strong><a target=\"_blank\" href= \""
 msgstr ""
 
-#: includes/prdd-lite-component.php:236
+#: includes/prdd-lite-component.php:237
 msgid "Minimum Delivery Time (in hours) is not working as expected."
 msgstr ""
 
-#: includes/prdd-lite-component.php:242
+#: includes/prdd-lite-component.php:243
 msgid "I need delivery time along with the delivery date."
 msgstr ""
 
-#: includes/prdd-lite-component.php:248
+#: includes/prdd-lite-component.php:249
 msgid "I want deliveries on some specific dates only."
 msgstr ""
 
-#: includes/prdd-lite-component.php:254
+#: includes/prdd-lite-component.php:255
 msgid "I have purchased the Pro version of the Plugin."
 msgstr ""
 
-#: includes/prdd-lite-config.php:11
-msgid "Sunday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:12
-msgid "Monday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:13
-msgid "Tuesday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:14
-msgid "Wednesday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:15
-msgid "Thursday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:16
-msgid "Friday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:17
-msgid "Saturday"
-msgstr ""
-
-#: includes/prdd-lite-config.php:115
-msgid "12 hour"
-msgstr ""
-
-#: includes/prdd-lite-config.php:116
-msgid "24 hour"
+#: includes/admin/class-prdd-lite-delivery-settings.php:260
+msgid "Reset"
 msgstr ""
 
 #: includes/admin/class-prdd-lite-global-menu.php:38
@@ -306,6 +460,12 @@ msgstr ""
 msgid "Reset usage tracking"
 msgstr ""
 
+#: includes/admin/class-prdd-lite-global-menu.php:236
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data."
+msgstr ""
+
 #: includes/admin/class-prdd-lite-meta-box.php:26
 msgid "Product Delivery Date"
 msgstr ""
@@ -358,17 +518,38 @@ msgstr ""
 msgid "All Deliveries"
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:127
+#: includes/component/faq-support/ts-faq-support.php:111
+#, php-format
+msgid "You have any queries? Please check our %1$sFAQ%2$s page."
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:133
 #, php-format
 msgid "Frequently Asked Questions for %s"
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:128
+#: includes/component/faq-support/ts-faq-support.php:134
 msgid "Frequently Asked Questions for "
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:176
+#: includes/component/faq-support/ts-faq-support.php:182
 msgid "FAQ & Support"
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:61
+#, php-format
+msgid "Frequently Asked Questions for %s Plugin"
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:121
+#, php-format
+msgid ""
+"If your queries are not answered here, you can send an email directly to %s "
+"for some additional requirements."
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:122
+msgid "support@tychesoftwares.com"
 msgstr ""
 
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:172
@@ -536,6 +717,32 @@ msgid ""
 "the button below to Upgrade to PRO.</i></b>"
 msgstr ""
 
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:24
+msgid ""
+"Access all the premium features ( Delivery per product, Same Day & Next Day "
+"delivery, Google Calendar Sync and much more )"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:25
+msgid "Early access to new features"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:26
+msgid "Dedicated Customer Support"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:27
+msgid "Priority access to our other offers/services"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:29
+msgid "And more!"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:33
+msgid "Upgrade and Unlock"
+msgstr ""
+
 #: includes/component/welcome-page/ts-welcome.php:117
 #, php-format
 msgid "Welcome to %s %s"
@@ -613,12 +820,6 @@ msgid ""
 "The provision for allowing Delivery Time along with the Delivery Date on the "
 "product page makes the delivery more accurate. Delivering products on "
 "customer's preferred date and time improves your customers service."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:88
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:95
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:117
-msgid "Product Delivery Date for WooCommerce - Lite"
 msgstr ""
 
 #: includes/component/welcome-page/templates/welcome/welcome-page.php:99

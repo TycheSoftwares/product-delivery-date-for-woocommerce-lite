@@ -110,10 +110,10 @@ class PRDD_Lite_Global_Menu {
 		settings_errors();
 		?>
 		<h2 class="nav-tab-wrapper woo-nav-tab-wrapper">
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php echo esc_attr( $active_settings ); ?>"> <?php esc_html_e( 'Global Delivery Settings', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php echo esc_attr( $active_labels ); ?>"> <?php esc_html_e( 'Field Labels', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php echo esc_attr( $active_google_sync ); ?>"> <?php esc_html_e( 'Integrations', 'woocommerce-prdd' ); ?> </a>
-			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php echo esc_attr( $active_bulk_product_settings ); ?>"> <?php esc_html_e( 'Bulk Product Settings', 'woocommerce-prdd' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=settings" class="nav-tab <?php echo esc_attr( $active_settings ); ?>"> <?php esc_html_e( 'Global Delivery Settings', 'woocommerce-prdd-lite' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=labels" class="nav-tab <?php echo esc_attr( $active_labels ); ?>"> <?php esc_html_e( 'Field Labels', 'woocommerce-prdd-lite' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=prdd_google_calendar_sync" class="nav-tab <?php echo esc_attr( $active_google_sync ); ?>"> <?php esc_html_e( 'Integrations', 'woocommerce-prdd-lite' ); ?> </a>
+			<a href="admin.php?page=woocommerce_prdd_lite_page&action=bulk_product_settings" class="nav-tab <?php echo esc_attr( $active_bulk_product_settings ); ?>"> <?php esc_html_e( 'Bulk Product Settings', 'woocommerce-prdd-lite' ); ?> </a>
 			<?php do_action( 'prdd_lite_add_settings_tab' ); ?>
 		</h2>
 		<?php
@@ -136,7 +136,7 @@ class PRDD_Lite_Global_Menu {
 				<form method="post" action="options.php">' );
 					settings_fields( 'prdd_lite_settings' );
 					do_settings_sections( 'prdd_lite_settings_page' );
-					submit_button( __( 'Save Settings', 'woocommerce-prdd' ), 'primary', 'save', true );
+					submit_button( __( 'Save Settings', 'woocommerce-prdd-lite' ), 'primary', 'save', true );
 				print( '</form>
 			</div>' );
 				break;
@@ -150,90 +150,90 @@ class PRDD_Lite_Global_Menu {
 
 		add_settings_section(
 			'prdd_lite_delivery_settings_section',      // ID used to identify this section and with which to register options.
-			__( 'Settings', 'woocommerce-prdd' ),       // Title to be displayed on the administration page.
+			__( 'Settings', 'woocommerce-prdd-lite' ),       // Title to be displayed on the administration page.
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_delivery_settings_section_callback' ),     // Callback used to render the description of the section.
 			'prdd_lite_settings_page'               // Page on which to add this section of options.
 		);
 
 		add_settings_field(
 			'prdd_lite_language',
-			__( 'Language', 'woocommerce-prdd' ),
+			__( 'Language', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_language_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Choose the language for your delivery calendar.', 'woocommerce-prdd' ) )
+			array( __( 'Choose the language for your delivery calendar.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_date_format',
-			__( 'Date Format', 'woocommerce-prdd' ),
+			__( 'Date Format', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_date_format_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'The format in which the delivery date appears to the customers on the product page once the date is selected.', 'woocommerce-prdd' ) )
+			array( __( 'The format in which the delivery date appears to the customers on the product page once the date is selected.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_months',
-			__( 'Number of months to show in calendar', 'woocommerce-prdd' ),
+			__( 'Number of months to show in calendar', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_months_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'The number of months to be shown on the calendar. If the delivery dates spans across 2 months, then dates of 2 months can be shown simultaneously without the need to press Next or Back buttons.', 'woocommerce-prdd' ) )
+			array( __( 'The number of months to be shown on the calendar. If the delivery dates spans across 2 months, then dates of 2 months can be shown simultaneously without the need to press Next or Back buttons.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_calendar_day',
-			__( 'First Day on Calendar', 'woocommerce-prdd' ),
+			__( 'First Day on Calendar', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_calendar_day_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Choose the first day of week displayed on the Delivery Date calendar.', 'woocommerce-prdd' ) )
+			array( __( 'Choose the first day of week displayed on the Delivery Date calendar.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_theme',
-			__( 'Preview Theme & Language', 'woocommerce-prdd' ),
+			__( 'Preview Theme & Language', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_theme_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Select the theme for the calendar. You can choose a theme which blends with the design of your website.', 'woocommerce-prdd' ) )
+			array( __( 'Select the theme for the calendar. You can choose a theme which blends with the design of your website.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_global_holidays',
-			__( 'No delivery on these dates', 'woocommerce-prdd' ),
+			__( 'No delivery on these dates', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_global_holidays_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Select dates for which the delivery will be completely disabled for all the products in your WooCommerce store. <br> The dates selected here will be unavailable for all products. Please click on the date in calendar to add or delete the date from the list.', 'woocommerce-prdd' ) )
+			array( __( 'Select dates for which the delivery will be completely disabled for all the products in your WooCommerce store. <br> The dates selected here will be unavailable for all products. Please click on the date in calendar to add or delete the date from the list.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_enable_rounding',
-			__( 'Enable Rounding of Prices', 'woocommerce-prdd' ),
+			__( 'Enable Rounding of Prices', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_rounding_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Rounds the Price to the nearest Integer value.', 'woocommerce-prdd' ) )
+			array( __( 'Rounds the Price to the nearest Integer value.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'prdd_lite_enable_delete_order_item',
-			__( 'Remove Data on Uninstall?', 'woocommerce-prdd' ),
+			__( 'Remove Data on Uninstall?', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'prdd_lite_enable_delete_order_item_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( __( 'Enable this setting if you want to completely remove Product Delivery Date Lite data when plugin is deleted.', 'woocommerce-prdd' ) )
+			array( __( 'Enable this setting if you want to completely remove Product Delivery Date Lite data when plugin is deleted.', 'woocommerce-prdd-lite' ) )
 		);
 
 		add_settings_field(
 			'ts_reset_tracking',
-			__( 'Reset usage tracking', 'woocommerce-prdd' ),
+			__( 'Reset usage tracking', 'woocommerce-prdd-lite' ),
 			array( 'Prdd_Lite_Delivery_Settings', 'ts_rereset_tracking_callback' ),
 			'prdd_lite_settings_page',
 			'prdd_lite_delivery_settings_section',
-			array( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'woocommerce-booking' )
+			array( __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'woocommerce-prdd-lite' ) )
 		);
 
 		register_setting(

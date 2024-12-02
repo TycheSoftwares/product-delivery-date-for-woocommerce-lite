@@ -55,61 +55,75 @@
 </style>
 
 <div class="main-panel">
-    <h3>Frequently Asked Questions for <?php echo $ts_plugin_name; ?> Plugin</h3>
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[1]['question'] ?></strong></button>
+    <h3>
+        <?php 
+        printf(
+            esc_html__( 'Frequently Asked Questions for %s Plugin', 'woocommerce-prdd-lite' ),
+            esc_html__( $ts_plugin_name, 'woocommerce-prdd-lite' )
+        );
+        ?>
+    </h3>
+
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[1]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[1]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[1]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[2]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[2]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[2]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[2]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[3]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[3]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[3]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[3]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[4]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[4]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[4]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[4]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[5]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[5]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[5]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[5]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[6]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[6]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[6]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[6]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[7]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[7]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[7]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[7]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[8]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[8]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[8]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[8]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[9]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[9]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[9]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[9]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo $ts_faq[10]['question'] ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[10]['question'], 'woocommerce-prdd-lite' ); ?></strong></button>
     <div class="panel">
-        <p><?php echo $ts_faq[10]['answer'] ?></p>
+        <p><?php echo __( $ts_faq[10]['answer'], 'woocommerce-prdd-lite' ); ?></p>
     </div>
 </div>
 
 <div class="support-panel">
     <p style="font-size: 19px">
-        If your queries are not answered here, you can send an email directly to <strong>support@tychesoftwares.com</strong> for some additional requirements. 
-    </p>
+    <?php 
+    echo sprintf(
+        esc_html__( 'If your queries are not answered here, you can send an email directly to %s for some additional requirements.', 'woocommerce-prdd-lite' ),
+        '<strong>' . esc_html__( 'support@tychesoftwares.com', 'woocommerce-prdd-lite' ) . '</strong>'
+    );
+    ?>
+</p>
+
 </div>
 <script>
 var acc = document.getElementsByClassName("faq-ts-accordion");
