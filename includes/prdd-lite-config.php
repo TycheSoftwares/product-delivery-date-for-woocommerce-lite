@@ -8,13 +8,13 @@
  */
 
 $prdd_lite_weekdays = array(
-	'prdd_weekday_0' => __( 'Sunday', 'woocommerce-prdd' ),
-	'prdd_weekday_1' => __( 'Monday', 'woocommerce-prdd' ),
-	'prdd_weekday_2' => __( 'Tuesday', 'woocommerce-prdd' ),
-	'prdd_weekday_3' => __( 'Wednesday', 'woocommerce-prdd' ),
-	'prdd_weekday_4' => __( 'Thursday', 'woocommerce-prdd' ),
-	'prdd_weekday_5' => __( 'Friday', 'woocommerce-prdd' ),
-	'prdd_weekday_6' => __( 'Saturday', 'woocommerce-prdd' ),
+	'prdd_weekday_0' => 'Sunday',
+	'prdd_weekday_1' => 'Monday',
+	'prdd_weekday_2' => 'Tuesday',
+	'prdd_weekday_3' => 'Wednesday',
+	'prdd_weekday_4' => 'Thursday',
+	'prdd_weekday_5' => 'Friday',
+	'prdd_weekday_6' => 'Saturday',
 );
 
 $prdd_lite_days = array(
@@ -112,8 +112,8 @@ $prdd_lite_date_formats = array(
 );
 
 $prdd_lite_time_formats = array(
-	'12' => __( '12 hour', 'woocommerce-prdd' ),
-	'24' => __( '24 hour', 'woocommerce-prdd' ),
+	'12' => '12 hour',
+	'24' => '24 hour',
 );
 
 

@@ -21,9 +21,9 @@ jQuery( document ).ready( function() {
 
 <div id='tabbed-nav' class="tstab-shadows tstab-tabs vertical top-left silver">
 	<ul class="tstab-tabs-nav">
-		<li class="tstab-tab tstab-first tstab-active" data-link="prdd_lite_date_time"><a id="addnew"> <?php esc_html_e( 'Delivery Options', 'woocommerce-prdd' ); ?> </a></li>
-		<li class="tstab-tab tstab-first" data-link="prdd_lite_settings"><a id="settings"><?php esc_html_e( 'Settings', 'woocommerce-prdd' ); ?></a></li>
-		<li class="tstab-tab tstab-first" data-link="prdd_lite_date_range_tab"><a id="date_range"> <?php esc_html_e( 'Delivery Time Period', 'woocommerce-prdd' ); ?> </a></li>
+		<li class="tstab-tab tstab-first tstab-active" data-link="prdd_lite_date_time"><a id="addnew"> <?php esc_html_e( 'Delivery Options', 'woocommerce-prdd-lite' ); ?> </a></li>
+		<li class="tstab-tab tstab-first" data-link="prdd_lite_settings"><a id="settings"><?php esc_html_e( 'Settings', 'woocommerce-prdd-lite' ); ?></a></li>
+		<li class="tstab-tab tstab-first" data-link="prdd_lite_date_range_tab"><a id="date_range"> <?php esc_html_e( 'Delivery Time Period', 'woocommerce-prdd-lite' ); ?> </a></li>
 		<?php
 		do_action( 'prdd_lite_add_tabs', $duplicate_of );
 		?>
@@ -65,7 +65,7 @@ jQuery( document ).ready( function() {
 				<table class="form-table">
 					<tr>
 						<th>
-							<label for="prdd_lite_delivery_days[]"> <?php esc_html_e( 'Delivery Days:', 'woocommerce-prdd' ); ?> </label>
+							<label for="prdd_lite_delivery_days[]"> <?php esc_html_e( 'Delivery Days:', 'woocommerce-prdd-lite' ); ?> </label>
 						</th>
 						<td style="width:380px">
 							<?php
@@ -110,7 +110,7 @@ jQuery( document ).ready( function() {
 			<table class="form-table">
 				<tr>
 					<th>
-						<label for="prdd_lite_delivery_field_mandatory"><?php esc_html_e( 'Mandatory Fields:', 'woocommerce-prdd' ); ?></label>
+						<label for="prdd_lite_delivery_field_mandatory"><?php esc_html_e( 'Mandatory Fields:', 'woocommerce-prdd-lite' ); ?></label>
 					</th>
 					<td style="width:380px">
 						<?php
@@ -181,7 +181,7 @@ jQuery( document ).ready( function() {
 				?>
 				<tr>
 					<th>
-						<label for="prdd_lite_maximum_number_days"><?php esc_html_e( 'Number of Dates to choose:', 'woocommerce-prdd' ); ?></label>
+						<label for="prdd_lite_maximum_number_days"><?php esc_html_e( 'Number of Dates to choose:', 'woocommerce-prdd-lite' ); ?></label>
 					</th>
 					<td style="width:380px">
 						<?php

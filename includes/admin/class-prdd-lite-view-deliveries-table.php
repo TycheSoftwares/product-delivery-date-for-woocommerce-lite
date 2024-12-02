@@ -133,7 +133,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$today_delivery_count    = '&nbsp;<span class="count">(' . $this->today_delivery_count . ')</span>';
 		$tomorrow_delivery_count = '&nbsp;<span class="count">(' . $this->tomorrow_delivery_count . ')</span>';
 		$views                   = array(
-			'all'               => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( array( 'status', 'paged' ) ) ), 'all' === $current || '' === $current ? ' class="current"' : '', esc_html__( 'All', 'woocommerce-prdd' ) . $total_count ),
+			'all'               => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( array( 'status', 'paged' ) ) ), 'all' === $current || '' === $current ? ' class="current"' : '', esc_html__( 'All', 'woocommerce-prdd-lite' ) . $total_count ),
 			'future'            => sprintf(
 				'<a href="%s"%s>%s</a>',
 				esc_url(
@@ -145,7 +145,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'future' === $current ? ' class="current"' : '',
-				__( 'Deliveries From Today Onwards', 'woocommerce-prdd' ) . $future_count
+				__( 'Deliveries From Today Onwards', 'woocommerce-prdd-lite' ) . $future_count
 			),
 			'today_delivery'    => sprintf(
 				'<a href="%s"%s>%s</a>',
@@ -158,7 +158,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'today_delivery' === $current ? ' class="current"' : '',
-				__( 'Today\'s Deliveries', 'woocommerce-prdd' ) . $today_delivery_count
+				__( 'Today\'s Deliveries', 'woocommerce-prdd-lite' ) . $today_delivery_count
 			),
 			'tomorrow_delivery' => sprintf(
 				'<a href="%s"%s>%s</a>',
@@ -171,7 +171,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'tomorrow_delivery' === $current ? ' class="current"' : '',
-				__( 'Tomorrow\'s Deliveries', 'woocommerce-prdd' ) . $tomorrow_delivery_count
+				__( 'Tomorrow\'s Deliveries', 'woocommerce-prdd-lite' ) . $tomorrow_delivery_count
 			),
 		);
 
@@ -186,14 +186,14 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'ID'            => __( 'Order ID', 'woocommerce-prdd' ),
-			'name'          => __( 'Customer Name', 'woocommerce-prdd' ),
-			'product_name'  => __( 'Product Name', 'woocommerce-prdd' ),
-			'delivery_date' => __( 'Delivery Date', 'woocommerce-prdd' ),
-			'quantity'      => __( 'Quantity', 'woocommerce-prdd' ),
-			'amount'        => __( 'Amount', 'woocommerce-prdd' ),
-			'order_date'    => __( 'Order Date', 'woocommerce-prdd' ),
-			'actions'       => __( 'Actions', 'woocommerce-prdd' ),
+			'ID'            => __( 'Order ID', 'woocommerce-prdd-lite' ),
+			'name'          => __( 'Customer Name', 'woocommerce-prdd-lite' ),
+			'product_name'  => __( 'Product Name', 'woocommerce-prdd-lite' ),
+			'delivery_date' => __( 'Delivery Date', 'woocommerce-prdd-lite' ),
+			'quantity'      => __( 'Quantity', 'woocommerce-prdd-lite' ),
+			'amount'        => __( 'Amount', 'woocommerce-prdd-lite' ),
+			'order_date'    => __( 'Order Date', 'woocommerce-prdd-lite' ),
+			'actions'       => __( 'Actions', 'woocommerce-prdd-lite' ),
 		);
 		return apply_filters( 'prdd_lite_view_deliveries_table_columns', $columns );
 	}
