@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 1.3
-Tested up to: 6.6.2
+Tested up to: 6.7.1
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -193,6 +193,11 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
 
 == Changelog ==
+
+= 2.8.2 (03.12.2024)
+* Tweak: Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.
+* Fix: Resolved issues with untranslated strings.
+* Fix: Fixed a notice that appeared when changing the site language in WordPress 6.7.
 
 = 2.8.1 (11.11.2024)
 * Fix - Fixed a Reflected Cross-Site Scripting (XSS) vulnerability.
