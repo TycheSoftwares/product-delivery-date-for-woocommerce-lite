@@ -90,6 +90,7 @@ $prdd_lite_languages = array(
 	'zh-HK' => 'Chinese Hong Kong',
 	'zh-CN' => 'Chinese Simplified',
 	'zh-TW' => 'Chinese Traditional',
+	'he'    => 'Hebrew',
 );
 
 $prdd_lite_date_formats = array(
