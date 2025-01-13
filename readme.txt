@@ -194,6 +194,9 @@ This plugin communicates with our tracking server to send usage data **only** if
 
 == Changelog ==
 
+= 2.9.0 ( 14.01.2025)
+* Tweak - Added Hebrew language localization to the plugin, providing admins with the option to enable and change the calendar language for Hebrew users.
+
 = 2.8.2 (03.12.2024)
 * Tweak: Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.
 * Fix: Resolved issues with untranslated strings.
