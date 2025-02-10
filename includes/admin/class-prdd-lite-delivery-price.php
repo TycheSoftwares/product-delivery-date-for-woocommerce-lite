@@ -345,4 +345,3 @@ if ( ! class_exists( 'Prdd_Lite_Delivery_Price' ) ) {
 	} // EOF Class
 } // EOF if class exist
 $prdd_lite_delivery_price = new Prdd_Lite_Delivery_Price();
-?>

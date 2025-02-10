@@ -5,6 +5,8 @@
  * @author  Tyche Softwares
  * @package Product-Delivery-Date-Lite/Admin/Component
  */
+
+// phpcs:disable
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -65,21 +67,20 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
 
 				/* $ts_pro_notices = self::prdd_lite_get_notice_text();
-				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name ); */
+				new Prdd_Lite_ts_pro_notices( $prdd_lite_plugin_name, $prdd_lite_lite_plugin_prefix, $prdd_lite_plugin_prefix, $ts_pro_notices, $prdd_lite_file_name, $prdd_lite_pro_file_name ); */ 
 
 				/* Adding Upgrade to Pro related things to plugin */
 				new Ts_Upgrade_To_Pro_Prdd( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug );
-
 			}
 		}
 
-		 /**
-		  * It will retrun the plguin name.
-		  *
-		  * @return string $ts_plugin_name Name of the plugin
-		  */
+		/**
+		 * It will retrun the plguin name.
+		 *
+		 * @return string $ts_plugin_name Name of the plugin
+		 */
 		public static function ts_get_plugin_name() {
-			$ordd_plugin_dir  = dirname( dirname( __FILE__ ) );
+			$ordd_plugin_dir  = dirname( dirname( __FILE__ ) ); // phpcs:ignore
 			$ordd_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
 
 			$ts_plugin_name = '';
@@ -96,7 +97,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 		 * @return string $ts_plugin_domain Name of the Plugin domain
 		 */
 		public static function ts_get_plugin_locale() {
-			$ordd_plugin_dir  = dirname( dirname( __FILE__ ) );
+			$ordd_plugin_dir  = dirname( dirname( __FILE__ ) ); // phpcs:ignore
 			$ordd_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
 
 			$ts_plugin_domain = '';
@@ -116,7 +117,6 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			$ts_pro_notices = array();
 
 			$prdd_lite_locale = self::ts_get_plugin_locale();
-
 			$message_first = wp_kses_post( __( 'Thank you for using Product Delivery Date for WooCommerce - Lite! Now make your deliveries more accurate by allowing customers to select their preferred delivery time from Product Delivery Date Pro for WooCommerce. <strong><a target="_blank" href= "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin">Get it now!</a></strong>', $prdd_lite_locale ) );
 
 			$message_two = wp_kses_post( __( 'Never login to your admin to check your deliveries by syncing the delivery dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. <strong><a target="_blank" href= "https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=ProductDeliveryDateLitePlugin">Get it now!</a></strong>', $prdd_lite_locale ) );
@@ -129,9 +129,10 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 			$prdd_wcal_lite_link = 'https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/checkout?edd_action=add_to_cart&download_id=20&utm_source=wpnotice&utm_medium=sixth&utm_campaign=ProductDeliveryDateLitePlugin';
 
-			$message_six = wp_kses_post( __( 'Boost your sales by recovering up to 60% of the abandoned carts with our Abandoned Cart Pro for WooCommerce plugin. It allows you to capture guest customer\'s email address on the shop page using Add to cart pop modal.<strong><a target="_blank" href= "' . $prdd_wcal_lite_link . '"> Install it now.</a></strong>', $prdd_lite_locale ) );
+			$message_six = wp_kses_post( __( 'Boost your sales by recovering up to 60% of the abandoned carts with our Abandoned Cart Pro for WooCommerce plugin. It allows you to capture guest customer\'s email address on the shop page using Add to cart pop modal.<strong><a target="_blank" href= "' . $prdd_wcal_lite_link . '"> Install it now.</a></strong>', $prdd_lite_locale ) ); // phpcs:ignore
 
-			$_link         = 'https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=seventh&utm_campaign=ProductDeliveryDateLitePlugin';
+			$_link = 'https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=seventh&utm_campaign=ProductDeliveryDateLitePlugin';
+			
 			$message_seven = wp_kses_post(
 				__(
 					'Allow your customers to select the Delivery Date & Time on the Checkout Page using our Order Delivery Date Pro for WooCommerce Plugin. <br> 
@@ -139,6 +140,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 					$prdd_lite_locale
 				)
 			);
+			
 
 			$_link         = 'https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/checkout?edd_action=add_to_cart&download_id=22&utm_source=wpnotice&utm_medium=eight&utm_campaign=ProductDeliveryDateLitePlugin';
 			$message_eight = wp_kses_post( __( ' Allow your customers to book an appointment or rent an apartment with our Booking and Appointment for WooCommerce plugin. You can also sell your product as a resource or integrate with a few Vendor plugins. <br>Shop now & Save 20% on the plugin with the code "BKAP20". Only for first 20 customers. <strong><a target="_blank" href= "' . $_link . '">Have it now!</a></strong>', $prdd_lite_locale ) );
@@ -223,11 +225,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			return $ts_faq;
 		}
 
-		 /**
-		  * It will add the question for the deactivate popup modal
-		  *
-		  * @return array $prdd_lite_add_questions All questions.
-		  */
+		/**
+		 * It will add the question for the deactivate popup modal
+		 *
+		 * @return array $prdd_lite_add_questions All questions.
+		 */
 		public static function prdd_lite_deactivate_add_questions( $prdd_lite_add_questions ) {
 
 			$prdd_lite_add_questions = array(
@@ -269,23 +271,21 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 		 *
 		 * @return array Plugin's data to track.
 		 */
-
 		public static function prdd_lite_ts_add_plugin_tracking_data( $data ) {
 			if ( isset( $_GET['prdd_lite_tracker_optin'] ) && isset( $_GET['prdd_lite_tracker_nonce'] ) && wp_verify_nonce( $_GET['prdd_lite_tracker_nonce'], 'prdd_lite_tracker_optin' ) ) {
 
 				$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_prdd_lite_meta_data';
 				$plugin_data['ts_plugin_name']          = 'Product Delivery Date for WooCommerce - Lite';
 
-				// Store count info
+				// Store count info.
 				$plugin_data['deliveries_count'] = self::ts_get_deliveries_counts();
 
-				// Get all plugin options info
+				// Get all plugin options info.
 				$plugin_data[ 'deliverable_products' ]     = self::ts_get_deliverable_products();
 				$plugin_data[ 'deliveries_settings' ]      = self::ts_get_all_plugin_options_values();
 				$plugin_data[ 'deliveries_products' ]      = self::ts_get_all_products();
 				$plugin_data[ 'prdd_lite_plugin_version' ] = self::prdd_get_version();
 				$data['plugin_data']                       = $plugin_data;
-				
 			}
 			return $data;
 		}
@@ -298,15 +298,15 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			$order_count = 0;
 
 			if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
-				$table = "wc_orders";
+				$table     = "wc_orders";
 				$condition = "status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 			} else {
-				$table = 'posts';
+				$table     = 'posts';
 				$condition = "post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 			}
 
 			$orddd_query = 'SELECT count( order_item_id ) AS deliveries_count FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s AND order_item_id IN ( SELECT a.order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS a, `' . $wpdb->prefix . $table ."` AS b WHERE a.order_id = b.ID AND " . $condition . ")";
-			$results     = $wpdb->get_results( $wpdb->prepare( $orddd_query, '_prdd_lite_date' ) );
+			$results     = $wpdb->get_results( $wpdb->prepare( $orddd_query, '_prdd_lite_date' ) ); // phpcs:ignore
 
 			if ( isset( $results[0] ) ) {
 				$order_count = $results[0]->deliveries_count;
@@ -321,7 +321,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			global $wpdb;
 			$product_count = 0;
 			$orddd_query   = 'SELECT count(a.ID) AS deliverable_products FROM `' . $wpdb->prefix . 'posts` AS a, `' . $wpdb->prefix . "postmeta` AS b WHERE a.post_type = 'product' AND a.post_status = 'publish' AND a.ID = b.post_id AND b.meta_key = '_woo_prdd_lite_enable_delivery_date' AND b.meta_value = 'on'";
-			$results       = $wpdb->get_results( $orddd_query );
+			$results       = $wpdb->get_results( $orddd_query ); // phpcs:ignore
 			if ( isset( $results[0] ) ) {
 				$product_count += $results[0]->deliverable_products;
 			}
@@ -343,8 +343,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				'prdd_lite_enable_rounding'	         => get_option( 'prdd_lite_enable_rounding' ),
 				'prdd_lite_enable_delete_order_item' => get_option( 'prdd_lite_enable_delete_order_item' ),
 				'prdd_is_data_migrated'	             => get_option( 'prdd_is_data_migrated' ),
-				
-			); 
+			);
 		}
 
 		/**
@@ -366,26 +365,26 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			$my_query = new WP_Query( $args );
 			$Alldata = array();
 			if ( $my_query->have_posts() ) {
-			    while ( $my_query->have_posts() ) {
-			        $my_query->the_post();
-			        $prdd_enable_date         = get_post_meta( get_the_ID(), '_woo_prdd_lite_enable_delivery_date', true);
-		        	$prdd_delivery_time       = get_post_meta( get_the_ID(), '_woo_prdd_lite_minimum_delivery_time', true);
-			        $prdd_maximum_number_days = get_post_meta( get_the_ID(), '_woo_prdd_lite_maximum_number_days', true);
-			        $prdd_days                = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_days', true);
-			        $prdd_mandatory           = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_field_mandatory', true);
-			        $prdd_holidays            = get_post_meta( get_the_ID(), '_woo_prdd_lite_holidays', true);
-		        	$data = array();	
-		        	$data['prdd_enable_date']          = $prdd_enable_date;
-		        	$data['prdd_delivery_time']        = $prdd_delivery_time;
-		        	$data['prdd_maximum_number_days']  = $prdd_maximum_number_days;
-    				$data['prdd_days']                 = $prdd_days;
-    				$data['prdd_mandatory']            = $prdd_mandatory; 
-				    $data['prdd_holidays']             = $prdd_holidays;
-				    $Alldata[get_the_ID()] = $data;
-			    }
+				while ( $my_query->have_posts() ) {
+					$my_query->the_post();
+					$prdd_enable_date         = get_post_meta( get_the_ID(), '_woo_prdd_lite_enable_delivery_date', true);
+					$prdd_delivery_time       = get_post_meta( get_the_ID(), '_woo_prdd_lite_minimum_delivery_time', true);
+					$prdd_maximum_number_days = get_post_meta( get_the_ID(), '_woo_prdd_lite_maximum_number_days', true);
+					$prdd_days                = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_days', true);
+					$prdd_mandatory           = get_post_meta( get_the_ID(), '_woo_prdd_lite_delivery_field_mandatory', true);
+					$prdd_holidays            = get_post_meta( get_the_ID(), '_woo_prdd_lite_holidays', true);
+					$data = array();
+					$data['prdd_enable_date']         = $prdd_enable_date;
+					$data['prdd_delivery_time']       = $prdd_delivery_time;
+					$data['prdd_maximum_number_days'] = $prdd_maximum_number_days;
+					$data['prdd_days']                = $prdd_days;
+					$data['prdd_mandatory']           = $prdd_mandatory;
+					$data['prdd_holidays']            = $prdd_holidays;
+					$Alldata[get_the_ID()]            = $data; // phpcs:ignore
+				}
 			}
 			wp_reset_postdata();
-			return $Alldata;
+			return $Alldata; // phpcs:ignore
 		}
 
 		/**
@@ -395,10 +394,10 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 		 * @since 3.3
 		 */
 		public static function prdd_get_version() {
-			$plugin_version = '';
-			$prddd_plugin_dir =   dirname (__DIR__, 1) ;
+			$plugin_version    = '';
+			$prddd_plugin_dir  =   dirname (__DIR__, 1) ; // phpcs:ignore
 			$prddd_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
-			error_log($prddd_plugin_dir);
+			error_log($prddd_plugin_dir); // phpcs:ignore
 
 			$plugin_data = get_file_data( $prddd_plugin_dir, array( 'Version' => 'Version' ) );
 			if ( ! empty( $plugin_data['Version'] ) ) {
@@ -420,11 +419,11 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 			$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_prdd_lite_meta_data';
 			$plugin_data['ts_plugin_name']          = 'Product Delivery Date for WooCommerce - Lite';
 
-			// Store count info
+			// Store count info.
 			$params['plugin_data'] = $plugin_data;
 
 			return $params;
 		}
 	}
-	$Prdd_Lite_All_Component = new Prdd_Lite_All_Component();
+	$Prdd_Lite_All_Component = new Prdd_Lite_All_Component(); // phpcs:ignore
 }

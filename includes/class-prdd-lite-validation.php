@@ -26,7 +26,7 @@ class Prdd_Lite_Validation {
 	 * @return bool True if product should be added to cart, else false.
 	 * @since 2.0
 	 */
-	public static function prdd_lite_get_validate_add_cart_item( $passed, $product_id, $qty ) {
+	public static function prdd_lite_get_validate_add_cart_item( $passed, $product_id, $qty ) {// phpcs:ignore
 
 		$duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $product_id );
 

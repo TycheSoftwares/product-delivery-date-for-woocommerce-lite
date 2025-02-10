@@ -1,0 +1,93 @@
+*** Product Delivery Date for WooCommerce - Lite ***
+2025-01-14 - version 2.9.0  
+* Tweak - Added Hebrew language localization to the plugin, providing admins with the option to enable and change the calendar language for Hebrew users.  
+
+2024-12-03 - version 2.8.2  
+* Tweak - Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.  
+* Fix - Resolved issues with untranslated strings.  
+* Fix - Fixed a notice that appeared when changing the site language in WordPress 6.7.  
+
+2024-11-11 - version 2.8.1  
+* Fix - Fixed a Reflected Cross-Site Scripting (XSS) vulnerability.  
+
+2024-11-05 - version 2.8.0  
+* Supporting code changes for the Trial Version of Product Delivery Date Pro for WooCommerce.  
+
+2024-10-22 - version 2.7.5  
+* Fix - Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.  
+
+2024-10-02 - version 2.7.4  
+* Fix - Added a nonce check for Cross-Site Request Forgery (CSRF) vulnerability on the admin notice.  
+
+2024-07-09 - version 2.7.3  
+* Fix - Added a nonce check for Cross-Site Request Forgery (CSRF) vulnerability on the reset button.  
+* Fix - Updated our support link to email address 'support@tychesoftwares.com'.  
+
+2024-04-02 - version 2.7.2  
+* Tweak - Updated compatibility with WordPress 6.5.  
+* Tweak - Updated compatibility with WooCommerce 8.7.  
+
+2022-12-26 - version 2.7.1  
+* Fix - Vulnerability to Broken Access Control.  
+
+2022-12-07 - version 2.7.0  
+* Enhancement - Plugin has been made compatible with WooCommerce High-Performance Order Storage.  
+
+2022-08-16 - version 2.6.0  
+* Enhancement - Created a filter named `prdd_lite_additional_holidays` to add custom holidays.  
+* Enhancement - Added `Settings` link on the Plugins page.  
+* Fix - "Number of Dates to choose" was not being calculated properly with the "Minimum Delivery time" set. This has been fixed.  
+* Fix - The "Delivery Date" string was not getting translated to another language even if we had translated it. This has been fixed.  
+
+2020-12-14 - version 2.5.0  
+* Update - Compatibility with WordPress 5.6.  
+* Fix - Delivery calendar icon does not display correctly. This is fixed now.  
+
+2020-11-20 - version 2.4.0  
+* Dev - Changes in the database are made so that when the plugin is updated from Lite to Pro version, the settings & delivery dates from Lite version are automatically migrated to Pro version.  
+
+2020-08-27 - version 2.3.0  
+* Update - Compatibility with WordPress 5.5.  
+* Fix - Product settings not saved on imported products. This is fixed now.  
+* Fix - Global Delivery Settings tab was shown as an active tab when we were on the FAQ & Support page in settings. This is fixed now.  
+* Dev - Added class for Delivery Date label instead of inline CSS.  
+
+2020-03-19 - version 2.2.1
+* Fix - Update compatibility with WooCommerce 4.0.0.
+
+2020-02-12 - version 2.2
+* Fix - Delivery data was not being deleted upon deletion of the plugin.
+* Tweak - Added 'Remove Data on Uninstall?' option to allow store admin to completely remove Product Delivery Date Lite data when the plugin is deleted.
+* Fix - Updated WooCommerce Release tag.
+
+2019-09-17 - version 2.1.1
+* Fix - Fixed an error displayed on the View Deliveries page.
+
+2019-09-17 - version 2.1
+* Fix - Made the plugin compliant with WPCS standards.
+
+2019-08-02 - version 2.0
+* Fix - Now the delivery date field can be set as mandatory for each product. The customers will not be able to add the product to the cart without selecting a date if the Mandatory field option is enabled for the product.
+* Fix - Now the nonworking holidays or dates can be set for individual products as well as for all the products at the global level.
+* Fix - All the deliveries can now be viewed in one place under the Product Delivery Date -> View Deliveries menu. The deliveries can be filtered using Deliveries From Today Onwards, Today's Deliveries, and Tomorrow's Deliveries.
+* Fix - Date format for the delivery date selection on the product page can now be preferably set.
+* Fix - Delivery Date calendar language can now be set as per the language set for your website.
+* Fix - Delivery Date calendar can now be set into default color themes provided as per the colors of your website.
+* Fix - Prices in decimal values can now be set to the nearest integers using the Enable Rounding of Prices option.
+
+2019-04-03 - version 1.10
+* Fix - Fixed an issue where if the current day is unavailable for delivery, the Minimum Delivery Time needed setting is ignored when displaying the first available date for delivery.
+* Fix - Calendar icon is not displayed in the date field on the product page. Fixed the same.
+* Fix - Removed the Welcome Page.
+* Fix - Fixed some warnings being added in debug.log.
+* Fix - Fixed an issue where orphan records were being left behind when the plugin is deleted.
+
+2018-05-23 - version 1.8
+* Fix - The plugin is now GDPR compliant.
+* Fix - The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.
+
+2015-12-15 - version 1.1
+* Fix - .po, .pot, and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
+
+2015-11-27 - version 1.0
+* Initial release.

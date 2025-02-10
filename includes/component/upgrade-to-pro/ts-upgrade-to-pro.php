@@ -139,7 +139,7 @@ class Ts_Upgrade_To_Pro_Prdd {
 	 * Called when the dismiss icon is clicked on the notice.
 	 */
 	public function dismiss_upgrade_to_pro_notice() {
-		if ( current_user_can( 'manage_woocommerce' ) && isset( $_POST['security'] ) && ( isset( $_POST['security'] ) && wp_verify_nonce( sanitize_key( $_POST['security'] ), 'tracking_notice' ) ) ) {
+		if ( current_user_can( 'manage_woocommerce' ) && isset( $_POST['security'] ) && ( isset( $_POST['security'] ) && wp_verify_nonce( sanitize_key( $_POST['security'] ), 'tracking_notice' ) ) ) {// phpcs:ignore
 			if ( isset( $_POST['upgrade_to_pro_type'] ) ) {
 				$type = sanitize_text_field( wp_unslash( $_POST['upgrade_to_pro_type'] ) );
 				switch ( $type ) {
@@ -272,7 +272,7 @@ class Ts_Upgrade_To_Pro_Prdd {
 				?>
 				<div class="<?php echo esc_html( $notice_purchase_or_expired ); ?> prddd-message notice is-dismissible">
 					<div class="prddd-content">
-						<img class="prddd-site-logo" src="<?php echo esc_url( plugins_url( '/assets/images/tyche-logo.png', __FILE__ ) ); ?> ">
+						<img class="prddd-site-logo" src="<?php echo esc_url( plugins_url( '/assets/images/tyche-logo.png', __FILE__ ) ); // phpcs:ignore?> ">
 						<p><?php echo $message; //phpcs:ignore ?></p>
 					</div>
 				</div>
