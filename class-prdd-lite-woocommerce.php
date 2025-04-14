@@ -178,6 +178,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			add_filter( 'woocommerce_get_cart_item_from_session', array( 'Prdd_Lite_Process', 'prdd_lite_get_cart_item_from_session' ), 25, 3 );
 			add_filter( 'woocommerce_get_item_data', array( 'Prdd_Lite_Process', 'prdd_lite_get_item_data' ), 15, 2 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( 'Prdd_Lite_Process', 'prdd_lite_order_item_meta' ), 10, 2 );
+			add_action( 'woocommerce_store_api_checkout_update_order_from_request', array( 'Prdd_Lite_Process', 'prdd_lite_order_item_meta_block_checkout' ), 10, 2 );
 			add_filter( 'woocommerce_hidden_order_itemmeta', array( 'Prdd_Lite_Process', 'prdd_lite_hidden_order_itemmeta' ), 10, 1 );
 			add_filter( 'woocommerce_add_to_cart_validation', array( 'Prdd_Lite_Validation', 'prdd_lite_get_validate_add_cart_item' ), 10, 3 );
 

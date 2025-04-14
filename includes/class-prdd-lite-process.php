@@ -306,4 +306,53 @@ class Prdd_Lite_Process {
 		}
 	}
 
+	/**
+	 * This function updates the database for the delivery details and adds delivery fields on the Order Received page & WooCommerce->Orders page when an order is placed with block checkout page.
+	 *
+	 * @hook woocommerce_store_api_checkout_update_order_from_request
+	 *
+	 * @param int   $order - Order ID.
+	 * @param array $request - Product Details.
+	 * @since 1.0
+	 */
+	public static function prdd_lite_order_item_meta_block_checkout( $order, $request ) {
+		if ( ! is_a( $order, 'WC_Order' ) ) {
+			return;
+		}
+		$cart = WC()->cart;
+		if ( empty( $cart ) ) {
+			return;
+		}
+		foreach ( $cart->get_cart() as $cart_item_key => $cart_item ) {
+			if ( ! isset( $cart_item['prdd_lite_delivery'] ) ) {
+				continue;
+			}
+			$delivery   = $cart_item['prdd_lite_delivery'];
+			$product_id = isset( $cart_item['product_id'] ) ? $cart_item['product_id'] : 0;
+			$post_id    = Prdd_Lite_Common::prdd_lite_get_product_id( $product_id );
+			foreach ( $order->get_items() as $item_id => $item ) {
+				if ( ! $item instanceof WC_Order_Item_Product ) {
+					continue;
+				}
+				$_product = $item->get_product();
+				if ( ! $_product ) {
+					continue;
+				}
+				if ( $_product->get_id() != $product_id ) {
+					continue;
+				}
+				// Add delivery date if exists.
+				if ( isset( $delivery[0]['delivery_date'] ) && '' !== $delivery[0]['delivery_date'] ) {
+					$item->add_meta_data( 'Delivery Date', sanitize_text_field( $delivery[0]['delivery_date'] ), true );
+				}
+				// Add hidden date if exists.
+				if ( isset( $delivery[0]['delivery_hidden_date'] ) && '' !== $delivery[0]['delivery_hidden_date'] ) {
+					$hidden_date = gmdate( 'Y-m-d', strtotime( $delivery[0]['delivery_hidden_date'] ) );
+					$item->add_meta_data( '_prdd_lite_date', sanitize_text_field( $hidden_date ), true );
+					$item->add_meta_data( '_prdd_date', sanitize_text_field( $hidden_date ), true );
+				}
+				$item->save();
+			}
+		}
+	}
 }
