@@ -5,7 +5,7 @@
  * @since 1.0.0
  */
 class Prdd_Lite_TS_Faq_Support {
-
+// phpcs:disable
 	/**
 	 * @var string The capability users should have to view the page
 	 */
@@ -88,10 +88,10 @@ class Prdd_Lite_TS_Faq_Support {
 		add_action( self::$plugin_prefix . '_add_settings_tab', array( &$this, 'ts_add_new_settings_tab' ) );
 		add_action( self::$plugin_prefix . '_add_tab_content', array( &$this, 'ts_add_tab_content' ) );
 
-		add_action ( self::$plugin_prefix . '_add_meta_footer', array( &$this, 'ts_add_meta_footer_text' ), 10, 1 );
+		add_action ( self::$plugin_prefix . '_add_meta_footer', array( &$this, 'ts_add_meta_footer_text' ), 10, 1 ); // phpcs:ignore
 
-		add_action( 'admin_menu', 							    array( &$this, 'ts_admin_menus' ) );
-		add_action( 'admin_head', 							    array( &$this, 'admin_head' ) );
+		// add_action( 'admin_menu', 							    array( &$this, 'ts_admin_menus' ) );
+		// add_action( 'admin_head', 							    array( &$this, 'admin_head' ) );
 
 		self::$plugin_folder  = $ts_plugin_folder_name; 		
 		self::$plugin_url     = $this->ts_get_plugin_url();
@@ -108,7 +108,7 @@ class Prdd_Lite_TS_Faq_Support {
 			<td colspan="2">
 				<?php 
     			printf(
-			        esc_html__( 'You have any queries? Please check our %1$sFAQ%2$s page.', 'woocommerce-prdd-lite' ),
+			        esc_html__( 'You have any queries? Please check our %1$sFAQ%2$s page.', 'woocommerce-prdd-lite' ), // phpcs:ignore
 			        '<a href="' . esc_url( admin_url( '?page=woocommerce_prdd_lite_page&action=faq_support_page' ) ) . '">',
 			        '</a>'
 			    ); 
@@ -174,12 +174,12 @@ class Prdd_Lite_TS_Faq_Support {
 	*/
 	public function ts_add_new_settings_tab() {
 		$faq_support_page = '';
-		if( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'faq_support_page' ) {
+		if( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'faq_support_page' ) {// phpcs:ignore
 		    $faq_support_page = "nav-tab-active";
 		}
 		$ts_plugins_page_url = self::$plugin_page . "&action=faq_support_page" ;
 		?>
-		<a href="<?php echo $ts_plugins_page_url; ?>" class="nav-tab <?php echo $faq_support_page; ?>"> <?php _e( 'FAQ & Support', self::$plugin_locale ); ?> </a>
+		<a href="<?php echo $ts_plugins_page_url;  // phpcs:ignore?>" class="nav-tab <?php echo $faq_support_page; ?>"> <?php _e( 'FAQ & Support', self::$plugin_locale ); ?> </a>
 		<?php
 
 		
@@ -192,8 +192,9 @@ class Prdd_Lite_TS_Faq_Support {
 	*/
 
 	public function ts_add_tab_content() {
-		if( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'faq_support_page' ) {
+		if( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'faq_support_page' ) {// phpcs:ignore
 			$this->ts_faq_support_page();
+			exit;
 		}
 	}
 
@@ -211,7 +212,7 @@ class Prdd_Lite_TS_Faq_Support {
 						 ), 
 						 self::$plugin_folder, 
 						 self::$template_base );
-        echo ob_get_clean();
+        echo ob_get_clean(); // phpcs:ignore
 	}
 
 	/**

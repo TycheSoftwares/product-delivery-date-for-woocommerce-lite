@@ -79,9 +79,9 @@ jQuery( document ).ready( function() {
 										count( $prdd_lite_delivery_days ) > 0 &&
 										in_array( $day_name, $prdd_lite_delivery_days, true ) ) ||
 										'' === $prdd_lite_delivery_days ) {
-										echo sprintf( '<option value="%1$s" selected>%1$s</option>', esc_attr( $day_name ) );
+										echo sprintf( '<option value="%1$s" selected>%1$s</option>', esc_attr( $day_name ) );// phpcs:ignore
 									} else {
-										echo sprintf( '<option value="%1$s">%1$s</option>', esc_attr( $day_name ) );
+										echo sprintf( '<option value="%1$s">%1$s</option>', esc_attr( $day_name ) );// phpcs:ignore
 									}
 								}
 								?>

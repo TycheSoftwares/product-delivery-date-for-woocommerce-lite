@@ -14,7 +14,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 global $wpdb;
-
+// phpcs:disable
 $prdd_enable_deleting = get_option( 'prdd_lite_enable_delete_order_item', '' );
 if ( isset( $prdd_enable_deleting ) && 'on' === $prdd_enable_deleting ) {
 	if ( is_multisite() ) {

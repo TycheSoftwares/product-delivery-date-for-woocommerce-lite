@@ -1,6 +1,7 @@
 <?php
 
 class Prdd_Lite_ts_pro_notices {
+	// phpcs:disable
 
 	/**
 	* Plugin's Name

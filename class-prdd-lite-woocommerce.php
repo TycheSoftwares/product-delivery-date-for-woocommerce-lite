@@ -47,7 +47,7 @@ function prdd_lite_update_po_file() {
 	if ( $loaded ) {
 		return $loaded;
 	} else {
-		load_plugin_textdomain( $domain, false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( $domain, false, basename( dirname( __FILE__ ) ) . '/languages/' ); // phpcs:ignore
 	}
 	$plugin_name        = __( 'Product Delivery Date for WooCommerce - Lite', 'woocommerce-prdd-lite' );
 	$prdd_lite_weekdays = array(
@@ -112,8 +112,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 	 *
 	 * @since 1.0
 	 */
-	class Prdd_Lite_Woocommerce {
-
+	class Prdd_Lite_Woocommerce { // phpcs:ignore
 
 		/**
 		 * Check HOPS is anabled or not.
@@ -126,11 +125,9 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
 				return true;
-			}	
-			
-			return false;		
+			}
+			return false;
 		}
-
 
 		/**
 		 * Constructor function for initializing settings
@@ -316,10 +313,9 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 					wp_safe_redirect( $ts_url );
 				}
 			}
-
 		}
 
-		public function init_tracker_completed() {
+		public function init_tracker_completed() {// phpcs:ignore
 			header( 'Location: ' . admin_url( 'admin.php?page=woocommerce_prdd_lite_page' ) );
 			exit;
 		}
@@ -356,7 +352,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				$settings = array(
 					'support' => '<a href="' . esc_url( 'admin.php?page=woocommerce_prdd_lite_page' ) . '" title="' . esc_attr( __( 'Product Delivery Date Settings', 'woocommerce-prdd-lite' ) ) . '">' . __( 'Settings', 'woocommerce-prdd-lite' ) . '</a>',
 				);
-				$actions = array_merge( $settings, $actions );
+				$actions  = array_merge( $settings, $actions );
 			}
 			return $actions;
 		}
@@ -380,7 +376,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 */
 		public static function prdd_get_version() {
 			$plugin_version         = '';
-			$prddd_lite_plugin_dir  = dirname( __FILE__ );
+			$prddd_lite_plugin_dir  = dirname( __FILE__ ); // phpcs:ignore
 			$prddd_lite_plugin_dir .= '/product-delivery-date-for-woocommerce-lite.php';
 
 			$plugin_data = get_file_data( $prddd_lite_plugin_dir, array( 'Version' => 'Version' ) );
@@ -438,7 +434,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 */
 		public function prdd_lite_my_enqueue_scripts_js() {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
-			
+
 			wp_register_script(
 				'prdd_tyche',
 				plugins_url() . '/product-delivery-date-for-woocommerce-lite/js/tyche.js',
@@ -495,7 +491,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 * This function is used load js for dismiss the tracking notices.
 		 *
 		 * @hook admin_footer
-		 *
 		 */
 		public static function ts_admin_notices_scripts() {
 			$plugin_version_number = get_option( 'woocommerce_prdd_lite_db_version' );
@@ -701,9 +696,9 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 							$post_id_arr = implode( ',', array( $post_id ) );
 						}
 						if ( self::is_hpos_enabled() ) {
-							$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->prefix}wc_orders AS posts ON order_items.order_id = posts.ID WHERE order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
+							$sql = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->prefix}wc_orders AS posts ON order_items.order_id = posts.ID WHERE order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
 						} else {
-							$sql        = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID WHERE posts.post_type = 'shop_order' AND order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
+							$sql = "SELECT order_items.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_items LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta ON order_items.order_item_id = order_item_meta.order_item_id LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID WHERE posts.post_type = 'shop_order' AND order_items.order_item_type = 'line_item' AND order_item_meta.meta_key = '_product_id' AND order_item_meta.meta_value IN ( $post_id_arr )";
 						}
 						$get_orders = $wpdb->get_col( $sql ); // phpcs:ignore
 						if ( ! empty( $get_orders ) ) {

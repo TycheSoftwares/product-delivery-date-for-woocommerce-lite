@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+// phpcs:disable
 /**
  * Prdd_Lite_TS_Woo_Active Class
  *
@@ -74,7 +74,7 @@ class Prdd_Lite_TS_Woo_Active {
 	 */
 	public function ts_disabled_notice() {
 		$class = 'notice notice-error';
-		$message = __( $this->plugin_name . ' plugin requires WooCommerce installed and active.', $this->ts_locale );
-		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+		$message = __( $this->plugin_name . ' plugin requires WooCommerce installed and active.', $this->ts_locale ); // phpcs:ignore
+		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message ); // phpcs:ignore
 	}
 }

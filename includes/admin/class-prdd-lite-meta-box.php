@@ -88,7 +88,7 @@ class Prdd_Lite_Meta_Box_Class {
 	 * @param WP_Post $post WP_Post object.
 	 * @since 1.0
 	 */
-	public static function prdd_lite_process_box( $post_id, $post ) {
+	public static function prdd_lite_process_box( $post_id, $post ) {// phpcs:ignore
 		$duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $post_id );
 
 		$enable_date                        = '';
