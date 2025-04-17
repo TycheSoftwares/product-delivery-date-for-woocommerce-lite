@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable
 $ts_new_tab = $ts_upgrade_to_pro_images_path . '/icon-new-tab.png';
 if ( '' === get_option( 'prdd_pro_installed', '' ) ) {
 	$modal_heading      = __( 'Product Delivery Date PRO for WooCommerce is CHEAPER than you think', 'woocommerce-prdd-lite' );

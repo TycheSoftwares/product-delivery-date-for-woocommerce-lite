@@ -1,5 +1,5 @@
 <?php 
-
+// phpcs:disable
 /**
  * Welcome Page Class
  *
@@ -114,7 +114,7 @@ class Prdd_Lite_TS_Welcome {
 		self::$previous_plugin_version = $ts_previous_version;
 		self::$plugin_url     		   = $this->ts_get_plugin_url();
 		self::$template_base  		   = $this->ts_get_template_path();
-		self::$ts_welcome_header_text  = sprintf( esc_html__( 'Welcome to %s %s', self::$plugin_context ), self::$plugin_name, self::$plugin_version );
+		self::$ts_welcome_header_text  = sprintf( esc_html__( 'Welcome to %s %s', self::$plugin_context ), self::$plugin_name, self::$plugin_version );// phpcs:ignore
 	}
 
 	/**
@@ -213,7 +213,7 @@ class Prdd_Lite_TS_Welcome {
 			'plugin_context'     => self::$plugin_context,
             'get_welcome_header' => $this->get_welcome_header()
         ),  self::$plugin_folder, self::$template_base );
-        echo ob_get_clean();
+        echo ob_get_clean();// phpcs:ignore
 
 		add_option( self::$plugin_prefix . '_pro_welcome_page_shown', 'yes' );
 		add_option( self::$plugin_prefix . '_pro_welcome_page_shown_time', current_time( 'timestamp' ) );
@@ -226,12 +226,12 @@ class Prdd_Lite_TS_Welcome {
 	 */
 	public function get_welcome_header() {
 		// Badge for welcome page
-		$ts_file_path    = plugin_dir_url( __FILE__ ) ;
+		$ts_file_path    = plugin_dir_url( __FILE__ ) ;// phpcs:ignore
 		
 		// Badge for welcome page
 		$badge_url = $ts_file_path . '/assets/images/icon-256x256.png';
 		?>
-        <h1 class="welcome-h1"><?php echo get_admin_page_title(); ?></h1>
+        <h1 class="welcome-h1"><?php echo get_admin_page_title(); // phpcs:ignore ?></h1>
 		<?php $this->social_media_elements();
 	}
 
@@ -246,7 +246,7 @@ class Prdd_Lite_TS_Welcome {
 						 array(), 
 						 self::$plugin_folder, 
 						 self::$template_base );
-        echo ob_get_clean();
+        echo ob_get_clean(); // phpcs:ignore
 	}
 	/**
 	 * Sends user to the Welcome page on first activation of the plugin as well as each

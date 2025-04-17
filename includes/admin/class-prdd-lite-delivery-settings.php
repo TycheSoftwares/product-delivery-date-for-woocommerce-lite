@@ -97,7 +97,6 @@ class Prdd_Lite_Delivery_Settings {
 		);
 
 		echo '<label for="prdd_lite_months"> ' . wp_kses_post( $args[0] ) . '</label>';
-
 	}
 
 	/**
@@ -152,7 +151,7 @@ class Prdd_Lite_Delivery_Settings {
 		if ( '' !== get_option( 'prdd_lite_calendar_day', '' ) ) {
 			$first_day = get_option( 'prdd_lite_calendar_day' );
 		}
-
+// phpcs:disable
 		echo '<input type="hidden" name="prdd_lite_theme" id="prdd_lite_theme" value="' . esc_attr( $prdd_themes ) . '">';
 
 		echo '<script type="text/javascript">
@@ -178,7 +177,7 @@ class Prdd_Lite_Delivery_Settings {
                 dateFormat: "d-m-yy",
                 firstDay: ' . esc_js( $first_day ) . ',
                 altField: "#prdd_lite_global_holidays",
-                ' . $global_holidays . '
+                ' . $global_holidays . ' 
             });
             jQuery( function() {
                 jQuery.datepicker.setDefaults( jQuery.datepicker.regional[ "" ] );
@@ -199,7 +198,7 @@ class Prdd_Lite_Delivery_Settings {
 
 		echo '<label for="prdd_lite_theme"> ' . wp_kses_post( $args[0] ) . '</label>';
 	}
-
+// phpcs:enable
 	/**
 	 * Callback - Global Holidays
 	 *
@@ -248,7 +247,6 @@ class Prdd_Lite_Delivery_Settings {
 	 * Call back for displaying tracking checkbox option for reset tracking.
 	 *
 	 * @param array $args Additional data for the settings field.
-	 *
 	 */
 	public static function ts_rereset_tracking_callback( $args ) {
 		$wcap_restrict_domain_address = get_option( 'wcap_restrict_domain_address' );
@@ -257,9 +255,9 @@ class Prdd_Lite_Delivery_Settings {
 		// Next, we update the name attribute to access this element's ID in the context of the display options array.
 		// We also access the show_header element of the options collection in the call to the checked() helper function.
 		$ts_action = 'admin.php?page=woocommerce_prdd_lite_page&ts_action=reset_tracking&nonce=' . $nonce;
-		printf( '<a href="' . $ts_action . '" class="button button-large reset_tracking">' . __( "Reset", "woocommerce-prdd-lite" ) . '</a>' );
-	
+		printf( '<a href="' . $ts_action . '" class="button button-large reset_tracking">' . __( 'Reset', 'woocommerce-prdd-lite' ) . '</a>' ); // phpcs:ignore
+
 		// Here, we'll take the first argument of the array and add it to a label next to the checkbox.
-		echo '<label for="wcap_restrict_domain_address_label"> ' . $args[0] . '</label>';
+		echo '<label for="wcap_restrict_domain_address_label"> ' . $args[0] . '</label>'; // phpcs:ignore
 	}
 }

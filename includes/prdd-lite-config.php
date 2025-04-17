@@ -160,4 +160,3 @@ function prdd_lite_get_delivery_arrays( $str ) {
 	global $prdd_lite_calendar_themes, $prdd_lite_time_formats, $prdd_lite_date_formats, $prdd_lite_languages, $prdd_lite_days, $prdd_lite_weekdays;
 	return $$str;
 }
-

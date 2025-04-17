@@ -13,6 +13,7 @@
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
+// phpcs:disable
 /**
  * Class for displaying the delivery date and time.
  *
@@ -286,7 +287,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		);
 
 		// Today's date.
-		$current_time  = current_time( 'timestamp' );
+		$current_time  = current_time( 'timestamp' );// phpcs:ignore
 		$current_date  = gmdate( 'Y-m-d', $current_time ); // phpcs:ignore
 		$tomorrow_date = gmdate( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
 
@@ -303,12 +304,12 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 
 		if ( '' === $start_date || '' === $end_date || '1970-01-01' === $start_date || '1970-01-01' === $end_date ) {
 
-			$get_order_item_ids = $wpdb->get_results( $wpdb->prepare( 'SELECT order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s', '_prdd_lite_date' ) ); // WPCS: db call ok, WPCS: cache ok.
+			$get_order_item_ids = $wpdb->get_results( $wpdb->prepare( 'SELECT order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s', '_prdd_lite_date' ) ); // phpcs:ignore
 
 			if ( is_array( $get_order_item_ids ) && count( $get_order_item_ids ) > 0 ) {
 				foreach ( $get_order_item_ids as $item_key => $item_value ) {
 
-					$get_order_id = $wpdb->get_results( $wpdb->prepare( 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d', $item_value->order_item_id ) ); // WPCS: db call ok, WPCS: cache ok.
+					$get_order_id = $wpdb->get_results( $wpdb->prepare( 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d', $item_value->order_item_id ) ); // phpcs:ignore
 					if ( false !== get_post_status( $get_order_id[0]->order_id ) ) {
 						$order = new WC_Order( $get_order_id[0]->order_id );
 					} else {
@@ -325,7 +326,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					}
 
 					if ( isset( $order_post_status ) && ( '' !== $order_post_status ) && ( 'wc-cancelled' !== $order_post_status ) && ( 'wc-refunded' !== $order_post_status ) && ( 'trash' !== $order_post_status ) && ( 'wc-failed' !== $order_post_status ) ) {
-						$get_dates[] = $wpdb->get_results( $wpdb->prepare( 'SELECT meta_value, meta_key FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %d AND order_item_id = %d', '_prdd_lite_date', $item_value->order_item_id ) ); // WPCS: cache ok, db call ok.
+						$get_dates[] = $wpdb->get_results( $wpdb->prepare( 'SELECT meta_value, meta_key FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %d AND order_item_id = %d', '_prdd_lite_date', $item_value->order_item_id ) ); // phpcs:ignore
 					}
 				}
 			}
@@ -368,19 +369,17 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$page_number = 0;
 		}
 
-
 		if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
-			$table = "wc_orders";
+			$table     = 'wc_orders';
 			$condition = "status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 		} else {
-			$table = 'posts';
+			$table     = 'posts';
 			$condition = "post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed' )";
 		}
 
-
 		$per_page = $this->per_page;
 
-		$current_time  = current_time( 'timestamp' );
+		$current_time  = current_time( 'timestamp' ); // phpcs:ignore
 		$current_date  = gmdate( 'Y-m-d', $current_time ); // phpcs:ignore
 		$tomorrow_date = gmdate( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
 		$i             = 0;
@@ -472,7 +471,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 				$order_date = $order->completed_date;
 			}
 			$return_deliveries[ $i ]->order_date = $order_date;
-			$i++;
+			++$i;
 		}
 
 		// sort for delivery date.

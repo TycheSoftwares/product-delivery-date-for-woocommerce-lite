@@ -2,5 +2,3 @@
 /**
  * FAQ & Support page
  */
-?>
-
