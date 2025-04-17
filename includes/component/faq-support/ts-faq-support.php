@@ -90,8 +90,8 @@ class Prdd_Lite_TS_Faq_Support {
 
 		add_action ( self::$plugin_prefix . '_add_meta_footer', array( &$this, 'ts_add_meta_footer_text' ), 10, 1 ); // phpcs:ignore
 
-		add_action( 'admin_menu', 							    array( &$this, 'ts_admin_menus' ) );
-		add_action( 'admin_head', 							    array( &$this, 'admin_head' ) );
+		// add_action( 'admin_menu', 							    array( &$this, 'ts_admin_menus' ) );
+		// add_action( 'admin_head', 							    array( &$this, 'admin_head' ) );
 
 		self::$plugin_folder  = $ts_plugin_folder_name; 		
 		self::$plugin_url     = $this->ts_get_plugin_url();
@@ -194,6 +194,7 @@ class Prdd_Lite_TS_Faq_Support {
 	public function ts_add_tab_content() {
 		if( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'faq_support_page' ) {// phpcs:ignore
 			$this->ts_faq_support_page();
+			exit;
 		}
 	}
 
