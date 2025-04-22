@@ -19,7 +19,7 @@ require_once 'includes/class-prdd-lite-process.php';
 require_once 'includes/class-prdd-lite-validation.php';
 
 global $prdd_lite_update_checker;
-$prdd_lite_update_checker = '2.9.0';
+$prdd_lite_update_checker = '3.0.0';
 use Automattic\WooCommerce\Utilities\OrderUtil;
 
 /**
@@ -223,7 +223,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		 * @since 1.0
 		 */
 		public function prdd_lite_activate() {
-			update_option( 'woocommerce_prdd_lite_db_version', '2.9.0' );
+			update_option( 'woocommerce_prdd_lite_db_version', '3.0.0' );
 			// Check if installed for the first time.
 			add_option( 'prdd_lite_installed', 'yes' );
 
@@ -247,7 +247,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 		public function prdd_lite_update_db_check() {
 			$prdd_plugin_version = get_option( 'woocommerce_prdd_lite_db_version' );
 			if ( $prdd_plugin_version !== $this->get_plugin_version() ) {
-				update_option( 'woocommerce_prdd_lite_db_version', '2.9.0' );
+				update_option( 'woocommerce_prdd_lite_db_version', '3.0.0' );
 			}
 
 			if ( ! get_option( 'prdd_lite_language' ) ) {
