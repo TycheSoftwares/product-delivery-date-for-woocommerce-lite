@@ -39,6 +39,10 @@ class Prdd_Lite_Process {
 		if ( '' === $prdd_maximum_number_days || 'null' == $prdd_maximum_number_days ) { // phpcs:ignore
 			$prdd_maximum_number_days = '30';
 		}
+
+		if ( empty( $prdd_lite_delivery_days ) ) {
+			$prdd_lite_delivery_days = array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' );
+		}
 		$current_time = current_time( 'timestamp' ); // phpcs:ignore
 		if ( '' !== $prdd_minimum_delivery_time && 0 !== $prdd_minimum_delivery_time ) {
 			$advance_seconds = $prdd_minimum_delivery_time * 60 * 60;
@@ -80,6 +84,9 @@ class Prdd_Lite_Process {
 		$duplicate_of             = Prdd_Lite_Common::prdd_lite_get_product_id( $post->ID );
 		$prdd_maximum_number_days = get_post_meta( $duplicate_of, '_woo_prdd_lite_maximum_number_days', true );
 		$prdd_lite_delivery_days  = get_post_meta( $duplicate_of, '_woo_prdd_lite_delivery_days', true );
+		if ( empty( $prdd_lite_delivery_days ) ) {
+			$prdd_lite_delivery_days = array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' );
+		}
 
 		if ( '' === $prdd_maximum_number_days || 'null' == $prdd_maximum_number_days ) { // phpcs:ignore
 			$prdd_maximum_number_days = '30';
