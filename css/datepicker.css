@@ -16,7 +16,7 @@
     border-top: none;
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
-    min-width: 17em;
+    min-width: 17em !important;
     width: 300px;
     min-width: fit-content;
 }
@@ -169,5 +169,7 @@
 
 .ui-datepicker td.ui-state-disabled .ui-state-default {
     opacity: 0.5;
-
-
+}
+div.delivery_date_label_container {
+    max-width: 300px;
+}
