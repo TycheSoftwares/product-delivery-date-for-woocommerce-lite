@@ -5,9 +5,9 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 3.0
-Tested up to: 6.8.0
+Tested up to: 6.8.2
 Requires PHP: 7.3
-Stable tag: 3.0.0
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -193,6 +193,11 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
 
 == Changelog ==
+
+= 3.1.0 ( 29.07.2025)
+* Fix - "Preview Theme" and "No Delivery on These Dates" calendars appeared oversized on the Global Delivery Settings page.
+* Fix - "View Deliveries" page did not display any deliveries when WooCommerce Compatibility Mode was disabled.
+* Fix - Fatal error occurred on the product page when no weekdays were selected in the delivery date field.
 
 = 3.0.0 ( 22.04.2025)
 * Fix - Selected delivery date was not displaying on the Order Received and Edit Order pages when orders were placed using the block-based checkout page.
