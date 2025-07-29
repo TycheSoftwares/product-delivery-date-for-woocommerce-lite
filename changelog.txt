@@ -1,4 +1,9 @@
 *** Product Delivery Date for WooCommerce - Lite ***
+2025-07-29 - version 3.1.0
+* Fix - "Preview Theme" and "No Delivery on These Dates" calendars appeared oversized on the Global Delivery Settings page.
+* Fix - "View Deliveries" page did not display any deliveries when WooCommerce Compatibility Mode was disabled.
+* Fix - Fatal error occurred on the product page when no weekdays were selected in the delivery date field.
+
 2025-01-14 - version 2.9.0  
 * Tweak - Added Hebrew language localization to the plugin, providing admins with the option to enable and change the calendar language for Hebrew users.  
 
