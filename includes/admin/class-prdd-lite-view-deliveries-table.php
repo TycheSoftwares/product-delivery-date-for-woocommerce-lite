@@ -362,25 +362,23 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		global $wpdb;
 		$return_deliveries = array();
 		$results           = array();
-
-		if ( isset( $_GET['paged'] ) && sanitize_text_field( wp_unslash( $_GET['paged'] ) ) > 1 ) {  // phpcs:ignore WordPress.Security.NonceVerification
-			$page_number = sanitize_text_field( wp_unslash( $_GET['paged'] ) ) - 1; // phpcs:ignore WordPress.Security.NonceVerification
-		} else {
-			$page_number = 0;
+		$page_number       = isset( $_GET['paged'] ) ? absint( wp_unslash( $_GET['paged'] ) ) : 1;
+		if ( $page_number < 1 ) {
+			$page_number = 1;
 		}
-
 		if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
 			$inner_query = "SELECT ID FROM `" . $wpdb->prefix . "wc_orders` WHERE type = 'shop_order' AND status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
 		} else {
 			$inner_query = "SELECT ID FROM `" . $wpdb->prefix . "posts` WHERE post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
 		}
 
-		$per_page = $this->per_page;
-
+		$per_page      = absint( $this->per_page );
 		$current_time  = current_time( 'timestamp' ); // phpcs:ignore
 		$current_date  = gmdate( 'Y-m-d', $current_time ); // phpcs:ignore
 		$tomorrow_date = gmdate( 'Y-m-d', $current_time + 86400 ); // phpcs:ignore
 		$i             = 0;
+		$start_record  = ( $page_number - 1 ) * $per_page;
+		$limit         = $wpdb->prepare( 'LIMIT %d, %d', $start_record, $per_page );
 
 		if ( isset( $_GET['paged'] ) && sanitize_text_field( wp_unslash( $_GET['paged'] ) ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$start_record = ( sanitize_text_field( wp_unslash( $_GET['paged'] ) ) - 1 ) * $per_page; // phpcs:ignore WordPress.Security.NonceVerification
