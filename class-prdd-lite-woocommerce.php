@@ -19,7 +19,7 @@ require_once 'includes/class-prdd-lite-process.php';
 require_once 'includes/class-prdd-lite-validation.php';
 
 global $prdd_lite_update_checker;
-$prdd_lite_update_checker = '3.1.0';
+$prdd_lite_update_checker = '3.2.0';
 use Automattic\WooCommerce\Utilities\OrderUtil;
 
 /**
