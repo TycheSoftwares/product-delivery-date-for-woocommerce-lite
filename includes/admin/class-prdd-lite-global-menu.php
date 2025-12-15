@@ -61,6 +61,16 @@ class PRDD_Lite_Global_Menu {
 		do_action( 'prdd_lite_add_submenu' );
 
 		if ( isset( $_POST['option_page'] ) && 'prdd_lite_settings' === $_POST['option_page'] ) {// phpcs:ignore
+			if ( ! current_user_can( 'manage_woocommerce' ) ) {
+				return;
+			}
+			if ( ! isset( $_POST['_wpnonce'] ) ) {
+				return;
+			}
+			$nonce = sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) );
+			if ( ! wp_verify_nonce( $nonce, 'prdd_lite_settings-options' ) ) {
+				return;
+			}
 			$woocommerce_prdd_global_settings                         = array();
 			$woocommerce_prdd_global_settings['prdd_language']        = $_POST['prdd_lite_language'];// phpcs:ignore
 			$woocommerce_prdd_global_settings['prdd_date_format']     = $_POST['prdd_lite_date_format'];// phpcs:ignore
