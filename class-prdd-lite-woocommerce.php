@@ -494,8 +494,8 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				)
 			);
 
-			$section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : 'list_view';
-			if ( $section === 'calendar_view' ) {
+			$section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : 'list_view'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( 'calendar_view' === $section ) {
 				wp_enqueue_style( 'full', plugins_url( '/js/fullcalendar/lib/main.min.css', __FILE__ ) );
 				wp_enqueue_style( 'prdd-qtip', plugins_url( '/css/jquery.qtip.min.css', __FILE__ ), array() );
 				wp_enqueue_style( 'prdd-calendar', plugins_url( '/css/prdd-calendar.css', __FILE__ ), array() );

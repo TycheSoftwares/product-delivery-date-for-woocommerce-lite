@@ -19,15 +19,18 @@ class Prdd_View_Deliveries_Lite {
 	 * @since 1.0
 	 */
 	public static function prdd_lite_woocommerce_prdd_history_page() {
-		
-		$section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : 'list_view';
-		if ( $section === 'calendar_view' ) {
+
+		$section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : 'list_view'; // phpcs:ignore WordPress.Security.NonceVerification
+		if ( 'calendar_view' === $section ) {
 			Prdd_Lite_Calendar_view::prdd_lite_calendar_view_page();
 		} else {
 			self::prdd_lite_list_view_page();
 		}
 	}
 
+	/**
+	 * List View
+	 */
 	public static function prdd_lite_list_view_page() {
 		?>
 		<div class="wrap">

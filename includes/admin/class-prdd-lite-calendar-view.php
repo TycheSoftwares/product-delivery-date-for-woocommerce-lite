@@ -67,8 +67,9 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 					$event_end = gmdate( 'Y-m-d', strtotime( sanitize_text_field( wp_unslash( $_GET['end'] ) ) ) );
 				}
 				$query_get_order_item_ids = 'SELECT order_item_id FROM `' . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = '_prdd_date' and meta_value > '$event_start' and meta_value < '$event_end'";
-				$get_order_item_ids       = $wpdb->get_results( $query_get_order_item_ids ); // nosemgrep:audit.php.wp.security.sqli.input-in-sinks
-				$order_post_status        = '';
+				// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
+				$get_order_item_ids = $wpdb->get_results( $query_get_order_item_ids ); // nosemgrep:audit.php.wp.security.sqli.input-in-sinks
+				$order_post_status  = '';
 
 				if ( is_array( $get_order_item_ids ) && count( $get_order_item_ids ) > 0 ) {
 					foreach ( $get_order_item_ids as $item_key => $item_value ) {
@@ -79,8 +80,9 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 						$to_time        = '';
 						$value          = new stdClass();
 						$query_order_id = 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d';
-						$get_order_id   = $wpdb->get_results( $wpdb->prepare( $query_order_id, $item_value->order_item_id ) );
-						$order          = wc_get_order( $get_order_id[0]->order_id );
+						// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
+						$get_order_id = $wpdb->get_results( $wpdb->prepare( $query_order_id, $item_value->order_item_id ) );
+						$order        = wc_get_order( $get_order_id[0]->order_id );
 
 						if ( $order ) {
 							if ( version_compare( get_option( 'woocommerce_version ' ), '3.0.0', '>=' ) ) {
@@ -95,9 +97,10 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 							}
 
 							if ( isset( $order_post_status ) && ( $order_post_status != '' ) && ( $order_post_status != 'wc-cancelled' ) && ( $order_post_status != 'wc-refunded' ) && ( $order_post_status != 'trash' ) && ( $order_post_status != 'wc-failed' ) ) {
-								$query_get_dates = "SELECT meta_value, meta_key FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta`
+								$query_get_dates = 'SELECT meta_value, meta_key FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta`
 																			WHERE meta_key IN (%s,%s,%s)
-																			AND order_item_id = %d";
+																			AND order_item_id = %d';
+								// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
 								$get_dates = $wpdb->get_results( $wpdb->prepare( $query_get_dates, '_prdd_date', '_prdd_time_slot', '_product_id', $item_value->order_item_id ) );
 								foreach ( $get_dates as $k => $v ) {
 									if ( $v->meta_key === '_prdd_date' ) {
