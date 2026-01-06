@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 3.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.3
 Stable tag: 3.2.0
 License: GPLv2 or later
@@ -295,38 +295,6 @@ Enhancement :- Plugin has been made compatible with WooCommerce High-Performance
 * Fixed some warnings being added in debug.log
 * Fixed an issue where orphan records were being left behind when the plugin is deleted.
 
-= 1.8 (23.05.2018) =
-* The plugin is now GDPR compliant.
-* The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.
-
-= 1.7 (23.01.2018) =
-* The Delivery Date field was appearing small when used with TwentySeventeen theme. This is fixed.
-* The plugin is made compatible with Loco Translate plugin.
-
-= 1.6 (01.11.2017) =
-* The selected delivery date for variable product was not displayed on the Order Received page and in the customer new order email notification. This is fixed now.
-
-= 1.5 (17.08.2017) =
-* You can now disable weekdays on which you do not deliver in the delivery calendar on the product page.
-
-= 1.4 (04.04.2017) =
-* All the delivery dates are displayed in first product on Order received page when same product is added with multiple delivery dates in single order. This is fixed now.
-
-= 1.3 (28.06.2016) =
-* A new setting named as 'Minimum Delivery preparation time (in hours)' is added on the admin product page which allows setting the minimum delivery preparation time required. Customers can choose the delivery dates only after the set time.
-
-* A new setting named as 'Number of Dates to choose' is added on the admin product page which allows limiting the delivery dates available for customers to choose deliveries from. 
-
-= 1.2 (29.01.2016) =
-* Delivery Date selected for the product was not coming in the email notifications sent to the customer and admin when the order is placed on the checkout page with WooCommerce v2.5.x. This is fixed now.
-
-= 1.1 (15.12.2015) =
-* .po, .pot and .mo files are included in the plugin. The plugin strings can now be translated to any language using these files.
-
-= 1.0 (27.11.2015) =
-* Initial release.
-
-== Upgrade Notice ==
 = 1.8 (23.05.2018) =
 * The plugin is now GDPR compliant.
 * The Delivery Date for the orders will now be exported to the User's Personal Data from the Tools -> Export Personal Data menu.

@@ -24,7 +24,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 			<div class="wrap">
 				<div style="display: flex; align-items: center; margin-bottom: 20px;">
 					<h1><?php esc_html_e( 'Calendar View', 'woocommerce-prdd-lite' ); ?></h1>
-					<a style="margin-left: 8px;" href="<?php echo admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page' ); ?>"class="button button-primary">
+					<a style="margin-left: 8px;" href="<?php echo esc_url( admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page' ) ); ?>" class="button button-primary">
 						<?php esc_html_e( 'List View', 'woocommerce-prdd-lite' ); ?>
 					</a>
 				</div>
@@ -222,10 +222,11 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 				$order_items              = $order->get_items();
 				$attribute_name           = '';
 				$attribute_selected_value = '';
+				$product_id = isset( $_REQUEST['event_value']['post_id'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['event_value']['post_id'] ) ) : 0;
 
 				$content  = '<table>';
 				$content .= '<tr> <td> <strong>Order: </strong></td><td><a href="post.php?post=' . esc_html( $order->get_id() ) . '&action=edit">#' . esc_html( $order->get_id() ) . '</a></td></tr>';
-				$content .= '<tr> <td> <strong>Product Name:</strong></td><td>' . esc_html( get_the_title( $_REQUEST['event_value']['post_id'] ) ) . '</td></tr>';
+				$content .= '<tr> <td> <strong>Product Name:</strong></td><td>' . esc_html( get_the_title( $product_id ) ) . '</td></tr>';
 				$content .= '<tr> <td> <strong>Customer Name:</strong></td><td>' . esc_html( $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() ) . '</td></tr>';
 
 				foreach ( $order_items as $item ) {
@@ -289,7 +290,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 			}
 
 			// nosemgrep:audit.php.wp.security.xss.unescaped-stored-option.
-			echo $content; // nosemgrap
+			echo $content; // phpcs:ignore
 			die();
 		}
 	}
