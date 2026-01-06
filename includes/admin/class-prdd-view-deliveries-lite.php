@@ -38,7 +38,7 @@ class Prdd_View_Deliveries_Lite {
 				<h1><?php esc_html_e( 'All Deliveries', 'woocommerce-prdd-lite' ); ?></h1>
 				
 				<div style="margin-left: 8px;">
-					<a href="<?php echo admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page&section=calendar_view'); ?>" 
+					<a href="<?php echo esc_url( admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page&section=calendar_view' ) ); ?>"
 					class="button button-primary">
 						<?php esc_html_e( 'Calendar View', 'woocommerce-prdd-lite' ); ?>
 					</a>

@@ -496,14 +496,14 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 
 			$section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : 'list_view'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( 'calendar_view' === $section ) {
-				wp_enqueue_style( 'full', plugins_url( '/js/fullcalendar/lib/main.min.css', __FILE__ ) );
-				wp_enqueue_style( 'prdd-qtip', plugins_url( '/css/jquery.qtip.min.css', __FILE__ ), array() );
-				wp_enqueue_style( 'prdd-calendar', plugins_url( '/css/prdd-calendar.css', __FILE__ ), array() );
-				wp_register_script( 'prdd-lang-all-js', plugins_url( '/js/fullcalendar/lib/locales-all.min.js', __FILE__ ) );
-				wp_register_script( 'prdd-full-js', plugins_url( '/js/fullcalendar/lib/main.min.js', __FILE__ ) );
-				wp_register_script( 'prdd-images-loaded', plugins_url( '/js/imagesloaded.pkg.min.js', __FILE__ ) );
-				wp_register_script( 'prdd-qtip', plugins_url( '/js/jquery.qtip.min.js', __FILE__ ), array( 'jquery', 'prdd-images-loaded' ) );
-				wp_enqueue_script( 'prdd-calender-js', plugins_url( '/js/prdd-calender.js', __FILE__ ), array( 'jquery', 'prdd-qtip', 'prdd-full-js', 'prdd-lang-all-js', 'prdd-images-loaded', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position', 'jquery-ui-selectmenu' ) );
+				wp_enqueue_style( 'full', plugins_url( '/js/fullcalendar/lib/main.min.css', __FILE__ ), '', $plugin_version_number, false );
+				wp_enqueue_style( 'prdd-qtip', plugins_url( '/css/jquery.qtip.min.css', __FILE__ ), '', $plugin_version_number, false );
+				wp_enqueue_style( 'prdd-calendar', plugins_url( '/css/prdd-calendar.css', __FILE__ ), '', $plugin_version_number, false );
+				wp_register_script( 'prdd-lang-all-js', plugins_url( '/js/fullcalendar/lib/locales-all.min.js', __FILE__ ), array(), $plugin_version_number, false );
+				wp_register_script( 'prdd-full-js', plugins_url( '/js/fullcalendar/lib/main.min.js', __FILE__ ), array(), $plugin_version_number, false );
+				wp_register_script( 'prdd-images-loaded', plugins_url( '/js/imagesloaded.pkg.min.js', __FILE__ ), array(), $plugin_version_number, false );
+				wp_register_script( 'prdd-qtip', plugins_url( '/js/jquery.qtip.min.js', __FILE__ ), array( 'jquery', 'prdd-images-loaded' ), $plugin_version_number, false );
+				wp_enqueue_script( 'prdd-calender-js', plugins_url( '/js/prdd-calender.js', __FILE__ ), array( 'jquery', 'prdd-qtip', 'prdd-full-js', 'prdd-lang-all-js', 'prdd-images-loaded', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position', 'jquery-ui-selectmenu' ), $plugin_version_number, false );
 			}
 		}
 
