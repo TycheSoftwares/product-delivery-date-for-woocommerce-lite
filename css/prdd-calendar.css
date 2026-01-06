@@ -1,0 +1,76 @@
+#prdd-calendar {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* Loader Spinner */
+.prdd-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2271b1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: prdd-spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes prdd-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+.fc .fc-button-primary {
+    background-color: #2271b1;
+    border-color: #2271b1;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: #135e96;
+    border-color: #135e96;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+    background-color: #135e96;
+    border-color: #135e96;
+}
+
+.fc .fc-button-primary:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2271b1;
+}
+
+/* qTip Styles */
+.qtip-content {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.qtip-content a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+.qtip-content a:hover {
+    color: #135e96;
+    text-decoration: underline;
+}
+
+/* Loading overlay for event fetching */
+.fc-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}

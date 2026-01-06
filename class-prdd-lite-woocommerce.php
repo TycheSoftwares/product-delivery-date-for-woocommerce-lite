@@ -12,6 +12,7 @@ require_once 'includes/class-prdd-privacy-policy-lite.php';
 require_once 'includes/admin/class-prdd-lite-meta-box.php';
 require_once 'includes/class-prdd-lite-common.php';
 require_once 'includes/prdd-lite-config.php';
+require_once 'includes/admin/class-prdd-lite-calendar-view.php';
 require_once 'includes/admin/class-prdd-lite-delivery-price.php';
 require_once 'includes/admin/class-prdd-lite-delivery-settings.php';
 require_once 'includes/admin/class-prdd-lite-global-menu.php';
@@ -163,6 +164,12 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			// Global Menu.
 			add_action( 'admin_menu', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_admin_menu' ) );
 			add_action( 'admin_init', array( 'PRDD_Lite_Global_Menu', 'prdd_lite_delivery_settings' ) );
+
+			add_action( 'wp_ajax_nopriv_prdd_calender_content', array( 'Prdd_Lite_Calendar_View', 'prdd_calender_content' ) );
+			add_action( 'wp_ajax_prdd_calender_content', array( 'Prdd_Lite_Calendar_View', 'prdd_calender_content' ) );
+
+			add_action( 'admin_init', array( 'Prdd_Lite_Calendar_View', 'prdd_adminevent_event_jsons' ) );	
+
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_css' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'prdd_lite_my_enqueue_scripts_js' ) );
 			add_action( 'admin_footer', array( $this, 'ts_admin_notices_scripts' ) );
@@ -480,11 +487,24 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 				'prdd-lite-update-script',
 				'prdd_lite_ajax_data',
 				array(
-					'max_product' => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
-					'ajax_url'    => admin_url( 'admin-ajax.php' ),
-					'prdd_nonce'  => wp_create_nonce( 'ajax-nonce' ),
+					'max_product'   => PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION,
+					'ajax_url'      => admin_url( 'admin-ajax.php' ),
+					'prdd_language' => get_option( 'prdd_lite_language' ),
+					'prdd_nonce'    => wp_create_nonce( 'ajax-nonce' ),
 				)
 			);
+
+			$section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : 'list_view'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( 'calendar_view' === $section ) {
+				wp_enqueue_style( 'full', plugins_url( '/js/fullcalendar/lib/main.min.css', __FILE__ ) );
+				wp_enqueue_style( 'prdd-qtip', plugins_url( '/css/jquery.qtip.min.css', __FILE__ ), array() );
+				wp_enqueue_style( 'prdd-calendar', plugins_url( '/css/prdd-calendar.css', __FILE__ ), array() );
+				wp_register_script( 'prdd-lang-all-js', plugins_url( '/js/fullcalendar/lib/locales-all.min.js', __FILE__ ) );
+				wp_register_script( 'prdd-full-js', plugins_url( '/js/fullcalendar/lib/main.min.js', __FILE__ ) );
+				wp_register_script( 'prdd-images-loaded', plugins_url( '/js/imagesloaded.pkg.min.js', __FILE__ ) );
+				wp_register_script( 'prdd-qtip', plugins_url( '/js/jquery.qtip.min.js', __FILE__ ), array( 'jquery', 'prdd-images-loaded' ) );
+				wp_enqueue_script( 'prdd-calender-js', plugins_url( '/js/prdd-calender.js', __FILE__ ), array( 'jquery', 'prdd-qtip', 'prdd-full-js', 'prdd-lang-all-js', 'prdd-images-loaded', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position', 'jquery-ui-selectmenu' ) );
+			}
 		}
 
 		/**
