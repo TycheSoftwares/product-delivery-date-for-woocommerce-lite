@@ -25,7 +25,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 				<div style="display: flex; align-items: center; margin-bottom: 20px;">
 					<h1><?php esc_html_e( 'Calendar View', 'woocommerce-prdd-lite' ); ?></h1>
 					<a style="margin-left: 8px;" href="<?php echo esc_url( admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page' ) ); ?>" class="button button-primary">
-						<?php esc_html_e( 'List View', 'woocommerce-prdd-lite' ); ?>
+						<?php esc_html_e( 'Product View', 'woocommerce-prdd-lite' ); ?>
 					</a>
 				</div>
 				
@@ -66,13 +66,25 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 				if ( isset( $_GET['end'] ) ) {
 					$event_end = gmdate( 'Y-m-d', strtotime( sanitize_text_field( wp_unslash( $_GET['end'] ) ) ) );
 				}
-				$query_get_order_item_ids = 'SELECT order_item_id FROM `' . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = '_prdd_date' and meta_value > '$event_start' and meta_value < '$event_end'";
+				$query_get_order_item_ids = $wpdb->prepare(
+					"
+					SELECT DISTINCT order_item_id
+					FROM {$wpdb->prefix}woocommerce_order_itemmeta
+					WHERE meta_key = %s
+					AND meta_value > %s
+					AND meta_value < %s
+					",
+					'_prdd_date',
+					$event_start,
+					$event_end
+				);
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
-				$get_order_item_ids = $wpdb->get_results( $query_get_order_item_ids ); // nosemgrep:audit.php.wp.security.sqli.input-in-sinks
-				$order_post_status  = '';
+				$order_item_ids = $wpdb->get_col( $query_get_order_item_ids );
 
-				if ( is_array( $get_order_item_ids ) && count( $get_order_item_ids ) > 0 ) {
-					foreach ( $get_order_item_ids as $item_key => $item_value ) {
+				$order_post_status = '';
+
+				if ( is_array( $order_item_ids ) && count( $order_item_ids ) > 0 ) {
+					foreach ( $order_item_ids as $item_value ) {
 						$time_slot      = '';
 						$date           = '';
 						$product_id     = '';
@@ -81,7 +93,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 						$value          = new stdClass();
 						$query_order_id = 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d';
 						// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
-						$get_order_id = $wpdb->get_results( $wpdb->prepare( $query_order_id, $item_value->order_item_id ) );
+						$get_order_id = $wpdb->get_results( $wpdb->prepare( $query_order_id, $item_value ) );
 						$order        = wc_get_order( $get_order_id[0]->order_id );
 
 						if ( $order ) {
@@ -101,7 +113,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 																			WHERE meta_key IN (%s,%s,%s)
 																			AND order_item_id = %d';
 								// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
-								$get_dates = $wpdb->get_results( $wpdb->prepare( $query_get_dates, '_prdd_date', '_prdd_time_slot', '_product_id', $item_value->order_item_id ) );
+								$get_dates = $wpdb->get_results( $wpdb->prepare( $query_get_dates, '_prdd_date', '_prdd_time_slot', '_product_id', $item_value ) );
 								foreach ( $get_dates as $k => $v ) {
 									if ( $v->meta_key === '_prdd_date' ) {
 										$date = $v->meta_value;
