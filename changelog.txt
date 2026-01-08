@@ -1,4 +1,14 @@
 *** Product Delivery Date for WooCommerce - Lite ***
+
+2026-01-13 - version 3.3.0
+* Added - Calendar View to display product delivery details in a calendar format.
+* Fixed - Security vulnerability.
+
+2025-11-18 - version 3.2.0
+* Fix - Cross Site Request Forgery (CSRF) vulnerability.
+* Tweak - Update compatibility with WordPress 6.8.3
+* Tweak - Update compatibility with WooCommerce 10.3.5
+
 2025-07-29 - version 3.1.0
 * Fix - "Preview Theme" and "No Delivery on These Dates" calendars appeared oversized on the Global Delivery Settings page.
 * Fix - "View Deliveries" page did not display any deliveries when WooCommerce Compatibility Mode was disabled.
