@@ -728,7 +728,6 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 									$_prdd_lite_date = $item->get_meta( '_prdd_lite_date' );
 									if ( $_prdd_lite_date ) {
 										wc_add_order_item_meta( $item_id, '_prdd_date', $_prdd_lite_date );
-										wc_delete_order_item_meta( $item_id, '_prdd_lite_date', $_prdd_lite_date );
 									}
 								}
 							}
