@@ -7,7 +7,7 @@ Tags: delivery calendar, product delivery date, woocommerce order delivery, prod
 Requires at least: 3.0
 Tested up to: 6.9
 Requires PHP: 7.3
-Stable tag: 3.2.0
+Stable tag: 3.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -195,6 +195,10 @@ WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
 
 == Changelog ==
+
+= 3.3.0 - 13/01/2026 =
+* Added - Calendar View to display product delivery details in a calendar format.
+* Fixed - Security vulnerability.
 
 = 3.2.0 - 18/11/2025 =
 * Fix - Cross Site Request Forgery (CSRF) vulnerability.
