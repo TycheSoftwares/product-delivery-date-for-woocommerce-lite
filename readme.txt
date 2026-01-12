@@ -196,9 +196,9 @@ This plugin communicates with our tracking server to send usage data **only** if
 
 == Changelog ==
 
-= 3.3.0 - 13/01/2026 =
-* Added - Calendar View to display product delivery details in a calendar format.
-* Fixed - Security vulnerability.
+= 3.3.0 - 12/01/2026 =
+* Enhancement - Calendar View to display product delivery details in a calendar format.
+* Fixed - Vulnerability caused by a missing capability check that allowed authenticated users with subscriber-level access or higher to perform unauthorized actions.
 
 = 3.2.0 - 18/11/2025 =
 * Fix - Cross Site Request Forgery (CSRF) vulnerability.
