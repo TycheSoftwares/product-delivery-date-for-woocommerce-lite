@@ -33,6 +33,7 @@ This plugin allows you to improve your customer service by delivering the produc
 <li>Set the <strong>minimum required time for the WooCommerce product delivery</strong> in hours.</li>
 <li>Choose how long you wish to take WooCommerce product delivery in the future.</li>
 <li>Use inbuilt WordPress product datepicker.</li>
+<li>View product delivery details in a calendar format, helping admins see scheduled product deliveries.</li>
 </ol>
 
 ### Differences between Lite & PRO version
