@@ -25,7 +25,7 @@ This WooCommerce delivery & pickup date and time plugin will allow the customer 
 
 This plugin allows you to improve your customer service by delivering the product on the customer's chosen date. It's an essential WooCommerce product delivery by date plugin!
 
-**What if you can get better features for less money? -[Try Product Delivery Date Pro for just $1](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite)**
+**What if you can get better features for less money? -[Try Product Delivery Date Pro for just $1](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite)**
 
 ### WOOCOMMERCE PRODUCT DELIVERY DATE ALLOWS YOU TO:
 
