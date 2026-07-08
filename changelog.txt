@@ -1,5 +1,9 @@
 *** Product Delivery Date for WooCommerce - Lite ***
 
+2026-07-08 - version 3.3.1
+* Tweak - Update compatibility with WordPress 7.0.0
+* Tweak - Update compatibility with WooCommerce 10.9.3
+
 2026-01-12 - version 3.3.0
 * Enhancement - Calendar View to display product delivery details in a calendar format.
 * Fixed - Vulnerability caused by a missing capability check that allowed authenticated users with subscriber-level access or higher to perform unauthorized actions. 
