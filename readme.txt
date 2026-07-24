@@ -15,107 +15,136 @@ Choose delivery/pickup dates & times on product page. Simplify delivery manageme
 
 == Description ==
 
-> ###🚀&nbsp;&nbsp;New Launch: Flexi BOGO for WooCommerce
->
-> The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=ProductDeliveryDateLite).
+If your products are delivered on specific dates, collecting that information at the right time makes all the difference.
 
-Delivery Dates play a vital role in any type of Ecommerce store for customer satisfaction & retention. That is why we built the [WooCommerce Product Delivery Date plugin](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=topprolink&utm_campaign=ProductDeliveryDateLite).
+**Product Delivery Date for WooCommerce - Lite** allows customers to select a delivery date directly from the product page instead of relying on order notes or follow-up emails. You can set a minimum preparation time, control how far in advance customers can book, disable deliveries on specific weekdays, and view upcoming deliveries in an admin calendar.
 
-This WooCommerce delivery & pickup date and time plugin will allow the customer to choose a delivery date on the WooCommerce product page on your website. The customer can select any delivery date after the current date. The site administrator can enable or disable the delivery date capture on the frontend product page.
+**[What if you can get better features for less money? - Try Product Delivery Date Pro for just $1](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite)**
 
-This plugin allows you to improve your customer service by delivering the product on the customer's chosen date. It's an essential WooCommerce product delivery by date plugin!
+= Key Features =
 
-**What if you can get better features for less money? -[Try Product Delivery Date Pro for just $1](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin-trial/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite)**
+### Let Customers Choose a Delivery Date for Each Product
+Allow customers to select their preferred delivery date directly from the product page before adding an item to their cart.
+* Add a delivery date picker to WooCommerce product pages.
+* Enable or disable delivery date selection for individual products.
+* Capture the selected delivery date along with the order.
 
-### WOOCOMMERCE PRODUCT DELIVERY DATE ALLOWS YOU TO:
+### Control Product-Specific Delivery Availability
+Control when products can be delivered based on your business requirements.
+* Set the minimum preparation time required before delivery.
+* Limit how far in advance customers can choose a delivery date.
+* Disable deliveries on specific weekdays when your business is unavailable.
 
-<ol>
-<li>Set the <strong>minimum required time for the WooCommerce product delivery</strong> in hours.</li>
-<li>Choose how long you wish to take WooCommerce product delivery in the future.</li>
-<li>Use inbuilt WordPress product datepicker.</li>
-<li>View product delivery details in a calendar format, helping admins see scheduled product deliveries.</li>
-</ol>
+### View and Manage Upcoming Product Deliveries
+Keep track of scheduled product deliveries without manually reviewing every order.
+* View upcoming product deliveries in a calendar.
+* Access delivery information directly from the WordPress admin.
+* Plan fulfilment based on customer-selected delivery dates.
 
-### Differences between Lite & PRO version
+### Works Seamlessly with WooCommerce
+The plugin integrates naturally into your WooCommerce store without changing your existing checkout experience.
+* Uses the built-in WordPress date picker.
+* Compatible with WooCommerce High-Performance Order Storage (HPOS).
+* Simple settings that are easy to configure and maintain.
 
-You can check the detailed difference between Pro and Lite version **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=litelink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference")**
+= Common Use Cases =
 
-**Pro Version:**
+Product Delivery Date for WooCommerce - Lite is ideal for stores where customers need to choose a delivery date for individual products before checkout. Typical use cases include:
+* **Florists** scheduling deliveries for bouquets on different dates.
+* **Bakeries** accepting advance orders for cakes, pastries, and celebration desserts.
+* **Gift shops** allowing customers to schedule deliveries for birthdays, anniversaries, and special occasions.
+* **Made-to-order businesses** that require preparation time before products can be dispatched.
+* **Food and specialty stores** managing deliveries based on product availability.
+* **Pre-order stores** that let customers reserve products for future delivery dates.
+* **Businesses offering seasonal or event-based products** where delivery dates are an important part of the purchasing process.
 
-**[WOOCOMMERCE Product Delivery Date plugin](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Product Delivery Date Pro")** - The Pro version allows your customers to choose a WooCommerce delivery date and time from the product details page. Date Settings, Time Settings, Global Settings & Black-out dates allow the site owner to decide which dates should be made available for WooCommerce product delivery. Following features are available in PRO version:
+= Documentation & Support =
 
-<ol>
-<li>Ability to allow the customer to select <strong>WooCommerce Delivery Time along with Delivery Date.</strong></li>
-<li>Ability to <strong>block dates</strong> after a number of WooCommerce deliveries made for a date/time slot.</li>
-<li><strong>Different WooCommerce delivery charges can be added for different weekdays, specific dates or time slots.</strong></li>
-<li><strong>Specify Cut-off time for Same-day & Next-day WooCommerce deliveries</strong></li>
-<li>Ability to <strong>View Deliveries</strong> in the admin in a list format as well as in a calendar.Admins can <strong>View WooCommerce Deliveries</strong> in a list or calendar format.</li>
-<li><strong>Flexible Field Labels</strong> text.</li>
-<li><strong>Add holidays or black-out dates</strong> to the calendar.</li>
-<li>Choose your custom calendar language.</li>
-<li>Choose from <strong>24 different themes for the calendar.</strong></li>
-</ol>
+Need help getting started?
+* Visit the [WordPress support forums](https://wordpress.org/support/plugin/product-delivery-date-for-woocommerce-lite/)
+* Check the [documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-pro/) for common answers
+* Try the [live demo](https://app.instawp.io/launch?d=v1&t=product-delivery-date-pro-for-woocommerce) to see how the plugin works on the storefront.
+* [Developer Documentation](https://www.tychesoftwares.com/docs/prddl-apidocs/index.html "Developer Documentation")
+* [Github Repository](https://github.com/TycheSoftwares/product-delivery-date-for-woocommerce-lite "Github Repository")
 
-You can check the detailed difference between Pro and Lite version **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=prolink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference")**
+If the plugin helps your business, consider leaving a ⭐⭐⭐⭐⭐ review. Your feedback helps other WooCommerce merchants discover the plugin.
 
-### Some of our Pro plugins
+= Looking for More Advanced Features? =
 
-1. **[Flexi BOGO for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Flexi BOGO for WooCommerce")**
+Product Delivery Date for WooCommerce - Lite provides everything you need to let customers choose a delivery date for individual products and manage product deliveries more efficiently.
 
-1. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=ProductDeliveryDateLite "Product Delivery Date Pro for WooCommerce")**
+If your business requires more advanced delivery scheduling, [Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin/) adds features such as:
+* Allow customers to select a delivery time along with the delivery date.
+* Set the delivery date field as mandatory on the product page.
+* Block delivery dates after reaching the maximum number of deliveries for a date or time slot.
+* Limit the number of orders that can be placed per product per day or per time slot.
+* Add delivery charges based on weekdays, specific dates, or delivery time slots.
+* Specify cut-off times for same-day and next-day deliveries.
+* View upcoming deliveries in both Calendar and List views.
+* Set custom field labels to match your business requirements.
+* Display the delivery calendar in your preferred language.
+* Choose from multiple calendar themes to match your store design.
+* Add holidays and blackout dates when deliveries are unavailable.
+* Synchronize deliveries with Google Calendar.
+* Allow customers to choose a delivery date and time from the shop page.
+* Apply delivery settings to multiple products using bulk editing.
+* Display estimated delivery dates on product pages.
 
-2. **[Order Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Order Delivery Date Pro for WooCommerce")**
+See the complete Lite vs Pro comparison: [https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/)
 
-3. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Abandoned Cart Pro for WooCommerce")**
+= About Tyche Softwares =
 
-4. **[Booking & Appointment Plugin for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Booking & Appointment Plugin for WooCommerce")**
+Tyche Softwares builds WooCommerce plugins that help store owners improve their customers' shopping experience and simplify day-to-day store operations. Our plugins are trusted by businesses worldwide to manage deliveries, pricing, promotions, checkout, and order management with confidence.
 
-5. **[Deposits For WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/deposits-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Deposits For WooCommerce")**
+Every plugin is backed by detailed documentation, regular updates, and responsive support to help you get the most out of your WooCommerce store.
 
-6. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/payment-gateway-based-fees-and-discounts-for-woocommerce-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Payment Gateway Based Fees and Discounts for WooCommerce")**
+= Explore More WooCommerce Plugins =
 
-7. **[Custom Order Status for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Custom Order Status for WooCommerce")**
+Tyche Softwares also develops plugins for abandoned cart recovery, order delivery scheduling, bookings, invoices and packing slips, custom order numbers, product input fields, BOGO offers, payment gateway fees, call for price, role-based pricing, currency management, and other WooCommerce enhancements.
 
-8. **[Custom Order Numbers for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/custom-order-numbers-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Custom Order Numbers for WooCommerce")**
+**Some of our Pro plugins:**
 
-9. **[Product Input Fields for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-input-fields-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Product Input Fields for WooCommerce")**
+1. **[Flexi BOGO for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Flexi BOGO for WooCommerce")**
 
-10. **[Call for Price for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-call-for-price-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Call for Price for WooCommerce")**
+2. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-abandoned-cart-pro-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Abandoned Cart Pro for WooCommerce")**
 
-11. **[Price based on User Role for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/price-user-role-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Price based on User Role for WooCommerce")**
+3. **[Booking & Appointment Plugin for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-booking-and-appointment-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Booking & Appointment Plugin for WooCommerce")**
 
-12. **[Currency per Product for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/currency-per-product-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Currency per Product for WooCommerce")**
+4. **[Order Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-order-delivery-date-pro-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Order Delivery Date Pro for WooCommerce")**
 
-### Some of our other free plugins
+5. **[Deposits For WooCommerce](https://www.tychesoftwares.com/products/woocommerce-deposit-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Deposits For WooCommerce")**
 
-1. **[Order Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce - Lite")**
+6. **[Payment Gateway Based Fees and Discounts for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-payment-gateway-based-fees-and-discounts-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Payment Gateway Based Fees and Discounts for WooCommerce - Pro")**
 
-2. **[Abandoned Cart for WooCommerce](https://wordpress.org/plugins/woocommerce-abandoned-cart/ "Abandoned Cart for WooCommerce")**
+7. **[Custom Order Numbers for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-custom-order-numbers-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Custom Order Numbers for WooCommerce - Pro")**
 
-3. **[WooCommerce Print Invoice & Delivery Note](https://wordpress.org/plugins/woocommerce-delivery-notes/ "WooCommerce Print Invoice & Delivery Note")**
+8. **[Product Input Fields for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-product-input-fields-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Product Input Fields for WooCommerce - Pro")**
 
-4. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
+9. **[Call for Price for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-call-for-price-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Call for Price for WooCommerce - Pro")**
 
-5. **[Custom Order Status for WooCommerce](https://wordpress.org/plugins/custom-order-statuses-woocommerce/ "Custom Order Status for WooCommerce")**
+10. **[Price based on User Role for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-price-user-role-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Price based on User Role for WooCommerce - Pro")**
 
-6. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
+11. **[Currency per Product for WooCommerce - Pro](https://www.tychesoftwares.com/products/woocommerce-currency-per-product-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Currency per Product for WooCommerce - Pro")**
 
-7. **[Product Input Fields for WooCommerce](https://wordpress.org/plugins/product-input-fields-for-woocommerce/ "Product Input Fields for WooCommerce")**
+**Some of our other free plugins:**
 
-8. **[Call for Price for WooCommerce](https://wordpress.org/plugins/woocommerce-call-for-price/ "Call for Price for WooCommerce")**
+1. **[Abandoned Cart for WooCommerce](https://wordpress.org/plugins/woocommerce-abandoned-cart/ "Abandoned Cart for WooCommerce")**
 
-9. **[Price based on User Role for WooCommerce](https://wordpress.org/plugins/price-by-user-role-for-woocommerce/ "Price based on User Role for WooCommerce")**
+2. **[Order Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce - Lite")**
 
-10. **[Currency per Product for WooCommerce](https://wordpress.org/plugins/currency-per-product-for-woocommerce/ "Currency per Product for WooCommerce")**
+3. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
 
+4. **[Custom Order Status for WooCommerce](https://wordpress.org/plugins/custom-order-statuses-woocommerce/ "Custom Order Status for WooCommerce")**
 
-**[View Demo](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=demolink&utm_campaign=ProductDeliveryDateLite "View Demo")**
+5. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
 
-**[Documentation](https://www.tychesoftwares.com/docs/docs/product-delivery-date-for-woocommerce-lite/?utm_source=wprepo&utm_medium=link&utm_campaign=ProductDeliveryDateLite "Documentation")**
+6. **[Product Input Fields for WooCommerce](https://wordpress.org/plugins/product-input-fields-for-woocommerce/ "Product Input Fields for WooCommerce")**
 
-**[Developer Documentation](https://www.tychesoftwares.com/docs/prddl-apidocs/index.html "Developer Documentation")**
+7. **[Call for Price for WooCommerce](https://wordpress.org/plugins/woocommerce-call-for-price/ "Call for Price for WooCommerce")**
 
-**[Github Repository](https://github.com/TycheSoftwares/product-delivery-date-for-woocommerce-lite "Github Repository")**
+8. **[Price based on User Role for WooCommerce](https://wordpress.org/plugins/price-by-user-role-for-woocommerce/ "Price based on User Role for WooCommerce")**
+
+9. **[Currency per Product for WooCommerce](https://wordpress.org/plugins/currency-per-product-for-woocommerce/ "Currency per Product for WooCommerce")**
 
 == Installation ==
 
@@ -147,36 +176,53 @@ Option 3:
 
 == Frequently Asked Questions ==
 
-= What is the difference between the WooCommerce Product Delivery Date Lite plugin and Pro version? =
+= What does Product Delivery Date for WooCommerce - Lite do? =
 
-You can refer **[here](https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite "Lite and Pro version Difference").**
+The plugin adds a delivery date picker to individual WooCommerce product pages, allowing customers to choose their preferred delivery date before adding a product to the cart. It's ideal for stores that need delivery scheduling on a per-product basis.
+
+= Where does the delivery date picker appear? =
+
+The delivery date picker appears on the product page. Customers select a delivery date before adding the product to their cart, and the selected date is carried through the checkout process and saved with the order.
+
+If you need customers to choose a single delivery date for the entire order during checkout, consider using [Order Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/) instead.
+
+= Can I set a minimum preparation time for deliveries? =
+
+Yes. You can define the minimum preparation time required before a product becomes available for delivery. This helps ensure you have enough time to prepare and fulfill each order.
+
+= Can I limit how far in advance customers can choose a delivery date? =
+
+Yes. The plugin allows you to control the number of future dates customers can select, giving you greater control over your delivery schedule.
+
+= Can I disable deliveries on certain days? =
+
+Yes. You can disable specific weekdays when deliveries are not available, preventing customers from selecting dates that don't fit your delivery schedule.
+
+= Can customers choose a delivery time as well? =
+
+No. The Lite version allows customers to select a delivery date only.
+
+If you need customers to choose delivery time slots, [Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin/) includes delivery time selection along with additional scheduling options.
+
+= Can I make the delivery date mandatory? =
+
+The Lite version lets customers select a delivery date on the product page. If you need to make the delivery date field mandatory, this feature is available in [Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin/).
+
+= Can I charge extra for specific delivery dates or weekdays? =
+
+Delivery charges based on weekdays, specific dates, or delivery time slots are available in [Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-product-delivery-date-pro-plugin/).
+
+= Is the plugin compatible with WooCommerce HPOS? =
+
+Yes. Product Delivery Date for WooCommerce - Lite is compatible with WooCommerce High-Performance Order Storage (HPOS).
 
 = Is it possible to add a WooCommerce delivery date calendar on the checkout page instead of for each product? =
 
-It is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named [Order Delivery Date for WooCommerce Pro](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite) which you can use to add a Delivery Date on the WooCommerce checkout page.
+It is not possible to add a Delivery date calendar on the checkout page from the Product Delivery Date plugin. However, we do have a plugin named [Order Delivery Date for WooCommerce Pro](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite) which you can use to add a Delivery Date on the WooCommerce checkout page.
 
-= Can the customer enter the preferred delivery time for the product? =
-
-Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version. [View Demo](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite "View Demo")
-
-= Is the delivery date field mandatory on the product page? =
-
-This is not possible in the free version. In the [Pro version](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite), the delivery date field can be configured as Mandatory or optional using the 'Mandatory field?' setting.
-
-= Can I change the language of the WooCommerce delivery date calendar? = 
-
-This is not possible in the free version. In the [Pro version](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite), you can change the language of the delivery date calendar on the WooCommerce product page. There are 64 different languages to choose from.
-
-= Is it possible to add extra charges for weekdays or specific dates? =
-
-Currently, in the free version there is no option for a user to specify weekdays or specific dates for additional delivery charges. However, this feature is available in the [Product Delivery Date Pro for WooCommerce plugin](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite).
-
-= Is it possible to edit the selected delivery date for the already placed WooCommerce product orders? =
+= Is it possible to edit the selected delivery date for already placed WooCommerce product orders? =
 
 Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version & in the pro version as well.
-
-== MORE INFO ==
-WooCommerce Product Delivery Date Lite allows customers to select a WooCommerce delivery date when they view the WooCommerce product page. Customers can easily choose any WooCommerce product delivery date, which has a significant impact on the quality of your user experience. The site administrator can enable or disable the WooCommerce product delivery date capture on the frontend WooCommerce product page. This Woocommerce Product Date picker makes an Ultimate Woocommerce delivery and pickup date time plugin that will instantly improve your WooCommerce delivery process!
 
 == Screenshots ==
 
