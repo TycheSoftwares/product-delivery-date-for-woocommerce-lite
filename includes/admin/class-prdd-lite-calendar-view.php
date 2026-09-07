@@ -48,6 +48,11 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 
 			if ( isset( $_GET['action'] ) && $_GET['action'] == 'prdd-adminend-events-jsons' ) { // phpcs:ignore
 
+				if ( ! current_user_can( 'manage_woocommerce' ) ) {
+					echo '<p style="color: red;">You do not have permission to perform this action.</p>';
+					wp_die();
+				}
+
 				if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'ajax-nonce' ) ) {
 					echo '<p style="color: red;">Security check failed</p>';
 					wp_die();
@@ -208,6 +213,11 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 		 * Show event details in the popop when clicked on calendar event.
 		 */
 		public static function prdd_calender_content() {
+
+			if ( ! current_user_can( 'manage_woocommerce' ) ) {
+				echo '<p style="color: red;">You do not have permission to perform this action.</p>';
+				wp_die();
+			}
 
 			if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'ajax-nonce' ) ) {
 				echo '<p style="color: red;">Security check failed</p>';
