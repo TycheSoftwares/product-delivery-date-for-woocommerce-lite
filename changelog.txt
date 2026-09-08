@@ -1,5 +1,8 @@
 *** Product Delivery Date for WooCommerce - Lite ***
 
+2026-09-08 - version 3.3.2
+* Fix - Missing authorization vulnerability on the Delivery Calendar page that allowed unauthorized access to order details.
+
 2026-07-08 - version 3.3.1
 * Tweak - Update compatibility with WordPress 7.0.0
 * Tweak - Update compatibility with WooCommerce 10.9.3

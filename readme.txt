@@ -5,9 +5,9 @@ Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
 Requires at least: 3.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -242,6 +242,9 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
 
 == Changelog ==
+
+= 3.3.2 - 08/09/2026 =
+* Fix - Missing authorization vulnerability on the Delivery Calendar page that allowed unauthorized access to order details.
 
 = 3.3.1 - 08/07/2026 =
 * Tweak - Update compatibility with WordPress 7.0.0
