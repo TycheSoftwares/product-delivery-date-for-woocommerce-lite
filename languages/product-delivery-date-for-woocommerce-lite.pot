@@ -1,0 +1,2474 @@
+# Copyright (C) 2026 Tyche Softwares
+# This file is distributed under the same license as the Product Delivery Date for WooCommerce - Lite plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Delivery Date for WooCommerce - Lite 4.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-delivery-date-for-woocommerce-lite\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-29T18:30:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: product-delivery-date-for-woocommerce-lite\n"
+
+#. Plugin Name of the plugin
+#: product-delivery-date-for-woocommerce-lite.php
+#: class-prdd-lite-woocommerce.php:61
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:89
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:96
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:118
+msgid "Product Delivery Date for WooCommerce - Lite"
+msgstr ""
+
+#. Description of the plugin
+#: product-delivery-date-for-woocommerce-lite.php
+msgid "This plugin lets you capture the Delivery Date for each product."
+msgstr ""
+
+#. Author of the plugin
+#: product-delivery-date-for-woocommerce-lite.php
+msgid "Tyche Softwares"
+msgstr ""
+
+#. Author URI of the plugin
+#: product-delivery-date-for-woocommerce-lite.php
+msgid "https://www.tychesoftwares.com/"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:63
+msgid "Sunday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:64
+msgid "Monday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:65
+msgid "Tuesday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:66
+msgid "Wednesday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:67
+msgid "Thursday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:68
+msgid "Friday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:69
+msgid "Saturday"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:70
+msgid "12 hour"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:71
+msgid "24 hour"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:76
+#: src/admin-settings/screens/home/Faq.js:20
+msgid "How to make Product delivery date field a required field on the Product Page?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:77
+#: src/admin-settings/screens/home/Faq.js:24
+msgid "Enable the \"Mandatory Fields\" option under the Product Delivery Date -> Settings tab on the WooCommerce edit product page. Customers will then have to select a delivery date before adding the product to the cart."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:80
+#: src/admin-settings/screens/home/Faq.js:31
+msgid "Is it possible to add delivery date calendar on checkout page instead of for each product?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:81
+#: src/admin-settings/screens/home/Faq.js:35
+msgid "No, it is not possible to add Delivery date calendar on checkout page from Product Delivery Date plugin. However, we do have a plugin named <a href=\"https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=demolink&amp;utm_campaign=ProductDeliveryDateLite\" rel=\"nofollow\" target=\"_blank\">Order Delivery Date for WooCommerce Pro</a> and <a href=\"https://wordpress.org/plugins/order-delivery-date-for-woocommerce/\" target=\"_blank\">Lite</a> version which you can use to add a Delivery Date on the WooCommerce checkout page."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:84
+#: src/admin-settings/screens/home/Faq.js:42
+msgid "Can the customer enter the preferred delivery time for the product?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:85
+msgid "Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version. <a href = \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" rel=\"nofollow\"> View Demo </a>"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:88
+#: src/admin-settings/screens/home/Faq.js:56
+msgid "Can we change the language of the delivery date calendar?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:89
+msgid "Yes, from version 2.0 you can choose different language for the delivery date calendar."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:92
+#: src/admin-settings/screens/home/Faq.js:67
+msgid "Is it possible to add extra charges for weekdays or specific dates?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:93
+msgid "Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the <a href=\"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" rel=\"nofollow\" target=\"_blank\">Product Delivery Date Pro for WooCommerce plugin</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:96
+#: src/admin-settings/screens/home/Faq.js:83
+msgid "Can we translate Delivery Date label on product page?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:97
+#: src/admin-settings/screens/home/Faq.js:87
+msgid "Yes, you can translate the Delivery Date label for the product page. To translate the strings, you need to generate \".po\" and \".mo\" files in your respective language. These files then need to be added to the following path: \"product-delivery-date-for-woocommerce-lite/languages\""
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:100
+#: src/admin-settings/screens/home/Faq.js:94
+msgid "Is it possible to edit the selected delivery date for the already placed WooCommerce orders?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:101
+msgid "Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the <a href=\"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" rel=\"nofollow\" target=\"_blank\">Product Delivery Date Pro for WooCommerce plugin</a>. The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:104
+#: src/admin-settings/screens/home/Faq.js:111
+msgid "Can we change the \"Delivery Date\" label to something else, such as \"Choose a date\" or \"Date to deliver\"?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:105
+msgid "Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the <a href=\"https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&amp;utm_medium=faqlink&amp;utm_campaign=OrderDeliveryDateLite\" rel=\"nofollow\" target=\"_blank\">Product Delivery Date Pro for WooCommerce plugin</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:108
+#: src/admin-settings/screens/home/Faq.js:125
+msgid "Will Delivery Date Calendar on the product page work on the mobile devices?"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:109
+#: src/admin-settings/screens/home/Faq.js:129
+msgid "Yes, Delivery Date Calendar on the product page will work on the mobile devices."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:112
+#: src/admin-settings/screens/home/Faq.js:136
+msgid "Difference between Lite and Pro version of the plugin."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:113
+msgid "You can refer <strong><a href=\"https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" title=\"Lite and Pro version Difference\" rel=\"nofollow\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:346
+msgid "Go Pro"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:346
+msgid "Premium version"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:365
+#: includes/admin/class-prdd-lite-admin-react-page.php:98
+msgid "Product Delivery Date Settings"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:365
+#: includes/admin/class-prdd-lite-admin-react-page.php:220
+#: includes/admin/class-prdd-lite-global-menu.php:44
+#: includes/admin/class-prdd-lite-global-menu.php:45
+#: templates/prdd-lite-delivery-settings-meta-box.php:25
+#: src/admin-settings/App.js:166
+#: src/admin-settings/components/Header.js:107
+#: src/admin-settings/screens/settings/Settings.js:76
+#: src/product-metabox/DeliverySettingsForm.js:326
+#: src/product-metabox/tabs/SettingsTab.js:84
+msgid "Settings"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:576
+msgid "If you love Product Delivery Date for WooCommerce - LITE, then please leave us a"
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:578
+msgid "rating. Thank you in advance."
+msgstr ""
+
+#: class-prdd-lite-woocommerce.php:590
+msgid "<span id=\"prdd-update-response\">We have made some backend changes to Product Delivery Date Lite plugin. Please update the database by clicking the “Update Database” button for a smoother experience of the plugin. <input style=\"margin-top: 10px;display: block;\" type=\"button\" id=\"prdd-update-yes\" class=\"button button-primary\" value=\"Update database\"  /></span> <span id=\"prdd-update-status\" style=\"display: none;\"></span>"
+msgstr ""
+
+#: includes/admin/api/class-prdd-lite-admin-api.php:49
+msgid "Sorry, you are not allowed to do that."
+msgstr ""
+
+#: includes/admin/api/class-prdd-lite-admin-api.php:103
+msgid "Settings saved."
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:216
+#: src/admin-settings/App.js:150
+msgid "Welcome"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:217
+#: src/admin-settings/App.js:156
+msgid "FAQ"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:221
+#: src/admin-settings/App.js:175
+msgid "Block Time Slot"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:222
+#: src/admin-settings/App.js:184
+#: src/admin-settings/screens/settings/Holidays.js:87
+#: src/admin-settings/screens/settings/Holidays.js:106
+msgid "Holidays"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:225
+#: src/admin-settings/App.js:195
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:121
+msgid "Calendar Appearance"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:226
+#: src/admin-settings/App.js:204
+#: src/admin-settings/screens/appearance/FieldLabels.js:76
+msgid "Field Labels"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:229
+#: src/admin-settings/App.js:215
+msgid "Google Sync"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-admin-react-page.php:230
+#: src/admin-settings/App.js:224
+msgid "Subscriptions"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:26
+#: src/admin-settings/screens/deliveries/DeliveriesCalendar.js:94
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:174
+msgid "Calendar View"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:28
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:170
+msgid "Product View"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:35
+msgid "Loading calendar..."
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:243
+msgid "Order:"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:244
+msgid "Product Name:"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:245
+msgid "Customer Name:"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-calendar-view.php:269
+#: includes/class-prdd-lite-process.php:68
+#: src/admin-settings/screens/appearance/FieldLabels.js:117
+#: src/admin-settings/screens/appearance/FieldLabels.js:268
+#: src/admin-settings/screens/appearance/FieldLabels.js:420
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:449
+msgid "Delivery Date:"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-global-menu.php:27
+#: includes/admin/class-prdd-lite-meta-box.php:26
+#: includes/admin/class-prdd-lite-product-metabox-react.php:73
+msgid "Product Delivery Date"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-global-menu.php:35
+#: includes/admin/class-prdd-lite-global-menu.php:36
+#: src/admin-settings/components/Header.js:139
+msgid "View Deliveries"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-product-metabox-react.php:99
+msgid "The Product Delivery Date metabox is rendered with React. Use the prdd-lite.productMetabox.tabs / prdd-lite.productMetabox.fields JS filters instead."
+msgstr ""
+
+#: includes/admin/class-prdd-lite-product-metabox-react.php:104
+msgid "Template overrides of the product metabox are no longer used."
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:137
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:45
+msgid "All"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:149
+msgid "Deliveries From Today Onwards"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:162
+msgid "Today's Deliveries"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:175
+msgid "Tomorrow's Deliveries"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:190
+msgid "Order ID"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:191
+msgid "Customer Name"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:192
+msgid "Product Name"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:193
+#: includes/class-prdd-lite-process.php:206
+#: includes/class-prdd-lite-validation.php:42
+#: includes/class-prdd-privacy-policy-lite.php:45
+msgid "Delivery Date"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:194
+msgid "Quantity"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:195
+msgid "Amount"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:196
+msgid "Order Date"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:197
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:252
+#: src/product-metabox/tabs/DeliveryChargesTab.js:343
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:118
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:158
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:268
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:301
+msgid "Actions"
+msgstr ""
+
+#: includes/admin/class-prdd-lite-view-deliveries-table.php:553
+msgid "View Order"
+msgstr ""
+
+#: includes/class-prdd-lite-validation.php:42
+msgid " is a required field."
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:63
+msgid "Frequently Asked Questions for %s Plugin"
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:123
+msgid "If your queries are not answered here, you can send an email directly to %s for some additional requirements."
+msgstr ""
+
+#: includes/component/faq-support/templates/faq-page/faq-page.php:124
+msgid "support@tychesoftwares.com"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:111
+msgid "You have any queries? Please check our %1$sFAQ%2$s page."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:172
+msgid "I only needed the plugin for a short period."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:178
+msgid "I found a better plugin."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:180
+msgid "Please let us have the plugin's name so that we can make improvements"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
+msgid "The plugin is not working."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:186
+msgid "Please share what was faulty with the plugin so that we may get the issue fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
+msgid "The plugin is causing issues on my site"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:192
+msgid "We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
+msgid "Some features I need are not working as per my expectations"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:198
+msgid "Please tell us about these features."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
+msgid "The plugin is not compatible with another plugin/theme"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:204
+msgid "We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
+msgid "I’m unable to set up deliveries for products as per my requirements. The templates are the same."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:214
+msgid "I want pickup of the products along with delivery."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:220
+msgid "Other"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:234
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:245
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:246
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:247
+#: src/product-metabox/tabs/DeliveryChargesTab.js:288
+msgid "Cancel"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:260
+msgid "Please select a reason for deactivation!"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:5
+#: src/shared/components/UpgradeModal.js:21
+msgid "Product Delivery Date PRO for WooCommerce is CHEAPER than you think"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:6
+#: src/shared/components/UpgradeModal.js:30
+msgid "Upgrade from Lite to PRO with our Super Saver PRO Access Deal!"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:7
+#: src/shared/components/UpgradeModal.js:39
+msgid "Unlock all premium features of Product Delivery Date PRO for WooCommerce without restrictions — all while staying within budget. Your store's success is one click away, so don't miss the Super Saver PRO Access Deal that can skyrocket your sales today!"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:8
+msgid "Upgrade from lite to PRO at special pricing. Click the button below to <i>access the latest deals.</i>"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:11
+#: src/shared/components/UpgradeModal.js:17
+msgid "Your store was thriving with PRO - Why stop now?"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:12
+#: src/shared/components/UpgradeModal.js:26
+msgid "Upgrade to Product Delivery Date PRO for WooCommerce"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:13
+#: src/shared/components/UpgradeModal.js:35
+msgid "Reclaim the 20+ powerful features that were driving your growth. Upgrade to PRO again and continue unlocking your store's full potential. Without PRO you are missing out on -"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:14
+msgid "<b><i>Don't miss out on what you were achieving - take action today! Click the button below to Upgrade to PRO.</i></b>"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:25
+#: src/shared/components/UpgradeModal.js:64
+msgid "Access all the premium features ( Delivery per product, Same Day & Next Day delivery, Google Calendar Sync and much more )"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:26
+#: src/shared/components/UpgradeModal.js:68
+msgid "Early access to new features"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:27
+#: src/shared/components/UpgradeModal.js:69
+msgid "Dedicated Customer Support"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:28
+#: src/shared/components/UpgradeModal.js:70
+msgid "Priority access to our other offers/services"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:30
+#: src/shared/components/UpgradeModal.js:94
+msgid "And more!"
+msgstr ""
+
+#: includes/component/upgrade-to-pro/templates/upgrade-to-pro-page/upgrade-to-pro-modal.php:34
+#: src/shared/components/UpgradeModal.js:103
+msgid "Upgrade and Unlock"
+msgstr ""
+
+#. translators: %s: Renew Link
+#: includes/component/upgrade-to-pro/ts-upgrade-to-pro.php:253
+msgid "Your Woo store is losing its WOW factor. Your Product Delivery Date Pro for WooCommerce license has expired. <a href=\"%s\" target=\"_blank\" class=\"button\">Renew Now</a>"
+msgstr ""
+
+#. translators: %s: Link to PRDD Trial
+#: includes/component/upgrade-to-pro/ts-upgrade-to-pro.php:263
+msgid "Upgrade to the PRO version of Product Delivery Date Pro for WooCommerce plugin for $1! Enjoy all Pro features for 30 days at this insane price. Limited time offer <a href=\"%s\" class=\"button-primary button button-large\" target=\"_blank\"><b>Act now!</b></a>"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:38
+msgid "Get Started with "
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:42
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:68
+msgid "Product Delivery Date Lite"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:46
+msgid "Enable Delivery Date Capture"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:48
+msgid "To start allowing customers to select their preferred delivery date on each product page, simply activate the Enable Delivery Date checkbox in the Product Delivery Date Meta box which gets added on the Add/Edit Product page."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:51
+msgid "Learn More"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:61
+msgid "Know more about Product Delivery Date Pro"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:63
+msgid "The Product Delivery Date Pro plugin gives you features where you can allow customers to choose a Delivery Time along with Date and to Set Recurring Weekdays or Specific Dates or both as Delivery days as compared to Lite Plugin. Here are some other notable features the Pro version provides."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:72
+msgid "View All Deliveries"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:74
+msgid "The ability to show all the deliveries with the Customer Details and Delivery Date & Time."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:83
+msgid "Delivery Time along with Delivery Date"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:85
+msgid "The provision for allowing Delivery Time along with the Delivery Date on the product page makes the delivery more accurate. Delivering products on customer's preferred date and time improves your customers service."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:100
+msgid "Synchronise Deliveries with Google Calendar"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:102
+msgid "The ability to synchronise deliveries to the google calendar helps administrator or store manager to manage all the things in a single calendar."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:110
+msgid "Different delivery settings for each product"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:112
+msgid "The Pro version of the plugin allows you to add different delivery settings like Same day cut-off time, Next Day cut-off time or Minimum Delivery Time for each product and product-specific holidays. It also allows you to add different delivery charges for different weekdays and specific dates."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:123
+msgid "View full list of differences between Lite & Pro plugin"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:130
+msgid "Getting to Know Tyche Softwares"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:132
+msgid "Visit the Tyche Softwares Website"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:133
+msgid "View all Premium Plugins"
+msgstr ""
+
+#: includes/prdd-lite-component.php:238
+msgid "Minimum Delivery Time (in hours) is not working as expected."
+msgstr ""
+
+#: includes/prdd-lite-component.php:244
+msgid "I need delivery time along with the delivery date."
+msgstr ""
+
+#: includes/prdd-lite-component.php:250
+msgid "I want deliveries on some specific dates only."
+msgstr ""
+
+#: includes/prdd-lite-component.php:256
+msgid "I have purchased the Pro version of the Plugin."
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:24
+#: src/product-metabox/DeliverySettingsForm.js:307
+msgid "Delivery Options"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:26
+#: src/product-metabox/DeliverySettingsForm.js:314
+#: src/product-metabox/tabs/TimePeriodTab.js:124
+msgid "Delivery Time Period"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:41
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:263
+msgid "Enable Delivery Date:"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:56
+msgid "Enable Delivery Date on Products Page"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:68
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:543
+msgid "Delivery Days:"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:91
+msgid "Select Weekdays"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:113
+#: src/product-metabox/tabs/SettingsTab.js:104
+msgid "Mandatory Fields:"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:126
+msgid "Enable mandatory fields selection on front end product details page."
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:142
+#: src/admin-settings/screens/settings/Holidays.js:129
+#: src/product-metabox/tabs/SettingsTab.js:148
+msgid "No delivery on these dates:"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:151
+#: src/product-metabox/tabs/SettingsTab.js:157
+msgid "Select dates for which the delivery will be completely disabled only for this product. Please click on the date in calendar to add or delete the date from the holiday list."
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:164
+#: src/product-metabox/tabs/TimePeriodTab.js:131
+msgid "Minimum Delivery preparation time (in hours):"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:176
+#: src/product-metabox/tabs/TimePeriodTab.js:115
+msgid "Enable Delivery after X number of hours from current time. The customer can select a delivery date that is available only after the minimum hours that are entered here. For example, if you need 1 day advance notice for a delivery, enter 24 here."
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:184
+#: src/product-metabox/tabs/TimePeriodTab.js:290
+msgid "Number of Dates to choose:"
+msgstr ""
+
+#: templates/prdd-lite-delivery-settings-meta-box.php:196
+#: src/product-metabox/tabs/TimePeriodTab.js:294
+msgid "The maximum number of delivery dates you want to be available for your customers to choose from. For example, if you take only 2 months delivery in advance, enter 60 here."
+msgstr ""
+
+#: src/admin-settings/App.js:58
+msgid "You have unsaved changes. Are you sure you want to leave this page?"
+msgstr ""
+
+#: src/admin-settings/components/ErrorBoundary.js:29
+msgid "Something went wrong while loading this page. Please reload the page and try again."
+msgstr ""
+
+#: src/admin-settings/components/Footer.js:21
+msgid "Need Support?"
+msgstr ""
+
+#: src/admin-settings/components/Footer.js:27
+msgid "We're always happy to help you."
+msgstr ""
+
+#: src/admin-settings/components/Footer.js:39
+msgid "Please rate this plugin"
+msgstr ""
+
+#: src/admin-settings/components/Footer.js:45
+msgid "if this product helped you."
+msgstr ""
+
+#: src/admin-settings/components/Footer.js:50
+msgid "Thanks for your support"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:53
+msgid "Toggle navigation"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:91
+msgid "Home"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:123
+msgid "Appearance"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:157
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:137
+msgid "Bulk Product Settings"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:173
+msgid "Integrations"
+msgstr ""
+
+#: src/admin-settings/components/Header.js:184
+msgid "Version"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:52
+#: src/admin-settings/screens/appearance/FieldLabels.js:38
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:162
+#: src/admin-settings/screens/integrations/Subscriptions.js:46
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:165
+#: src/admin-settings/screens/settings/Holidays.js:54
+#: src/admin-settings/screens/settings/Settings.js:41
+msgid "Settings Saved."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:75
+#: src/admin-settings/screens/appearance/FieldLabels.js:61
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:243
+#: src/admin-settings/screens/integrations/Subscriptions.js:91
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:188
+#: src/admin-settings/screens/settings/Holidays.js:74
+#: src/admin-settings/screens/settings/Settings.js:61
+#: src/shared/components/SavingLoader.js:14
+msgid "Saving Changes…"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:81
+#: src/admin-settings/screens/appearance/FieldLabels.js:67
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:373
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:249
+#: src/admin-settings/screens/integrations/Subscriptions.js:98
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:194
+#: src/admin-settings/screens/settings/Holidays.js:80
+#: src/admin-settings/screens/settings/Settings.js:67
+msgid "Loading…"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:90
+msgid "Calendar Appearance Settings"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:96
+msgid "Setup the delivery calendar as per your needs. How? Check the settings below and adjust them based on your requirements."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:104
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:505
+#: src/admin-settings/screens/appearance/FieldLabels.js:90
+#: src/admin-settings/screens/appearance/FieldLabels.js:644
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:92
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:284
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1594
+#: src/admin-settings/screens/integrations/Subscriptions.js:122
+#: src/admin-settings/screens/integrations/Subscriptions.js:520
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:696
+#: src/admin-settings/screens/settings/Holidays.js:116
+#: src/admin-settings/screens/settings/Settings.js:87
+#: src/admin-settings/screens/settings/Settings.js:847
+msgid "Save Settings"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:132
+msgid "Enable Availability Display on the Product page:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:141
+msgid "Please select this checkbox if you want to display the number of deliveries available for a given product on a given date and time."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:168
+msgid "Calendar Language:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:177
+msgid "Choose the language for your delivery calendar."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:220
+msgid "Date Format:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:229
+msgid "The format in which the delivery date appears to the customers on the product page once the date is selected."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:273
+msgid "Time Format:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:282
+msgid "The format in which the delivery time appears to the customers on the product page once the date is selected."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:328
+msgid "First Day of Week:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:337
+msgid "Choose the first day of week displayed on the Delivery Date calendar."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:381
+msgid "Number of Months:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:390
+msgid "The number of months to be shown on the calendar. If the delivery dates spans across 2 months, then dates of 2 months can be shown simultaneously without the need to press Next or Back buttons."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:420
+msgid "Theme:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:430
+msgid "Select the theme for the calendar. You can choose a theme which blends with the design of your website."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/CalendarAppearance.js:475
+msgid "Preview Theme"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:82
+msgid "Set up the field labels of delivery fields the way you want it!"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:107
+msgid "Labels on Product Page"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:126
+msgid "Delivery Date label on product page."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:151
+#: src/admin-settings/screens/appearance/FieldLabels.js:302
+#: src/admin-settings/screens/appearance/FieldLabels.js:456
+msgid "Delivery Time:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:160
+msgid "Delivery Time label on the product page."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:185
+msgid "Choose Time Text:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:194
+msgid "Text for the 1st option of Time Slot dropdown field that instructs the customer to select a time slot."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:219
+msgid "Delivery Date Placeholder:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:229
+msgid "Placeholder for delivery date field."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:258
+msgid "Labels on Order Received page & in email notification"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:277
+msgid "Delivery Date label on the order received page and email notification."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:311
+msgid "Delivery Time label on the order received page and email notification."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:336
+msgid "ICS File Name:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:346
+msgid "ICS File name."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:372
+#: src/admin-settings/screens/appearance/FieldLabels.js:490
+#: src/product-metabox/tabs/DeliveryChargesTab.js:241
+msgid "Delivery Charges:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:381
+msgid "Delivery Charges label on the order received page and email notification."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:410
+msgid "Labels on Cart & Check-out Page"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:430
+msgid "Delivery Date label on the cart and checkout page."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:465
+msgid "Delivery Time label on the cart and checkout page."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:500
+msgid "Delivery Charges label on the cart and checkout page."
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:530
+msgid "Labels for Estimated Delivery Option"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:540
+msgid "Estimated Delivery Section Heading:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:549
+msgid "Estimated Delivery Section Heading"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:574
+msgid "Estimated Delivery Display In Days Text:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:583
+msgid "Use {{business.days}} shortcode to replace it with the number of business days required for delivery"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:607
+msgid "Estimated Delivery Display with Specific Date Text:"
+msgstr ""
+
+#: src/admin-settings/screens/appearance/FieldLabels.js:616
+msgid "Use {{expected.date}} shortcode to replace it with the expected date of delivery"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:18
+msgid "All Products"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:22
+msgid "All categories"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:48
+msgid "Please select the products or categories and tags."
+msgstr ""
+
+#. translators: 1: Products saved so far, 2: Number of products.
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:72
+msgid "Saving Changes… %1$d / %2$d"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:107
+msgid "The product delivery settings have been saved. You can view & edit them from the Edit product page of the products that you had selected."
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:143
+msgid "Add delivery settings for multiple products together. Once the settings are saved, you will be able to see them & edit them from the Edit product page of the products that you have selected."
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:159
+msgid "Multiple Products Delivery Settings"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:170
+msgid "Products:"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:179
+msgid "Please select product to apply the below settings to"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:193
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:235
+msgid "Select Products and/or Categories"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:212
+msgid "Products Categories And Tags:"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:221
+msgid "Please select product categories and tags to apply the below settings to"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:255
+msgid "Override Existing product Settings?"
+msgstr ""
+
+#: src/admin-settings/screens/bulk/BulkProductSettings.js:264
+msgid "Please select this checkbox if you want to replace the existing delivery settings with the new ones. If this checkbox is not selected, then it will retain the existing delivery settings on the products & update the new ones in it."
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/DeliveriesCalendar.js:104
+msgid "Loading delivery events..."
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:148
+msgid "All Deliveries"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:183
+msgid "Order View"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:197
+msgid "CSV"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:207
+msgid "Print"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:224
+msgid "Start Date:"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:257
+msgid "End Date:"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:283
+msgid "Order Status:"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:299
+msgid "All Statuses"
+msgstr ""
+
+#: src/admin-settings/screens/deliveries/ViewDeliveries.js:324
+msgid "Apply filters"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:46
+msgid "Currently, there is no provision for entering the delivery time in the free version. This is possible in the Pro version."
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:49
+msgid "View Demo"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:60
+msgid "Yes, you can choose a different language for the delivery date calendar under Product Delivery Date -> Settings -> Appearance -> Calendar Appearance."
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:71
+msgid "Currently, it is not possible to add the extra charges for deliveries on weekdays or for specific dates in the free version. However, this feature is available in the"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:74
+#: src/admin-settings/screens/home/Faq.js:101
+#: src/admin-settings/screens/home/Faq.js:118
+msgid "Product Delivery Date Pro for WooCommerce plugin"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:98
+msgid "Currently, it is not possible to edit the selected delivery date for the WooCommerce orders in the free version. However, this feature is available in the"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:104
+msgid "The admin, as well as the customers, can edit the delivery date for the already placed WooCommerce orders."
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:115
+msgid "Currently, it is not possible to change the Delivery Date label in the free version. However, this feature is available in the"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:140
+msgid "You can refer"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:143
+msgid "here"
+msgstr ""
+
+#: src/admin-settings/screens/home/Faq.js:161
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:30
+msgid "Welcome!"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:36
+msgid "Thank you for choosing Product Delivery Date for WooCommerce - Lite plugin."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:58
+msgid "What do you want to do?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:70
+msgid "Can I exclude the weekends for delivery as we do not deliver on weekends?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:77
+msgid "Yes, you can exclude the weekends by not selecting Saturday & Sunday (or any weekdays) in the Delivery Days field on the Product delivery date meta box on WooCommerce edit product page."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:89
+#: src/admin-settings/screens/home/Welcome.js:119
+#: src/admin-settings/screens/home/Welcome.js:149
+#: src/admin-settings/screens/home/Welcome.js:179
+msgid "Documentation"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:100
+msgid "I need some lead preparation time before I can make a delivery. Can I set a minimum delivery time for my products?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:107
+msgid "Yes, you can set a minimum delivery period in hours, which will be taken into consideration before showing the earliest available delivery date to your customers. This can be done under the \"Minimum Delivery preparation time (in hours):\" field under the Product Delivery Date -> Delivery Time Period tab on WooCommerce edit product page."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:130
+msgid "Can I disable product delivery on some public holidays?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:137
+msgid "Yes. Add the dates for all products under Product Delivery Date -> Settings -> Holidays, or for a single product with the \"No delivery on these dates\" setting under the Product Delivery Date -> Settings tab on WooCommerce edit product page. These dates will be disabled in the calendar."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:160
+msgid "Can I make the delivery date selection mandatory?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:167
+msgid "Yes, enable the \"Mandatory Fields\" option under the Product Delivery Date -> Settings tab on WooCommerce edit product page. Customers will then have to select a delivery date before adding the product to the cart."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:190
+msgid "Can I create fixed timeslots or add extra charges for delivery dates?"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:197
+msgid "Delivery time slots, delivery charges for weekdays or specific dates, same day & next day cut-off and many more features are available in the Product Delivery Date Pro for WooCommerce plugin."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:209
+#: src/shared/components/ProNotice.js:14
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:221
+msgid "Your next game changers are here…"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:227
+msgid "Thank us later."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:240
+msgid "Recover lost sales with Abandon Cart Pro for WooCommerce"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:253
+msgid "Deposits For WooCommerce"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:266
+msgid "Booking & Appointment Plugin for WooCommerce"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:279
+msgid "Order Delivery Date Pro for WooCommerce"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:291
+msgid "Join our Community"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:297
+msgid "Want to hang out with us? Our Facebook group is the perfect place to meet like-minded users and learn more about our plugins."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:309
+msgid "Read Documentation"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:319
+msgid "Knowledgebase"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:325
+msgid "Maximize your Product Delivery Date performance! Get all the info you need from our Knowledge base."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:337
+msgid "Check it out"
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:348
+msgid "Tyche Softwares support hours are from 10 am to 6 pm (GMT +5:30 timezone), Monday through Friday. Our response time is approximately 24 hours during working days."
+msgstr ""
+
+#: src/admin-settings/screens/home/Welcome.js:360
+msgid "Submit a Ticket"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:107
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:136
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1423
+msgid "Redirect URI has been copied!"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:258
+msgid "Logging out from Google Calendar…"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:270
+msgid "Google Calendar Sync"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:276
+msgid "Stay connected with your store by syncing it with the Google Calendar. Your customers can have their own fair share by adding the delivery info to their own GC."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:302
+#: src/admin-settings/screens/settings/Settings.js:104
+msgid "General Settings"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:312
+msgid "Event Location:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:321
+msgid "Enter the text that will be used as location field in the calendar event. If left empty, website description is sent instead.&#13;&#10;Note: You can use ADDRESS, FULL_ADDRESS and CITY placeholders which will be replaced by their real values."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:346
+msgid "Event Summary(name):"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:355
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:397
+msgid "You can use the following placeholders which will be replaced by their real values: SITE_NAME, CLIENT, PRODUCTS, PRODUCT_WITH_QTY, ORDER_DATE_TIME, ORDER_DATE, ORDER_NUMBER, PRICE, PHONE, NOTE, ADDRESS, FULL_ADDRESS , EMAIL (Client's email)"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:380
+msgid "Event Description:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:426
+msgid "Customer Add to Calendar Button Settings"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:436
+msgid "Show Add to Calendar Button on Order Received Page:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:445
+msgid "Show Add to Calendar button on the Order Received page for the customers."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:472
+msgid "Show Add to Calendar Button in The Customer Notification Email:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:481
+msgid "Show Add to Calendar button in the Customer notification email."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:508
+msgid "Show Add to Calendar Button on My Account:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:517
+msgid "Show Add to Calendar button on My account page for the customers."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:544
+msgid "Show Add To Calendar Button on Delivery Calendar Page:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:553
+msgid "Shows the 'Add to Calendar' button on the Order Received page. On clicking the button, an ICS file will be downloaded."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:580
+msgid "Show Add To Calendar Button in New Order Email Notification:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:589
+msgid "Show 'Add to Calendar' button in the New Order email notification."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:616
+msgid "Send Delivery Information As Attachments (ICS Files) In Email Notifications:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:625
+msgid "Allow customers to export deliveries as ICS file after placing an order. Sends ICS files as attachments in email notifications."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:658
+msgid "Admin Calendar Sync Settings"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:668
+msgid "Integration Mode:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:677
+msgid "Select method of integration.&#13;&#10;'Sync Automatically' will add the events to the Google calendar, which is set in the 'Calendar to be used' field, automatically when a customer places an order.&#13;&#10; 'Sync Manually' will add an 'Add to Calendar' button in emails received by admin on New customer order and on the Delivery Calendar page.&#13;&#10;'Disabled' will disable the integration with Google Calendar."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:705
+msgid "OAuth Sync (Recommended)"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:734
+msgid "Service Account Sync"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:763
+msgid "Sync Manually"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:792
+msgid "Disabled"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:812
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1200
+msgid "Instructions:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:817
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1205
+msgid "To set up Google Calendar API, please click on \"Show me how\" link and carefully follow these steps:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:829
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1217
+msgid "Show me how"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:847
+msgid "Google Calendar API requires php V5.3+ and some php extensions."
+msgstr ""
+
+#. translators: %s: Link to the Google APIs console.
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:856
+msgid "Go to Google APIs console by clicking %s. Login to your Google account if you are not already logged in."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:865
+msgid "Create a new project using the left side pane. Click on 'Home' option. Name the project \"Deliveries\" (or use your chosen name instead)."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:871
+msgid "Click on API Manager from left side pane."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:877
+msgid "Click \"Calendar API\" under Google Apps APIs and Enable the API."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:883
+msgid "Go to \"Credentials\" menu in the left side pane and click on \"New Credentials\" dropdown."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:889
+msgid "Click on \"OAuth client ID\" option. Then click on Configure consent screen."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:895
+msgid "Enter a Product Name, e.g. Product Delivery Date, inside the opening pop-up. Click Save."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:901
+msgid "Select \"Web Application\" option, enter the Web client name and create the client ID."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:907
+msgid "Click on New Credentials dropdown and select \"Service account key\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:913
+msgid "Click \"Service account\" and select \"New service account\" and enter the name. Now select key type as \"P12\" and create the service account."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:919
+msgid "A file with extension .p12 will be downloaded."
+msgstr ""
+
+#. translators: %s: Key file folder.
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:928
+msgid "Using your FTP client program, copy this key file to folder: %s . This file is required as you will grant access to your Google Calendar account even if you are not online. So this file serves as a proof of your consent to access to your Google calendar account. Note: This file cannot be uploaded in any other way. If you do not have FTP access, ask the website admin to do it for you."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:937
+msgid "Enter the name of the key file to \"Key file name\" setting of Order Delivery Date. Exclude the extention .p12."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:943
+msgid "Copy \"Email address\" setting from Manage service account of Google apis console and paste it to \"Service account email address\" setting of Product Delivery Date."
+msgstr ""
+
+#. translators: %s: Link to the Google Calendar.
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:952
+msgid "Open your Google Calendar by clicking this link: %s"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:962
+msgid "Create a new Calendar by selecting \"my Calendars > Create new calendar\" on left side pane. <b>Try NOT to use your primary calendar.</b>"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:970
+msgid "Give a name to the new calendar, e.g. Product Delivery Date calendar. <b>Check that Calendar Time Zone setting matches with time zone setting of your WordPress website.</b> Otherwise there will be a time shift."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:977
+msgid "Paste already copied \"Email address\" setting from Manage service account of Google apis console to \"Person\" field under \"Share with specific person\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:983
+msgid "Set \"Permission Settings\" of this person as \"Make changes to events\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:989
+msgid "Click \"Add Person\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:995
+msgid "Click \"Create Calendar\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1001
+msgid "Select the created calendar and click \"Calendar settings\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1007
+msgid "Copy \"Calendar ID\" value on Calendar Address row."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1013
+msgid "Paste this value to \"Calendar to be used\" field."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1019
+msgid "Click \"Save Settings\"."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1025
+msgid "After these stages, you have set up Google Calendar API. To test the connection, click the \"Test Connection\" link."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1031
+msgid "If you get a success message, you should see a test event inserted to the Google Calendar and you are ready to go. If you get an error message, double check your settings."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1042
+msgid "Key File Name:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1051
+msgid "Enter key file name here without extention, e.g. ab12345678901234567890-privatekey."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1076
+msgid "Service Account Email Address:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1085
+msgid "Enter Service account email address here, e.g. 1234567890@developer.gserviceaccount.com."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1110
+msgid "Calendar to Be Used"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1120
+msgid "Enter the ID of the calendar in which your deliveries will be saved, e.g. abcdefg1234567890@group.calendar.google.com."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1150
+msgid "Test Connection"
+msgstr ""
+
+#. translators: %s: Link to the Google API Console.
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1233
+msgid "Go to the <b>%s</b> and select a project, or create a new one. Login to your Google account if you are not already logged in."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1242
+msgid "If creating a new project, give the Project name e.g 'My Delivery Project' and click on the Create button."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1249
+msgid "Once the project is created, the Calendar API needs to be enabled. To do so, click on <b>ENABLE API AND SERVICES</b> link and search for <b>Google Calendar API</b>, and enable it by clicking the ENABLE button."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1257
+msgid "On the left, click <b>Credentials</b>. If this is your first time creating a client ID, you'll be prompted to configure the consent screen. Click on <b>Configure Consent Screen</b>."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1265
+msgid "Go to the <b>OAuth consent screen</b>. Select User Type as <b>Internal</b> and click on the CREATE button. After that, set the <b>Application name</b> and click on the Create button."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1273
+msgid "Go back to the <b>Credentials</b> tab, click <b>Create credentials</b>, then select <b>OAuth client ID</b>."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1281
+msgid "Select <b>Web application</b> under Application type and provide the necessary information to create your project's credentials."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1289
+msgid "For <b>Authorized redirect URIs</b> enter the Redirect URI (Can be found in Product Delivery Date menu > Settings > Integrations). Then click Create button."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1297
+msgid "On the dialog that appears, you'll see your <b>Client ID</b> and <b>Client Secret</b>. Fill the details in below fields and click on Save Settings."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1304
+msgid "Once saved, Connect to Google Calendar button will appear. Click on it to get connected to the Google Calendar."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1311
+msgid "Once the Successful Connection to Google, <b>Calendar to be used</b> option will appear. Here select the calendar to which the event should get created for the delivery."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1323
+msgid "Client ID:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1356
+msgid "Client Secret:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1389
+msgid "Redirect URI"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1454
+msgid "Select Calendar"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1471
+msgid "The event for the delivery will be created in the Google Calendar selected here."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1534
+msgid "Connect to Google Calendar"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1562
+msgid "Logout from Google Calendar"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/GoogleCalendarSync.js:1579
+msgid "It will add an \"Add to Calendar\" button in emails received by admin on New customer order and on the Delivery Calendar page."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:108
+msgid "WooCommerce Subscriptions Compatibility"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:114
+msgid "Configure how Product Delivery Date Pro behaves with WooCommerce Subscriptions. Requires WooCommerce Subscriptions (by WooCommerce) to be installed and active."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:146
+msgid "<strong>WooCommerce Subscriptions is not active.</strong> Please install and activate <a href=\"https://woocommerce.com/products/woocommerce-subscriptions/\" target=\"_blank\">WooCommerce Subscriptions</a> to use these settings."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:168
+msgid "Subscription Compatibility Settings"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:179
+msgid "Enable Subscription Compatibility:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:188
+msgid "Master toggle. Activates all subscription-aware behaviour in the plugin. All settings below require this to be enabled."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:223
+msgid "Delivery Date & Time as per Subscription Period:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:232
+msgid "The delivery calendar on the product page will display only dates within the current billing period. Weekly subscription → next 7 days. Monthly → next 30 days. Yearly → next 365 days. All existing rules (blackout dates, lockout, cut-off times) still apply within the window."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:260
+msgid "Update Next Payment Date Based on Delivery Date & Cut-off:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:269
+msgid "After checkout, the subscription's next payment date will be automatically recalculated as: selected delivery date + 1 billing period, adjusted for the cut-off time buffer to ensure fulfilment is always achievable."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:297
+msgid "Update Delivery Date & Time on Renewal:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:306
+msgid "On every renewal order, the plugin automatically calculates and assigns the next valid delivery date based on: previous delivery date, billing schedule, minimum delivery time, cut-off times, blackout dates, and non-working days. Delivery lockout & charges are also updated on the renewal order. This is always active when Subscription Compatibility is enabled — no separate toggle is required."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:313
+msgid "Always active when compatibility is enabled"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:334
+msgid "Enable the master toggle above to configure subscription delivery options."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:355
+msgid "How Renewal Delivery Dates Are Calculated"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:365
+msgid "When a renewal order is generated, the plugin automatically determines the next delivery date using the following rules in order:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:372
+msgid "Start from: last delivery date + subscription billing interval (e.g. +7 days for weekly)."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:378
+msgid "Apply minimum delivery time configured for the product or globally."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:384
+msgid "Apply cut-off time — if the deadline for the candidate date has already passed, advance by one day."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:390
+msgid "Skip blackout / holiday dates."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:396
+msgid "Skip non-working days (weekdays disabled in product or global settings)."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:402
+msgid "Skip dates / time slots that have reached their maximum delivery lockout count."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:408
+msgid "Assign the resulting date to the renewal order and update lockout counts and delivery charges accordingly."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:420
+msgid "<strong>Note:</strong> If no valid date is found within 90 days (e.g. all dates are blocked), the renewal order is flagged and an email notification is sent to the store admin."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:441
+msgid "Edge Case Behaviour"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:451
+msgid "Subscription Schedule Change:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:460
+msgid "If a subscription billing schedule is changed (e.g. weekly → monthly), the new billing interval is automatically used from the next renewal onwards. No manual action is needed."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:472
+msgid "Paused Subscriptions:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:481
+msgid "No delivery date is assigned during a pause. When a subscription is resumed, the delivery date baseline is cleared and recalculated fresh from the resumption date, so missed weeks are not backfilled."
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:493
+msgid "Manual Renewals:"
+msgstr ""
+
+#: src/admin-settings/screens/integrations/Subscriptions.js:502
+msgid "Manual renewals triggered from the WooCommerce admin follow the same automatic delivery date calculation logic as scheduled renewals."
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:202
+msgid "Block Time Slots"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:208
+msgid "Taking some time off is a must. That's why you can block or hide time slots for particular dates or weekdays and get that groove on!"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:240
+msgid "Delivery Days/Dates"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:246
+msgid "Time Slot"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:333
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:758
+msgid "Unblock"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:360
+msgid "Add Time Slots"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:369
+msgid "Block Time Slot For:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:378
+msgid "Select \"Dates\" option to block time slots for individual dates. Select \"Weekdays\" option to block the time slots for a weekday or multiple weekdays."
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:404
+msgid "Dates"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:431
+msgid "Weekdays"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:459
+msgid "Block time slots for individual dates."
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:469
+msgid "Select Dates"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:504
+msgid "Weekdays:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:514
+msgid "Block time slots for weekdays."
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:524
+msgid "Select Weekdays:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:551
+msgid "Select Time Slots to Block:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:561
+msgid "This will list all the time slots which are created in General Settings or in Custom Delivery Settings."
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:595
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:103
+msgid "From:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:604
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:636
+#: src/product-metabox/components/fields.js:67
+msgid "Hours"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:616
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:648
+#: src/product-metabox/components/fields.js:99
+msgid "Minutes"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:627
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:134
+msgid "To:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:673
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:700
+msgid "Add Time Slot"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:736
+msgid "Add More"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:752
+msgid "Bulk Action"
+msgstr ""
+
+#: src/admin-settings/screens/settings/BlockTimeSlot.js:769
+msgid "Apply"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Holidays.js:89
+msgid "If you want to add holiday for all products then you can add them from here. You have to select dates for holidays and those will not available to select for all products."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Holidays.js:139
+msgid "Select dates for which the delivery will be completely disabled for all the products in your WooCommerce store.&#13;&#10; The dates selected here will be unavailable for all products. Please click on the date in calendar to add or delete the date from the list."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:79
+msgid "Here are some general settings for your store. We have set up some defaults to help you get started!"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:114
+msgid "Enable Rounding of Prices:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:123
+msgid "Rounds the Price to the nearest Integer value."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:151
+msgid "Allow Deliveries to be Editable:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:160
+msgid "Enabling this option will allow Deliveries to be editable from Cart and Checkout page"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:187
+msgid "Allow Deliveries to be Reschedulable:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:196
+msgid "Enabling this option will allow Deliveries to be reschedulable from My Account page"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:223
+msgid "Minimum Number of Days For Rescheduling:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:232
+msgid "Minimum number of days before the delivery date, after which Delivery cannot be rescheduled."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:258
+msgid "Keep the data when deleting the plugin?"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:267
+msgid "Enabling this setting will not delete the data when you delete the plugin from your website."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:295
+msgid "Reset usage tracking:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:304
+msgid "This will reset your usage tracking statistics, causing it to show the opt-in banner again and not send any data."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:315
+msgid "Reset"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:331
+msgid "Product Page Settings"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:342
+msgid "Duplicate Dates from First Product In the Cart To Other Products:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:351
+msgid "The plugin will duplicate the delivery date selected for the first product in the cart for all other products. In case if the user changes the date for a product added later, the same will be applied to existing products in the cart."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:384
+msgid "Select products to apply Duplicate Dates:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:413
+msgid "Select if you want to apply for all product"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:441
+msgid "Select if you want to apply for particular category product"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:460
+msgid "Select categories:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:469
+msgid "Select categories that you want to apply duplicates date."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:495
+msgid "Enable this if you want that the delivery date chosen for a product should be automatically applied on all other existing products in the cart:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:504
+msgid "Enable this if you want that the delivery date chosen for a product should be automatically applied on all other existing products in the cart."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:539
+msgid "Change duplicate date message which is displaying on the product page:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:548
+msgid "Change duplicate date message which is displaying on the product page."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:572
+msgid "Apply One-Time Delivery Charges For Multiple Products:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:581
+msgid "Select this checkbox to restrict delivery charges to apply only once for multiple products with the same delivery date in the cart."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:608
+msgid "Disable extra charge when user chooses local pickup shipping"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:617
+msgid "Select this checkbox to disable the extra charges when user place order to the local pickup shipping method."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:644
+msgid "Auto-select the first available timeslot"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:653
+msgid "Enabling this option will pre-select the first available time slot."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:680
+msgid "Auto-populate first available delivery date"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:689
+msgid "Enabling this option will auto populate the first available delivery date in the calendar. This setting will be overridden when 'Duplicate Dates from First Product In the Cart To Other Products' setting is enabled."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:716
+msgid "Minimum Order Amount for Waiving off Delivery Charges"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:725
+msgid "When Order Subtotal reaches this minimum amount, all delivery charges from the plugin will be removed. Keep it 0 if you don't want to use this option."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:754
+msgid "Shop Page Settings"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:765
+msgid "Show Delivery Date/Time On Shop/Archives Page:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:774
+msgid "Enabling this setting will show delivery date picker & time slots dropdown on the Shop page & give customers a smooth single page experience. Works only for Simple products."
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:807
+msgid "Enable Availability Display On The Shop/Archives Page:"
+msgstr ""
+
+#: src/admin-settings/screens/settings/Settings.js:816
+msgid "Enabling this setting will show the availability message on the Shop/archives page when page loads & on selection of a date or time slot."
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:45
+#: src/product-metabox/DeliverySettingsForm.js:49
+msgid "Are you sure you want to delete all the specific date records?"
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:53
+#: src/product-metabox/DeliverySettingsForm.js:57
+msgid "Are you sure you want to delete all the recurring weekday records?"
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:156
+msgid "An error has occurred."
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:174
+msgid "Are you sure you want to delete this day?"
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:208
+msgid "Are you sure you want to delete this time slot?"
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:220
+msgid "Failed to delete time slot. Please try again."
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:291
+#: src/product-metabox/DeliverySettingsForm.js:297
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:97
+msgid "Manage Availability"
+msgstr ""
+
+#: src/product-metabox/DeliverySettingsForm.js:320
+#: src/product-metabox/tabs/DeliveryChargesTab.js:171
+#: src/product-metabox/tabs/DeliveryChargesTab.js:302
+#: src/product-metabox/tabs/DeliveryChargesTab.js:336
+msgid "Delivery Charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:49
+msgid "Please select weekday or date for delivery charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:58
+msgid "Price cannot be blank."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:123
+msgid "Are you sure you want to delete this delivery charge?"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:148
+msgid "Are you sure you want to delete all the delivery charges?"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:176
+msgid "Select Days:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:195
+msgid "Select Weekday"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:205
+msgid "Select weekday to set delivery charge for"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:213
+msgid "Select Date:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:232
+msgid "Select date to set delivery charge for"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:259
+msgid "Set delivery charge for the selected day / date"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:273
+msgid "Update Delivery Charge"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:277
+msgid "Add Delivery Charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:313
+msgid "Delete All Delivery Charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:329
+msgid "Day / Date"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:382
+msgid "Edit Delivery Charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryChargesTab.js:400
+msgid "Delete Delivery Charges"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:66
+msgid "Currently Delivering on:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:68
+msgid "None"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:70
+msgid "Specific Dates, Recurring Weekdays"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:75
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:501
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:101
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:321
+msgid "Specific Dates"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:77
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:525
+msgid "Recurring Weekdays"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:91
+msgid "Enter a Time Slot:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:176
+msgid "Maximum deliveries per time slot:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:184
+msgid "Please enter a number to limit the number of deliveries for this time slot. Setting it to blanks or 0 will ensure unlimited deliveries."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:204
+msgid "Delivery charge added for the time slot:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:212
+msgid "Any additional delivery charges for the time slot can be added here."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:256
+msgid "Enable Delivery Date"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:272
+msgid "Enable the ability to capture delivery date on the Single Product Page."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:292
+msgid "Delivery Option:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:301
+msgid "The 'Calendar' option displays a datepicker at the front end, whereas the 'Text Block' option displays an estimated time period of delivery based on the setting"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:317
+msgid "Calendar"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:336
+msgid "Text Block"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:354
+msgid "Minimum Delivery Days required:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:363
+msgid "Minimum number of days required to deliver an order after submitting it."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:387
+msgid "Display Delivery details:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:396
+msgid "Display estimated delivery details based on the number of business days or an estimated delivery date."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:417
+msgid "Business Days"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:441
+msgid "Specific Date"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:472
+msgid "Delivery On:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:478
+msgid "Please enable/disable the specific delivery dates and recurring weekdays using these checkboxes. Upon checking them, you shall be able to further select dates or weekdays."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:549
+msgid "Select recurring weekdays for delivery"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:577
+msgid "Specific Date Delivery:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:585
+msgid "Select the specific dates that you want to enable for delivery.&#13;&#10;Specific dates can be managed from the \"Manage Dates, Time Slots\" tab on the left."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:616
+msgid "Maximum deliveries per day:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:625
+msgid "Set this field if you want to place a limit on maximum deliveries on any given date. If you can manage up to 15 deliveries in a day, set this value to 15. Once 15 orders have been placed, then that date will not be available for further deliveries. Setting it to blanks or 0 will ensure unlimited deliveries."
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:647
+msgid "Ask for Delivery Time:"
+msgstr ""
+
+#: src/product-metabox/tabs/DeliveryOptionsTab.js:656
+msgid "Enable time (or time slots) on the product. Add any number of delivery time slots once you have checked this. You can manage the Time Slots using the Manage Dates, Time Slots tab"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:69
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:93
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:222
+msgid "Update"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:75
+msgid "Edit"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:110
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:150
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:251
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:293
+msgid "Day"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:113
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:153
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:256
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:296
+msgid "Maximum Deliveries"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityBulkTab.js:141
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:344
+msgid "Recurring Days"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:27
+msgid "Delete All"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:82
+msgid "Remove Date"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:209
+msgid "Remove Time Slot"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:226
+msgid "Edt Time Slot"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:252
+msgid "Start Time"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:253
+msgid "End Time"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:263
+msgid "Time Slot Price"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:367
+msgid "Specific Date Time Slots"
+msgstr ""
+
+#: src/product-metabox/tabs/ManageAvailabilityTab.js:386
+msgid "Recurring Days Time Slots"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:91
+msgid "Show calendar always visible:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:95
+msgid "Enable Inline Calendar on Products Page."
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:105
+msgid "Make the selection of a delivery date mandatory on the Product page"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:114
+msgid "Hide Add to Cart button:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:118
+msgid "Hide Add to Cart button on front end product details page until a delivery date and/or time slot is selected."
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:126
+msgid "Delivery date label:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:130
+msgid "Custom label for delivery date field for this product."
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:138
+msgid "Time slot label:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:139
+msgid "Custom label for delivery time field for this product."
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:182
+msgid "Hide Delivery date picker & time slots on Shop/archives page:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:186
+msgid "If you don't want to show delivery date & time only for this product on Shop/archives page, then please check this setting. The delivery date & time fields will continue to show for other products"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:192
+msgid "Works only for Simple products."
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:201
+msgid "Default date:"
+msgstr ""
+
+#: src/product-metabox/tabs/SettingsTab.js:207
+msgid "Default date to add in the order meta data even if delivery is disabled for this product."
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:83
+msgid "OR"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:141
+msgid "Same day delivery cut-off time:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:151
+msgid "Same day delivery cut-off time for free delivery:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:155
+msgid "Allow free delivery on the same day if the order is placed before the set time."
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:165
+msgid "Same day delivery cut-off charges:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:174
+msgid "Same day delivery charges."
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:197
+msgid "Next day delivery cut-off time:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:201
+msgid "Disable next day for delivery after the set cut-off time. The cut-off time will be calculated based on the WordPress timezone."
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:212
+msgid "Next day Delivery charge:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:216
+msgid "Charges for next day delivery"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:225
+msgid "Delivery Type:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:252
+msgid "Fixed delivery period by dates ( e.g. March 1 to October 31)"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:278
+msgid "Deliver all year round"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:305
+msgid "Deliveries start on:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:309
+msgid "The start date of the deliverable block. For e.g. if you want to take deliveries for the period of March to october, then the date here should be March 1"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:318
+msgid "Deliveries end on:"
+msgstr ""
+
+#: src/product-metabox/tabs/TimePeriodTab.js:322
+msgid "The end date of the deliverable block. For e.g. if you want to take deliveries for the period of March to october, then the date here should be October 31."
+msgstr ""
+
+#: src/shared/api.js:42
+msgid "This feature is available in the Pro version."
+msgstr ""
+
+#: src/shared/api.js:119
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/shared/components/AlertMessage.js:29
+#: src/shared/components/ErrorMessage.js:23
+msgid "Close"
+msgstr ""
+
+#: src/shared/components/ProNotice.js:12
+msgid "Available in the Pro version."
+msgstr ""
+
+#: src/shared/components/UpgradeModal.js:46
+msgid "Don't miss out on what you were achieving - take action today! Click the button below to Upgrade to PRO."
+msgstr ""
+
+#: src/shared/components/UpgradeModal.js:54
+msgid "Upgrade from lite to PRO at special pricing. Click the button below to"
+msgstr ""
+
+#: src/shared/components/UpgradeModal.js:58
+msgid "access the latest deals."
+msgstr ""

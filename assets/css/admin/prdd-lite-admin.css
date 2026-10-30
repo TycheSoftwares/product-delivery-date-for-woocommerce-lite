@@ -1,0 +1,196 @@
+/**
+ * Styles of the Lite version on top of the Pro admin styles: the Pro only
+ * fields and the locked screens shown under the Upgrade to Pro modal.
+ */
+
+/* Pro only rows keep the layout of the Pro screen. */
+.prdd-react-page fieldset.prdd-lite-pro-only {
+	display: contents;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+/* The WordPress style of disabled checkboxes would show the hidden input of the custom checkboxes. */
+.prdd-react-page .custom-control-input:disabled {
+	opacity: 0;
+}
+
+.prdd-react-page fieldset.prdd-lite-pro-only .tm1-row,
+.prdd-react-page fieldset.prdd-lite-pro-only .rc-flx-wrap {
+	opacity: 0.55;
+}
+
+.prdd-react-page .prdd-lite-pro-row {
+	padding-top: 0;
+	border-top: 0;
+}
+
+.prdd-react-page .prdd-lite-pro-notice {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 13px;
+	color: #50575e;
+}
+
+.prdd-react-page .prdd-lite-pro-notice .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	color: #b26200;
+}
+
+.prdd-react-page .prdd-lite-pro-notice a {
+	font-weight: 600;
+}
+
+/* Locked screens and metabox tabs: the preview is clipped under the modal. */
+.prdd-react-page .prddd-shipping-based {
+	overflow: hidden;
+}
+
+.prdd-react-page .prddd-shipping-based.prdd-lite-locked-tab {
+	height: auto;
+	min-height: 620px;
+	max-width: none;
+}
+
+.prdd-react-page .prddd-shipping-based .ts-upsell-overlay {
+	z-index: 10;
+}
+
+/* Metabox tabs: the modal can be taller than the tab, so the preview and the
+   modal share one grid cell and the tab grows to show the whole modal. */
+.prdd-react-page .prddd-shipping-based.prdd-lite-locked-tab {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.prdd-react-page .prdd-lite-locked-tab > .prddd-lite-settings-inner-section,
+.prdd-react-page .prdd-lite-locked-tab > .ts-upsell-overlay {
+	grid-area: 1 / 1;
+	min-width: 0;
+}
+
+.prdd-react-page .prdd-lite-locked-tab > .ts-upsell-overlay {
+	position: relative;
+	top: auto;
+	left: auto;
+	transform: none;
+	align-self: start;
+	justify-self: center;
+	max-width: calc(100% - 32px);
+	margin: 60px 0 20px;
+}
+
+/* Narrow tab, e.g. the two column editor at about 1024px: tighter modal. */
+.prdd-react-page .prddd-shipping-based.prdd-lite-locked-tab {
+	container-type: inline-size;
+}
+
+@container (max-width: 480px) {
+	.prdd-react-page .prdd-lite-locked-tab > .ts-upsell-overlay {
+		max-width: calc(100% - 16px);
+		margin-top: 20px;
+	}
+
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-top,
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-content {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-top h2 {
+		font-size: 16px !important; /* Overrides the inline size of the heading. */
+	}
+
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-content__features h3 {
+		font-size: 17px;
+	}
+
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-content__features {
+		margin-bottom: 16px;
+		min-width: 0;
+	}
+
+	.prdd-react-page .prdd-lite-locked-tab .ts-upsell-content .ts-upgrade-button {
+		max-width: 100%;
+		padding-left: 12px;
+		padding-right: 12px;
+		font-size: 15px;
+	}
+}
+
+/* Pro only actions of the View Deliveries screen. */
+.prdd-react-page .prdd-lite-disabled-btn {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.prdd-react-page .prdd-lite-filters .prdd-lite-pro-row {
+	margin-bottom: 16px;
+}
+
+/* Review text below the product metabox. */
+#woocommerce-prdd-lite .prdd-lite-review {
+	margin: 12px 0 0;
+}
+
+/* Welcome screen on phones: keep the video in proportion and stack the three columns. */
+@media screen and (max-width: 782px) {
+	.prdd-welcome-page .wbc-content .prdd-video-wrap embed {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+
+	.prdd-wc-3col-mod .wc3-mod-box {
+		margin-left: 0;
+	}
+
+	.prdd-wc-3col-mod .wc3-mod-box .wc3-col {
+		max-width: 100%;
+		margin: 0 0 20px;
+	}
+}
+
+/* Locked screens on phones: the modal is taller than the preview area, so both
+   share one grid cell and the area grows to show the whole modal. */
+@media screen and (max-width: 782px) {
+	.prdd-react-page .prddd-shipping-based.prdd-lite-locked-tab,
+	.prdd-react-page .prddd-shipping-based {
+		display: grid;
+		height: auto;
+		min-height: 0;
+	}
+
+	.prdd-react-page .prddd-shipping-based > .prddd-lite-settings-inner-section,
+	.prdd-react-page .prddd-shipping-based > .ts-upsell-overlay {
+		grid-area: 1 / 1;
+		min-width: 0;
+	}
+
+	.prdd-react-page .prddd-shipping-based .ts-upsell-overlay {
+		position: relative;
+		top: auto;
+		left: auto;
+		transform: none;
+		align-self: start;
+		width: auto;
+		margin: 20px 0;
+	}
+
+	.prdd-react-page .prddd-shipping-based .ts-upsell-top,
+	.prdd-react-page .prddd-shipping-based .ts-upsell-content {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.prdd-react-page .prddd-shipping-based .ts-upsell-content__features {
+		margin-bottom: 16px;
+	}
+}

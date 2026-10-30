@@ -42,7 +42,7 @@ if ( ! class_exists( 'Prdd_Privacy_Policy_Lite' ) ) {
 		 * @hook woocommerce_privacy_export_order_personal_data_props
 		 */
 		public static function prdd_lite_privacy_export_order_personal_data_props( $props_to_export, $order ) {
-			$my_key_value = array( 'items_delivery_lite' => __( 'Delivery Date', 'woocommerce-prdd-lite' ) );
+			$my_key_value = array( 'items_delivery_lite' => __( 'Delivery Date', 'product-delivery-date-for-woocommerce-lite' ) );
 			$key_pos      = array_search( 'items', array_keys( $props_to_export ), true );
 			if ( false !== $key_pos ) {
 				$key_pos++;

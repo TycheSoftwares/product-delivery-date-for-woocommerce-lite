@@ -7,6 +7,10 @@
  * @since 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Include the files as needed.
  */
@@ -65,7 +69,7 @@ class Prdd_Lite_Process {
 		$plugins_url = plugins_url();
 		if ( isset( $prdd_settings ) && 'on' === $prdd_settings ) {
 
-			print ( '<div class="delivery_date_label_container" style="position: relative;"><label class="delivery_date_label">' . esc_html__( 'Delivery Date:', 'woocommerce-prdd-lite' ) . '</label>' );
+			print ( '<div class="delivery_date_label_container" style="position: relative;"><label class="delivery_date_label">' . esc_html__( 'Delivery Date:', 'product-delivery-date-for-woocommerce-lite' ) . '</label>' );
 
 			if ( 'on' === $prdd_delivery_field_mandatory ) {
 				print( ' <abbr class="required" title="required" style="color: red;font-weight: 800;border: none;">*</abbr>' );
@@ -203,7 +207,7 @@ class Prdd_Lite_Process {
 		if ( isset( $cart_item['prdd_lite_delivery'] ) ) {
 			$duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $cart_item['product_id'] );
 			foreach ( $cart_item['prdd_lite_delivery'] as $delivery ) {
-				$name = __( 'Delivery Date', 'woocommerce-prdd-lite' );
+				$name = __( 'Delivery Date', 'product-delivery-date-for-woocommerce-lite' );
 				if ( isset( $delivery['delivery_date'] ) && '' !== $delivery['delivery_date'] ) {
 					$other_data[] = array(
 						'name'    => $name,

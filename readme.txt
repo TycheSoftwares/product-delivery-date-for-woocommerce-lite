@@ -4,7 +4,7 @@ Contributors: ashokrane, MoxaJogani, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
-Requires at least: 3.0
+Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 3.3.2

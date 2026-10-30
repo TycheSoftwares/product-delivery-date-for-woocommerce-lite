@@ -7,6 +7,10 @@
  * @since 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Common functions class
  *

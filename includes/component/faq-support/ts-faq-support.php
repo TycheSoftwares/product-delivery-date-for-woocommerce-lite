@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * 
@@ -108,7 +111,7 @@ class Prdd_Lite_TS_Faq_Support {
 			<td colspan="2">
 				<?php 
     			printf(
-			        esc_html__( 'You have any queries? Please check our %1$sFAQ%2$s page.', 'woocommerce-prdd-lite' ), // phpcs:ignore
+			        esc_html__( 'You have any queries? Please check our %1$sFAQ%2$s page.', 'product-delivery-date-for-woocommerce-lite' ), // phpcs:ignore
 			        '<a href="' . esc_url( admin_url( '?page=woocommerce_prdd_lite_page&action=faq_support_page' ) ) . '">',
 			        '</a>'
 			    ); 

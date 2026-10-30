@@ -1,0 +1,42 @@
+/* Change the spacing, font weight and font to be same as woocommerce in the settings labels*/
+.prdd-form-table th {
+ text-align: left;
+ padding: 0 0 12px 0;
+ font-weight: normal;
+ font-size: 13px;
+ width:150px;
+}
+/* Change the spacing, font weight and font to be same as woocommerce in the settings text*/
+.prdd-form-table td {
+ padding: 0 0 12px 0;
+ font-weight: normal;
+ font-size: 13px;
+}
+/* Change the width of vertical tabs*/
+.tstab-tabs.vertical.top-left ul{
+ width:120px;
+}
+/* Change the font color of the active tab so that it looks similar to woocommerce*/
+.tstab-tabs.silver > ul > li.tstab-active > a {
+ color: black;	
+}
+/* Change the font color of the tabs so that it looks similar to woocommerce*/
+.tstab-tabs.silver > ul > li > a {
+ color: #2ea2cc;	
+}
+/* hide the enable availability message on setting page on page load */
+.prdd-hidden {
+    display: none;
+}
+
+/* make the equal width for delivery date and time label fields. */
+.prdd_deliery_date_label {
+    width: 280px;
+}
+
+/* Adjust the col size. */
+.prdd-tab-content.tab-delivery-charges .col-sm-5 {
+  flex: 0 0 30% !important;
+  max-width: 30% !important;
+  -ms-flex: 0 0 30% !important;
+}

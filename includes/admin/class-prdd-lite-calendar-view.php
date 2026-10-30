@@ -7,6 +7,10 @@
  * @since   3.3.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 
 	/**
@@ -23,16 +27,16 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 			?>
 			<div class="wrap">
 				<div style="display: flex; align-items: center; margin-bottom: 20px;">
-					<h1><?php esc_html_e( 'Calendar View', 'woocommerce-prdd-lite' ); ?></h1>
+					<h1><?php esc_html_e( 'Calendar View', 'product-delivery-date-for-woocommerce-lite' ); ?></h1>
 					<a style="margin-left: 8px;" href="<?php echo esc_url( admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page' ) ); ?>" class="button button-primary">
-						<?php esc_html_e( 'Product View', 'woocommerce-prdd-lite' ); ?>
+						<?php esc_html_e( 'Product View', 'product-delivery-date-for-woocommerce-lite' ); ?>
 					</a>
 				</div>
 				
 				<div id="prdd-calendar-loader" style="display: flex; align-items: center; justify-content: center; min-height: 100px;">
 					<div style="text-align: center;">
 						<div class="prdd-spinner"></div>
-						<p style="margin-top: 15px; color: #666;"><?php esc_html_e( 'Loading calendar...', 'woocommerce-prdd-lite' ); ?></p>
+						<p style="margin-top: 15px; color: #666;"><?php esc_html_e( 'Loading calendar...', 'product-delivery-date-for-woocommerce-lite' ); ?></p>
 					</div>
 				</div>
 				
@@ -76,7 +80,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 					SELECT DISTINCT order_item_id
 					FROM {$wpdb->prefix}woocommerce_order_itemmeta
 					WHERE meta_key = %s
-					AND meta_value > %s
+					AND meta_value >= %s
 					AND meta_value < %s
 					",
 					'_prdd_date',
@@ -102,15 +106,9 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 						$order        = wc_get_order( $get_order_id[0]->order_id );
 
 						if ( $order ) {
-							if ( version_compare( get_option( 'woocommerce_version ' ), '3.0.0', '>=' ) ) {
-								if ( is_object( $order ) ) {
-									$order_post_status = $order->get_status();
-									if ( $order_post_status != 'trash' ) {
-										$order_post_status = 'wc-' . $order_post_status;
-									}
-								}
-							} else {
-								$order_post_status = $order->post_status;
+							$order_post_status = $order->get_status();
+							if ( 'trash' !== $order_post_status ) {
+								$order_post_status = 'wc-' . $order_post_status;
 							}
 
 							if ( isset( $order_post_status ) && ( $order_post_status != '' ) && ( $order_post_status != 'wc-cancelled' ) && ( $order_post_status != 'wc-refunded' ) && ( $order_post_status != 'trash' ) && ( $order_post_status != 'wc-failed' ) ) {
@@ -228,10 +226,9 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 			$date_format_set         = '';
 			$delivery_date_formatted = '';
 			$date_formats            = prdd_lite_get_delivery_arrays( 'prdd_lite_date_formats' );
-			$global_settings         = json_decode( get_option( 'woocommerce_prdd_global_settings' ) );
-			if ( isset( $global_settings->prdd_date_format ) ) {
-				$date_format_set = $date_formats[ $global_settings->prdd_date_format ];
-			}
+			$global_settings         = json_decode( (string) get_option( 'woocommerce_prdd_global_settings' ) );
+			$date_format_selected    = get_option( 'prdd_lite_date_format', 'mm/dd/y' );
+			$date_format_set         = isset( $date_formats[ $date_format_selected ] ) ? $date_formats[ $date_format_selected ] : $date_formats['mm/dd/y'];
 
 			if ( ! empty( $_REQUEST['order_id'] ) && ! empty( $_REQUEST['event_value'] ) ) {
 
@@ -247,9 +244,9 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 				$product_id = isset( $_REQUEST['event_value']['post_id'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['event_value']['post_id'] ) ) : 0;
 
 				$content  = '<table>';
-				$content .= '<tr> <td> <strong>Order: </strong></td><td><a href="post.php?post=' . esc_html( $order->get_id() ) . '&action=edit">#' . esc_html( $order->get_id() ) . '</a></td></tr>';
-				$content .= '<tr> <td> <strong>Product Name:</strong></td><td>' . esc_html( get_the_title( $product_id ) ) . '</td></tr>';
-				$content .= '<tr> <td> <strong>Customer Name:</strong></td><td>' . esc_html( $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() ) . '</td></tr>';
+				$content .= '<tr> <td> <strong>' . esc_html__( 'Order:', 'product-delivery-date-for-woocommerce-lite' ) . ' </strong></td><td><a href="' . esc_url( $order->get_edit_order_url() ) . '">#' . esc_html( $order->get_id() ) . '</a></td></tr>';
+				$content .= '<tr> <td> <strong>' . esc_html__( 'Product Name:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( get_the_title( $product_id ) ) . '</td></tr>';
+				$content .= '<tr> <td> <strong>' . esc_html__( 'Customer Name:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() ) . '</td></tr>';
 
 				foreach ( $order_items as $item ) {
 					if ( '' !== $item['variation_id'] && isset( $variation_product['_product_attributes'] ) ) {
@@ -273,7 +270,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 					if ( '' !== $delivery_date_formatted ) {
 						$value_date = $delivery_date_formatted;
 					}
-					$content .= '<tr><td><strong>Delivery Date:</strong></td><td>' . esc_html( $value_date ) . '</td></tr>';
+					$content .= '<tr><td><strong>' . esc_html__( 'Delivery Date:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( $value_date ) . '</td></tr>';
 				}
 
 				// prdd Time.

@@ -8,6 +8,10 @@
  * @category Classes
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Meta Box Class.
  */
@@ -23,7 +27,7 @@ class Prdd_Lite_Meta_Box_Class {
 	public static function prdd_lite_box() {
 		add_meta_box(
 			'woocommerce-prdd-lite',
-			__( 'Product Delivery Date', 'woocommerce-prdd-lite' ),
+			__( 'Product Delivery Date', 'product-delivery-date-for-woocommerce-lite' ),
 			array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_meta_box' ),
 			'product',
 			'normal',
@@ -163,9 +167,8 @@ class Prdd_Lite_Meta_Box_Class {
 	 * @param WP_Post $post Post object.
 	 * @since 1.0
 	 */
-	public function prdd_lite_product_duplicate( $new_id, $post ) {
-		global $wpdb;
-		$old_id        = $post->ID;
+	public static function prdd_lite_product_duplicate( $new_id, $post ) {
+		$old_id        = is_object( $post ) && method_exists( $post, 'get_id' ) ? $post->get_id() : $post->ID;
 		$prdd_settings = get_post_meta( $old_id, '_woo_prdd_lite_enable_delivery_date', true );
 		update_post_meta( $new_id, '_woo_prdd_lite_enable_delivery_date', $prdd_settings );
 
@@ -180,6 +183,12 @@ class Prdd_Lite_Meta_Box_Class {
 
 		$prdd_lite_holidays = get_post_meta( $old_id, '_woo_prdd_lite_holidays', true );
 		update_post_meta( $new_id, '_woo_prdd_lite_holidays', $prdd_lite_holidays );
+
+		$prdd_lite_delivery_days = get_post_meta( $old_id, '_woo_prdd_lite_delivery_days', true );
+		update_post_meta( $new_id, '_woo_prdd_lite_delivery_days', $prdd_lite_delivery_days );
+
+		$prdd_settings = get_post_meta( $old_id, 'woocommerce_prdd_settings', true );
+		update_post_meta( $new_id, 'woocommerce_prdd_settings', $prdd_settings );
 	}
 }//end class
 ?>
