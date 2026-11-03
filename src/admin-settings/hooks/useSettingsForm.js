@@ -116,6 +116,10 @@ export default function useSettingsForm(
 	const change = ( key ) => ( event ) => update( key, event.target.value );
 
 	const save = ( extra = {} ) => {
+		// Until the saved values load, the form only has empty defaults.
+		if ( ! loaded ) {
+			return Promise.resolve( null );
+		}
 		setSavedMessage( false );
 		setError( '' );
 		setSaving( true );

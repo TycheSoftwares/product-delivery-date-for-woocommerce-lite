@@ -1,8 +1,8 @@
 /**
  * Holidays tab, markup of the former includes/admin/views/settings/holidays.php.
  */
-import { __ } from '@wordpress/i18n';
-import { useRef } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
+import { useRef, useState } from '@wordpress/element';
 import CollapsePanel from '../../../shared/components/CollapsePanel';
 import InfoTip from '../../../shared/components/InfoTip';
 import ErrorMessage from '../../../shared/components/ErrorMessage';
@@ -21,8 +21,13 @@ export default function Holidays() {
 		error,
 		setError,
 		save,
+		setSettings,
 	} = useSettingsForm( 'settings/holidays' );
 	const textarea = useRef( null );
+	// Dates the last save dropped as not valid.
+	const [ invalidDates, setInvalidDates ] = useState( [] );
+	// Remounts the textarea and the calendar with the saved dates.
+	const [ revision, setRevision ] = useState( 0 );
 
 	const holidays =
 		'string' === typeof settings.prdd_global_holidays &&
@@ -31,12 +36,27 @@ export default function Holidays() {
 			: [];
 
 	// The textarea is the altField of the calendar and can be edited by hand, as before.
-	const saveHolidays = () =>
-		save( {
+	const saveHolidays = () => {
+		setInvalidDates( [] );
+		return save( {
 			prdd_global_holidays: textarea.current
 				? textarea.current.value
 				: '',
+		} ).then( ( response ) => {
+			const data = ( response && response.data ) || {};
+			if ( 'string' !== typeof data.prdd_global_holidays ) {
+				return;
+			}
+			setInvalidDates( data.invalid_dates || [] );
+			setSettings( { prdd_global_holidays: data.prdd_global_holidays } );
+			setRevision( ( current ) => current + 1 );
 		} );
+	};
+
+	const dismissMessage = () => {
+		setSavedMessage( false );
+		setInvalidDates( [] );
+	};
 
 	return (
 		<div className="container holidays-page-wrap">
@@ -48,19 +68,32 @@ export default function Holidays() {
 				<div className="row">
 					<div className="col-md-12">
 						<div
-							className="alert alert-success alert-dismissible fade show"
+							className={ `alert ${
+								invalidDates.length > 0
+									? 'alert-warning'
+									: 'alert-success'
+							} alert-dismissible fade show` }
 							role="alert"
 						>
-							{ __(
-								'Settings Saved.',
-								'product-delivery-date-for-woocommerce-lite'
-							) }
+							{ invalidDates.length > 0
+								? sprintf(
+										/* translators: %s: Comma separated dates which were not saved. */
+										__(
+											'Settings Saved. These dates are not valid and were removed: %s',
+											'product-delivery-date-for-woocommerce-lite'
+										),
+										invalidDates.join( ', ' )
+								  )
+								: __(
+										'Settings Saved.',
+										'product-delivery-date-for-woocommerce-lite'
+								  ) }
 							<button
 								type="button"
 								className="close"
 								data-dismiss="alert"
 								aria-label="Close"
-								onClick={ () => setSavedMessage( false ) }
+								onClick={ dismissMessage }
 							>
 								<span aria-hidden="true">×</span>
 							</button>
@@ -126,6 +159,7 @@ export default function Holidays() {
 										<button
 											type="button"
 											onClick={ saveHolidays }
+											disabled={ ! loaded || saving }
 										>
 											{ __(
 												'Save Settings',
@@ -166,12 +200,14 @@ export default function Holidays() {
 															) }
 															key={
 																loaded
-																	? 'loaded'
+																	? 'loaded-' +
+																	  revision
 																	: 'loading'
 															}
 														></textarea>
 														{ loaded && (
 															<MultiDatesPicker
+																key={ revision }
 																type="text"
 																id="multidatepicker"
 																value={

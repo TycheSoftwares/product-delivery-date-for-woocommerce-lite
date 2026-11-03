@@ -3,7 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 import { TRIAL_URL } from './UpgradeModal';
-import { useInLockedPreview } from './LockedScreen';
 
 export default function ProNotice() {
 	return (
@@ -32,11 +31,6 @@ export default function ProNotice() {
  * @param {*}      props.children Rows.
  */
 export function ProOnly( { children } ) {
-	const inPreview = useInLockedPreview();
-	if ( inPreview ) {
-		return children;
-	}
-
 	return (
 		<>
 			<fieldset disabled className="prdd-lite-pro-only">

@@ -156,13 +156,7 @@ if ( ! class_exists( 'Prdd_Lite_Woocommerce' ) ) {
 			add_filter( 'plugin_row_meta', array( &$this, 'prdd_lite_plugin_row_meta' ), 10, 2 );
 			add_filter( 'plugin_action_links', array( &$this, 'prdd_plugin_row_meta' ), 10, 5 );
 
-			// Add Meta box for the Product Delivery Date Settings on the product edit page.
-			define( 'PRDD_LITE_DELIVERIES_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
 			define( 'PRDD_LITE_MAX_PRODUCTS_FOR_MIGRATION', '10' );
-
-			if ( ! defined( 'PRDD_LITE_PLUGIN_UPGRADE_TO_PRO_TEMPLATE_PATH' ) ) {
-				define( 'PRDD_LITE_PLUGIN_UPGRADE_TO_PRO_TEMPLATE_PATH', PRDD_LITE_PLUGIN_PATH . '/includes/component/upgrade-to-pro/templates/' );
-			}
 
 			// React admin page, product metabox and their REST API.
 			PRDD_Lite_Admin_React_Page::init();

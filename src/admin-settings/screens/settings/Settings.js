@@ -16,6 +16,7 @@ export default function Settings() {
 		update,
 		toggle,
 		change,
+		loaded,
 		loading,
 		saving,
 		savedMessage,
@@ -95,7 +96,11 @@ export default function Settings() {
 							</p>
 						</div>
 						<div className="float-right">
-							<button type="button" onClick={ () => save() }>
+							<button
+								type="button"
+								onClick={ () => save() }
+								disabled={ ! loaded || saving }
+							>
 								{ __(
 									'Save Settings',
 									'product-delivery-date-for-woocommerce-lite'
@@ -855,7 +860,11 @@ export default function Settings() {
 						</div>
 					</div>
 					<div className="ss-foot">
-						<button type="button" onClick={ () => save() }>
+						<button
+							type="button"
+							onClick={ () => save() }
+							disabled={ ! loaded || saving }
+						>
 							{ __(
 								'Save Settings',
 								'product-delivery-date-for-woocommerce-lite'

@@ -247,12 +247,10 @@ export default function DeliveryOptionsTab( { form } ) {
 		values,
 		set,
 		data,
-		isBulk,
 		newSlots,
 		setNewSlots,
 		specificDates,
 		setSpecificDates,
-		pickerKey,
 		slot,
 	} = form;
 	const calendar = 'text_block' !== values.prdd_delivery_options;
@@ -466,17 +464,15 @@ export default function DeliveryOptionsTab( { form } ) {
 					</div>
 				</div>
 			</ProOnly>
-			{ ! isBulk && (
-				<div
-					className="tm1-row delivery_calendar_sections"
-					style={ display( calendar ) }
-				>
-					<div className="col-left"></div>{ ' ' }
-					<div className="col-right">
-						{ currentlyDelivering( data.values || {} ) }
-					</div>
+			<div
+				className="tm1-row delivery_calendar_sections"
+				style={ display( calendar ) }
+			>
+				<div className="col-left"></div>{ ' ' }
+				<div className="col-right">
+					{ currentlyDelivering( data.values || {} ) }
 				</div>
-			) }
+			</div>
 			<ProOnly>
 				<div
 					className="tm1-row delivery_calendar_sections"
@@ -609,7 +605,6 @@ export default function DeliveryOptionsTab( { form } ) {
 							) }
 						/>
 						<MultiDatesPicker
-							key={ pickerKey }
 							tag="input"
 							className="ib-lg"
 							type="text"
