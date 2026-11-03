@@ -66,14 +66,6 @@ class Ts_Upgrade_To_Pro_Prdd {
 	public static $plugin_url = '';
 
 	/**
-	 * Template path.
-	 *
-	 * @var string
-	 * @access public
-	 */
-	public static $template_base = '';
-
-	/**
 	 * Slug on Main menu.
 	 *
 	 * @var string
@@ -127,16 +119,13 @@ class Ts_Upgrade_To_Pro_Prdd {
 
 		add_action( self::$plugin_prefix . '_add_submenu', array( &$this, 'ts_add_submenu' ) );
 		add_action( 'admin_notices', array( &$this, 'ts_lite_trial_purchase_notices' ) );
-		add_action( self::$plugin_prefix . '_add_settings_tab', array( &$this, 'ts_add_new_settings_tab' ) );
-		add_action( self::$plugin_prefix . '_after_settings_page_form', array( &$this, 'ts_add_upgrade_to_pro_modal' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'ts_custom_notice_style' ) );
 		add_action( 'admin_head', array( &$this, 'ts_add_submenu_class' ) );
 
 		add_action( 'wp_ajax_prdd_lite_dismiss_upgrade_to_pro', array( &$this, 'dismiss_upgrade_to_pro_notice' ) );
 
 		self::$plugin_folder = $ts_plugin_folder_name;
-		self::$plugin_url    = $this->ts_get_plugin_url();
-		self::$template_base = $this->ts_get_template_path();
+		self::$plugin_url = $this->ts_get_plugin_url();
 	}
 
 	/**
@@ -286,61 +275,6 @@ class Ts_Upgrade_To_Pro_Prdd {
 	}
 
 	/**
-	 * Add a new tab on the settings page.
-	 *
-	 * @since 7.7
-	 */
-	public function ts_add_new_settings_tab() {
-		$upgrade_to_pro_page = '';
-		if ( isset( $_GET['action'] ) && $_GET['action'] == 'upgrade_to_pro_page' ) { // phpcs:ignore.
-			$upgrade_to_pro_page = 'nav-tab-active';
-		}
-		$ts_plugins_page_url = self::$plugin_page . '&action=upgrade_to_pro_page';
-		?>
-		<a href="<?php echo $ts_plugins_page_url; ?>" class="nav-tab <?php echo $upgrade_to_pro_page; ?>"> <?php _e( 'Upgrade to Pro', self::$plugin_locale ); // phpcs:ignore. ?> </a> 
-		<?php
-	}
-
-	/**
-	 * Adds a modal to display the Upgrade to Pro content.
-	 *
-	 * @since 7.7
-	 */
-	public function ts_add_upgrade_to_pro_modal() {
-
-		if ( isset( $_GET['action'] ) && in_array( $_GET['action'], array( 'upgrade_to_pro_page', 'prdd_google_calendar_sync', 'labels', 'bulk_product_settings' ) ) ) { // phpcs:ignore.
-			ob_start();
-			wc_get_template(
-				'upgrade-to-pro-page/upgrade-to-pro-modal.php',
-				array(
-					'ts_plugin_name'                => self::$plugin_name,
-					'ts_add_image'                  => plugins_url( '/assets/images/add.png', __FILE__ ),
-					'ts_upgrade_to_pro_images_path' => plugins_url( '/assets/images', __FILE__ ),
-				),
-				self::$plugin_folder,
-				self::$template_base
-			);
-			echo ob_get_clean(); // phpcs:ignore.
-		}
-	}
-
-	/**
-	 * Show settings with the upgrade to pro modal.
-	 *
-	 * @param string $settings File name.
-	 */
-	public static function prddd_lite_show_settings_modal( $settings ) {
-		ob_start();
-		wc_get_template(
-			$settings,
-			array(),
-			'product-delivery-date-for-woocommerce-lite',
-			PRDD_LITE_PLUGIN_UPGRADE_TO_PRO_TEMPLATE_PATH
-		);
-		echo ob_get_clean(); // phpcs:ignore.
-	}
-
-	/**
 	 * This function returns the plugin url
 	 *
 	 * @access public
@@ -349,16 +283,5 @@ class Ts_Upgrade_To_Pro_Prdd {
 	 */
 	public function ts_get_plugin_url() {
 		return plugins_url() . '/' . self::$plugin_folder;
-	}
-
-	/**
-	 * This function returns the template directory path
-	 *
-	 * @access public
-	 * @since 7.7
-	 * @return string
-	 */
-	public function ts_get_template_path() {
-		return untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/';
 	}
 }

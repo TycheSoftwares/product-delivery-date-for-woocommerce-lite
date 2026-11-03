@@ -46,9 +46,9 @@ class Prdd_Lite_Validation {
 				wc_add_notice( '<b>' . __( 'Delivery Date', 'product-delivery-date-for-woocommerce-lite' ) . '</b>' . __( ' is a required field.', 'product-delivery-date-for-woocommerce-lite' ), 'error' );
 
 				$passed = false;
-		} else {
-			$passed = true;
 		}
+
+		// Keeps the result of the earlier checks, e.g. a failed check of another plugin.
 		return $passed;
 	}
 }

@@ -111,6 +111,7 @@ class Prdd_Lite_TS_Faq_Support {
 			<td colspan="2">
 				<?php 
     			printf(
+			        /* translators: %1$s: Opening link tag, %2$s: Closing link tag. */
 			        esc_html__( 'You have any queries? Please check our %1$sFAQ%2$s page.', 'product-delivery-date-for-woocommerce-lite' ), // phpcs:ignore
 			        '<a href="' . esc_url( admin_url( '?page=woocommerce_prdd_lite_page&action=faq_support_page' ) ) . '">',
 			        '</a>'

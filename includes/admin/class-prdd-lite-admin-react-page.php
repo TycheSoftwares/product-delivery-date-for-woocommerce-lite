@@ -116,9 +116,6 @@ class PRDD_Lite_Admin_React_Page {
 		if ( ! wp_script_is( 'prdd-choices', 'registered' ) ) {
 			wp_register_script( 'prdd-choices', $url . '/assets/js/admin/choices.min.js', array(), $version, true );
 		}
-		if ( ! wp_script_is( 'select2', 'registered' ) && defined( 'WC_PLUGIN_FILE' ) ) {
-			wp_register_script( 'select2', plugins_url( 'assets/js/select2/select2.min.js', WC_PLUGIN_FILE ), array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core' ), $version, false );
-		}
 
 		// Calendar view of the View Deliveries screen.
 		if ( ! wp_script_is( 'lang-all-js', 'registered' ) ) {
@@ -193,16 +190,6 @@ class PRDD_Lite_Admin_React_Page {
 	}
 
 	/**
-	 * Data of the locked Bulk Product Settings preview, the defaults of the
-	 * product metabox.
-	 *
-	 * @return array
-	 */
-	protected static function bulk_preview() {
-		return PRDD_Lite_Product_Metabox_React::get_form_data( 0 );
-	}
-
-	/**
 	 * Data passed to the admin app.
 	 *
 	 * @return array
@@ -248,12 +235,9 @@ class PRDD_Lite_Admin_React_Page {
 				),
 				self::url()
 			),
-			'weekdays'           => self::weekdays(),
 			'first_day'          => $appearance['prdd_calendar_day'],
 			'global_holidays'    => PRDD_Lite_Settings_Service::get_global_holidays_list(),
-			'currency_symbol'    => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
 			'view_deliveries'    => self::view_deliveries_config(),
-			'bulk_preview'       => self::bulk_preview(),
 		);
 
 		return (array) apply_filters( 'prdd_lite_admin_config', $config );
@@ -277,7 +261,7 @@ class PRDD_Lite_Admin_React_Page {
 
 		$deps = array_merge(
 			(array) $asset['dependencies'],
-			array( 'jquery', 'jquery-ui-datepicker', 'multiDatepicker', 'prdd-choices', 'select2', 'full-js', 'lang-all-js', 'prdd-images-loaded', 'prdd-qtip', 'prdd-lite-datepicker-i18n' )
+			array( 'jquery', 'jquery-ui-datepicker', 'multiDatepicker', 'full-js', 'lang-all-js', 'prdd-images-loaded', 'prdd-qtip', 'prdd-lite-datepicker-i18n' )
 		);
 
 		wp_enqueue_script( self::HANDLE, PRDD_LITE_PLUGIN_URL . '/build/admin-settings.js', array_unique( $deps ), $asset['version'], true );

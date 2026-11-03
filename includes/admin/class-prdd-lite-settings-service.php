@@ -82,18 +82,24 @@ class PRDD_Lite_Settings_Service {
 	}
 
 	/**
-	 * Saves the Settings screen.
+	 * Saves the Settings screen. Keys missing from the request keep the saved
+	 * value, so an incomplete request never turns on removing the data on
+	 * uninstall.
 	 *
 	 * @param array $data Request data.
 	 * @return bool
 	 */
 	public static function save_general_settings( $data ) {
-		$rounding = 'on' === self::value( $data, 'prdd_enable_rounding' ) ? 'on' : '';
-		$keep     = 'on' === self::value( $data, 'prdd_keep_data_on_delete_plugin' );
+		if ( array_key_exists( 'prdd_enable_rounding', $data ) ) {
+			$rounding = 'on' === self::value( $data, 'prdd_enable_rounding' ) ? 'on' : '';
+			update_option( 'prdd_lite_enable_rounding', $rounding );
+			self::update_mirror( array( 'prdd_enable_rounding' => $rounding ) );
+		}
 
-		update_option( 'prdd_lite_enable_rounding', $rounding );
-		update_option( 'prdd_lite_enable_delete_order_item', $keep ? '' : 'on' );
-		self::update_mirror( array( 'prdd_enable_rounding' => $rounding ) );
+		if ( array_key_exists( 'prdd_keep_data_on_delete_plugin', $data ) ) {
+			$keep = 'on' === self::value( $data, 'prdd_keep_data_on_delete_plugin' );
+			update_option( 'prdd_lite_enable_delete_order_item', $keep ? '' : 'on' );
+		}
 		return true;
 	}
 
@@ -110,24 +116,40 @@ class PRDD_Lite_Settings_Service {
 
 	/**
 	 * Saves the global holidays. Dates not in the j-n-Y format the front end
-	 * compares against are dropped.
+	 * compares against are dropped and returned, so the screen can show them.
+	 * A request without the key keeps the saved holidays, an empty value
+	 * removes them.
 	 *
 	 * @param array $data Request data.
-	 * @return bool
+	 * @return array Saved holidays and the dropped dates ( invalid_dates ).
 	 */
 	public static function save_holidays( $data ) {
-		$dates = array();
+		if ( ! array_key_exists( 'prdd_global_holidays', $data ) ) {
+			return self::get_holidays() + array( 'invalid_dates' => array() );
+		}
+
+		$dates   = array();
+		$invalid = array();
 		foreach ( explode( ',', self::value( $data, 'prdd_global_holidays' ) ) as $date ) {
 			$date = trim( $date );
+			if ( '' === $date ) {
+				continue;
+			}
 			if ( preg_match( '/^(\d{1,2})-(\d{1,2})-(\d{4})$/', $date, $parts ) && checkdate( (int) $parts[2], (int) $parts[1], (int) $parts[3] ) ) {
 				$dates[] = (int) $parts[1] . '-' . (int) $parts[2] . '-' . $parts[3];
+			} else {
+				$invalid[] = $date;
 			}
 		}
 		$holidays = implode( ',', array_unique( $dates ) );
 
 		update_option( 'prdd_lite_global_holidays', $holidays );
 		self::update_mirror( array( 'prdd_global_holidays' => $holidays ) );
-		return true;
+
+		return array(
+			'prdd_global_holidays' => $holidays,
+			'invalid_dates'        => array_values( array_unique( $invalid ) ),
+		);
 	}
 
 	/**

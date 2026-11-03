@@ -38,8 +38,9 @@ class PRDD_Lite_Admin_API_Settings extends PRDD_Lite_Admin_API {
 					array(
 						'methods'             => WP_REST_Server::CREATABLE,
 						'callback'            => function ( $request ) use ( $callbacks ) {
-							call_user_func( array( 'PRDD_Lite_Settings_Service', $callbacks[1] ), $this->body( $request ) );
-							return $this->success( array(), $this->saved_message() );
+							// A save may return the saved values, e.g. the holidays without the dropped dates.
+							$result = call_user_func( array( 'PRDD_Lite_Settings_Service', $callbacks[1] ), $this->body( $request ) );
+							return $this->success( is_array( $result ) ? $result : array(), $this->saved_message() );
 						},
 						'permission_callback' => array( $this, 'admin_permission' ),
 					),

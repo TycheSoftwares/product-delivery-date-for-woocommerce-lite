@@ -64,6 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <h3>
         <?php 
         printf(
+            /* translators: %s: Plugin name. */
             esc_html__( 'Frequently Asked Questions for %s Plugin', 'product-delivery-date-for-woocommerce-lite' ),// phpcs:ignore
             esc_html__( $ts_plugin_name, 'product-delivery-date-for-woocommerce-lite' )// phpcs:ignore
         );
@@ -124,6 +125,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <p style="font-size: 19px">
     <?php 
     echo sprintf( // phpcs:ignore
+        /* translators: %s: Support email address. */
         esc_html__( 'If your queries are not answered here, you can send an email directly to %s for some additional requirements.', 'product-delivery-date-for-woocommerce-lite' ),// phpcs:ignore
         '<strong>' . esc_html__( 'support@tychesoftwares.com', 'product-delivery-date-for-woocommerce-lite' ) . '</strong>'// phpcs:ignore
     );

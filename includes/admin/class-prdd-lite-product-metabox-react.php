@@ -243,9 +243,9 @@ class PRDD_Lite_Product_Metabox_React {
 
 	/**
 	 * Data needed to render the metabox. Settings of the Pro version get the
-	 * Pro defaults, they are shown disabled or in the locked tabs.
+	 * Pro defaults, they are shown disabled.
 	 *
-	 * @param int $product_id Product ID, 0 for the locked Bulk Product Settings preview.
+	 * @param int $product_id Product ID.
 	 * @return array
 	 */
 	public static function get_form_data( $product_id ) {
@@ -306,31 +306,15 @@ class PRDD_Lite_Product_Metabox_React {
 			'prdd_specific_date'                => '',
 		);
 
-		$recurring_days = array();
-		foreach ( $selected as $key ) {
-			$recurring_days[] = array(
-				'key'     => $key,
-				'label'   => __( $weekdays[ $key ], 'product-delivery-date-for-woocommerce-lite' ), // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
-				'lockout' => '0',
-			);
-		}
-
 		$appearance = PRDD_Lite_Settings_Service::get_appearance();
 		$data       = array(
 			'product_id'             => $product_id,
 			'post_id'                => $post_id,
 			'is_product'             => $product_id > 0,
 			'values'                 => $values,
-			'specific_dates'         => array(),
-			'recurring_days'         => $recurring_days,
-			'specific_timeslots'     => array(),
-			'recurring_timeslots'    => array(),
-			'has_specific_timeslots' => false,
-			'special_prices'         => array(),
 			'weekdays'               => PRDD_Lite_Admin_React_Page::weekdays(),
 			'first_day'              => $appearance['prdd_calendar_day'],
 			'global_holidays'        => PRDD_Lite_Settings_Service::get_global_holidays_list(),
-			'currency_symbol'        => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
 			'plugin_url'             => PRDD_LITE_PLUGIN_URL,
 		);
 
