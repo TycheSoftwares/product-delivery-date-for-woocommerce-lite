@@ -169,55 +169,55 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 				'reasons'  => array(
 					array(
 						'id'                => 1,
-						'text'              => __( 'I only needed the plugin for a short period.', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'I only needed the plugin for a short period.', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 2,
-						'text'              => __( 'I found a better plugin.', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'I found a better plugin.', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => __( 'Please let us have the plugin\'s name so that we can make improvements', 'woocommerce-prdd-lite' ),
+						'input_placeholder' => __( 'Please let us have the plugin\'s name so that we can make improvements', 'product-delivery-date-for-woocommerce-lite' ),
 					),
 					array(
 						'id'                => 3,
-						'text'              => __( 'The plugin is not working.', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'The plugin is not working.', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => __( 'Please share what was faulty with the plugin so that we may get the issue fixed.', 'woocommerce-prdd-lite' ),
+						'input_placeholder' => __( 'Please share what was faulty with the plugin so that we may get the issue fixed.', 'product-delivery-date-for-woocommerce-lite' ),
 					),
 					array(
 						'id'                => 4,
-						'text'              => __( 'The plugin is causing issues on my site', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'The plugin is causing issues on my site', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => __( 'We’re sorry! Please tell us about the issues so that we can get them fixed.', 'woocommerce-prdd-lite' ),
+						'input_placeholder' => __( 'We’re sorry! Please tell us about the issues so that we can get them fixed.', 'product-delivery-date-for-woocommerce-lite' ),
 					),
 					array(
 						'id'                => 6,
-						'text'              => __( 'Some features I need are not working as per my expectations', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'Some features I need are not working as per my expectations', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => __( 'Please tell us about these features.', 'woocommerce-prdd-lite' ),
+						'input_placeholder' => __( 'Please tell us about these features.', 'product-delivery-date-for-woocommerce-lite' ),
 					),
 					array(
 						'id'                => 7,
-						'text'              => __( 'The plugin is not compatible with another plugin/theme', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'The plugin is not compatible with another plugin/theme', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => __( 'We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility.', 'woocommerce-prdd-lite' ),
+						'input_placeholder' => __( 'We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility.', 'product-delivery-date-for-woocommerce-lite' ),
 					),
 					array(
 						'id'                => 11,
-						'text'              => __( 'I’m unable to set up deliveries for products as per my requirements. The templates are the same.', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'I’m unable to set up deliveries for products as per my requirements. The templates are the same.', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 12,
-						'text'              => __( 'I want pickup of the products along with delivery.', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'I want pickup of the products along with delivery.', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 10,
-						'text'              => __( 'Other', 'woocommerce-prdd-lite' ),
+						'text'              => __( 'Other', 'product-delivery-date-for-woocommerce-lite' ),
 						'input_type'        => 'textfield',
 						'input_placeholder' => '',
 					),
@@ -231,7 +231,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 										<div class="ts-modal-panel active" data-panel-id="reasons">
 											<h3>
 												<strong>
-													' . __( 'If you have a moment, please let us know why you are deactivating:', 'woocommerce-prdd-lite' ) . '
+													' . __( 'If you have a moment, please let us know why you are deactivating:', 'product-delivery-date-for-woocommerce-lite' ) . '
 												</strong>
 											</h3>
 											
@@ -242,9 +242,9 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 									</div>
 		
 									<div class="ts-modal-footer">
-										<a href="javascript:void(0);" class="button button-secondary button-skip-deactivate"> ' . __( 'Skip & Deactivate', 'woocommerce-prdd-lite' ) . '</a>
-										<a href="javascript:void(0);" class="button button-secondary button-deactivate"> ' . __( 'Submit & Deactivate', 'woocommerce-prdd-lite' ) . '</a>
-										<a href="javascript:void(0);" class="button button-primary button-close">' . __( 'Cancel', 'woocommerce-prdd-lite' ) . '</a>
+										<a href="javascript:void(0);" class="button button-secondary button-skip-deactivate"> ' . __( 'Skip & Deactivate', 'product-delivery-date-for-woocommerce-lite' ) . '</a>
+										<a href="javascript:void(0);" class="button button-secondary button-deactivate"> ' . __( 'Submit & Deactivate', 'product-delivery-date-for-woocommerce-lite' ) . '</a>
+										<a href="javascript:void(0);" class="button button-primary button-close">' . __( 'Cancel', 'product-delivery-date-for-woocommerce-lite' ) . '</a>
 									</div>
 								</div>
 							</div>',
@@ -257,7 +257,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 					'deactivation_data'    => $data,
 					'ajax_url'             => admin_url( 'admin-ajax.php' ),
 					'nonce'                => wp_create_nonce( 'tyche_plugin_deactivation_submit_action' ),
-					'deactivation_req_msg' => __( 'Please select a reason for deactivation!', 'woocommerce-prdd-lite' ),
+					'deactivation_req_msg' => __( 'Please select a reason for deactivation!', 'product-delivery-date-for-woocommerce-lite' ),
 				)
 			);
 

@@ -7,6 +7,10 @@
  * @since 2.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Availability check on product page class
  *
@@ -39,12 +43,12 @@ class Prdd_Lite_Validation {
 			'on' === $prdd_delivery_field_mandatory &&
 			'on' === $prdd_settings ) {
 
-				wc_add_notice( '<b>' . __( 'Delivery Date', 'woocommerce-prdd-lite' ) . '</b>' . __( ' is a required field.', 'woocommerce-prdd-lite' ), 'error' );
+				wc_add_notice( '<b>' . __( 'Delivery Date', 'product-delivery-date-for-woocommerce-lite' ) . '</b>' . __( ' is a required field.', 'product-delivery-date-for-woocommerce-lite' ), 'error' );
 
 				$passed = false;
-		} else {
-			$passed = true;
 		}
+
+		// Keeps the result of the earlier checks, e.g. a failed check of another plugin.
 		return $passed;
 	}
 }

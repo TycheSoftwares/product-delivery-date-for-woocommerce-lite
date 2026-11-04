@@ -1,0 +1,33 @@
+/* Decrease the width of the customer name column*/
+table.wp-list-table .column-name {
+	width:12%;
+}
+/* Increase the width of the product name column */
+table.wp-list-table .column-product_name {
+	width:22%;
+}
+/* change cursor of order label showing in calendar */
+.fc-event {
+	cursor: pointer;
+}
+
+#prddd_events_loader {
+	font-size: medium;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: rgba(255,255,255,0.5);
+	z-index: 999;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.prddd_events_loader_wrapper {
+	position: absolute;
+	top: 50%;
+	z-index: 1000;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}

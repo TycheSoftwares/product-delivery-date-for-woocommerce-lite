@@ -2,13 +2,16 @@
 /**
  * Plugin Name: Product Delivery Date for WooCommerce - Lite
  * Description: This plugin lets you capture the Delivery Date for each product.
- * Version: 3.3.2
+ * Version: 4.0.0
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Requires at least: 6.2
  * Requires PHP: 7.4
  * WC requires at least: 5.0.0
- * WC tested up to: 11.1.0
- * Text Domain: woocommerce-prdd-lite
+ * WC tested up to: 11.2.1
+ * Text Domain: product-delivery-date-for-woocommerce-lite
  * Requires Plugins: woocommerce
  * Domain Path: /languages/
  *
@@ -16,6 +19,20 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+if ( ! defined( 'PRDD_LITE_VERSION' ) ) {
+	define( 'PRDD_LITE_VERSION', '4.0.0' );
+}
+if ( ! defined( 'PRDD_LITE_PLUGIN_FILE' ) ) {
+	define( 'PRDD_LITE_PLUGIN_FILE', __FILE__ );
+}
+if ( ! defined( 'PRDD_LITE_PLUGIN_PATH' ) ) {
+	define( 'PRDD_LITE_PLUGIN_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+}
+if ( ! defined( 'PRDD_LITE_PLUGIN_URL' ) ) {
+	define( 'PRDD_LITE_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
+}
+
 // phpcs:disable
 add_action( 'before_woocommerce_init',
     function () {

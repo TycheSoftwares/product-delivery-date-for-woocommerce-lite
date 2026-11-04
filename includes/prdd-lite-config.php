@@ -7,6 +7,13 @@
  * @since 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Declared first, so the arrays are globals also when the file is included in a function scope.
+global $prdd_lite_calendar_themes, $prdd_lite_time_formats, $prdd_lite_date_formats, $prdd_lite_languages, $prdd_lite_days, $prdd_lite_weekdays;
+
 $prdd_lite_weekdays = array(
 	'prdd_weekday_0' => 'Sunday',
 	'prdd_weekday_1' => 'Monday',
@@ -144,8 +151,6 @@ $prdd_lite_calendar_themes = array(
 	'trontastic'     => 'Trontastic',
 	'swanky-purse'   => 'Swanky Purse',
 );
-
-global $prdd_lite_calendar_themes, $prdd_lite_time_formats, $prdd_lite_date_formats, $prdd_lite_languages, $prdd_lite_days, $prdd_lite_weekdays;
 
 /**
  * This function return the array based on string passed for it.

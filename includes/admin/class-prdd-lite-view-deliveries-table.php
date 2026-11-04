@@ -9,6 +9,10 @@
  * @since   2.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Load WP_List_Table if not loaded.
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
@@ -82,7 +86,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			)
 		);
 		$this->get_delivery_counts();
-		$this->base_url = admin_url( 'admin.php?page=woocommerce_prdd_lite_history_page' );
+		$this->base_url = admin_url( 'admin.php?page=woocommerce_prdd_lite_page#/view-deliveries' );
 	}
 	/**
 	 * Prepare data to be displayed on View Delivery List Page
@@ -134,7 +138,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$today_delivery_count    = '&nbsp;<span class="count">(' . $this->today_delivery_count . ')</span>';
 		$tomorrow_delivery_count = '&nbsp;<span class="count">(' . $this->tomorrow_delivery_count . ')</span>';
 		$views                   = array(
-			'all'               => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( array( 'status', 'paged' ) ) ), 'all' === $current || '' === $current ? ' class="current"' : '', esc_html__( 'All', 'woocommerce-prdd-lite' ) . $total_count ),
+			'all'               => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( array( 'status', 'paged' ) ) ), 'all' === $current || '' === $current ? ' class="current"' : '', esc_html__( 'All', 'product-delivery-date-for-woocommerce-lite' ) . $total_count ),
 			'future'            => sprintf(
 				'<a href="%s"%s>%s</a>',
 				esc_url(
@@ -146,7 +150,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'future' === $current ? ' class="current"' : '',
-				__( 'Deliveries From Today Onwards', 'woocommerce-prdd-lite' ) . $future_count
+				__( 'Deliveries From Today Onwards', 'product-delivery-date-for-woocommerce-lite' ) . $future_count
 			),
 			'today_delivery'    => sprintf(
 				'<a href="%s"%s>%s</a>',
@@ -159,7 +163,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'today_delivery' === $current ? ' class="current"' : '',
-				__( 'Today\'s Deliveries', 'woocommerce-prdd-lite' ) . $today_delivery_count
+				__( 'Today\'s Deliveries', 'product-delivery-date-for-woocommerce-lite' ) . $today_delivery_count
 			),
 			'tomorrow_delivery' => sprintf(
 				'<a href="%s"%s>%s</a>',
@@ -172,7 +176,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 					)
 				),
 				'tomorrow_delivery' === $current ? ' class="current"' : '',
-				__( 'Tomorrow\'s Deliveries', 'woocommerce-prdd-lite' ) . $tomorrow_delivery_count
+				__( 'Tomorrow\'s Deliveries', 'product-delivery-date-for-woocommerce-lite' ) . $tomorrow_delivery_count
 			),
 		);
 
@@ -187,14 +191,14 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'ID'            => __( 'Order ID', 'woocommerce-prdd-lite' ),
-			'name'          => __( 'Customer Name', 'woocommerce-prdd-lite' ),
-			'product_name'  => __( 'Product Name', 'woocommerce-prdd-lite' ),
-			'delivery_date' => __( 'Delivery Date', 'woocommerce-prdd-lite' ),
-			'quantity'      => __( 'Quantity', 'woocommerce-prdd-lite' ),
-			'amount'        => __( 'Amount', 'woocommerce-prdd-lite' ),
-			'order_date'    => __( 'Order Date', 'woocommerce-prdd-lite' ),
-			'actions'       => __( 'Actions', 'woocommerce-prdd-lite' ),
+			'ID'            => __( 'Order ID', 'product-delivery-date-for-woocommerce-lite' ),
+			'name'          => __( 'Customer Name', 'product-delivery-date-for-woocommerce-lite' ),
+			'product_name'  => __( 'Product Name', 'product-delivery-date-for-woocommerce-lite' ),
+			'delivery_date' => __( 'Delivery Date', 'product-delivery-date-for-woocommerce-lite' ),
+			'quantity'      => __( 'Quantity', 'product-delivery-date-for-woocommerce-lite' ),
+			'amount'        => __( 'Amount', 'product-delivery-date-for-woocommerce-lite' ),
+			'order_date'    => __( 'Order Date', 'product-delivery-date-for-woocommerce-lite' ),
+			'actions'       => __( 'Actions', 'product-delivery-date-for-woocommerce-lite' ),
 		);
 		return apply_filters( 'prdd_lite_view_deliveries_table_columns', $columns );
 	}
@@ -235,7 +239,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		?>
 		<p class="search-box">
 			<?php do_action( 'delivery_search' ); ?>
-			<label class="screen-reader-text" for="<?php esc_attr( $input_id ); ?>"><?php esc_html_e( $text, 'woocommerce-prdd-lite' ); // phpcs:ignore ?>:</label>
+			<label class="screen-reader-text" for="<?php esc_attr( $input_id ); ?>"><?php esc_html_e( $text, 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore ?>:</label>
 			<input type="search" id="<?php esc_attr( $input_id ); ?>" name="s" value="<?php _admin_search_query(); ?>" />
 			<?php submit_button( $text, 'button', false, false, array( 'ID' => 'search-submit' ) ); ?><br/>
 		</p>
@@ -303,33 +307,8 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		}
 
 		if ( '' === $start_date || '' === $end_date || '1970-01-01' === $start_date || '1970-01-01' === $end_date ) {
-
-			$get_order_item_ids = $wpdb->get_results( $wpdb->prepare( 'SELECT order_item_id FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %s', '_prdd_lite_date' ) ); // phpcs:ignore
-
-			if ( is_array( $get_order_item_ids ) && count( $get_order_item_ids ) > 0 ) {
-				foreach ( $get_order_item_ids as $item_key => $item_value ) {
-
-					$get_order_id = $wpdb->get_results( $wpdb->prepare( 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d', $item_value->order_item_id ) ); // phpcs:ignore
-					if ( false !== get_post_status( $get_order_id[0]->order_id ) ) {
-						$order = new WC_Order( $get_order_id[0]->order_id );
-					} else {
-						continue;
-					}
-
-					if ( version_compare( get_option( 'woocommerce_version ' ), '3.0.0', '>=' ) ) {
-						$order_post_status = $order->get_status();
-						if ( 'trash' !== $order_post_status ) {
-							$order_post_status = 'wc-' . $order_post_status;
-						}
-					} else {
-						$order_post_status = $order->post_status;
-					}
-
-					if ( isset( $order_post_status ) && ( '' !== $order_post_status ) && ( 'wc-cancelled' !== $order_post_status ) && ( 'wc-refunded' !== $order_post_status ) && ( 'trash' !== $order_post_status ) && ( 'wc-failed' !== $order_post_status ) ) {
-						$get_dates[] = $wpdb->get_results( $wpdb->prepare( 'SELECT meta_value, meta_key FROM `' . $wpdb->prefix . 'woocommerce_order_itemmeta` WHERE meta_key = %d AND order_item_id = %d', '_prdd_lite_date', $item_value->order_item_id ) ); // phpcs:ignore
-					}
-				}
-			}
+			// Same order statuses as the list, so the counts match its rows.
+			$get_dates[] = $wpdb->get_results( $wpdb->prepare( 'SELECT t2.meta_value, t2.meta_key FROM `' . $wpdb->prefix . 'woocommerce_order_items` AS t1, `' . $wpdb->prefix . 'woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key = %s AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( ' . self::get_orders_query() . ' )', '_prdd_lite_date' ) ); // phpcs:ignore
 		}
 
 		foreach ( $get_dates as $key => $value ) {
@@ -366,11 +345,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		if ( $page_number < 1 ) {
 			$page_number = 1;
 		}
-		if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
-			$inner_query = "SELECT ID FROM `" . $wpdb->prefix . "wc_orders` WHERE type = 'shop_order' AND status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
-		} else {
-			$inner_query = "SELECT ID FROM `" . $wpdb->prefix . "posts` WHERE post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
-		}
+		$inner_query = self::get_orders_query();
 
 		$per_page      = absint( $this->per_page );
 		$current_time  = current_time( 'timestamp' ); // phpcs:ignore
@@ -379,13 +354,6 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$i             = 0;
 		$start_record  = ( $page_number - 1 ) * $per_page;
 		$limit         = $wpdb->prepare( 'LIMIT %d, %d', $start_record, $per_page );
-
-		if ( isset( $_GET['paged'] ) && sanitize_text_field( wp_unslash( $_GET['paged'] ) ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification
-			$start_record = ( sanitize_text_field( wp_unslash( $_GET['paged'] ) ) - 1 ) * $per_page; // phpcs:ignore WordPress.Security.NonceVerification
-			$limit        = "LIMIT $start_record, $per_page";
-		} else {
-			$limit = "LIMIT $per_page";
-		}
 
 		if ( isset( $_GET['status'] ) && 'future' === $_GET['status'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value >= %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $current_date ) ); // phpcs:ignore
@@ -402,10 +370,10 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$date              = '';
 			$selected_quantity = 0;
 			$amount            = 0;
+			$product_id        = 0;
 
-			if ( false !== get_post_status( $value->order_id ) ) {
-				$order = new WC_Order( $value->order_id );
-			} else {
+			$order = wc_get_order( $value->order_id );
+			if ( ! $order ) {
 				continue;
 			}
 
@@ -422,13 +390,8 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			}
 
 			$return_deliveries[ $i ] = new stdClass();
-			if ( version_compare( get_option( 'woocommerce_version ' ), '3.0.0', '>=' ) ) {
-				$billing_first_name = $order->get_billing_first_name();
-				$billing_last_name  = $order->get_billing_last_name();
-			} else {
-				$billing_first_name = $order->get_billing_first_name();
-				$billing_last_name  = $order->get_billing_last_name();
-			}
+			$billing_first_name = $order->get_billing_first_name();
+			$billing_last_name  = $order->get_billing_last_name();
 
 			$return_deliveries[ $i ]->name = $billing_first_name . ' ' . $billing_last_name;
 			$get_quantity                  = $order->get_items();
@@ -460,22 +423,18 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$return_deliveries[ $i ]->delivery_date = $date;
 			$return_deliveries[ $i ]->quantity      = $selected_quantity;
 			$return_deliveries[ $i ]->amount        = $amount;
-			if ( version_compare( get_option( 'woocommerce_version ' ), '3.0.0', '>=' ) ) {
-				$order_date_obj = $order->get_date_created();
-				$order_date     = $order_date_obj->format( 'Y-m-d' );
-			} else {
-				$order_date = $order->completed_date;
-			}
-			$return_deliveries[ $i ]->order_date = $order_date;
+			$order_date_obj                      = $order->get_date_created();
+			$return_deliveries[ $i ]->order_date = $order_date_obj ? $order_date_obj->format( 'Y-m-d' ) : '';
+			$return_deliveries[ $i ]->edit_url   = $order->get_edit_order_url();
 			++$i;
 		}
 
 		// sort for delivery date.
 		if ( isset( $_GET['orderby'] ) && 'delivery_date' === $_GET['orderby'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 			if ( isset( $_GET['order'] ) && 'asc' === $_GET['order'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-				usort( $return_deliveries, array( __CLASS__, 'prdd_lite_class_delivery_date_asc' ) );
+				usort( $return_deliveries, array( $this, 'prdd_lite_class_delivery_date_asc' ) );
 			} else {
-				usort( $return_deliveries, array( __CLASS__, 'prdd_lite_class_delivery_date_dsc' ) );
+				usort( $return_deliveries, array( $this, 'prdd_lite_class_delivery_date_dsc' ) );
 			}
 		}
 		return apply_filters( 'prdd_lite_deliveries_table_data', $return_deliveries );
@@ -537,6 +496,34 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Subquery of the orders whose deliveries are listed, for HPOS and the posts table.
+	 *
+	 * @return string
+	 * @since  4.0.0
+	 */
+	public static function get_orders_query() {
+		global $wpdb;
+		if ( Prdd_Lite_Woocommerce::is_hpos_enabled() ) {
+			return "SELECT id FROM `" . $wpdb->prefix . "wc_orders` WHERE type = 'shop_order' AND status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
+		}
+		return "SELECT ID FROM `" . $wpdb->prefix . "posts` WHERE post_type = 'shop_order' AND post_status NOT IN ( 'wc-cancelled', 'wc-refunded', 'trash', 'wc-failed', '' )";
+	}
+
+	/**
+	 * Edit order URL of a row, for HPOS and the posts table.
+	 *
+	 * @param object $delivery Row.
+	 * @return string
+	 * @since  4.0.0
+	 */
+	public static function edit_url( $delivery ) {
+		if ( ! empty( $delivery->edit_url ) ) {
+			return $delivery->edit_url;
+		}
+		return admin_url( 'post.php?post=' . absint( $delivery->ID ) . '&action=edit' );
+	}
+
+	/**
 	 * It will display the data for Delivery Date.
 	 *
 	 * @param  array | object $delivery All data of the list.
@@ -547,13 +534,13 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 	public function column_default( $delivery, $column_name ) {
 		switch ( $column_name ) {
 			case 'ID':
-				$value = '<a href="post.php?post=' . $delivery->ID . '&action=edit">' . $delivery->ID . '</a>';
+				$value = '<a href="' . esc_url( self::edit_url( $delivery ) ) . '">' . absint( $delivery->ID ) . '</a>';
 				break;
 			case 'delivery_date':
 				$date                 = strtotime( $delivery->delivery_date );
 				$date_formats         = prdd_lite_get_delivery_arrays( 'prdd_lite_date_formats' );
 				$date_format_selected = get_option( 'prdd_lite_date_format' );
-				if ( '' === $date_format_selected ) {
+				if ( empty( $date_format_selected ) || ! isset( $date_formats[ $date_format_selected ] ) ) {
 					$date_format_selected = 'mm/dd/y';
 				}
 
@@ -567,7 +554,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 				$value           = $currency_symbol . number_format( $amount, 2 );
 				break;
 			case 'actions':
-				$value = '<a href="post.php?post=' . $delivery->ID . '&action=edit">View Order</a>';
+				$value = '<a href="' . esc_url( self::edit_url( $delivery ) ) . '">' . esc_html__( 'View Order', 'product-delivery-date-for-woocommerce-lite' ) . '</a>';
 				break;
 			default:
 				$value = isset( $delivery->$column_name ) ? $delivery->$column_name : '';

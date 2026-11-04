@@ -1,6 +1,7 @@
 <?php
 /**
- * Product Delivery Date Product Settings
+ * Saves and duplicates the delivery settings of a product. The metabox is
+ * rendered by PRDD_Lite_Product_Metabox_React.
  *
  * @author Tyche Softwares
  * @package Product-Delivery-Date-Lite/Admin/Settings
@@ -8,81 +9,17 @@
  * @category Classes
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Meta Box Class.
  */
 class Prdd_Lite_Meta_Box_Class {
 
 	/**
-	 * This function adds a meta box for delivery settings on product page.
-	 *
-	 * @hook add_meta_boxes
-	 *
-	 * @since 1.0
-	 */
-	public static function prdd_lite_box() {
-		add_meta_box(
-			'woocommerce-prdd-lite',
-			__( 'Product Delivery Date', 'woocommerce-prdd-lite' ),
-			array( 'Prdd_Lite_Meta_Box_Class', 'prdd_lite_meta_box' ),
-			'product',
-			'normal',
-			'core'
-		);
-	}
-
-	/**
-	 * Display the settings in vertical tabs
-	 *
-	 * @since 1.0
-	 */
-	public static function prdd_lite_print_js() {
-		if ( 'product' === get_post_type() ) {
-			?>
-			<script type="text/javascript">
-			jQuery( document ).ready( function ($) {
-				$('.tstab-content').wrapInner('<div class="tstab-content-inner"></div>');
-				$(document).on('click', '.tstab-tab', function(){
-					data_link = $(this).data("link");
-					cur_data_link = $('.tstab-tab.tstab-active').data("link");
-					if ( cur_data_link !== data_link ) {
-						$('.tstab-content').removeClass('tstab-active').hide();
-						$("#"+data_link).addClass('tstab-active').css('position', 'relative').fadeIn('slow');
-						$('.tstab-tab').removeClass('tstab-active');
-						$(this).addClass('tstab-active');
-					}
-				});
-			});
-			</script>
-			<?php
-		}
-	}
-
-	/**
-	 * This function displays the settings for the product in the Product Delivery Date meta box on the admin product page.
-	 *
-	 * @since 1.0
-	 */
-	public static function prdd_lite_meta_box() {
-		global $post;
-		$duplicate_of = Prdd_Lite_Common::prdd_lite_get_product_id( $post->ID );
-		wc_get_template(
-			'prdd-lite-delivery-settings-meta-box.php',
-			array(
-				'duplicate_of' => $duplicate_of,
-				'is_product'   => 'yes',
-			),
-			'product-delivery-date-for-woocommerce-lite/',
-			PRDD_LITE_DELIVERIES_TEMPLATE_PATH
-		);
-
-		do_action( 'prdd_lite_add_meta_footer' );
-	}
-
-	/**
-	 * This function updates the delivery settings for each product in the wp_postmeta table of the database. It will be called when update/publish button clicked on admin side.
-	 *
-	 * @hook woocommerce_process_product_meta
+	 * This function updates the delivery settings for each product in the wp_postmeta table of the database. Called by PRDD_Lite_Product_Metabox_React::save_product_settings() with the metabox values in $_POST.
 	 *
 	 * @param int     $post_id Post ID.
 	 * @param WP_Post $post WP_Post object.
@@ -163,9 +100,8 @@ class Prdd_Lite_Meta_Box_Class {
 	 * @param WP_Post $post Post object.
 	 * @since 1.0
 	 */
-	public function prdd_lite_product_duplicate( $new_id, $post ) {
-		global $wpdb;
-		$old_id        = $post->ID;
+	public static function prdd_lite_product_duplicate( $new_id, $post ) {
+		$old_id        = is_object( $post ) && method_exists( $post, 'get_id' ) ? $post->get_id() : $post->ID;
 		$prdd_settings = get_post_meta( $old_id, '_woo_prdd_lite_enable_delivery_date', true );
 		update_post_meta( $new_id, '_woo_prdd_lite_enable_delivery_date', $prdd_settings );
 
@@ -180,6 +116,12 @@ class Prdd_Lite_Meta_Box_Class {
 
 		$prdd_lite_holidays = get_post_meta( $old_id, '_woo_prdd_lite_holidays', true );
 		update_post_meta( $new_id, '_woo_prdd_lite_holidays', $prdd_lite_holidays );
+
+		$prdd_lite_delivery_days = get_post_meta( $old_id, '_woo_prdd_lite_delivery_days', true );
+		update_post_meta( $new_id, '_woo_prdd_lite_delivery_days', $prdd_lite_delivery_days );
+
+		$prdd_settings = get_post_meta( $old_id, 'woocommerce_prdd_settings', true );
+		update_post_meta( $new_id, 'woocommerce_prdd_settings', $prdd_settings );
 	}
 }//end class
 ?>

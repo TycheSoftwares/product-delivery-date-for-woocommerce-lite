@@ -4,10 +4,10 @@ Contributors: ashokrane, MoxaJogani, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Author URI: https://www.tychesoftwares.com/
 Tags: delivery calendar, product delivery date, woocommerce order delivery, product delivery
-Requires at least: 3.0
+Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.3.2
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -242,6 +242,25 @@ Currently, it is not possible to edit the selected delivery date for the WooComm
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-product-delivery-date-lite/lite-usage-trackings/).
 
 == Changelog ==
+
+= 4.0.0 - 23/10/2026 =
+* Enhancement - The admin pages and the product Delivery Settings metabox are rebuilt in React, with the same layout as Product Delivery Date Pro.
+* Enhancement - New Welcome and FAQ screens.
+* Enhancement - The View Deliveries list and calendar are now part of the admin app.
+* Tweak - Settings are saved through the prdd-lite/admin/v1 REST API.
+* Tweak - Requires WordPress 6.2 or higher.
+* Tweak - The text domain is now product-delivery-date-for-woocommerce-lite, the plugin slug, for WordPress.org language packs.
+* Fix - Fatal error when a product was duplicated.
+* Fix - The Delivery Days and the product settings are copied when a product is duplicated.
+* Fix - Saving a product by Quick Edit or the REST API no longer clears its delivery settings.
+* Fix - The data migration to Pro could overwrite the Pro global settings and used undefined variables.
+* Fix - The plugin data was not deleted on multisite and on sites with a custom table prefix on uninstall.
+* Fix - Reset usage tracking did not redirect back.
+* Fix - The add to cart check no longer overrides a failed check of another plugin.
+* Fix - Saving the global holidays lists the dates that are not valid and were not saved, and shows the saved dates.
+* Tweak - Removed the code of the old product metabox, its template, its tab styles, and the unused zozo tabs, bootstrap, datepick and themeswitcher files.
+* Tweak - The Pro screens shown under the Upgrade to Pro modal are now static previews, without the Pro code, and the old Upgrade to Pro teaser templates are removed.
+* Fix - Delivery charges of the Pro version could be added twice when both plugins were active.
 
 = 3.3.2 - 08/09/2026 =
 * Fix - Missing authorization vulnerability on the Delivery Calendar page that allowed unauthorized access to order details.

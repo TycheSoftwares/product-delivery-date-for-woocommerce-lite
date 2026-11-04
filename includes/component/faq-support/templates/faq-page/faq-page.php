@@ -3,6 +3,10 @@
  * FAQ & Support page
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // phpcs:disable
 ?>
 <style>
@@ -60,59 +64,60 @@
     <h3>
         <?php 
         printf(
-            esc_html__( 'Frequently Asked Questions for %s Plugin', 'woocommerce-prdd-lite' ),// phpcs:ignore
-            esc_html__( $ts_plugin_name, 'woocommerce-prdd-lite' )// phpcs:ignore
+            /* translators: %s: Plugin name. */
+            esc_html__( 'Frequently Asked Questions for %s Plugin', 'product-delivery-date-for-woocommerce-lite' ),// phpcs:ignore
+            esc_html__( $ts_plugin_name, 'product-delivery-date-for-woocommerce-lite' )// phpcs:ignore
         );
         ?>
     </h3>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[1]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[1]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[1]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[1]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[2]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[2]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[2]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[2]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[3]['question'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[3]['question'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[3]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[3]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[4]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[4]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[4]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[4]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[5]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[5]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[5]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[5]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[6]['question'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[6]['question'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[6]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[6]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[7]['question'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[7]['question'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[7]['answer'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></p>
+        <p><?php echo __( $ts_faq[7]['answer'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[8]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[8]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[8]['answer'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></p>
+        <p><?php echo __( $ts_faq[8]['answer'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></p>
     </div>
 
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[9]['question'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[9]['question'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[9]['answer'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></p>
+        <p><?php echo __( $ts_faq[9]['answer'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></p>
     </div>
-    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[10]['question'], 'woocommerce-prdd-lite' ); // phpcs:ignore?></strong></button>
+    <button class="faq-ts-accordion"><span class="dashicons dashicons-editor-help"></span><strong><?php echo __( $ts_faq[10]['question'], 'product-delivery-date-for-woocommerce-lite' ); // phpcs:ignore?></strong></button>
     <div class="panel">
-        <p><?php echo __( $ts_faq[10]['answer'], 'woocommerce-prdd-lite' );// phpcs:ignore ?></p>
+        <p><?php echo __( $ts_faq[10]['answer'], 'product-delivery-date-for-woocommerce-lite' );// phpcs:ignore ?></p>
     </div>
 </div>
 
@@ -120,8 +125,9 @@
     <p style="font-size: 19px">
     <?php 
     echo sprintf( // phpcs:ignore
-        esc_html__( 'If your queries are not answered here, you can send an email directly to %s for some additional requirements.', 'woocommerce-prdd-lite' ),// phpcs:ignore
-        '<strong>' . esc_html__( 'support@tychesoftwares.com', 'woocommerce-prdd-lite' ) . '</strong>'// phpcs:ignore
+        /* translators: %s: Support email address. */
+        esc_html__( 'If your queries are not answered here, you can send an email directly to %s for some additional requirements.', 'product-delivery-date-for-woocommerce-lite' ),// phpcs:ignore
+        '<strong>' . esc_html__( 'support@tychesoftwares.com', 'product-delivery-date-for-woocommerce-lite' ) . '</strong>'// phpcs:ignore
     );
     ?>
 </p>
