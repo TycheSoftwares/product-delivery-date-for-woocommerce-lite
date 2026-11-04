@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-03T13:30:48+00:00\n"
+"POT-Creation-Date: 2026-11-04T09:23:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: product-delivery-date-for-woocommerce-lite\n"
@@ -17,9 +17,6 @@ msgstr ""
 #. Plugin Name of the plugin
 #: product-delivery-date-for-woocommerce-lite.php
 #: class-prdd-lite-woocommerce.php:65
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:93
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:100
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:122
 msgid "Product Delivery Date for WooCommerce - Lite"
 msgstr ""
 
@@ -196,20 +193,20 @@ msgstr ""
 msgid "You can refer <strong><a href=\"https://www.tychesoftwares.com/differences-pro-lite-versions-product-delivery-date-woocommerce-plugin/?utm_source=wprepo&utm_medium=faqlink&utm_campaign=ProductDeliveryDateLite\" title=\"Lite and Pro version Difference\" rel=\"nofollow\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:344
+#: class-prdd-lite-woocommerce.php:343
 msgid "Go Pro"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:344
+#: class-prdd-lite-woocommerce.php:343
 msgid "Premium version"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:363
+#: class-prdd-lite-woocommerce.php:362
 #: includes/admin/class-prdd-lite-admin-react-page.php:98
 msgid "Product Delivery Date Settings"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:363
+#: class-prdd-lite-woocommerce.php:362
 #: includes/admin/class-prdd-lite-admin-react-page.php:204
 #: includes/admin/class-prdd-lite-global-menu.php:44
 #: includes/admin/class-prdd-lite-global-menu.php:45
@@ -225,15 +222,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:574
+#: class-prdd-lite-woocommerce.php:573
 msgid "If you love Product Delivery Date for WooCommerce - LITE, then please leave us a"
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:576
+#: class-prdd-lite-woocommerce.php:575
 msgid "rating. Thank you in advance."
 msgstr ""
 
-#: class-prdd-lite-woocommerce.php:588
+#: class-prdd-lite-woocommerce.php:587
 msgid "<span id=\"prdd-update-response\">We have made some backend changes to Product Delivery Date Lite plugin. Please update the database by clicking the “Update Database” button for a smoother experience of the plugin. <input style=\"margin-top: 10px;display: block;\" type=\"button\" id=\"prdd-update-yes\" class=\"button button-primary\" value=\"Update database\"  /></span> <span id=\"prdd-update-status\" style=\"display: none;\"></span>"
 msgstr ""
 
@@ -530,83 +527,6 @@ msgstr ""
 #. translators: %s: Link to PRDD Trial
 #: includes/component/upgrade-to-pro/ts-upgrade-to-pro.php:256
 msgid "Upgrade to the PRO version of Product Delivery Date Pro for WooCommerce plugin for $1! Enjoy all Pro features for 30 days at this insane price. Limited time offer <a href=\"%s\" class=\"button-primary button button-large\" target=\"_blank\"><b>Act now!</b></a>"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:42
-msgid "Get Started with "
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:46
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:72
-msgid "Product Delivery Date Lite"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:50
-msgid "Enable Delivery Date Capture"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:52
-msgid "To start allowing customers to select their preferred delivery date on each product page, simply activate the Enable Delivery Date checkbox in the Product Delivery Date Meta box which gets added on the Add/Edit Product page."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:55
-msgid "Learn More"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:65
-msgid "Know more about Product Delivery Date Pro"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:67
-msgid "The Product Delivery Date Pro plugin gives you features where you can allow customers to choose a Delivery Time along with Date and to Set Recurring Weekdays or Specific Dates or both as Delivery days as compared to Lite Plugin. Here are some other notable features the Pro version provides."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:76
-msgid "View All Deliveries"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:78
-msgid "The ability to show all the deliveries with the Customer Details and Delivery Date & Time."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:87
-msgid "Delivery Time along with Delivery Date"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:89
-msgid "The provision for allowing Delivery Time along with the Delivery Date on the product page makes the delivery more accurate. Delivering products on customer's preferred date and time improves your customers service."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:104
-msgid "Synchronise Deliveries with Google Calendar"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:106
-msgid "The ability to synchronise deliveries to the google calendar helps administrator or store manager to manage all the things in a single calendar."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:114
-msgid "Different delivery settings for each product"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:116
-msgid "The Pro version of the plugin allows you to add different delivery settings like Same day cut-off time, Next Day cut-off time or Minimum Delivery Time for each product and product-specific holidays. It also allows you to add different delivery charges for different weekdays and specific dates."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:127
-msgid "View full list of differences between Lite & Pro plugin"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:134
-msgid "Getting to Know Tyche Softwares"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:136
-msgid "Visit the Tyche Softwares Website"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:137
-msgid "View all Premium Plugins"
 msgstr ""
 
 #: includes/prdd-lite-component.php:238

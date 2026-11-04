@@ -103,7 +103,7 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 						$query_order_id = 'SELECT order_id FROM `' . $wpdb->prefix . 'woocommerce_order_items` WHERE order_item_id = %d';
 						// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
 						$get_order_id = $wpdb->get_results( $wpdb->prepare( $query_order_id, $item_value ) );
-						$order        = wc_get_order( $get_order_id[0]->order_id );
+						$order        = empty( $get_order_id ) ? false : wc_get_order( $get_order_id[0]->order_id );
 
 						if ( $order ) {
 							$order_post_status = $order->get_status();
