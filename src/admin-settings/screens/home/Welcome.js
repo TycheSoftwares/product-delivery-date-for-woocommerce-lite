@@ -343,7 +343,12 @@ export default function Welcome() {
 											</div>
 
 											<div className="wc3-col">
-												<h3>Get Support</h3>
+												<h3>
+													{ __(
+														'Get Support',
+														'product-delivery-date-for-woocommerce-lite'
+													) }
+												</h3>
 												<p>
 													{ __(
 														'Tyche Softwares support hours are from 10 am to 6 pm (GMT +5:30 timezone), Monday through Friday. Our response time is approximately 24 hours during working days.',

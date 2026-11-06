@@ -92,7 +92,10 @@ export default function Holidays() {
 								type="button"
 								className="close"
 								data-dismiss="alert"
-								aria-label="Close"
+								aria-label={ __(
+									'Close',
+									'product-delivery-date-for-woocommerce-lite'
+								) }
 								onClick={ dismissMessage }
 							>
 								<span aria-hidden="true">×</span>

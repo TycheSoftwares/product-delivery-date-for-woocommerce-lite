@@ -356,13 +356,13 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 		$limit         = $wpdb->prepare( 'LIMIT %d, %d', $start_record, $per_page );
 
 		if ( isset( $_GET['status'] ) && 'future' === $_GET['status'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value >= %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $current_date ) ); // phpcs:ignore
+			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, t1.order_item_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value >= %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $current_date ) ); // phpcs:ignore
 		} elseif ( isset( $_GET['status'] ) && 'today_delivery' === $_GET['status'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value = %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $current_date ) ); // phpcs:ignore
+			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, t1.order_item_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value = %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $current_date ) ); // phpcs:ignore
 		} elseif ( isset( $_GET['status'] ) && 'tomorrow_delivery' === $_GET['status'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value = %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $tomorrow_date ) ); // phpcs:ignore
+			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, t1.order_item_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t2.order_item_id IN ( SELECT order_item_id FROM `" . $wpdb->prefix . "woocommerce_order_itemmeta` WHERE meta_key = %s AND meta_value = %s ) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_product_id', '_prdd_lite_date', '_prdd_lite_date', $tomorrow_date ) ); // phpcs:ignore
 		} else {
-			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_prdd_lite_date', '_product_id' ) ); // phpcs:ignore
+			$get_order_item_id = $wpdb->get_results( $wpdb->prepare( "SELECT t1.order_id, t1.order_item_id, GROUP_CONCAT( t2.meta_key, '=' ,t2.meta_value SEPARATOR '&' ) AS meta_values FROM  `" . $wpdb->prefix . "woocommerce_order_items` AS t1, `" . $wpdb->prefix . "woocommerce_order_itemmeta` AS t2 WHERE t2.meta_key IN (%s,%s) AND t1.order_item_id = t2.order_item_id AND t1.order_id IN ( " . $inner_query . " ) GROUP BY t1.order_item_id HAVING COUNT( DISTINCT t2.meta_key ) = 3 OR COUNT( DISTINCT t2.meta_key ) = 2 ORDER BY t1.order_id DESC $limit", '_prdd_lite_date', '_product_id' ) ); // phpcs:ignore
 		}
 
 		foreach ( $get_order_item_id as $key => $value ) {
@@ -394,28 +394,17 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$billing_last_name  = $order->get_billing_last_name();
 
 			$return_deliveries[ $i ]->name = $billing_first_name . ' ' . $billing_last_name;
-			$get_quantity                  = $order->get_items();
-			// The array needs to be reversed as we r displaying the last item first.
-			$get_quantity = array_reverse( $get_quantity, true );
-			foreach ( $get_quantity as $k => $v ) {
-				$product_exists = 'NO';
-				if ( $v['product_id'] == $product_id ) { // phpcs:ignore
-					foreach ( $return_deliveries as $deliver_key => $deliver_value ) {
-						if ( isset( $deliver_value->ID ) && $deliver_value->ID === $value->order_id && $v['product_id'] === $deliver_value->product_id ) {
-							if ( isset( $deliver_value->item_id ) && $k === $deliver_value->item_id ) {
-								$product_exists = 'YES';
-							}
-						}
-					}
-					if ( 'NO' === $product_exists ) {
-						$selected_quantity                = $v['qty'];
-						$amount                           = $v['line_total'] + $v['line_tax'];
-						$return_deliveries[ $i ]->item_id = $k;
-						break;
-					}
-				}
+
+			// Each row is one order item, so the values are the ones of that item. The item keeps its
+			// name when the product is deleted later.
+			$product_name = '';
+			$item         = $order->get_item( $value->order_item_id );
+			if ( $item instanceof WC_Order_Item_Product ) {
+				$product_name      = $item->get_name();
+				$selected_quantity = $item->get_quantity();
+				$amount            = (float) $item->get_total() + (float) $item->get_total_tax();
 			}
-			$product_name = get_the_title( $product_id );
+			$return_deliveries[ $i ]->item_id = absint( $value->order_item_id );
 			// Populate the array.
 			$return_deliveries[ $i ]->ID            = $value->order_id;
 			$return_deliveries[ $i ]->product_id    = $product_id;
@@ -423,6 +412,7 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 			$return_deliveries[ $i ]->delivery_date = $date;
 			$return_deliveries[ $i ]->quantity      = $selected_quantity;
 			$return_deliveries[ $i ]->amount        = $amount;
+			$return_deliveries[ $i ]->currency      = $order->get_currency();
 			$order_date_obj                      = $order->get_date_created();
 			$return_deliveries[ $i ]->order_date = $order_date_obj ? $order_date_obj->format( 'Y-m-d' ) : '';
 			$return_deliveries[ $i ]->edit_url   = $order->get_edit_order_url();
@@ -549,15 +539,14 @@ class PRDD_Lite_View_Deliveries_Table extends WP_List_Table {
 				$value           = gmdate( $date_format_set, $date ); // phpcs:ignore
 				break;
 			case 'amount':
-				$amount          = ! empty( $delivery->amount ) ? $delivery->amount : 0;
-				$currency_symbol = get_woocommerce_currency_symbol();
-				$value           = $currency_symbol . number_format( $amount, 2 );
+				$amount = ! empty( $delivery->amount ) ? $delivery->amount : 0;
+				$value  = wc_price( $amount, array( 'currency' => isset( $delivery->currency ) ? $delivery->currency : '' ) );
 				break;
 			case 'actions':
 				$value = '<a href="' . esc_url( self::edit_url( $delivery ) ) . '">' . esc_html__( 'View Order', 'product-delivery-date-for-woocommerce-lite' ) . '</a>';
 				break;
 			default:
-				$value = isset( $delivery->$column_name ) ? $delivery->$column_name : '';
+				$value = isset( $delivery->$column_name ) ? esc_html( $delivery->$column_name ) : '';
 				break;
 		}
 		return apply_filters( 'prdd_lite_delivery_table_column_default', $value, $delivery, $column_name );

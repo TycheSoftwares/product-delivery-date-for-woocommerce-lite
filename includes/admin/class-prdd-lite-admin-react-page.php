@@ -233,7 +233,7 @@ class PRDD_Lite_Admin_React_Page {
 					'ts_action' => 'reset_tracking',
 					'nonce'     => wp_create_nonce( 'ts_nonce_action' ),
 				),
-				self::url()
+				self::url( '/settings' )
 			),
 			'first_day'          => $appearance['prdd_calendar_day'],
 			'global_holidays'    => PRDD_Lite_Settings_Service::get_global_holidays_list(),
