@@ -51,16 +51,20 @@ function is_prdd_lite_active() {
  */
 function prdd_lite_update_po_file() {
 	$domain = 'product-delivery-date-for-woocommerce-lite';
-	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-	$loaded = load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '-' . $locale . '.mo' );
-	if ( ! $loaded ) {
+	$locale = apply_filters( 'plugin_locale', determine_locale(), $domain ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+	$mofile = $domain . '-' . $locale . '.mo';
+
+	// Each file found is loaded. For a string translated in more than one, the file loaded first wins, so the
+	// files added by the site owner come before the wp.org language pack, which WordPress would otherwise use alone.
+	$mofiles = array(
+		WP_LANG_DIR . '/' . $mofile,
 		// Translations saved under the text domain used before 4.0.0.
-		$loaded = load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . 'woocommerce-prdd-lite-' . $locale . '.mo' );
-	}
-	if ( $loaded ) {
-		return $loaded;
-	} else {
-		load_plugin_textdomain( $domain, false, basename( dirname( __FILE__ ) ) . '/languages/' ); // phpcs:ignore
+		WP_LANG_DIR . '/woocommerce-prdd-lite-' . $locale . '.mo',
+		PRDD_LITE_PLUGIN_PATH . '/languages/' . $mofile,
+		WP_LANG_DIR . '/plugins/' . $mofile,
+	);
+	foreach ( $mofiles as $path ) {
+		load_textdomain( $domain, $path, $locale );
 	}
 	$plugin_name        = __( 'Product Delivery Date for WooCommerce - Lite', 'product-delivery-date-for-woocommerce-lite' );
 	$prdd_lite_weekdays = array(

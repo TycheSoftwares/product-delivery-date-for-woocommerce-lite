@@ -31,3 +31,10 @@ table.wp-list-table .column-product_name {
 	left: 50%;
 	transform: translate( -50%, -50% );
 }
+/* On small screens WordPress puts the details of a row on lines of their own from the third cell on, after
+   the checkbox and the primary column. This table has no checkbox, so the Customer Name cell needs it too. */
+@media screen and (max-width: 782px) {
+	.prdd-content-area .wp-list-table tr td {
+		flex: 0 1 100%;
+	}
+}

@@ -102,6 +102,14 @@ export default function ViewDeliveries() {
 
 	// Views, pagination and sorting links of the list table.
 	const onTableClick = ( event ) => {
+		// "Show more details" button of the rows on small screens. common.js binds it only to the
+		// tables present when the page loads, so it is handled here for the table loaded later.
+		const toggle = event.target.closest( '.toggle-row' );
+		if ( toggle ) {
+			toggle.closest( 'tr' ).classList.toggle( 'is-expanded' );
+			return;
+		}
+
 		const link = event.target.closest( 'a' );
 		if (
 			! link ||

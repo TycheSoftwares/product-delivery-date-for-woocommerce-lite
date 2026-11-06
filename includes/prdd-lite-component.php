@@ -53,7 +53,7 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 
 				require_once 'component/plugin-tracking/class-tyche-plugin-tracking.php';
 
-				new Tyche_Plugin_Tracking(
+				$prdd_lite_tracker = new Tyche_Plugin_Tracking(
 					array(
 						'plugin_name'       => $prdd_lite_plugin_name,
 						'plugin_locale'     => $prdd_lite_locale,
@@ -62,6 +62,10 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 						'blog_link'         => $prdd_lite_blog_post_link,
 					)
 				);
+
+				// The tracking notice is shown again after the Reset usage tracking button is clicked.
+				add_action( 'admin_notices', array( $prdd_lite_tracker, 'display_tracker_html_template' ) );
+				add_filter( $prdd_lite_plugin_prefix . '_ts_tracker_display_notice', array( __CLASS__, 'prdd_lite_ts_tracker_display_notice' ) );
 
 				$ts_pro_faq = self::prdd_lite_get_faq();
 				new Prdd_Lite_TS_Faq_Support( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug, $ts_pro_faq );
@@ -72,6 +76,23 @@ if ( ! class_exists( 'Prdd_Lite_All_Component' ) ) {
 				/* Adding Upgrade to Pro related things to plugin */
 				new Ts_Upgrade_To_Pro_Prdd( $prdd_lite_plugin_name, $prdd_lite_plugin_prefix, $prdd_lite_plugins_page, $prdd_lite_locale, $prdd_lite_plugin_folder_name, $prdd_lite_plugin_slug );
 			}
+		}
+
+		/**
+		 * Shows the usage tracking notice only on the Product Delivery Date
+		 * pages, to the users who can allow or reset the tracking.
+		 *
+		 * @hook prdd_lite_ts_tracker_display_notice
+		 *
+		 * @param bool $display Whether to display the notice.
+		 * @return bool
+		 * @since 4.0.0
+		 */
+		public static function prdd_lite_ts_tracker_display_notice( $display ) {
+			$page           = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$is_plugin_page = in_array( $page, array( PRDD_Lite_Admin_React_Page::PAGE, PRDD_Lite_Admin_React_Page::HISTORY_PAGE ), true );
+
+			return $display && $is_plugin_page && current_user_can( 'manage_options' );
 		}
 
 		/**

@@ -5,6 +5,8 @@
  * Only the pickers of the delivery settings form get it, the button triggers
  * `prdd:clear` on the input so the React components can update their state.
  */
+import { __ } from '@wordpress/i18n';
+
 let patched = false;
 
 export default function addDatepickerClearButton() {
@@ -31,8 +33,9 @@ export default function addDatepickerClearButton() {
 			.find( '.ui-datepicker-buttonpane' );
 
 		$(
-			"<button type='button' class='ui-datepicker-clean ui-state-default ui-priority-primary ui-corner-all'>Clear</button>"
+			"<button type='button' class='ui-datepicker-clean ui-state-default ui-priority-primary ui-corner-all'></button>"
 		)
+			.text( __( 'Clear', 'product-delivery-date-for-woocommerce-lite' ) )
 			.appendTo( buttonPane )
 			.on( 'click', () => {
 				if ( inst.input.data( 'prdd-multi' ) ) {

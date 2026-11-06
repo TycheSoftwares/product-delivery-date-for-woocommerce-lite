@@ -43,7 +43,7 @@
     "start": "wp-scripts start admin-settings=./src/admin-settings/index.js product-metabox=./src/product-metabox/index.js",
     "format": "wp-scripts format ./src",
     "lint:js": "wp-scripts lint-js ./src",
-    "i18n:pot": "php -d memory_limit=512M \"$(which wp)\" i18n make-pot . languages/product-delivery-date-for-woocommerce-lite.pot --exclude=node_modules,build,vendor"
+    "i18n:pot": "php -d memory_limit=512M \"$(which wp)\" i18n make-pot . languages/product-delivery-date-for-woocommerce-lite.pot --exclude=node_modules,vendor"
   },
   "overrides": {
     "prettier": "npm:wp-prettier@3.0.3"

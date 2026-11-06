@@ -194,3 +194,17 @@
 		margin-bottom: 16px;
 	}
 }
+
+/* View Deliveries: the "Show more details" button of the list table rows on small screens is the one of
+   WordPress, not a plugin button, so it keeps the core look. */
+.prdd-content-area .wp-list-table .toggle-row,
+.prdd-content-area .wp-list-table .toggle-row:hover,
+.prdd-content-area .wp-list-table .toggle-row:focus,
+.prdd-content-area .wp-list-table .toggle-row:active {
+	padding: 0;
+	border-radius: 0;
+	background: none;
+	color: #3c434a;
+	font-size: 13px;
+	line-height: 1.4;
+}

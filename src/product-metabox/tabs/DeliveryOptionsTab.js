@@ -572,7 +572,10 @@ export default function DeliveryOptionsTab( { form } ) {
 								id="prdd_weekdays"
 								className="prdd_weekdays prdd-multiple ib-small"
 								name="prdd_weekdays[]"
-								placeholder="Select Weekdays"
+								placeholder={ __(
+									'Select Weekdays',
+									'product-delivery-date-for-woocommerce-lite'
+								) }
 								options={ data.weekdays || [] }
 								value={ values.prdd_weekdays || [] }
 								onChange={ ( selected ) =>

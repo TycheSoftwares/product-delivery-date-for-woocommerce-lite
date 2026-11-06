@@ -129,9 +129,12 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 									}
 								}
 								$value->post_id            = $product_id;
+								$value->item_id            = absint( $item_value );
 								$value->delivery_date      = $date;
 								$value->delivery_timestamp = strtotime( $date );
-								$product_name              = html_entity_decode( get_the_title( $product_id ) , ENT_COMPAT, 'UTF-8' );
+								// The item keeps its name when the product is deleted later.
+								$item                      = $order->get_item( $item_value );
+								$product_name              = html_entity_decode( $item ? $item->get_name() : get_the_title( $product_id ), ENT_COMPAT, 'UTF-8' );
 								$time_slot_arr = explode( ' - ', $time_slot );
 								if ( isset( $time_slot_arr[0] ) && $time_slot_arr[0] != '' ) {
 									$from_time        = $time_slot_arr[0];
@@ -241,11 +244,13 @@ if ( ! class_exists( 'Prdd_Lite_Calendar_View' ) ) {
 				$order_items              = $order->get_items();
 				$attribute_name           = '';
 				$attribute_selected_value = '';
-				$product_id = isset( $_REQUEST['event_value']['post_id'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['event_value']['post_id'] ) ) : 0;
+				$product_id               = isset( $_REQUEST['event_value']['post_id'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['event_value']['post_id'] ) ) : 0;
+				$item                     = isset( $_REQUEST['event_value']['item_id'] ) ? $order->get_item( absint( $_REQUEST['event_value']['item_id'] ) ) : false;
+				$item_name                = $item ? $item->get_name() : get_the_title( $product_id );
 
 				$content  = '<table>';
 				$content .= '<tr> <td> <strong>' . esc_html__( 'Order:', 'product-delivery-date-for-woocommerce-lite' ) . ' </strong></td><td><a href="' . esc_url( $order->get_edit_order_url() ) . '">#' . esc_html( $order->get_id() ) . '</a></td></tr>';
-				$content .= '<tr> <td> <strong>' . esc_html__( 'Product Name:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( get_the_title( $product_id ) ) . '</td></tr>';
+				$content .= '<tr> <td> <strong>' . esc_html__( 'Product Name:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( $item_name ) . '</td></tr>';
 				$content .= '<tr> <td> <strong>' . esc_html__( 'Customer Name:', 'product-delivery-date-for-woocommerce-lite' ) . '</strong></td><td>' . esc_html( $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() ) . '</td></tr>';
 
 				foreach ( $order_items as $item ) {

@@ -2,6 +2,7 @@
  * Multiple select enhanced with Choices.js, as the earlier "choices" component.
  */
 import { useEffect, useRef } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Unique values as strings, in their order.
@@ -55,6 +56,22 @@ export default function ChoicesSelect( {
 			removeItemButton: true,
 			searchResultLimit: -1,
 			shouldSort: false,
+			loadingText: __(
+				'Loading…',
+				'product-delivery-date-for-woocommerce-lite'
+			),
+			noResultsText: __(
+				'No results found',
+				'product-delivery-date-for-woocommerce-lite'
+			),
+			noChoicesText: __(
+				'No choices to choose from',
+				'product-delivery-date-for-woocommerce-lite'
+			),
+			itemSelectText: __(
+				'Press to select',
+				'product-delivery-date-for-woocommerce-lite'
+			),
 		} );
 
 		const handle = () => {
