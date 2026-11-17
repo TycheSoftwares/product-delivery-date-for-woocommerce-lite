@@ -64,7 +64,7 @@ This file is for developers working on the plugin. The readme for customers and 
 
 - PHP 7.4+, WordPress 6.2+ and WooCommerce 5.0.0+ on a local site (this repo is developed on [Local](https://localwp.com/)).
 - Node.js and npm, for [`@wordpress/scripts`](https://www.npmjs.com/package/@wordpress/scripts). There is no `.nvmrc`. Use a current LTS version.
-- [WP-CLI](https://wp-cli.org/), for `npm run i18n:pot` and for Plugin Check.
+- [WP-CLI](https://wp-cli.org/), for the `i18n` and `release` scripts and for Plugin Check.
 - PHP_CodeSniffer with the WordPress Coding Standards, for [`tyche-phpcs.xml`](tyche-phpcs.xml).
 
 The `Dangerfile` and `Gemfile` are used by the CI to review pull requests.
@@ -342,7 +342,10 @@ Keep these keys as they are. Pro reads the Lite keys during the migration, and e
 | `npm start` | Same entries, watch mode |
 | `npm run format` | `wp-scripts format` |
 | `npm run lint:js` | `wp-scripts lint-js` |
-| `npm run i18n:pot` | `wp i18n make-pot` into `languages/product-delivery-date-for-woocommerce-lite.pot` (excludes `node_modules` and `vendor`, reads `src/` and `build/`) |
+| `npm run i18n:pot` | `wp i18n make-pot` into `languages/product-delivery-date-for-woocommerce-lite.pot` (excludes `node_modules`, `vendor` and `src`, reads the React strings from `build/`) |
+| `npm run i18n:po` | Updates the `.po` files in `languages/` from the POT (`wp i18n update-po`), then creates their `.mo`, `.l10n.php` and the JSON files of the React screens |
+| `npm run i18n` | `i18n:pot`, then `i18n:po` |
+| `npm run release` | `build`, then `i18n`: the command to run before packaging a release |
 
 ---
 
@@ -363,7 +366,8 @@ Keep these keys as they are. Pro reads the Lite keys during the migration, and e
   - React strings use `@wordpress/i18n` with the same text domain.
   - Both bundles call `wp_set_script_translations()` with `PRDD_LITE_PLUGIN_PATH . '/languages'`.
 - **POT and the React strings:**
-  - `npm run i18n:pot` reads `src/` and `build/`, so the React strings have `#: build/admin-settings.js` and `#: build/product-metabox.js` references. Run `npm run build` first.
+  - `npm run i18n:pot` reads the React strings from `build/`, so they have `#: build/admin-settings.js` and `#: build/product-metabox.js` references. Run `npm run build` first (`npm run release` does both).
+  - `src/` is left out because the build keeps every `__()` call, so no string is lost. With `src/` references, `wp i18n make-json` and Loco also write one JSON file for each source file, and WordPress loads none of them.
   - Keep the `build/` references. WordPress loads the JSON file named after the md5 of the script path (`build/admin-settings.js`), and Loco Translate and `wp i18n make-json` name the JSON files after the references. With `src/` references alone, the JSON files get names WordPress never loads, and the React screens stay in English.
   - Strings shown in the React screens must go through `__()`, including attributes such as `placeholder` and `aria-label`, and the texts of third party libraries such as Choices.js.
 
@@ -470,8 +474,8 @@ Check the call site before you rely on a hook's arguments. Some of them are olde
 1. **Version:** bump it in the plugin header and in `PRDD_LITE_VERSION` (`product-delivery-date-for-woocommerce-lite.php`), and update `Stable tag` in `readme.txt`.
 2. **Tested up to:** update `Tested up to` (WordPress) in `readme.txt` and `WC tested up to` in the plugin header.
 3. **Changelog:** add the entry to `readme.txt` and to `changelog.txt`. Use the `Fix -`, `Tweak -` and `Enhancement -` prefixes.
-4. **Build:** run `npm run build` and commit `build/`.
-5. **POT:** run `npm run i18n:pot`.
+4. **Build:** run `npm run build` (or `npm run release`, see step 5) and commit `build/`.
+5. **Translations:** `npm run release` runs steps 4 and 5 together. It runs `npm run i18n`, which regenerates the POT and updates the `.po`, `.mo`, `.l10n.php` and JSON files in `languages/`. New strings are added to the `.po` files untranslated, and the existing translations are kept.
 6. **Lint:**
    - `npm run lint:js`;
    - `phpcs --standard=tyche-phpcs.xml`;

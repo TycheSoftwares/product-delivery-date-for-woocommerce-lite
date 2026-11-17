@@ -1,0 +1,19 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+dist/
+
+# Dependency directories
+node_modules/
+
+#vendor/
+.vscode
+workspace.code-workspace
+Rubbish/
+
+npm-debug.log*
+vendor/
+
+# For Mac
+.DS_Store

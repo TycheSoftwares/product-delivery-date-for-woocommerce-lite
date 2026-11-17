@@ -10,7 +10,7 @@
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * WC requires at least: 5.0.0
- * WC tested up to: 11.2.1
+ * WC tested up to: 11.3.0
  * Text Domain: product-delivery-date-for-woocommerce-lite
  * Requires Plugins: woocommerce
  * Domain Path: /languages/
