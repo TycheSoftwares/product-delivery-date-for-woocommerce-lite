@@ -243,7 +243,7 @@ This plugin communicates with our tracking server to send usage data **only** if
 
 == Changelog ==
 
-= 4.0.0 - 23/10/2026 =
+= 4.0.0 - 17/11/2026 =
 * Dev – Migrated the plugin's entire admin interface from Vue.js to React. This improves performance and maintainability and lays the groundwork for future admin UI improvements.
 * Dev - Settings are saved through the prdd-lite/admin/v1 REST API.
 
