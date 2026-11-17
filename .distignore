@@ -1,0 +1,13 @@
+/.git
+/.github
+/node_modules
+/src
+package.json
+package-lock.json
+Dangerfile
+Gemfile
+tyche-phpcs.xml
+README.md
+.distignore
+.gitignore
+.DS_Store

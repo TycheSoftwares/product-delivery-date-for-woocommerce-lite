@@ -81,7 +81,8 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 			//add_action( 'admin_notices', array( &$this, 'display_tracker_html_template' ) );
 			add_filter( 'cron_schedules', array( &$this, 'cron_schedule' ) );
 			add_action( 'admin_init', array( &$this, 'init_tracker' ) );
-			$this->schedule_cron_job();
+			// Scheduled on init: scheduling reads the cron schedules, and the label of the weekly one is translated.
+			add_action( 'init', array( &$this, 'schedule_cron_job' ) );
 		}
 
 		/**
@@ -118,7 +119,8 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 		public function cron_schedule( $schedules ) {
 			$schedules['once_in_week'] = array(
 				'interval' => 604800,  // one week in seconds.
-				'display'  => __( 'Once in a Week', $this->plugin_locale ), // phpcs:ignore
+				// Translations can't be loaded before init, when another plugin reads the schedules that early.
+				'display'  => did_action( 'init' ) ? __( 'Once in a Week', $this->plugin_locale ) : 'Once in a Week', // phpcs:ignore
 			);
 
 			return $schedules;
